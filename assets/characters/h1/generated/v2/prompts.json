@@ -1,0 +1,91 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-09-30",
+  "transparent_background": true,
+  "idle": "Reused generated/v1/idle.png byte-for-byte",
+  "frames": [
+    {
+      "id": "active",
+      "prompt": "Use case: identity-preserve. Edit target: input image 1, H1 idle fighting sprite. Create the ACTIVE light jab animation frame by changing ONLY her screen-right arm: extend that arm horizontally to the right at upper-chest height. Keep the screen-left wrapped fist EXACTLY at its existing chest guard position, not near cheek. Preserve the head, torso, entire pants and both shoes, all their pixel placement, linework, proportions and colors. Do not move or redraw the legs or feet. Same camera, same square transparent canvas and character scale, head top about 6% canvas height and soles about95%. Right fist tip near90% canvas width. One full-body sprite, no text, effects, trails, shadows or background. Real alpha transparency. This is a minimal arm-only animation edit of the supplied character, not a redesign.",
+      "refs": [
+        "generated/v1/idle.png"
+      ],
+      "savedAs": "active.png",
+      "status": "draft"
+    },
+    {
+      "id": "startup",
+      "prompt": "Use case: identity-preserve. Edit target input1 H1 idle fighting sprite. Produce light jab STARTUP: change ONLY the screen-right forearm and wrapped fist, draw this fist slightly back and down near the front chest, elbow tucked to prepare the rightward jab. Keep the screen-left fist EXACTLY at its existing chest guard position. Preserve head, face, hair, torso, pants, both shoes, leg shapes, foot positions, scale, outlines and camera unchanged. Same full square canvas; head top6% soles95%. Do not recenter or enlarge. Genuine transparent background, no shadow/text/effects. Minimal arm-only edit, no new clothing details.",
+      "refs": [
+        "generated/v1/idle.png"
+      ],
+      "savedAs": "startup.png",
+      "status": "draft"
+    },
+    {
+      "id": "recovery",
+      "prompt": "Use case: identity-preserve. Edit target input1 H1 idle sprite. Make light jab RECOVERY by changing ONLY the screen-right arm: the fist has retracted halfway from a horizontal rightward punch, at upper chest height around x78% of canvas, elbow bent. The screen-left wrapped fist must stay EXACTLY at its existing chest guard. Keep head, torso, hips, all pants folds, legs and both shoes identical in shape/location/scale. Same square canvas, head at6% height soles95%, full body no cropping. Preserve exact face, bob, red white stripe jacket, white top, black pants red trim, wraps, red shoes. Real transparent alpha, no shadow/text/effects. Minimal arm-only edit.",
+      "refs": [
+        "generated/v1/idle.png"
+      ],
+      "savedAs": "recovery.png",
+      "status": "draft"
+    },
+    {
+      "id": "crouch",
+      "prompt": "Use case: identity-preserve. Input1 is H1 appearance AND camera/scale reference. Make one new CROUCHING IDLE full-body sprite for her 2D fighting game. Same adult woman face short black bob red white-striped jacket white athletic crop top black red-trim pants white wraps red sneakers, same anime cel shading. Facing RIGHT. Deep compact balanced fighting squat: hips low between folded legs, torso leaning slightly forward, wrapped fists guard chest and face, both feet grounded. Not kneeling, not sitting. CRITICAL same anatomical head size and body proportions as input; do NOT zoom to fill canvas. Square transparent canvas matching input: floor at95% height; root at50% width. Due to deep crouch, top of hair should be about49% of canvas height, leaving top half entirely transparent; head stays same size as standing reference, crouching body about half standing height. Entire character inside margins. No effects, shadows, labels, text, background. Preserve actual alpha transparency.",
+      "refs": [
+        "generated/v1/idle.png"
+      ],
+      "savedAs": "crouch.png",
+      "status": "draft"
+    },
+    {
+      "id": "crouch-startup",
+      "prompt": "Use case: identity-preserve. Edit target input1 H1 crouching idle. Make CROUCHING LIGHT KICK STARTUP. Keep same head/upper body, guard arms, face, hair, costume, anatomical size, camera and canvas placement. Shift weight onto screen-left support foot; tuck the screen-right knee slightly closer to chest, its red shoe pulled a little backward, heel slightly raised, preparing a quick low kick to RIGHT. Keep torso low, do not stand up. Preserve support shoe location, floor95% canvas height; keep large transparent space above head. Full-body one sprite, no effects, shadows, text, background. Real alpha. Do not zoom/crop or change canvas framing.",
+      "refs": [
+        "generated/v2/crouch.png"
+      ],
+      "savedAs": "crouch-startup.png",
+      "status": "draft"
+    },
+    {
+      "id": "crouch-active",
+      "prompt": "Use case: identity-preserve. Edit target input1 H1 deep crouch sprite. Create CROUCHING LIGHT KICK ACTIVE, a quick LOW forward kick to RIGHT at opponent ankle height. Keep the screen-left support foot, torso, head and guarding arms in their exact location and scale. Extend the screen-right leg toward RIGHT, near horizontal low above ground; red shoe toe at about94% canvas width and shoe center at85% canvas height, floor remains95%. Keep hips deeply crouched, never stand up. Anatomically plausible single extended leg, other knee bent, exactly two legs/shoes. Preserve face, black bob, red white-stripe jacket, white top, black red-trim pants, wraps and shoe design. Keep original large empty top portion, same square camera no zoom. Full body inside transparent margins; genuine alpha, no text, effects, motion trails or ground shadow.",
+      "refs": [
+        "generated/v2/crouch.png"
+      ],
+      "savedAs": "crouch-active-rejected.png",
+      "status": "rejected: support shift or insufficient retraction"
+    },
+    {
+      "id": "crouch-active",
+      "attempt": 2,
+      "prompt": "Use case: precise-object-edit. Input1 edit target H1 crouch idle. STRICT localized edit: change ONLY the screen-right bent leg below its hip into a low rightward kick. Everything else, especially head, torso, hands, screen-left bent leg and screen-left red support shoe MUST remain at exactly the same source coordinates with identical outlines, not shifted or rotated. Keep source foot at x~390,y~1160 and head at x~690,y~590 unchanged. Extend the other leg rightward with its knee slightly bent (a SHORT light kick, NOT a long full split), red shoe/toe ending x~1180 with shoe center y~1070 on this1254square. Same anatomy/scale, garment colors and details. Keep canvas1254square if possible, full transparent upper half, no zoom/recentering, no shadows/effects/text. Real alpha transparent background. Do not move the support leg to make room.",
+      "refs": [
+        "generated/v2/crouch.png"
+      ],
+      "savedAs": "crouch-active.png",
+      "status": "draft"
+    },
+    {
+      "id": "crouch-recovery",
+      "prompt": "Use case: precise-object-edit. Input1 edit target H1 crouch idle. Make CROUCHING LIGHT KICK RECOVERY: change ONLY screen-right bent leg. It is withdrawing after a low kick; knee partially folded, red sneaker farther right than idle by about100source pixels and slightly above floor; shoe center near x940,y1080 on1254square. Keep head, torso, guarding arms, entire screen-left support leg and planted support shoe EXACTLY unchanged in location, shape, scale and clothing details. Keep same facial expression and black bob, adult proportions, cel shading and linework. Same full square transparent canvas, same floor, huge empty top. No zoom/recentering, effects, shadows, text or background. Exactly two feet. Genuine alpha.",
+      "refs": [
+        "generated/v2/crouch.png"
+      ],
+      "savedAs": "crouch-recovery-rejected.png",
+      "status": "rejected: support shift or insufficient retraction"
+    },
+    {
+      "id": "crouch-recovery",
+      "attempt": 2,
+      "prompt": "Use case: precise-object-edit. Input image is the ACTIVE crouching low kick. Edit ONLY the extended screen-right leg to create RECOVERY. Fold that knee sharply and PULL THE RED KICKING SHOE BACK toward the hips by roughly 250 pixels, so its toe ends at x~960 instead of1230 on1254canvas. Shoe should be centered around x850,y1060. Clearly shorter reach than input, midway toward crouching idle; do NOT keep it fully extended and do NOT point it further right. Keep head, torso, arms, planted screen-left foot absolutely unchanged in position/scale. Preserve exact anime character appearance and clothes. Same square transparent canvas, no cropping/reframing/resizing. No shadows/effects/text; genuine alpha background. Exactly two legs and two shoes.",
+      "refs": [
+        "generated/v2/crouch-active.png"
+      ],
+      "savedAs": "crouch-recovery.png",
+      "status": "draft"
+    }
+  ]
+}

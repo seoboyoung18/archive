@@ -1,0 +1,273 @@
+{
+  "displayScale": 0.625,
+  "method": "Shared scale from idle alpha height (384px); source canvas midpoint X; per-frame sole bottom Y. No repainting.",
+  "frames": [
+    {
+      "sourceSha256": "7915499a1578002f858faf54fdf3baffe450b812447fa2bd9367d7c8dbecad9c",
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "outputSha256": "b3b038036d688306eb49f45a6960ded9132974b0c51c189da29b35cb5a14c647",
+      "output": "derived/v2/idle.png",
+      "id": "idle",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/v2/idle.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "right": 412,
+        "top": 64,
+        "bottom": 447,
+        "left": 106
+      },
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "sourceBounds": {
+        "right": 1083,
+        "top": 74,
+        "bottom": 1193,
+        "left": 189
+      }
+    },
+    {
+      "sourceSha256": "e72d52aa725eb2d03d4adb739cbc9a3b156a180566b73838cd60238badeb4f6c",
+      "sourceRoot": [
+        627.0,
+        1196
+      ],
+      "outputSha256": "cb14fe28530cc02177afa25ec45ee168121892a60dfed836b3e116b0bc7523b1",
+      "output": "derived/v2/startup.png",
+      "id": "startup",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/v2/startup.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "right": 412,
+        "top": 63,
+        "bottom": 447,
+        "left": 105
+      },
+      "offset": [
+        41.02857142857144,
+        37.94285714285712
+      ],
+      "sourceBounds": {
+        "right": 1083,
+        "top": 74,
+        "bottom": 1195,
+        "left": 189
+      }
+    },
+    {
+      "sourceSha256": "16c37741e47f4cfa17b9580c22d07cac06763eb0bbeeb50ee2277b352ca6d20b",
+      "sourceRoot": [
+        627.0,
+        1196
+      ],
+      "outputSha256": "d91740617fb50ad2c0016578f7ed320a2a8a3d7470dd2d6ed6004482a8cfbb22",
+      "output": "derived/v2/active.png",
+      "id": "active",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/v2/active.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "right": 442,
+        "top": 63,
+        "bottom": 447,
+        "left": 105
+      },
+      "offset": [
+        41.02857142857144,
+        37.94285714285712
+      ],
+      "sourceBounds": {
+        "right": 1172,
+        "top": 75,
+        "bottom": 1195,
+        "left": 189
+      }
+    },
+    {
+      "sourceSha256": "de89f94647a9ad91f17a1d6c34f9499ba9b4bfbd81c70370f79cc5d001b71b55",
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "outputSha256": "b5afc0c5ea273f78dedb174eb1785e6ed80d4c79225fec859323930ffa72784f",
+      "output": "derived/v2/recovery.png",
+      "id": "recovery",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/v2/recovery.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "right": 412,
+        "top": 64,
+        "bottom": 447,
+        "left": 105
+      },
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "sourceBounds": {
+        "right": 1084,
+        "top": 74,
+        "bottom": 1193,
+        "left": 189
+      }
+    },
+    {
+      "sourceSha256": "3bf4c5f6e7a38f7e503f3bca9537b08239d0678514c7cbbb39a1aaf4302589b5",
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputSha256": "a105dae18e1469f8767df6aaeb794ddfeae9370eadda38b35c743259a65dac66",
+      "output": "derived/v2/crouch.png",
+      "id": "crouch",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/v2/crouch.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "right": 367,
+        "top": 209,
+        "bottom": 447,
+        "left": 156
+      },
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "sourceBounds": {
+        "right": 953,
+        "top": 491,
+        "bottom": 1187,
+        "left": 335
+      }
+    },
+    {
+      "sourceSha256": "4a3d1d963a31045f132dd0c13d0375c006e6fb3d4122977c9a8c0fee18ce27f7",
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputSha256": "4f6464a9d3b7f68f9ef87ef394dd986a66d145c6ed81eb358b808ffd60c0b2c2",
+      "output": "derived/v2/crouch-startup.png",
+      "id": "crouch-startup",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/v2/crouch-startup.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "right": 353,
+        "top": 209,
+        "bottom": 447,
+        "left": 155
+      },
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "sourceBounds": {
+        "right": 911,
+        "top": 491,
+        "bottom": 1187,
+        "left": 334
+      }
+    },
+    {
+      "sourceSha256": "c68fd8cce497da03d4696b3947751dba7d11ec49e53b18f4ce0e39d61867f746",
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputSha256": "2498ee3252746096c66ff6aab579336b5042d7ca29111388381b979d28f10e9b",
+      "output": "derived/v2/crouch-active.png",
+      "id": "crouch-active",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/v2/crouch-active.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "right": 462,
+        "top": 209,
+        "bottom": 447,
+        "left": 156
+      },
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "sourceBounds": {
+        "right": 1229,
+        "top": 492,
+        "bottom": 1187,
+        "left": 335
+      }
+    },
+    {
+      "sourceSha256": "cc8e689952f85f573315b44beb325aa516bce68b2fae7228b733b8c6e81ec0ab",
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputSha256": "ad67e0f247306ca17f8f2d19c2550cdfb9ba8edb7d0affeb4000515915b51877",
+      "output": "derived/v2/crouch-recovery.png",
+      "id": "crouch-recovery",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/v2/crouch-recovery.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "right": 353,
+        "top": 209,
+        "bottom": 447,
+        "left": 156
+      },
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "sourceBounds": {
+        "right": 912,
+        "top": 492,
+        "bottom": 1187,
+        "left": 336
+      }
+    }
+  ],
+  "root": [
+    256,
+    448
+  ],
+  "alphaThreshold": 8,
+  "referenceSha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+  "status": "draft",
+  "canvas": [
+    512,
+    512
+  ]
+}

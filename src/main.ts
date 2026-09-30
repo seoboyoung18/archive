@@ -1,27 +1,40 @@
 import Phaser from 'phaser';
 import './style.css';
-import idle from '../assets/characters/h1/derived/v1/idle.png?url';
-import startup from '../assets/characters/h1/derived/v1/startup.png?url';
-import active from '../assets/characters/h1/derived/v1/active.png?url';
-import recovery from '../assets/characters/h1/derived/v1/recovery.png?url';
+import idle from '../assets/characters/h1/derived/v2/idle.png?url';
+import startup from '../assets/characters/h1/derived/v2/startup.png?url';
+import active from '../assets/characters/h1/derived/v2/active.png?url';
+import recovery from '../assets/characters/h1/derived/v2/recovery.png?url';
+import crouch from '../assets/characters/h1/derived/v2/crouch.png?url';
+import crouchStartup from '../assets/characters/h1/derived/v2/crouch-startup.png?url';
+import crouchActive from '../assets/characters/h1/derived/v2/crouch-active.png?url';
+import crouchRecovery from '../assets/characters/h1/derived/v2/crouch-recovery.png?url';
+import { phaseAtTick, type Phase } from './preview-timing';
 
-const textures = { idle, startup, active, recovery };
-type Pose = keyof typeof textures;
-const labels: Record<Pose, string> = { idle: '대기', startup: '약손 · 준비 6F', active: '약손 · 유효 3F', recovery: '약손 · 회복 15F' };
+const textures = { idle, startup, active, recovery, crouch, crouchStartup, crouchActive, crouchRecovery };
+const moves = {
+  punch: { name: '선 약손', base: '대기', frames: [6, 3, 15], hurtHeight: 220, hit: [36, -190, 68, 90],
+    textures: { idle: 'idle', startup: 'startup', active: 'active', recovery: 'recovery' } },
+  crouchKick: { name: '앉은 약발', base: '앉기', frames: [8, 4, 18], hurtHeight: 120, hit: [36, -60, 88, 50],
+    textures: { idle: 'crouch', startup: 'crouchStartup', active: 'crouchActive', recovery: 'crouchRecovery' } },
+} as const;
+type Move = keyof typeof moves;
+const phaseNames = { idle: '기본 자세', startup: '준비', active: '유효', recovery: '회복' };
+const moveSelect = document.querySelector<HTMLSelectElement>('#move')!;
 const select = document.querySelector<HTMLSelectElement>('#pose')!;
 const play = document.querySelector<HTMLButtonElement>('#play')!;
 const flip = document.querySelector<HTMLButtonElement>('#flip')!;
 const boxes = document.querySelector<HTMLInputElement>('#boxes')!;
 const label = document.querySelector<HTMLOutputElement>('#frame-label')!;
 const error = document.querySelector<HTMLParagraphElement>('#error')!;
-const controls = [select, play, flip, boxes];
+const controls = [moveSelect, select, play, flip, boxes];
 controls.forEach(control => { control.disabled = true; });
 const listeners = new AbortController();
 
 class Preview extends Phaser.Scene {
   private sprite!: Phaser.GameObjects.Image;
   private guides!: Phaser.GameObjects.Graphics;
-  private pose: Pose = 'idle';
+  private pose: Phase = 'idle';
+  private move: Move = 'punch';
   private playing = false;
   private elapsed = 0;
   private left = false;
@@ -46,7 +59,13 @@ class Preview extends Phaser.Scene {
     this.sprite = this.add.image(640, 600, 'idle').setOrigin(0.5, 0.875).setScale(0.625);
     this.guides = this.add.graphics();
     const options = { signal: listeners.signal };
-    select.addEventListener('change', () => { this.stop(); this.show(select.value as Pose); }, options);
+    moveSelect.addEventListener('change', () => {
+      this.move = moveSelect.value as Move;
+      this.stop();
+      this.show('idle');
+      this.updateDescription();
+    }, options);
+    select.addEventListener('change', () => { this.stop(); this.show(select.value as Phase); }, options);
     play.addEventListener('click', () => {
       if (this.playing) this.stop();
       else { this.playing = true; this.elapsed = 0; play.textContent = '재생 정지'; play.setAttribute('aria-pressed', 'true'); this.show('startup'); }
@@ -63,31 +82,43 @@ class Preview extends Phaser.Scene {
     document.addEventListener('visibilitychange', () => { if (document.hidden) this.stop(); }, options);
     controls.forEach(control => { control.disabled = false; });
     this.show('idle');
+    this.updateDescription();
   }
 
   private stop() {
     this.playing = false;
-    play.textContent = '약손 재생';
+    play.textContent = `${moves[this.move].name} 재생`;
     play.setAttribute('aria-pressed', 'false');
   }
 
-  private show(pose: Pose) {
+  private updateDescription() {
+    const data = moves[this.move];
+    document.querySelector('#timing')!.textContent = `${data.frames.join(' / ')} F`;
+    document.querySelector('#timing-summary')!.textContent = `준비 → 유효 → 회복. 초당 60회 기준으로 총 ${data.frames.reduce((a, b) => a + b, 0) / 60}초입니다. 반복 사이에는 ${data.base}를 30F 표시합니다.`;
+    select.options[0]!.textContent = data.base;
+  }
+
+  private show(pose: Phase) {
     this.pose = pose;
-    this.sprite.setTexture(pose);
+    const data = moves[this.move];
+    this.sprite.setTexture(data.textures[pose]);
     select.value = pose;
-    label.value = labels[pose];
+    const phaseIndex = ['startup', 'active', 'recovery'].indexOf(pose);
+    label.value = pose === 'idle' ? data.base : `${data.name} · ${phaseNames[pose]} ${data.frames[phaseIndex]}F`;
     this.drawGuides();
   }
 
   private drawGuides() {
     const g = this.guides.clear();
     if (!boxes.checked) return;
-    g.fillStyle(0x7cb5ff, 0.1).fillRect(604, 380, 72, 220);
-    g.lineStyle(2, 0x7cb5ff, 0.8).strokeRect(604, 380, 72, 220);
+    const data = moves[this.move];
+    g.fillStyle(0x7cb5ff, 0.1).fillRect(604, 600 - data.hurtHeight, 72, data.hurtHeight);
+    g.lineStyle(2, 0x7cb5ff, 0.8).strokeRect(604, 600 - data.hurtHeight, 72, data.hurtHeight);
     if (this.pose === 'active') {
-      const x = this.left ? 640 - 104 : 640 + 36;
-      g.fillStyle(0xff667c, 0.18).fillRect(x, 410, 68, 90);
-      g.lineStyle(2, 0xff667c, 1).strokeRect(x, 410, 68, 90);
+      const [hx, hy, width, height] = data.hit;
+      const x = 640 + (this.left ? -hx - width : hx);
+      g.fillStyle(0xff667c, 0.18).fillRect(x, 600 + hy, width, height);
+      g.lineStyle(2, 0xff667c, 1).strokeRect(x, 600 + hy, width, height);
     }
     g.lineStyle(2, 0x70e0c6, 1).lineBetween(628, 600, 652, 600).lineBetween(640, 588, 640, 612);
     g.strokeCircle(640, 600, 5);
@@ -95,10 +126,12 @@ class Preview extends Phaser.Scene {
 
   update(_time: number, delta: number) {
     if (!this.playing) return;
-    // 24 attack ticks followed by 30 idle ticks, only for this asset inspector.
-    this.elapsed = (this.elapsed + delta) % 900;
+    const frames = moves[this.move].frames;
+    // Idle gap is only for this inspector, not a combat recovery rule.
+    const cycleTicks = frames.reduce((a, b) => a + b, 30);
+    this.elapsed = (this.elapsed + delta) % (cycleTicks * 1000 / 60);
     const tick = Math.floor(this.elapsed * 60 / 1000);
-    const next: Pose = tick < 6 ? 'startup' : tick < 9 ? 'active' : tick < 24 ? 'recovery' : 'idle';
+    const next = phaseAtTick(tick, frames);
     if (next !== this.pose) this.show(next);
   }
 }

@@ -1,3 +1,4 @@
+param([ValidateSet('v1','v2')][string]$Version = 'v2')
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 $projectRoot = Split-Path $PSScriptRoot -Parent
@@ -22,12 +23,13 @@ function Get-AlphaBounds($bitmap) {
     } finally { $bitmap.UnlockBits($data) }
 }
 $names = @('idle', 'startup', 'active', 'recovery')
+if ($Version -eq 'v2') { $names += @('crouch', 'crouch-startup', 'crouch-active', 'crouch-recovery') }
 $idle = [System.Drawing.Bitmap]::new((Join-Path $assetRoot 'generated/v1/idle.png'))
 try { $idleBounds = Get-AlphaBounds $idle; $scale = 384.0 / ($idleBounds.bottom + 1 - $idleBounds.top); $sourceWidth = $idle.Width } finally { $idle.Dispose() }
-$outputDir = Join-Path $assetRoot 'derived/v1'
+$outputDir = Join-Path $assetRoot "derived/$Version"
 [void](New-Item -ItemType Directory -Path $outputDir -Force)
 $frames = foreach ($name in $names) {
-    $source = Join-Path $assetRoot "generated/v1/$name.png"
+    $source = Join-Path $assetRoot "generated/$Version/$name.png"
     $output = Join-Path $outputDir "$name.png"
     $bitmap = [System.Drawing.Bitmap]::new($source)
     $target = [System.Drawing.Bitmap]::new(512, 512, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
@@ -45,7 +47,7 @@ $frames = foreach ($name in $names) {
         $graphics.DrawImage($bitmap, $destination, [System.Drawing.RectangleF]::new(0,0,$bitmap.Width,$bitmap.Height), [System.Drawing.GraphicsUnit]::Pixel)
         $target.Save($output, [System.Drawing.Imaging.ImageFormat]::Png)
         @{
-            id=$name; source="generated/v1/$name.png"; output="derived/v1/$name.png"
+            id=$name; source="generated/$Version/$name.png"; output="derived/$Version/$name.png"
             sourceSha256=(Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLower()
             outputSha256=(Get-FileHash -LiteralPath $output -Algorithm SHA256).Hash.ToLower()
             sourceSize=@($bitmap.Width,$bitmap.Height); sourceBounds=$bounds

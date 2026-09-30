@@ -4,13 +4,17 @@ import { createHash } from 'node:crypto';
 import { inflateSync } from 'node:zlib';
 
 const root = new URL('../assets/characters/h1/', import.meta.url);
-const manifest = JSON.parse(readFileSync(new URL('derived/v1/manifest.json', root), 'utf8').replace(/^\uFEFF/, ''));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
+const decoded = new Map();
+for (const version of ['v1', 'v2']) {
+const manifest = JSON.parse(readFileSync(new URL(`derived/${version}/manifest.json`, root), 'utf8').replace(/^\uFEFF/, ''));
 assert.equal(hash(readFileSync(new URL('reference.png', root))), manifest.referenceSha256, 'Reference changed');
 assert.deepEqual(manifest.root, [256, 448]);
 assert.deepEqual(manifest.canvas, [512, 512]);
 assert.equal(manifest.displayScale, 0.625);
-assert.deepEqual(manifest.frames.map(frame => frame.id), ['idle', 'startup', 'active', 'recovery']);
+const ids = ['idle', 'startup', 'active', 'recovery'];
+if (version === 'v2') ids.push('crouch', 'crouch-startup', 'crouch-active', 'crouch-recovery');
+assert.deepEqual(manifest.frames.map(frame => frame.id), ids);
 
 function decode(bytes) {
   assert.equal(bytes.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
@@ -50,6 +54,7 @@ for (const frame of manifest.frames) {
   const bytes = readFileSync(new URL(frame.output, root));
   assert.equal(hash(bytes), frame.outputSha256);
   const { width, height, pixels } = decode(bytes);
+  decoded.set(`${version}/${frame.id}`, pixels);
   assert.deepEqual([width, height], [512, 512]);
   const bounds = { left: width, top: height, right: -1, bottom: -1 };
   let transparent = 0;
@@ -65,9 +70,28 @@ for (const frame of manifest.frames) {
   assert.ok(transparent > width * height / 2, 'Expected transparent background');
   assert.deepEqual(bounds, frame.outputBounds);
   assert.ok(Math.abs(bounds.bottom + 1 - 448) <= 1, 'Soles must meet baseline');
-  assert.ok(Math.abs(bounds.top - 64) <= 1, 'Shared body height drift');
+  if (!frame.id.startsWith('crouch')) assert.ok(Math.abs(bounds.top - 64) <= 1, 'Standing height drift');
+  else assert.ok(bounds.top > 160 && bounds.top < 448, 'Crouch should be lower, never scaled to standing height');
   assert.ok(Math.abs(frame.sourceRoot[0] * frame.scale + frame.offset[0] - 256) < 0.0001);
   assert.ok(Math.abs(frame.sourceRoot[1] * frame.scale + frame.offset[1] - 448) < 0.0001);
-  console.log(`${frame.id}: 512x512 RGBA, transparent margins, root aligned, hashes intact`);
+  console.log(`${version}/${frame.id}: 512x512 RGBA, transparent margins, root aligned, hashes intact`);
 }
-console.log('PASS: 4 draft assets. Visual consistency requires separate review.');
+}
+// Silhouette overlap measures foot stability, not artistic approval.
+function overlap(a, b, x0, x1, y0, y1) {
+  let intersection = 0, union = 0;
+  for (let y = y0; y < y1; y++) for (let x = x0; x < x1; x++) {
+    const i = (y * 512 + x) * 4 + 3, av = a[i] >= 8, bv = b[i] >= 8;
+    if (av || bv) union++;
+    if (av && bv) intersection++;
+  }
+  assert.ok(union > 0);
+  return (100 * intersection / union).toFixed(2) + '%';
+}
+for (const version of ['v1', 'v2']) for (const id of ['startup', 'active', 'recovery']) {
+  console.log(`${version}/${id} foot mask overlap with idle (y400..447): ${overlap(decoded.get(`${version}/idle`), decoded.get(`${version}/${id}`), 0, 512, 400, 448)}`);
+}
+for (const id of ['crouch-startup', 'crouch-active', 'crouch-recovery']) {
+  console.log(`${id} support foot overlap (x100..229, y410..447): ${overlap(decoded.get('v2/crouch'), decoded.get(`v2/${id}`), 100, 230, 410, 448)}`);
+}
+console.log('PASS: v1 preserved and 8 v2 draft poses. Visual consistency requires separate review.');
