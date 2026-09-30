@@ -1,0 +1,281 @@
+{
+  "frames": [
+    {
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1195
+      ],
+      "outputSha256": "2075ab67c091729c562c407ba6ac8a013171f44a1ffc1392bc885cf6617411cb",
+      "outputBounds": {
+        "left": 105,
+        "top": 64,
+        "bottom": 447,
+        "right": 412
+      },
+      "scale": 0.34285714285714286,
+      "sourceSha256": "e244bcbc78fb8e47e3a1f4f0799833921c9e8fcef3ec84f468f25d9681cb9587",
+      "source": "generated/movement-v1/idle-1.png",
+      "output": "derived/movement-v1/idle-1.png",
+      "offset": [
+        41.02857142857144,
+        38.28571428571428
+      ],
+      "id": "idle-1",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": {
+        "left": 189,
+        "top": 75,
+        "bottom": 1194,
+        "right": 1085
+      }
+    },
+    {
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "outputSha256": "4d728cdec9274beb708c8108340a0541b176a445058614ddf68c75b7ed452a0b",
+      "outputBounds": {
+        "left": 112,
+        "top": 65,
+        "bottom": 447,
+        "right": 421
+      },
+      "scale": 0.34285714285714286,
+      "sourceSha256": "59850d7d0c6611b699f91d8a5d1409005a28a9f362b793d3f83cf854ac6d94ec",
+      "source": "generated/movement-v1/walk-0.png",
+      "output": "derived/movement-v1/walk-0.png",
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "id": "walk-0",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": {
+        "left": 208,
+        "top": 77,
+        "bottom": 1193,
+        "right": 1110
+      }
+    },
+    {
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1192
+      ],
+      "outputSha256": "e5001ae8586886a4055aaf0807c2f191991d8fbdc479bfec199aff74cb13d3a0",
+      "outputBounds": {
+        "left": 172,
+        "top": 65,
+        "bottom": 448,
+        "right": 345
+      },
+      "scale": 0.34285714285714286,
+      "sourceSha256": "3782f486a073e7cfdc70a90b172deb1c3746a2a0b78dede493e43bc598531580",
+      "source": "generated/movement-v1/walk-1.png",
+      "output": "derived/movement-v1/walk-1.png",
+      "offset": [
+        41.02857142857144,
+        39.31428571428569
+      ],
+      "id": "walk-1",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": {
+        "left": 383,
+        "top": 76,
+        "bottom": 1191,
+        "right": 889
+      }
+    },
+    {
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1189
+      ],
+      "outputSha256": "c2a3dda21a8fd73ae42f0cfea6638998bc9c1eec8c0ce20349c4b7a5d145b6d7",
+      "outputBounds": {
+        "left": 166,
+        "top": 66,
+        "bottom": 447,
+        "right": 450
+      },
+      "scale": 0.34285714285714286,
+      "sourceSha256": "e0920c6b58ed9dd9dc00724ac5d0e09edcf15764f8dde3351c2078037c82b52b",
+      "source": "generated/movement-v1/walk-2.png",
+      "output": "derived/movement-v1/walk-2.png",
+      "offset": [
+        41.02857142857144,
+        40.342857142857156
+      ],
+      "id": "walk-2",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": {
+        "left": 364,
+        "top": 75,
+        "bottom": 1188,
+        "right": 1193
+      }
+    },
+    {
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1196
+      ],
+      "outputSha256": "24bbd6eb61da9e2e802567133224d31f9a4a47113b108d80a6c87f8323167ea2",
+      "outputBounds": {
+        "left": 106,
+        "top": 63,
+        "bottom": 447,
+        "right": 439
+      },
+      "scale": 0.34285714285714286,
+      "sourceSha256": "a1ae3583fe659f5564eb993446cab61ffc20e13563833a50c4b4e9db529783e7",
+      "source": "generated/movement-v1/walk-3.png",
+      "output": "derived/movement-v1/walk-3.png",
+      "offset": [
+        41.02857142857144,
+        37.94285714285712
+      ],
+      "id": "walk-3",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": {
+        "left": 191,
+        "top": 75,
+        "bottom": 1195,
+        "right": 1162
+      }
+    },
+    {
+      "rootMode": "idle-virtual-ground",
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "outputSha256": "f3c542cfc531b276997eb9737954f00e109feabc4a4a585f7d4aa87e68d65748",
+      "outputBounds": {
+        "left": 143,
+        "top": 64,
+        "bottom": 413,
+        "right": 374
+      },
+      "scale": 0.34285714285714286,
+      "sourceSha256": "8f37e96a012f86c7d3cc11e232e3aa3524ce4be4852de2fc13432a99fdce9818",
+      "source": "generated/movement-v1/jump-rise.png",
+      "output": "derived/movement-v1/jump-rise.png",
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "id": "jump-rise",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": {
+        "left": 300,
+        "top": 76,
+        "bottom": 1092,
+        "right": 972
+      }
+    },
+    {
+      "rootMode": "idle-virtual-ground",
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "outputSha256": "ab21f589ebd6dcff04334bc36d6475d7e32de39b364838c0bfb86dab8d427b07",
+      "outputBounds": {
+        "left": 165,
+        "top": 64,
+        "bottom": 377,
+        "right": 380
+      },
+      "scale": 0.34285714285714286,
+      "sourceSha256": "0c7ddc4bb4e3ebb7fe78614d346b54a7a36abbef9797ba97f59c75a0b1957333",
+      "source": "generated/movement-v1/jump-apex.png",
+      "output": "derived/movement-v1/jump-apex.png",
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "id": "jump-apex",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": {
+        "left": 362,
+        "top": 74,
+        "bottom": 987,
+        "right": 989
+      }
+    },
+    {
+      "rootMode": "idle-virtual-ground",
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "outputSha256": "2d918703edfac393347322eda01e1878b193da684090e9157471969759444f0e",
+      "outputBounds": {
+        "left": 162,
+        "top": 62,
+        "bottom": 453,
+        "right": 352
+      },
+      "scale": 0.34285714285714286,
+      "sourceSha256": "0ce8ed37b1be63d34b77800b72e4d37eabd82fa1a22c4ff2e4b667c626801270",
+      "source": "generated/movement-v1/jump-fall.png",
+      "output": "derived/movement-v1/jump-fall.png",
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "id": "jump-fall",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBounds": {
+        "left": 353,
+        "top": 69,
+        "bottom": 1208,
+        "right": 909
+      }
+    }
+  ],
+  "displayScale": 0.625,
+  "method": "Shared scale from idle alpha height (384px); source canvas midpoint X; sole bottom Y except jumping uses idle virtual ground. No repainting.",
+  "referenceSha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+  "root": [
+    256,
+    448
+  ],
+  "alphaThreshold": 8,
+  "status": "draft",
+  "canvas": [
+    512,
+    512
+  ]
+}

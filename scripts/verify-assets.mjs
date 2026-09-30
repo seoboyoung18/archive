@@ -6,14 +6,15 @@ import { inflateSync } from 'node:zlib';
 const root = new URL('../assets/characters/h1/', import.meta.url);
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const decoded = new Map();
-for (const version of ['v1', 'v2']) {
+for (const version of ['v1', 'v2', 'movement-v1']) {
 const manifest = JSON.parse(readFileSync(new URL(`derived/${version}/manifest.json`, root), 'utf8').replace(/^\uFEFF/, ''));
 assert.equal(hash(readFileSync(new URL('reference.png', root))), manifest.referenceSha256, 'Reference changed');
 assert.deepEqual(manifest.root, [256, 448]);
 assert.deepEqual(manifest.canvas, [512, 512]);
 assert.equal(manifest.displayScale, 0.625);
-const ids = ['idle', 'startup', 'active', 'recovery'];
+let ids = ['idle', 'startup', 'active', 'recovery'];
 if (version === 'v2') ids.push('crouch', 'crouch-startup', 'crouch-active', 'crouch-recovery');
+if (version === 'movement-v1') ids = ['idle-1','walk-0','walk-1','walk-2','walk-3','jump-rise','jump-apex','jump-fall'];
 assert.deepEqual(manifest.frames.map(frame => frame.id), ids);
 
 function decode(bytes) {
@@ -69,8 +70,11 @@ for (const frame of manifest.frames) {
   }
   assert.ok(transparent > width * height / 2, 'Expected transparent background');
   assert.deepEqual(bounds, frame.outputBounds);
-  assert.ok(Math.abs(bounds.bottom + 1 - 448) <= 1, 'Soles must meet baseline');
-  if (!frame.id.startsWith('crouch')) assert.ok(Math.abs(bounds.top - 64) <= 1, 'Standing height drift');
+  if (frame.id.startsWith('jump-')) {
+    assert.equal(frame.rootMode, 'idle-virtual-ground');
+    assert.equal(frame.sourceRoot[1], 1194, 'Jump root must not follow curled feet');
+  } else assert.ok(Math.abs(bounds.bottom + 1 - 448) <= 1, 'Soles must meet baseline');
+  if (!frame.id.startsWith('crouch')) assert.ok(Math.abs(bounds.top - 64) <= (version === 'movement-v1' ? 5 : 1), 'Body height drift');
   else assert.ok(bounds.top > 160 && bounds.top < 448, 'Crouch should be lower, never scaled to standing height');
   assert.ok(Math.abs(frame.sourceRoot[0] * frame.scale + frame.offset[0] - 256) < 0.0001);
   assert.ok(Math.abs(frame.sourceRoot[1] * frame.scale + frame.offset[1] - 448) < 0.0001);
@@ -94,4 +98,4 @@ for (const version of ['v1', 'v2']) for (const id of ['startup', 'active', 'reco
 for (const id of ['crouch-startup', 'crouch-active', 'crouch-recovery']) {
   console.log(`${id} support foot overlap (x100..229, y410..447): ${overlap(decoded.get('v2/crouch'), decoded.get(`v2/${id}`), 100, 230, 410, 448)}`);
 }
-console.log('PASS: v1 preserved and 8 v2 draft poses. Visual consistency requires separate review.');
+console.log('PASS: v1/v2 preserved and 8 movement drafts. Visual consistency requires separate review.');

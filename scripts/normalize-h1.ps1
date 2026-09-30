@@ -1,4 +1,4 @@
-param([ValidateSet('v1','v2')][string]$Version = 'v2')
+param([ValidateSet('v1','v2','movement-v1')][string]$Version = 'v2')
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 $projectRoot = Split-Path $PSScriptRoot -Parent
@@ -24,6 +24,7 @@ function Get-AlphaBounds($bitmap) {
 }
 $names = @('idle', 'startup', 'active', 'recovery')
 if ($Version -eq 'v2') { $names += @('crouch', 'crouch-startup', 'crouch-active', 'crouch-recovery') }
+if ($Version -eq 'movement-v1') { $names = @('idle-1','walk-0','walk-1','walk-2','walk-3','jump-rise','jump-apex','jump-fall') }
 $idle = [System.Drawing.Bitmap]::new((Join-Path $assetRoot 'generated/v1/idle.png'))
 try { $idleBounds = Get-AlphaBounds $idle; $scale = 384.0 / ($idleBounds.bottom + 1 - $idleBounds.top); $sourceWidth = $idle.Width } finally { $idle.Dispose() }
 $outputDir = Join-Path $assetRoot "derived/$Version"
@@ -38,6 +39,8 @@ $frames = foreach ($name in $names) {
         if ($bitmap.Width -ne $sourceWidth) { throw 'Source sizes differ; review shared scale first' }
         $bounds = Get-AlphaBounds $bitmap
         $rootX = $bitmap.Width / 2.0; $rootY = $bounds.bottom + 1
+        $rootMode = 'sole-bottom'
+        if ($name.StartsWith('jump-')) { $rootY = $idleBounds.bottom + 1; $rootMode = 'idle-virtual-ground' }
         $offsetX = 256 - $rootX * $scale; $offsetY = 448 - $rootY * $scale
         $graphics.Clear([System.Drawing.Color]::Transparent)
         $graphics.CompositingMode = [System.Drawing.Drawing2D.CompositingMode]::SourceCopy
@@ -52,13 +55,14 @@ $frames = foreach ($name in $names) {
             outputSha256=(Get-FileHash -LiteralPath $output -Algorithm SHA256).Hash.ToLower()
             sourceSize=@($bitmap.Width,$bitmap.Height); sourceBounds=$bounds
             sourceRoot=@($rootX,$rootY); scale=$scale; offset=@($offsetX,$offsetY)
+            rootMode=$rootMode
             outputBounds=(Get-AlphaBounds $target)
         }
     } finally { $graphics.Dispose(); $target.Dispose(); $bitmap.Dispose() }
 }
 $manifest = @{
     status='draft'; canvas=@(512,512); root=@(256,448); displayScale=0.625; alphaThreshold=8
-    method='Shared scale from idle alpha height (384px); source canvas midpoint X; per-frame sole bottom Y. No repainting.'
+    method='Shared scale from idle alpha height (384px); source canvas midpoint X; sole bottom Y except jumping uses idle virtual ground. No repainting.'
     referenceSha256=(Get-FileHash -LiteralPath (Join-Path $assetRoot 'reference.png') -Algorithm SHA256).Hash.ToLower()
     frames=@($frames)
 }
