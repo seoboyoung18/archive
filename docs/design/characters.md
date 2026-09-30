@@ -19,7 +19,7 @@
 방식 참고: [프레임 애니메이션](https://docs.godotengine.org/en/4.4/tutorials/2d/2d_sprite_animation.html), [파츠 애니메이션](https://docs.godotengine.org/en/stable/tutorials/animation/cutout_animation.html). 이 참고 자료는 엔진 선정 결정을 의미하지 않는다.
 
 H1의 캔버스·발 기준점·포즈 수·공격 구간 연결에 대한 상세 제안은 [H1 애니메이션 명세 초안](../specs/h1-animation-draft.md)을 따른다. 수치와 실제 파생 이미지의 정합성은 제작 후 검증한다.
-공격은 선/앉은 자세 각각 4종으로 확정됐다. 앉기·앉은 방어·앉은 피격을 포함한 41포즈 계획은 제안이며 공중 공격 이미지는 현재 제작 범위에서 제외한다.
+공격은 선/앉은 자세 각각 4종으로 확정됐다. 앉기·앉은 방어·앉은 피격을 포함한 41포즈 계획과 512×512·발 기준점 (256,448) 규격이 승인됐다. 공중 공격 이미지는 제작 범위에서 제외한다.
 
 ## 실제 파일 확인
 - H1: 1312×1199, RGBA, alpha (0, 255)
