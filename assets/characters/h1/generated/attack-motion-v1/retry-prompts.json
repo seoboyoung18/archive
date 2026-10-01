@@ -1,0 +1,9 @@
+[
+  {
+    "id": "crouch-hp-retract-v2",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/crouch-hp-active.png"
+    ],
+    "prompt": "Edit the provided fighting sprite into ONE early recovery inbetween of the SAME crouching heavy punch. Transparent 1254x1254 canvas. Preserve EXACT character identity, black bob hair, face, red cropped jacket white stripes, white athletic top, black trousers red stripe, hand wraps and red sneakers, clean anime cel shading. Preserve same canvas placement, scale, entire deep squat, both shoes and ground line, head and torso nearly unchanged. ONLY draw the extended punching arm very slightly retracting: fist remains far to the right around x1100 y755 (original fist x1175), elbow almost straight 155 to 165 degrees. Upper arm still points right horizontally. This is 85 percent extension immediately AFTER the full punch, not a guard pose. Opposite wrapped fist stays by cheek. Do not pull attacking fist back to face or torso. Deep crouch head starts around y510, soles around y1180. Full body with large transparent upper half, no cropping, no background, no text, no effects."
+  }
+]

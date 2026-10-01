@@ -7,48 +7,62 @@
 </style>
 <style>.poses{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.poses figure{margin:0;background:#243247;border-radius:8px;text-align:center}.poses img{display:block;width:100%;height:auto}.poses figcaption{font:13px monospace;padding:8px}@media(max-width:720px){.poses{grid-template-columns:repeat(3,1fr)}}</style>
 <main>
-<h1>H1 모션 전후 비교</h1><p>걷기는 이전 8포즈·0.4초와 새 교차 보행 12포즈·0.8초를 비교합니다. 제자리 포즈 재생이며 실제 이동·타격 판정은 <a href="../../../combat.html">전투 화면</a>에서 확인하세요.</p>
+<h1>H1 모션 전후 비교</h1><p>걷기는 이전 8포즈·0.4초와 새 교차 보행 12포즈·0.8초를 비교합니다. 공격은 이전3장과 현재6~8장을 비교합니다. 제자리 포즈 재생이며 실제 이동·타격 판정은 <a href="../../../combat.html">전투 화면</a>에서 확인하세요.</p>
 <div class="controls">
-<label>동작 <select id="action"><option value="walk">걷기</option><option value="jab">선 약손</option></select></label>
+<label>동작 <select id="action"><option value="walk">걷기</option><option value="stand-lp">선 약손</option><option value="stand-hp">선 강손</option><option value="stand-lk">선 약발</option><option value="stand-hk">선 강발</option><option value="crouch-lp">앉은 약손</option><option value="crouch-hp">앉은 강손</option><option value="crouch-lk">앉은 약발</option><option value="crouch-hk">앉은 강발</option></select></label>
 <label>속도 <select id="speed"><option value="1">1배</option><option value="0.5">0.5배</option><option value="0.25">0.25배</option></select></label>
 <label>이동 방향 <select id="travel"><option value="1">전진</option><option value="-1">후진</option></select></label>
 <button id="play" disabled>재생</button><button id="step" disabled>1F 다음</button><button id="reset" disabled>처음으로</button><label><input type="checkbox" id="mirror">왼쪽 보기</label>
 </div>
 <p id="status" class="status" role="status">이미지 로딩 중</p>
 <div class="grid"><section class="panel"><h2>이전 시안</h2><div class="stage"><img id="old" class="sprite" alt="이전 H1 포즈"></div><p id="old-label" class="caption"></p></section><section class="panel"><h2>현재 보완본</h2><div class="stage"><img id="new" class="sprite" alt="보완 H1 포즈"></div><p id="new-label" class="caption"></p></section></div>
-<footer>걷기: 8장×3F → 12장×4F (양발 교차) / 약손: 6·3·15F → 3·3·3·5·5·5F<br>후진은 새 보행을 역순으로 재생합니다. 약손 뒤 대기30F는 관찰용입니다. 탭을 숨기면 정지합니다. 느린 재생은 게임 속도를 바꾸지 않습니다.</footer>
-<h2>새 보행 한 주기 · 12포즈</h2><p>빨간 줄이 있는 가까운 다리가 00에서는 앞, 06에서는 뒤에 있습니다. 03·09에서 두 다리가 서로 지나갑니다.</p><div id="poses" class="poses"></div>
+<footer>걷기: 8장×3F → 12장×4F (양발 교차) / 약손: 6·3·15F → 3·3·3·5·5·5F<br>후진은 새 보행을 역순으로 재생합니다. 공격 뒤 대기30F는 관찰용입니다. 타격 판정 시간은 기존 그대로입니다. 탭을 숨기면 정지합니다. 느린 재생은 게임 속도를 바꾸지 않습니다.</footer>
+<h2 id="pose-heading">새 보행 한 주기 · 12포즈</h2><p id="pose-description">양발 교차와 지지발을 확인하세요.</p><div id="poses" class="poses"></div>
 </main>
 <script type="module">
 import { combatPose } from '../../../src/characters/h1-poses.ts';
-import { H1_POSES } from '../../../src/characters/h1-poses.ts';
+import { H1_POSES, H1_ATTACK_FRAMES } from '../../../src/characters/h1-poses.ts';
 import { H1 } from '../../../src/characters/h1.ts';
 import { createCombat } from '../../../src/combat/combat.ts';
 const base=new URL('../../../assets/characters/h1/derived/',location.href);
+const oldPosePath=(key,phase)=>key==='stand-lp'?`v2/${phase}.png`:key==='crouch-lk'?`v2/crouch-${phase}.png`:`combat-v1/${key}-${phase}.png`;
 const $=id=>document.getElementById(id);
-for(let i=0;i<12;i++){const n=String(i).padStart(2,'0');const figure=document.createElement('figure');const im=document.createElement('img');im.src=new URL(`walk-v2/walk-${n}.png`,base).href;im.alt=`새 보행 ${n}`;const caption=document.createElement('figcaption');caption.textContent=`${n} · ${i*4}–${i*4+3}F`;figure.append(im,caption);$('poses').append(figure)}
+
 let frame=0,playing=false,last=0,pending=0,ready=false;
 const paths=[...Array.from({length:4},(_,i)=>`movement-v1/walk-${i}.png`),...Array.from({length:4},(_,i)=>`motion-v1/walk-mid-${i}.png`),'v2/idle.png','v2/startup.png','v2/active.png','v2/recovery.png',...['lp-extend','lp-retract','lp-settle'].map(x=>`motion-v1/${x}.png`)];
+paths.push(...Object.values(H1_POSES));
+paths.push('combat-v1/stand-lk-startup.png','combat-v1/stand-lk-recovery.png','combat-v1/stand-hk-recovery.png');
 paths.push(...Array.from({length:12},(_,i)=>`walk-v2/walk-${String(i).padStart(2,'0')}.png`));
 function stop(){playing=false;pending=0;last=0;$('play').textContent='재생'}
-function render(){
- const walk=$('action').value==='walk';
- const f={...createCombat().fighters[0],state:walk?'walk':'idle',age:frame,walkDirection:Number($('travel').value)};
- if(!walk&&frame<24){f.action='attack';f.attack={key:'stand-lp',age:frame,serial:1,hitTargets:[]}}
- const segment=Math.floor(frame/3)%8;
- const oldWalk=segment%2===0?`movement-v1/walk-${segment/2}.png`:`motion-v1/walk-mid-${Math.floor(segment/2)}.png`;
- const prior=walk?oldWalk:frame<6?'v2/startup.png':frame<9?'v2/active.png':frame<24?'v2/recovery.png':'v2/idle.png';
- const current=!walk&&frame>=24?'v2/idle.png':H1_POSES[combatPose(f,H1)];
- for(const [id,path] of [['old',prior],['new',current]]){$(id).src=new URL(path,base).href;$(id).style.transform=$('mirror').checked?'scaleX(-1)':'none';$(id+'-label').textContent=path}
- $('status').textContent=`${walk?'걷기':'선 약손'} · ${frame}F / ${walk?'현재48F 반복 (이전24F)':'공격24F + 관찰 대기30F'} · ${playing?'재생 중':'정지'}`;
+
+function selected(){const key=$('action').value;const a=H1.attacks[key];return {key,a,total:a?a.startup+a.active+a.recovery:48}}
+function contactStrip(){
+ const {key,a}=selected();const poses=[];
+ if(!a){for(let i=0;i<12;i++)poses.push({pose:'walk-'+String(i).padStart(2,'0'),from:i*4,to:i*4+3,phase:'보행'})}
+ else{let from=0;for(const phase of ['startup','active','recovery']){const list=H1_ATTACK_FRAMES[key][phase];list.forEach((pose,i)=>{const first=Math.ceil(i*a[phase]/list.length),last=Math.ceil((i+1)*a[phase]/list.length)-1;poses.push({pose,from:from+first,to:from+last,phase:phase==='active'?'유효':phase==='startup'?'준비':'회복'})});from+=a[phase]}}
+ $('pose-heading').textContent='현재 동작 · '+poses.length+'포즈';$('pose-description').textContent=a?'유효 구간에만 판정이 있습니다. 앞뒤 중간 그림은 피해를 추가하지 않습니다.':'00/06 양발 교대,03/09 교차를 확인하세요.';
+ $('poses').replaceChildren();for(const p of poses){const figure=document.createElement('figure'),im=document.createElement('img'),caption=document.createElement('figcaption');im.src=new URL(H1_POSES[p.pose],base).href;im.alt=p.pose;im.style.transform=$('mirror').checked?'scaleX(-1)':'none';caption.textContent=p.phase+' · '+p.from+'–'+p.to+'F';figure.append(im,caption);$('poses').append(figure)}
 }
-function next(){frame=(frame+1)%($('action').value==='walk'?48:54);render()}
+function render(){
+ const {key,a,total}=selected();const walk=!a,crouch=key.startsWith('crouch');
+ const f={...createCombat().fighters[0],state:walk?'walk':crouch?'crouch':'idle',posture:crouch?'crouch':'stand',age:frame,walkDirection:Number($('travel').value)};
+ if(a&&frame<total){f.action='attack';f.attack={key,age:frame,serial:1,hitTargets:[]}}
+ const segment=Math.floor(frame/3)%8;
+ const oldWalk=segment%2===0?'movement-v1/walk-'+segment/2+'.png':'motion-v1/walk-mid-'+Math.floor(segment/2)+'.png';
+ const phase=a?(frame<a.startup?'startup':frame<a.startup+a.active?'active':frame<total?'recovery':'idle'):'walk';
+ const idle=crouch?'v2/crouch.png':'v2/idle.png';
+ const prior=walk?oldWalk:phase==='idle'?idle:oldPosePath(key,phase);
+ const current=a&&frame>=total?idle:H1_POSES[combatPose(f,H1)];
+ for(const [id,path] of [['old',prior],['new',current]]){$(id).src=new URL(path,base).href;$(id).style.transform=$('mirror').checked?'scaleX(-1)':'none';$(id+'-label').textContent=path}
+ $('status').textContent=$('action').selectedOptions[0].textContent+' · '+frame+'F / '+(walk?'현재48F 반복 (이전24F)':'공격'+total+'F + 대기30F · '+phase)+' · '+(playing?'재생 중':'정지');
+}
+function next(){const {a,total}=selected();frame=(frame+1)%(a?total+30:48);render()}
 function tick(now){if(playing){if(last){pending+=(now-last)*Number($('speed').value);while(pending>=1000/60){pending-=1000/60;next()}}last=now}requestAnimationFrame(tick)}
 $('play').onclick=()=>{if(playing)stop();else{playing=true;last=0;$('play').textContent='정지'}render()};
 $('step').onclick=()=>{stop();next()};$('reset').onclick=()=>{stop();frame=0;render()};
-$('action').onchange=()=>{stop();frame=0;if(ready)render()};$('speed').onchange=()=>{pending=0;last=0};$('mirror').onchange=()=>{if(ready)render()};
+$('action').onchange=()=>{stop();frame=0;if(ready){contactStrip();render()}};$('speed').onchange=()=>{pending=0;last=0};$('mirror').onchange=()=>{if(ready){contactStrip();render()}};
 $('travel').onchange=()=>{stop();frame=0;if(ready)render()};
 document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();if(ready)render()}});
-try{await Promise.all(paths.map(path=>new Promise((resolve,reject)=>{const im=new Image();im.onload=resolve;im.onerror=()=>reject(new Error(path));im.src=new URL(path,base).href})));ready=true;for(const id of ['play','step','reset'])$(id).disabled=false;render();requestAnimationFrame(tick)}catch(e){$('status').textContent=`이미지 로딩 실패: ${e.message}`}
+try{await Promise.all(paths.map(path=>new Promise((resolve,reject)=>{const im=new Image();im.onload=resolve;im.onerror=()=>reject(new Error(path));im.src=new URL(path,base).href})));ready=true;for(const id of ['play','step','reset'])$(id).disabled=false;contactStrip();render();requestAnimationFrame(tick)}catch(e){$('status').textContent=`이미지 로딩 실패: ${e.message}`}
 </script>
 </html>

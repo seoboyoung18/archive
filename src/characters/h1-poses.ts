@@ -19,17 +19,37 @@ for (let i = 0; i < 12; i++) {
   H1_POSES[name] = `walk-v2/${name}.png`;
 }
 
+/** Artwork subdivisions inside the approved combat phases; never adds active ticks. */
+export const H1_ATTACK_FRAMES: Record<string, Record<'startup' | 'active' | 'recovery', string[]>> = {
+  'stand-lp': {
+    startup: ['stand-lp-startup', 'lp-extend'], active: ['stand-lp-active'],
+    recovery: ['lp-retract', 'stand-lp-recovery', 'lp-settle'],
+  },
+};
+for (const attack of ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-lk','crouch-hk']) {
+  const additions = attack === 'stand-hk' ? ['lift','apex','descend','retract','settle'] : ['extend','retract','settle'];
+  for (const pose of additions) H1_POSES[`${attack}-${pose}`] = `attack-motion-v1/${attack}-${pose}.png`;
+  H1_ATTACK_FRAMES[attack] = {
+    startup: [ `${attack}-startup`, ...additions.slice(0, -2).map(p => `${attack}-${p}`) ],
+    active: [`${attack}-active`],
+    recovery: attack === 'crouch-lk' || attack === 'crouch-hk'
+      ? [`${attack}-retract`, `${attack}-settle`, `${attack}-recovery`]
+      : [`${attack}-retract`, `${attack}-recovery`, `${attack}-settle`],
+  };
+}
+
+for (const pose of ['stand-lk-startup','stand-lk-recovery','stand-hk-recovery']) H1_POSES[pose] = `attack-motion-v1/${pose}.png`;
+
 export function combatPose(f: CombatFighter, definition: CharacterDefinition, koFrame = 0): string {
   if (f.action === 'ko') return `ko-${Math.min(2, Math.floor(Math.max(0, koFrame) / 6))}`;
   if (f.action === 'attack' && f.attack) {
     const phase = attackPhase(f, definition);
     if (!phase) throw new Error('Attack pose requested outside its lifetime');
-    if (f.attack.key === 'stand-lp') {
-      const age = f.attack.age;
-      return age < 3 ? 'stand-lp-startup' : age < 6 ? 'lp-extend' : age < 9 ? 'stand-lp-active'
-        : age < 14 ? 'lp-retract' : age < 19 ? 'stand-lp-recovery' : 'lp-settle';
-    }
-    return `${f.attack.key}-${phase}`;
+    const attack = definition.attacks[f.attack.key]!;
+    const frames = H1_ATTACK_FRAMES[f.attack.key]?.[phase];
+    if (!frames?.length) throw new Error(`Missing H1 attack artwork: ${f.attack.key}`);
+    const phaseAge = f.attack.age - (phase === 'startup' ? 0 : phase === 'active' ? attack.startup : attack.startup + attack.active);
+    return frames[Math.floor(phaseAge * frames.length / attack[phase])]!;
   }
   if (f.action === 'hit' || f.action === 'guard') return `${f.posture}-${f.action}`;
   if (f.state === 'walk') {

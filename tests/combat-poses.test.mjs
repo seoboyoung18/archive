@@ -5,20 +5,32 @@ import { H1 } from '../src/characters/h1.ts';
 import { H1_POSES, combatPose } from '../src/characters/h1-poses.ts';
 import { createCombat, stepCombat, attackPhase, COMBAT_NEUTRAL as N } from '../src/combat/combat.ts';
 
-test('All 52 distinct pose keys resolve to 52 existing sprite files without fallback', () => {
-  assert.equal(Object.keys(H1_POSES).length,52);
-  assert.equal(new Set(Object.values(H1_POSES)).size,52);
+test('All 75 distinct pose keys resolve to 75 existing sprite files without fallback', () => {
+  assert.equal(Object.keys(H1_POSES).length,75);
+  assert.equal(new Set(Object.values(H1_POSES)).size,75);
   for(const path of Object.values(H1_POSES)) assert.ok(existsSync(new URL(`../assets/characters/h1/derived/${path}`,import.meta.url)),path);
 });
 test('Every attack uses the combat age for startup/active/recovery and exits at its total length', () => {
+  // Independent fixture transcribed from h1-all-attack-frames.md, not the pose implementation.
+  const fixture = {
+    'stand-lp': [['stand-lp-startup',3],['lp-extend',3],['stand-lp-active',3],['lp-retract',5],['stand-lp-recovery',5],['lp-settle',5]],
+    'stand-hp': [['startup',5],['extend',5],['active',3],['retract',7],['recovery',7],['settle',7]],
+    'stand-lk': [['startup',4],['extend',4],['active',4],['retract',6],['recovery',6],['settle',6]],
+    'stand-hk': [['startup',6],['lift',6],['apex',6],['descend',6],['active',4],['retract',8],['recovery',8],['settle',8]],
+    'crouch-lp': [['startup',3],['extend',3],['active',3],['retract',5],['recovery',5],['settle',5]],
+    'crouch-hp': [['startup',5],['extend',5],['active',3],['retract',7],['recovery',7],['settle',7]],
+    'crouch-lk': [['startup',4],['extend',4],['active',4],['retract',6],['settle',6],['recovery',6]],
+    'crouch-hk': [['startup',7],['extend',7],['active',4],['retract',8],['settle',8],['recovery',8]],
+  };
   for(const [key,a] of Object.entries(H1.attacks)) {
+    const expected=fixture[key].flatMap(([pose,duration])=>Array(duration).fill(key==='stand-lp'?pose:`${key}-${pose}`));
+    assert.equal(expected.length,a.startup+a.active+a.recovery);
     let s=createCombat();
     s=stepCombat(s,[{...N,crouch:key.startsWith('crouch'),attacks:[key.split('-')[1]]},N]);
     for(let age=0;age<a.startup+a.active+a.recovery;age++) {
       const phase=age<a.startup?'startup':age<a.startup+a.active?'active':'recovery';
-      const lp = ['stand-lp-startup','lp-extend','stand-lp-active','lp-retract','stand-lp-recovery','lp-settle'];
-      const segment = age < 3 ? 0 : age < 6 ? 1 : age < 9 ? 2 : age < 14 ? 3 : age < 19 ? 4 : 5;
-      assert.equal(combatPose(s.fighters[0],H1),key === 'stand-lp' ? lp[segment] : `${key}-${phase}`);
+      assert.equal(combatPose(s.fighters[0],H1),expected[age]);
+      assert.equal(combatPose({...s.fighters[0],facing:-1},H1),expected[age]);
       assert.equal(attackPhase(s.fighters[0],H1),phase);
       s=stepCombat(s,[N,N]);
     }

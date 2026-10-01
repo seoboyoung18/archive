@@ -13,6 +13,7 @@ const files = import.meta.glob<string>([
   '../assets/characters/h1/derived/combat-v1/*.png',
   '../assets/characters/h1/derived/motion-v1/*.png',
   '../assets/characters/h1/derived/walk-v2/*.png',
+  '../assets/characters/h1/derived/attack-motion-v1/*.png',
 ], { eager: true, query: '?url', import: 'default' });
 const get = <T extends Element>(id: string) => document.querySelector<T>(`#${id}`)!;
 const surface = get<HTMLDivElement>('game'), start = get<HTMLButtonElement>('start');

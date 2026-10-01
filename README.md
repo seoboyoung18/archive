@@ -5,7 +5,7 @@
 여러 세계의 인간·비스트·로봇이 대결하는 2D 애니메이션풍 격투게임.
 
 - 대상 저장소: https://github.com/seoboyoung18/dimension-fight
-- 현재 단계: H1 시안52포즈를 전투 검수 화면에 연결했습니다. 걷기는 양발이 교차하는 새12장·0.8초 주기로 교체했고 선 약손은6포즈입니다. 사용자 선택 A안의 빨강·금색 `K O!!`가 체력0 종료 때 표시됩니다. 공격8종·방어·피해·KO를 확인할 수 있으며 AI·경기는 다음 단계입니다. 전체 모션 품질은 계속 보완 중입니다.
+- 현재 단계: H1 시안75포즈를 전투 검수 화면에 연결했습니다. 걷기는12장·0.8초, 기본 공격8종은 각각6장(선 강발8장)입니다. 사용자 선택 A안의 빨강·금색 `K O!!`가 체력0 종료 때 표시됩니다. 공격·방어·피해·KO를 확인할 수 있으며 AI·경기는 다음 단계입니다. 전체 모션 품질은 계속 보완 중입니다.
 - 개발 방식: [SDD](docs/SDD.md)
 - [확정 기획](docs/game-concept.md) · [결정 기록](docs/decisions.md)
 - [캐릭터 기준](docs/design/characters.md) · [H1 전투 명세 v0.3](docs/specs/h1-combat-draft.md)
@@ -17,7 +17,7 @@
 |---|---|---|
 | ![H1](assets/characters/h1/reference.png) | ![B1](assets/characters/b1/reference.png) | ![R3](assets/characters/r3/reference.png) |
 
-기준 이미지는 단일 자세이며 애니메이션 시트가 아닙니다. 현재 시안은 H1의 `generated`, `derived` 아래 `v2`, `movement-v1`, `combat-v1`, `motion-v1`, `walk-v2`에 있으며 이전 `v1`과 이전 걷기8장도 보존합니다.
+기준 이미지는 단일 자세이며 애니메이션 시트가 아닙니다. 현재 시안은 H1의 `generated`, `derived` 아래 `v2`, `movement-v1`, `combat-v1`, `motion-v1`, `walk-v2`, `attack-motion-v1`에 있으며 이전 버전과 탈락 후보도 보존합니다.
 
 ## 로컬 실행
 
@@ -54,3 +54,7 @@ Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은
 [전투 포즈·화면 명세](docs/specs/h1-combat-preview.md) · [전투 화면 검수](docs/reviews/h1-combat-preview.md)
 
 [모션 보완 기준](docs/specs/h1-motion-polish.md) · [KO 선택·표시 기준](docs/specs/ko-art-options.md) · [보완 검수 결과](docs/reviews/h1-motion-ko.md)
+
+[공격7종 프레임 명세](docs/specs/h1-all-attack-frames.md) · [공격 보완 검수](docs/reviews/h1-all-attack-frames.md) · [동작 전후 비교](docs/reviews/evidence/h1-motion-comparison.html)
+
+새 공격 그림 정렬은 `pwsh -File scripts/normalize-h1.ps1 -Version attack-motion-v1`로 재현합니다. 비교 화면의 동작 선택에서 공격8종을 고른 뒤 느린 재생·1F 이동·왼쪽 보기를 사용할 수 있습니다.
