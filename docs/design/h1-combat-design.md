@@ -52,3 +52,9 @@
 [입력·이동 단계](../specs/h1-movement.md)를 별도 화면에 구현했다. `src/input/movement-input.ts`는 키 유지/누름/초기화, `src/combat/movement.ts`는 두 선수 이동·접촉·방향·자세, `src/combat/fixed-step.ts`는60Hz 누적을 담당한다. `src/movement.ts`가 Phaser 표시와 DOM 이벤트를 연결한다. 이동 수치는 공통 갱신 함수의 인자로 전달하며, 아직 필요하지 않은 전체 캐릭터/경기 구조는 만들지 않았다.
 
 단위 테스트와 내장 브라우저 확인은 [이동 검수 기록](../reviews/h1-movement.md)에 있다. 이는 V01/V03/V11/V12/V14의 이동 관련 부분에 대한 증거이며, 공격·밀려남·경기 상태가 포함된 전체 조건의 통과를 뜻하지 않는다.
+
+## 2026-10-01 전투 판정 구현
+
+[구현 단계 명세](../specs/h1-combat-core.md)에 따라 `src/characters/h1.ts`에 공격8종·피격 범위를 분리했다. `src/combat/definition.ts`는 데이터 타입과 시작 전 검증, `src/combat/combat.ts`는 공격 나이·이력·자세/방향 잠금·경직과 동시 타격을 처리한다. 이동/중력/접촉은 기존 `stepMovement`를 사용한다. `src/input/combat-input.ts`는 기존 방향 입력과 공격 펄스를 합성하며 예약 입력을 보관하지 않는다.
+
+양쪽 타격을 먼저 수집하고 이력을 기록한 뒤 피해·경직·밀려남을 적용한다. 공격ID는 선수ID와 함께 식별한다. KO 후 전투 상태는 고정되며 쓰러짐 그림과 승수/시간 판단은 이후 경기·표시 계층에서 담당한다. [자동 검증 결과](../reviews/h1-combat-core.md)는 화면/이미지 적합성 검증과 구분한다.

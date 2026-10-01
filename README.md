@@ -5,7 +5,7 @@
 여러 세계의 인간·비스트·로봇이 대결하는 2D 애니메이션풍 격투게임.
 
 - 대상 저장소: https://github.com/seoboyoung18/dimension-fight
-- 현재 단계: H1 시안 16/41포즈와 WASD 이동 검수 화면 준비. 공격·방어·AI·경기는 아직 없습니다.
+- 현재 단계: H1 시안 16/41포즈와 WASD 이동 검수 화면 준비. 공격8종·방어·피해 계산 로직은 자동 검증됐으며 화면 연결·AI·경기는 아직입니다.
 - 개발 방식: [SDD](docs/SDD.md)
 - [확정 기획](docs/game-concept.md) · [결정 기록](docs/decisions.md)
 - [캐릭터 기준](docs/design/characters.md) · [H1 전투 명세 v0.3](docs/specs/h1-combat-draft.md)
@@ -41,10 +41,12 @@ npm run preview
 
 `build`는 타입 검사와 정적 빌드를 수행합니다. `preview`는 빌드 결과를 로컬에서 확인합니다. 이미지 검사는 파일 해시·RGBA·512×512·투명 경계·기준점 정렬을 확인하며 외형 검수를 대신하지 않습니다.
 
-Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동 시안은 `-Version movement-v1`, 이전 시안은 `-Version v1`을 지정합니다. 모든 자세에 대기 기준 공통 배율을 적용하며 점프에는 가상 지면을 사용합니다. ImageGen 재생성이 아닌 정렬 작업이며 프롬프트는 각 버전의 `prompts.json`에 있습니다. `npm test`는 포즈 타이밍과 입력·이동·접촉·고정 시간 테스트15개를 수행합니다. 전체 전투 검증은 아직입니다.
+Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동 시안은 `-Version movement-v1`, 이전 시안은 `-Version v1`을 지정합니다. 모든 자세에 대기 기준 공통 배율을 적용하며 점프에는 가상 지면을 사용합니다. ImageGen 재생성이 아닌 정렬 작업이며 프롬프트는 각 버전의 `prompts.json`에 있습니다. `npm test`는 포즈 타이밍·입력·이동15개와 전투 판정38개, 총53개 테스트를 수행합니다. 실제 대전 화면·경기·AI 검증은 아직입니다.
 
 [시안 작업 명세](docs/specs/h1-asset-preview.md) · [시안 검수 기록](docs/reviews/h1-preview.md)
 
 [앉기·하단 작업 명세](docs/specs/h1-crouch-preview.md) · [v2 검수 결과](docs/reviews/h1-crouch-preview.md)
 
 [입력·이동 명세](docs/specs/h1-movement.md) · [이동 검수 결과](docs/reviews/h1-movement.md)
+
+[전투 판정 구현 명세](docs/specs/h1-combat-core.md) · [전투 로직 검증 결과](docs/reviews/h1-combat-core.md)
