@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>H1 모션 전후 비교</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#141b26;color:#eef2fa;font:16px/1.6 system-ui,sans-serif}main{max-width:1100px;margin:32px auto;padding:20px}h1{margin:0}p{color:#afbed2}a{color:#81decc}.controls{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:24px 0}button,select{font:inherit;background:#27364b;color:inherit;border:1px solid #71829b;border-radius:6px;padding:8px 12px}button{cursor:pointer}button:disabled{opacity:.5;cursor:default}.grid{display:grid;grid-template-columns:repeat(2,minmax(320px,1fr));gap:20px}.panel{border:1px solid #34475f;border-radius:10px;overflow:hidden}.panel h2,.caption{padding:0 18px}.stage{height:340px;position:relative;background:linear-gradient(#1b2736 0 309px,#7795ab 309px 311px,#253349 311px)}.sprite{position:absolute;width:320px;height:320px;left:calc(50% - 160px);top:30px;transform-origin:50% 87.5%}.stage:after{content:'';position:absolute;height:20px;width:1px;left:50%;top:300px;background:#75f2d4}.caption{font:14px monospace;min-height:50px;overflow-wrap:anywhere}.status{padding:12px;background:#202e41}footer{color:#a4b3c7;margin-top:20px}@media(max-width:720px){.grid{grid-template-columns:1fr}}
+</style>
+<main>
+<h1>H1 모션 전후 비교</h1><p>같은 주기·같은 크기로 걷기와 약손을 비교합니다. 제자리 포즈 재생이며 실제 이동·타격 판정은 <a href="../../../combat.html">전투 화면</a>에서 확인하세요.</p>
+<div class="controls">
+<label>동작 <select id="action"><option value="walk">걷기</option><option value="jab">선 약손</option></select></label>
+<label>속도 <select id="speed"><option value="1">1배</option><option value="0.5">0.5배</option><option value="0.25">0.25배</option></select></label>
+<button id="play" disabled>재생</button><button id="step" disabled>1F 다음</button><button id="reset" disabled>처음으로</button><label><input type="checkbox" id="mirror">왼쪽 보기</label>
+</div>
+<p id="status" class="status" role="status">이미지 로딩 중</p>
+<div class="grid"><section class="panel"><h2>이전 시안</h2><div class="stage"><img id="old" class="sprite" alt="이전 H1 포즈"></div><p id="old-label" class="caption"></p></section><section class="panel"><h2>현재 보완본</h2><div class="stage"><img id="new" class="sprite" alt="보완 H1 포즈"></div><p id="new-label" class="caption"></p></section></div>
+<footer>걷기: 4장×6F → 8장×3F / 약손: 6·3·15F → 3·3·3·5·5·5F<br>약손 뒤 대기30F는 관찰용입니다. 탭을 숨기면 정지합니다. 이 도구의 느린 재생은 게임 속도를 바꾸지 않습니다.</footer>
+</main>
+<script type="module">
+import { combatPose } from '../../../src/characters/h1-poses.ts';
+import { H1_POSES } from '../../../src/characters/h1-poses.ts';
+import { H1 } from '../../../src/characters/h1.ts';
+import { createCombat } from '../../../src/combat/combat.ts';
+import { movementPose } from '../../../src/combat/movement.ts';
+const base=new URL('../../../assets/characters/h1/derived/',location.href);
+const $=id=>document.getElementById(id);
+let frame=0,playing=false,last=0,pending=0,ready=false;
+const paths=[...Array.from({length:4},(_,i)=>`movement-v1/walk-${i}.png`),...Array.from({length:4},(_,i)=>`motion-v1/walk-mid-${i}.png`),'v2/idle.png','v2/startup.png','v2/active.png','v2/recovery.png',...['lp-extend','lp-retract','lp-settle'].map(x=>`motion-v1/${x}.png`)];
+function stop(){playing=false;pending=0;last=0;$('play').textContent='재생'}
+function render(){
+ const walk=$('action').value==='walk';
+ const f={...createCombat().fighters[0],state:walk?'walk':'idle',age:frame};
+ if(!walk&&frame<24){f.action='attack';f.attack={key:'stand-lp',age:frame,serial:1,hitTargets:[]}}
+ const prior=walk?H1_POSES[movementPose(f)]:frame<6?'v2/startup.png':frame<9?'v2/active.png':frame<24?'v2/recovery.png':'v2/idle.png';
+ const current=!walk&&frame>=24?'v2/idle.png':H1_POSES[combatPose(f,H1)];
+ for(const [id,path] of [['old',prior],['new',current]]){$(id).src=new URL(path,base).href;$(id).style.transform=$('mirror').checked?'scaleX(-1)':'none';$(id+'-label').textContent=path}
+ $('status').textContent=`${walk?'걷기':'선 약손'} · ${frame}F / ${walk?'24F 반복':'공격24F + 관찰 대기30F'} · ${playing?'재생 중':'정지'}`;
+}
+function next(){frame=(frame+1)%($('action').value==='walk'?24:54);render()}
+function tick(now){if(playing){if(last){pending+=(now-last)*Number($('speed').value);while(pending>=1000/60){pending-=1000/60;next()}}last=now}requestAnimationFrame(tick)}
+$('play').onclick=()=>{if(playing)stop();else{playing=true;last=0;$('play').textContent='정지'}render()};
+$('step').onclick=()=>{stop();next()};$('reset').onclick=()=>{stop();frame=0;render()};
+$('action').onchange=()=>{stop();frame=0;if(ready)render()};$('speed').onchange=()=>{pending=0;last=0};$('mirror').onchange=()=>{if(ready)render()};
+document.addEventListener('visibilitychange',()=>{if(document.hidden){stop();if(ready)render()}});
+try{await Promise.all(paths.map(path=>new Promise((resolve,reject)=>{const im=new Image();im.onload=resolve;im.onerror=()=>reject(new Error(path));im.src=new URL(path,base).href})));ready=true;for(const id of ['play','step','reset'])$(id).disabled=false;render();requestAnimationFrame(tick)}catch(e){$('status').textContent=`이미지 로딩 실패: ${e.message}`}
+</script>
+</html>
