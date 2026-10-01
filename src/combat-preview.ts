@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import './style.css';
+import koArt from '../assets/ui/ko/options-v1/a-impact.png';
 import { createCombat, stepCombat, attackPhase, worldRect, COMBAT_NEUTRAL, type CombatInput } from './combat/combat.ts';
 import { FixedStep } from './combat/fixed-step.ts';
 import { CombatInputBuffer } from './input/combat-input.ts';
@@ -10,6 +11,7 @@ const files = import.meta.glob<string>([
   '../assets/characters/h1/derived/v2/*.png',
   '../assets/characters/h1/derived/movement-v1/*.png',
   '../assets/characters/h1/derived/combat-v1/*.png',
+  '../assets/characters/h1/derived/motion-v1/*.png',
 ], { eager: true, query: '?url', import: 'default' });
 const get = <T extends Element>(id: string) => document.querySelector<T>(`#${id}`)!;
 const surface = get<HTMLDivElement>('game'), start = get<HTMLButtonElement>('start');
@@ -31,6 +33,7 @@ class CombatScene extends Phaser.Scene {
   private ready = false;
   private loadFailed = false;
   private koFrame = 0;
+  private koBanner!: Phaser.GameObjects.Image;
 
   private failLoad() {
     this.loadFailed = true; error.hidden = false; retry.hidden = false;
@@ -39,13 +42,14 @@ class CombatScene extends Phaser.Scene {
   }
   preload() {
     this.load.on('loaderror', () => this.failLoad());
+    this.load.image('ko-banner', koArt);
     for (const [key, path] of Object.entries(H1_POSES)) {
       const url = files[`../assets/characters/h1/derived/${path}`];
       if (!url) this.failLoad(); else this.load.image(key, url);
     }
   }
   create() {
-    if (this.loadFailed || !Object.keys(H1_POSES).every(key => this.textures.exists(key))) return;
+    if (this.loadFailed || !this.textures.exists('ko-banner') || !Object.keys(H1_POSES).every(key => this.textures.exists(key))) return;
     const stage = this.add.graphics();
     stage.fillStyle(0x1e2938).fillRect(0, 600, 1280, 120);
     stage.lineStyle(1, 0x33445a, 0.5);
@@ -57,6 +61,8 @@ class CombatScene extends Phaser.Scene {
       this.labels.push(this.add.text(0, 0, i === 0 ? 'PLAYER' : 'CPU / TARGET', { fontFamily: 'monospace', fontSize: '16px', color: i === 0 ? '#79e3cb' : '#ffc78d' }).setOrigin(0.5, 1));
     }
     this.guides = this.add.graphics();
+    this.koBanner = this.add.image(640, 270, 'ko-banner').setDepth(20).setVisible(false);
+    this.koBanner.setScale(640 / this.koBanner.width);
     const options = { signal: listeners.signal };
     start.addEventListener('click', () => this.resume(), options);
     pauseButton.addEventListener('click', () => this.pause(), options);
@@ -92,7 +98,7 @@ class CombatScene extends Phaser.Scene {
     if (!this.ready) return;
     this.paused = false; input.reset(); this.clock.reset();
     start.textContent = '계속하기'; start.disabled = true; pauseButton.disabled = false;
-    status.value = this.combat.ended ? 'KO · 검수 초기화로 다시 시작' : '전투 검수 중'; surface.focus();
+    status.value = this.combat.ended ? 'K O!! · 검수 초기화로 다시 시작' : '전투 검수 중'; surface.focus();
   }
   private targetInput(): CombatInput {
     if (target.value === 'none') return COMBAT_NEUTRAL;
@@ -101,6 +107,7 @@ class CombatScene extends Phaser.Scene {
   }
   private renderCombat() {
     this.guides.clear();
+    this.koBanner.setVisible(this.combat.ended && this.combat.fighters.some(f => f.hp === 0));
     this.combat.fighters.forEach((f, i) => {
       const def = this.combat.definitions[i];
       const y = f.action === 'ko' ? STAGE.floor : f.y;
@@ -129,7 +136,7 @@ class CombatScene extends Phaser.Scene {
       this.combat = stepCombat(this.combat, [input.sample(), this.targetInput()]);
       if (this.combat.events.length) lastHit.textContent = this.combat.events.map(e =>
         `${e.attacker === 0 ? 'PLAYER' : 'CPU'} ${e.key} → ${e.blocked ? '방어 · 피해 0' : `피해 ${e.damage}`}`).join(' / ');
-      if (this.combat.ended) { input.reset(); status.value = 'KO · 검수 초기화로 다시 시작'; }
+      if (this.combat.ended) { input.reset(); status.value = 'K O!! · 검수 초기화로 다시 시작'; }
     });
     this.renderCombat();
   }

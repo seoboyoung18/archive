@@ -1,4 +1,4 @@
-param([ValidateSet('v1','v2','movement-v1','combat-v1')][string]$Version = 'v2')
+param([ValidateSet('v1','v2','movement-v1','combat-v1','motion-v1')][string]$Version = 'v2')
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 $projectRoot = Split-Path $PSScriptRoot -Parent
@@ -25,6 +25,7 @@ function Get-AlphaBounds($bitmap) {
 $names = @('idle', 'startup', 'active', 'recovery')
 if ($Version -eq 'v2') { $names += @('crouch', 'crouch-startup', 'crouch-active', 'crouch-recovery') }
 if ($Version -eq 'movement-v1') { $names = @('idle-1','walk-0','walk-1','walk-2','walk-3','jump-rise','jump-apex','jump-fall') }
+if ($Version -eq 'motion-v1') { $names = @('lp-extend','lp-retract','lp-settle','walk-mid-0','walk-mid-1','walk-mid-2','walk-mid-3') }
 if ($Version -eq 'combat-v1') {
     $names = @()
     foreach ($attack in @('stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-hk')) {

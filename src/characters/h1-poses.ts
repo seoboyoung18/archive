@@ -13,14 +13,24 @@ for (const attack of ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','
   for (const phase of ['startup','active','recovery']) H1_POSES[`${attack}-${phase}`] = `combat-v1/${attack}-${phase}.png`;
 }
 for (const name of ['stand-guard','crouch-guard','stand-hit','crouch-hit','ko-0','ko-1','ko-2']) H1_POSES[name] = `combat-v1/${name}.png`;
+for (const name of ['lp-extend','lp-retract','lp-settle','walk-mid-0','walk-mid-1','walk-mid-2','walk-mid-3']) H1_POSES[name] = `motion-v1/${name}.png`;
 
 export function combatPose(f: CombatFighter, definition: CharacterDefinition, koFrame = 0): string {
   if (f.action === 'ko') return `ko-${Math.min(2, Math.floor(Math.max(0, koFrame) / 6))}`;
   if (f.action === 'attack' && f.attack) {
     const phase = attackPhase(f, definition);
     if (!phase) throw new Error('Attack pose requested outside its lifetime');
+    if (f.attack.key === 'stand-lp') {
+      const age = f.attack.age;
+      return age < 3 ? 'stand-lp-startup' : age < 6 ? 'lp-extend' : age < 9 ? 'stand-lp-active'
+        : age < 14 ? 'lp-retract' : age < 19 ? 'stand-lp-recovery' : 'lp-settle';
+    }
     return `${f.attack.key}-${phase}`;
   }
   if (f.action === 'hit' || f.action === 'guard') return `${f.posture}-${f.action}`;
+  if (f.state === 'walk') {
+    const segment = Math.floor(f.age / 3) % 8;
+    return segment % 2 === 0 ? `walk-${segment / 2}` : `walk-mid-${Math.floor(segment / 2)}`;
+  }
   return movementPose(f);
 }

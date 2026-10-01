@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-01",
+  "tool": "image_gen.imagegen",
+  "status": "draft",
+  "frames": [
+    {
+      "id": "lp-extend",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/startup.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/active.png"
+      ],
+      "prompt": "Use case: identity-preserve. Create ONE transparent in-between sprite for a 2D anime fighting animation. Input images show SAME H1 woman at two adjacent key poses, not two people. Output only ONE full-body woman facing RIGHT. Keep exact face, black bob, red cropped jacket white stripes, white top, black pants/red stripe, wrapped hands and red shoes, clean outlines and cel shading. Preserve same square1254 canvas, anatomical size and head top near75, pelvis centered x627, ground y1194. No zoom/resizing/recentering, no shadow/ground/text/effects, no motion blur, no extra limbs. Entire figure inside transparent margin. Arm pose halfway from image1 windup to image2 full jab: lead fist at x930 y350, elbow bent about100 degrees, forearm beginning to unfold to RIGHT at chest height. Other fist unchanged guarding. CRITICAL keep whole lower body BOTH SHOES exactly as image1. All torso/head pixels visually as stable as possible."
+    },
+    {
+      "id": "lp-retract",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/recovery.png"
+      ],
+      "prompt": "Use case: identity-preserve. Create ONE transparent in-between sprite for a 2D anime fighting animation. Input images show SAME H1 woman at two adjacent key poses, not two people. Output only ONE full-body woman facing RIGHT. Keep exact face, black bob, red cropped jacket white stripes, white top, black pants/red stripe, wrapped hands and red shoes, clean outlines and cel shading. Preserve same square1254 canvas, anatomical size and head top near75, pelvis centered x627, ground y1194. No zoom/resizing/recentering, no shadow/ground/text/effects, no motion blur, no extra limbs. Entire figure inside transparent margin. Recovery pose halfway from image1 full jab to image2 guard: striking fist withdrawn to x1000 y325, elbow newly bent about135 degrees. Fist still ahead of shoulder, not back at chin yet. Other fist unchanged guarding. CRITICAL preserve full lower body BOTH SHOES exactly as image1, no torso displacement."
+    },
+    {
+      "id": "lp-settle",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/recovery.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/walk-0.png"
+      ],
+      "prompt": "Use case: identity-preserve. Create ONE transparent in-between sprite for a 2D anime fighting animation. Input images show SAME H1 woman at two adjacent key poses, not two people. Output only ONE full-body woman facing RIGHT. Keep exact face, black bob, red cropped jacket white stripes, white top, black pants/red stripe, wrapped hands and red shoes, clean outlines and cel shading. Preserve same square1254 canvas, anatomical size and head top near75, pelvis centered x627, ground y1194. No zoom/resizing/recentering, no shadow/ground/text/effects, no motion blur, no extra limbs. Entire figure inside transparent margin. Final recovery to relaxed fighting guard: begin with first image, move lead fist slightly forward and up toward normal guard, x835 y370, elbow down. Other fist guards ribs. Keep first image's planted feet and legs EXACTLY unchanged, no walking action. This is subtle upper-arm relaxation back to idle, no big body movement."
+    },
+    {
+      "id": "walk-mid-0",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/walk-0.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/walk-1.png"
+      ],
+      "prompt": "Use case: identity-preserve. Create ONE transparent in-between sprite for a 2D anime fighting animation. Input images show SAME H1 woman at two adjacent key poses, not two people. Output only ONE full-body woman facing RIGHT. Keep exact face, black bob, red cropped jacket white stripes, white top, black pants/red stripe, wrapped hands and red shoes, clean outlines and cel shading. Preserve same square1254 canvas, anatomical size and head top near75, pelvis centered x627, ground y1194. No zoom/resizing/recentering, no shadow/ground/text/effects, no motion blur, no extra limbs. Entire figure inside transparent margin. Create the temporal MIDPOINT between input1 and input2 walking poses. Keep upper body, head, pelvis and raised fists stable with no height/size change. Move each shoe and bend each knee halfway between the two reference positions; one foot glides just above the floor while the support foot remains touching floor y1194. Only half the stride, neither endpoint pose. Two legs only, coherent attached hips/knees/ankles. Combat-guard stepping to the RIGHT."
+    },
+    {
+      "id": "walk-mid-1",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/walk-1.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/walk-2.png"
+      ],
+      "prompt": "Use case: identity-preserve. Create ONE transparent in-between sprite for a 2D anime fighting animation. Input images show SAME H1 woman at two adjacent key poses, not two people. Output only ONE full-body woman facing RIGHT. Keep exact face, black bob, red cropped jacket white stripes, white top, black pants/red stripe, wrapped hands and red shoes, clean outlines and cel shading. Preserve same square1254 canvas, anatomical size and head top near75, pelvis centered x627, ground y1194. No zoom/resizing/recentering, no shadow/ground/text/effects, no motion blur, no extra limbs. Entire figure inside transparent margin. Create the temporal MIDPOINT between input1 and input2 walking poses. Keep upper body, head, pelvis and raised fists stable with no height/size change. Move each shoe and bend each knee halfway between the two reference positions; one foot glides just above the floor while the support foot remains touching floor y1194. Only half the stride, neither endpoint pose. Two legs only, coherent attached hips/knees/ankles. Combat-guard stepping to the RIGHT."
+    },
+    {
+      "id": "walk-mid-2",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/walk-2.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/walk-3.png"
+      ],
+      "prompt": "Use case: identity-preserve. Create ONE transparent in-between sprite for a 2D anime fighting animation. Input images show SAME H1 woman at two adjacent key poses, not two people. Output only ONE full-body woman facing RIGHT. Keep exact face, black bob, red cropped jacket white stripes, white top, black pants/red stripe, wrapped hands and red shoes, clean outlines and cel shading. Preserve same square1254 canvas, anatomical size and head top near75, pelvis centered x627, ground y1194. No zoom/resizing/recentering, no shadow/ground/text/effects, no motion blur, no extra limbs. Entire figure inside transparent margin. Create the temporal MIDPOINT between input1 and input2 walking poses. Keep upper body, head, pelvis and raised fists stable with no height/size change. Move each shoe and bend each knee halfway between the two reference positions; one foot glides just above the floor while the support foot remains touching floor y1194. Only half the stride, neither endpoint pose. Two legs only, coherent attached hips/knees/ankles. Combat-guard stepping to the RIGHT."
+    },
+    {
+      "id": "walk-mid-3",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/walk-3.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/walk-0.png"
+      ],
+      "prompt": "Use case: identity-preserve. Create ONE transparent in-between sprite for a 2D anime fighting animation. Input images show SAME H1 woman at two adjacent key poses, not two people. Output only ONE full-body woman facing RIGHT. Keep exact face, black bob, red cropped jacket white stripes, white top, black pants/red stripe, wrapped hands and red shoes, clean outlines and cel shading. Preserve same square1254 canvas, anatomical size and head top near75, pelvis centered x627, ground y1194. No zoom/resizing/recentering, no shadow/ground/text/effects, no motion blur, no extra limbs. Entire figure inside transparent margin. Create the temporal MIDPOINT between input1 and input2 walking poses. Keep upper body, head, pelvis and raised fists stable with no height/size change. Move each shoe and bend each knee halfway between the two reference positions; one foot glides just above the floor while the support foot remains touching floor y1194. Only half the stride, neither endpoint pose. Two legs only, coherent attached hips/knees/ankles. Combat-guard stepping to the RIGHT."
+    }
+  ]
+}

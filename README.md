@@ -5,7 +5,7 @@
 여러 세계의 인간·비스트·로봇이 대결하는 2D 애니메이션풍 격투게임.
 
 - 대상 저장소: https://github.com/seoboyoung18/dimension-fight
-- 현재 단계: H1 시안 41/41포즈를 전투 검수 화면에 연결했습니다. 공격8종·방어·피해·KO를 확인할 수 있으며 AI·경기는 다음 단계입니다. 시안의 동작 연결과 타격감은 추가 보완이 필요합니다.
+- 현재 단계: H1 시안48포즈를 전투 검수 화면에 연결했습니다. 걷기8포즈·선 약손6포즈로 중간 동작을 추가했고, 사용자 선택 A안의 빨강·금색 `K O!!`가 체력0 종료 때 표시됩니다. 공격8종·방어·피해·KO를 확인할 수 있으며 AI·경기는 다음 단계입니다. 전체 모션 품질은 계속 보완 중입니다.
 - 개발 방식: [SDD](docs/SDD.md)
 - [확정 기획](docs/game-concept.md) · [결정 기록](docs/decisions.md)
 - [캐릭터 기준](docs/design/characters.md) · [H1 전투 명세 v0.3](docs/specs/h1-combat-draft.md)
@@ -17,7 +17,7 @@
 |---|---|---|
 | ![H1](assets/characters/h1/reference.png) | ![B1](assets/characters/b1/reference.png) | ![R3](assets/characters/r3/reference.png) |
 
-기준 이미지는 단일 자세이며 애니메이션 시트가 아닙니다. 현재 시안은 H1의 `generated`, `derived` 아래 `v2`, `movement-v1`, `combat-v1`에 있으며 이전 `v1`도 보존합니다.
+기준 이미지는 단일 자세이며 애니메이션 시트가 아닙니다. 현재 시안은 H1의 `generated`, `derived` 아래 `v2`, `movement-v1`, `combat-v1`, `motion-v1`에 있으며 이전 `v1`도 보존합니다.
 
 ## 로컬 실행
 
@@ -41,7 +41,7 @@ npm run preview
 
 `build`는 타입 검사와 정적 빌드를 수행합니다. `preview`는 빌드 결과를 로컬에서 확인합니다. 이미지 검사는 파일 해시·RGBA·512×512·투명 경계·기준점 정렬을 확인하며 외형 검수를 대신하지 않습니다.
 
-Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은 `-Version movement-v1`, 전투는 `-Version combat-v1`, 이전 시안은 `-Version v1`을 지정합니다. 모든 자세에 대기 기준 공통 배율을 적용하며 점프에는 가상 지면을 사용합니다. ImageGen 재생성이 아닌 정렬 작업이며 정확한 프롬프트는 각 버전의 `prompts.json`과 전투의 `retry-prompts.json`에 있습니다. `npm test`는 기존53개와 포즈 연결5개, 총58개 테스트를 수행합니다. 이는 완성 스프라이트·전체 경기·AI 검증을 뜻하지 않습니다.
+Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은 `-Version movement-v1`, 전투는 `-Version combat-v1`, 중간 포즈는 `-Version motion-v1`, 이전 시안은 `-Version v1`을 지정합니다. 모든 자세에 대기 기준 공통 배율을 적용하며 점프에는 가상 지면을 사용합니다. ImageGen 재생성이 아닌 정렬 작업이며 정확한 프롬프트는 각 버전의 `prompts.json`과 전투의 `retry-prompts.json`에 있습니다. `npm test`는 총59개 테스트를 수행합니다. 이는 완성 스프라이트·전체 경기·AI 검증을 뜻하지 않습니다.
 
 [시안 작업 명세](docs/specs/h1-asset-preview.md) · [시안 검수 기록](docs/reviews/h1-preview.md)
 
@@ -52,3 +52,5 @@ Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은
 [전투 판정 구현 명세](docs/specs/h1-combat-core.md) · [전투 로직 검증 결과](docs/reviews/h1-combat-core.md)
 
 [전투 포즈·화면 명세](docs/specs/h1-combat-preview.md) · [전투 화면 검수](docs/reviews/h1-combat-preview.md)
+
+[모션 보완 기준](docs/specs/h1-motion-polish.md) · [KO 선택·표시 기준](docs/specs/ko-art-options.md) · [보완 검수 결과](docs/reviews/h1-motion-ko.md)

@@ -1,0 +1,42 @@
+{
+  "selected": "a-impact.png",
+  "files": [
+    {
+      "file": "a-impact.png",
+      "edgePixels": 0,
+      "size": [
+        1774,
+        887
+      ],
+      "transparentPixels": 800778,
+      "sha256": "217d9490c403000850916ae4a01ad1836acf62603253b45ab159c3875cb982cb",
+      "maxEdgeAlpha": 0,
+      "nontransparentPixels": 772760
+    },
+    {
+      "file": "b-rift.png",
+      "edgePixels": 26,
+      "size": [
+        1774,
+        887
+      ],
+      "transparentPixels": 896418,
+      "sha256": "c8f4d97e8bf0d1e5f0c9c1a394477250410c308eadcce2bddb096c76ba96bbfc",
+      "maxEdgeAlpha": 1,
+      "nontransparentPixels": 677120
+    },
+    {
+      "file": "c-brush.png",
+      "edgePixels": 0,
+      "size": [
+        1942,
+        809
+      ],
+      "transparentPixels": 907413,
+      "sha256": "aa647179b7decdb32cbebb1a49e7924598e23ef9ba6979fdb8b258b2a01f3818",
+      "maxEdgeAlpha": 0,
+      "nontransparentPixels": 663665
+    }
+  ],
+  "selection": "User selected A — 빨강·금색 만화풍"
+}

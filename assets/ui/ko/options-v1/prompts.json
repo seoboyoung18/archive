@@ -1,0 +1,19 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-01",
+  "status": "selected-a-impact",
+  "options": [
+    {
+      "id": "a-impact",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D anime fighting-game knockout overlay, ONE standalone centered horizontal graphic. Exact text, and the ONLY text: \"K O!!\" — uppercase K, a clear space, uppercase O, then TWO exclamation marks. Exceptionally readable bold lettering at small game-screen sizes. Full graphic entirely inside generous transparent margins on all sides, wide composition, no rectangle background, real transparent alpha. No characters, scenery, watermark, subtitle, brand logo or extra words. Direction A: explosive hand-drawn anime comic impact. Huge forward-leaning block letters with scarlet red to warm gold cel-shaded faces, thick deep charcoal outlines and thin ivory outer keyline, short pointed orange impact shards behind the lettering. Powerful crisp silhouettes, angular hand-cut energy, controlled detail. Readable at game screen center. Original design."
+    },
+    {
+      "id": "b-rift",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D anime fighting-game knockout overlay, ONE standalone centered horizontal graphic. Exact text, and the ONLY text: \"K O!!\" — uppercase K, a clear space, uppercase O, then TWO exclamation marks. Exceptionally readable bold lettering at small game-screen sizes. Full graphic entirely inside generous transparent margins on all sides, wide composition, no rectangle background, real transparent alpha. No characters, scenery, watermark, subtitle, brand logo or extra words. Direction B: dimension-rift sci-fi knockout. Huge geometric angular italic letters with luminous pale mint faces, deep purple bevels and thick nearly black purple outline, strong mint rim. Two compact fractured violet energy arcs behind, crystalline glitch slash fragments around ends, restrained mint sparks. Hard cel-shaded shapes, no blurry glow cloud. Cool futuristic energetic original design."
+    },
+    {
+      "id": "c-brush",
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2D anime fighting-game knockout overlay, ONE standalone centered horizontal graphic. Exact text, and the ONLY text: \"K O!!\" — uppercase K, a clear space, uppercase O, then TWO exclamation marks. Exceptionally readable bold lettering at small game-screen sizes. Full graphic entirely inside generous transparent margins on all sides, wide composition, no rectangle background, real transparent alpha. No characters, scenery, watermark, subtitle, brand logo or extra words. Direction C: dramatic anime ink-strike knockout. Huge crisp ivory-white brush-painted K and O and two exclamation marks, dark charcoal contour for legibility, sharp crimson offset shadow and bold horizontal scarlet brush slash behind them. Slight ink texture only along edges, broad legible letter interiors, asymmetric dynamic brush tips but complete readable letters. Compact black ink flecks. Premium restrained red white black original design."
+    }
+  ]
+}
