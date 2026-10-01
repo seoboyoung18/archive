@@ -1,0 +1,16 @@
+[
+  {
+    "id": "walk-08-v3",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-08-v2.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Correct ONLY the vertical length of the PLAIN planted RIGHT leg. Keep all upper body pixels, face, hair, hands, red jacket, near red-striped lifted LEFT leg and all horizontal positions unchanged. The plain RIGHT leg is 18 pixels too long. Slightly bend its knee to raise its shoe sole from y1211 to y1193, while head stays y75 and hip unchanged. Preserve exact walking pose with RED-STRIPED leg bent behind on LEFT, PLAIN support leg on RIGHT. 1254 square transparent PNG, no floor or shadow. Do not scale character or canvas. Ground sole exactly1193."
+  },
+  {
+    "id": "walk-10-v2",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Correct only walking legs, keep all upper body, face, guard arms, body size and position unchanged. 1254 square transparent canvas headtop75. RED-STRIPED near leg swings forward RIGHT in air, ankle x701 y1080, knee softly bent, toe slightly raised. PLAIN far leg planted slightly LEFT under hip at ankle x552, extend this support leg until its sole reaches y1193. Narrower stride than reference, front foot airborne and rear plain shoe sole flat on ground1193. Next pose11 will extend striped leg further forward. No background, shadow or floor."
+  }
+]

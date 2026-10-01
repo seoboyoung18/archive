@@ -5,6 +5,7 @@ export interface MovementRules { speed: number; jumpSpeed: number; gravity: numb
 export interface Fighter {
   x: number; y: number; vy: number; facing: Direction;
   state: MovementState; age: number; grounded: boolean;
+  walkDirection: Direction;
 }
 export const H1_MOVEMENT: MovementRules = { speed: 240, jumpSpeed: -800, gravity: 2000 };
 export const STAGE = { floor: 600, minX: 80, maxX: 1200, gap: 72 } as const;
@@ -13,8 +14,8 @@ export const DT = 1 / 60;
 
 export function createFighters(): [Fighter, Fighter] {
   return [
-    { x: 400, y: 600, vy: 0, facing: 1, state: 'idle', age: 0, grounded: true },
-    { x: 880, y: 600, vy: 0, facing: -1, state: 'idle', age: 0, grounded: true },
+    { x: 400, y: 600, vy: 0, facing: 1, state: 'idle', age: 0, grounded: true, walkDirection: 1 },
+    { x: 880, y: 600, vy: 0, facing: -1, state: 'idle', age: 0, grounded: true, walkDirection: -1 },
   ];
 }
 
@@ -36,6 +37,7 @@ function advance(f: Fighter, input: MoveInput, rules: MovementRules): Fighter {
   }
   crouching = next.grounded && input.crouch;
   next.state = !next.grounded ? 'jump' : crouching ? 'crouch' : input.axis ? 'walk' : 'idle';
+  if (next.state === 'walk' && input.axis !== 0) next.walkDirection = input.axis;
   next.age = next.state === f.state ? f.age + 1 : 0;
   return next;
 }

@@ -1,4 +1,4 @@
-param([ValidateSet('v1','v2','movement-v1','combat-v1','motion-v1')][string]$Version = 'v2')
+param([ValidateSet('v1','v2','movement-v1','combat-v1','motion-v1','walk-v2')][string]$Version = 'v2')
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 $projectRoot = Split-Path $PSScriptRoot -Parent
@@ -26,6 +26,7 @@ $names = @('idle', 'startup', 'active', 'recovery')
 if ($Version -eq 'v2') { $names += @('crouch', 'crouch-startup', 'crouch-active', 'crouch-recovery') }
 if ($Version -eq 'movement-v1') { $names = @('idle-1','walk-0','walk-1','walk-2','walk-3','jump-rise','jump-apex','jump-fall') }
 if ($Version -eq 'motion-v1') { $names = @('lp-extend','lp-retract','lp-settle','walk-mid-0','walk-mid-1','walk-mid-2','walk-mid-3') }
+if ($Version -eq 'walk-v2') { $names = @(0..11 | ForEach-Object { 'walk-{0:D2}' -f $_ }) }
 if ($Version -eq 'combat-v1') {
     $names = @()
     foreach ($attack in @('stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-hk')) {
@@ -39,6 +40,8 @@ $outputDir = Join-Path $assetRoot "derived/$Version"
 [void](New-Item -ItemType Directory -Path $outputDir -Force)
 $frames = foreach ($name in $names) {
     $sourceName = $name
+    if ($Version -eq 'walk-v2' -and $name -in @('walk-03','walk-06','walk-07','walk-08','walk-10')) { $sourceName = "$name-v2" }
+    if ($Version -eq 'walk-v2' -and $name -eq 'walk-08') { $sourceName = 'walk-08-v4' }
     if ($Version -eq 'combat-v1' -and $name -in @('crouch-lp-recovery','crouch-hp-startup','crouch-hk-startup')) { $sourceName = "$name-v2" }
     $source = Join-Path $assetRoot "generated/$Version/$sourceName.png"
     $output = Join-Path $outputDir "$name.png"
