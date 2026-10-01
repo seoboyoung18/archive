@@ -1,0 +1,207 @@
+{
+  "date": "2026-10-01",
+  "tool": "image_gen.imagegen",
+  "status": "draft",
+  "frames": [
+    {
+      "id": "stand-hp-startup",
+      "prompt": "Use case: identity-preserve. Asset: ONE transparent 2D fighting game sprite, H1 STANDING HEAVY PUNCH STARTUP. Edit target: the supplied standing H1 sprite. Preserve exactly the same black bob face, red cropped jacket with white stripes, white top, black trousers, wrapped hands, red shoes, anime clean outlines and cel shading. Keep identical square canvas, full body scale, head size, pelvis center and both planted shoe positions. Character faces RIGHT. Change only upper-body action: rotate shoulders slightly and draw the rear fist backward by the ribs to visibly wind up a powerful straight punch, front fist guarding chin. Keep full shoes, hair and fingers inside canvas with transparent margin. Preserve the reference floor at 95.2% of canvas height and center root at 50% width. No enlargement, no recentering of silhouette, no text, no effects, no shadow, no ground. Real transparent alpha. Single pose only.",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-hp-startup.png",
+      "toolOutputPath": "C:/Users/SSAFY/.codex/generated_images/01a0efa5-70d4-71a2-82da-d46b89c396be/exec-86ddfec7-5180-4ca4-862e-f961a1beae13.png",
+      "selected": true
+    },
+    {
+      "id": "stand-hp-active",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Make ONE 2D fighting sprite by editing the supplied H1 reference. Keep exactly her face, black bob, red cropped jacket with white stripes, white top, loose black trousers with red stripe, wrapped hands, red shoes; crisp anime outline and cel shading. Preserve square canvas, camera, head/body scale and root center at50percent width, floor at95.2percent height. Character facing RIGHT. Truly transparent alpha background. Never crop extremities. No added text, panel, ground, shadow, effects or extra limbs. Do not resize body to match changed silhouette. POSE: Standing heavy straight punch IMPACT: twist torso with a fully extended rear arm punching RIGHT at upper chest height, fist near right canvas edge but fully inside. Other fist guards cheek. Both shoes stay planted as in reference.",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-hp-active.png",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-0fa9c471-0bca-46b2-bb0f-b7dfc7fe5054.png",
+      "selected": true
+    },
+    {
+      "id": "stand-hp-recovery",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Make ONE 2D fighting sprite by editing the supplied H1 reference. Keep exactly her face, black bob, red cropped jacket with white stripes, white top, loose black trousers with red stripe, wrapped hands, red shoes; crisp anime outline and cel shading. Preserve square canvas, camera, head/body scale and root center at50percent width, floor at95.2percent height. Character facing RIGHT. Truly transparent alpha background. Never crop extremities. No added text, panel, ground, shadow, effects or extra limbs. Do not resize body to match changed silhouette. POSE: Standing heavy punch RECOVERY: pull striking arm halfway back, elbow bent around 90 degrees, fist just ahead of upper chest. Torso returning to neutral. Other fist guards cheek. Both feet identical to reference.",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-hp-recovery.png",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-9265d7b3-f702-48bd-839c-508f7da3e97b.png",
+      "selected": true
+    },
+    {
+      "id": "stand-lk-startup",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Make ONE 2D fighting sprite by editing the supplied H1 reference. Keep exactly her face, black bob, red cropped jacket with white stripes, white top, loose black trousers with red stripe, wrapped hands, red shoes; crisp anime outline and cel shading. Preserve square canvas, camera, head/body scale and root center at50percent width, floor at95.2percent height. Character facing RIGHT. Truly transparent alpha background. Never crop extremities. No added text, panel, ground, shadow, effects or extra limbs. Do not resize body to match changed silhouette. POSE: Standing light kick STARTUP: raise forward knee to waist height, shin folded downward, balance on rear foot at its reference ground position. Both fists guard chest.",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-lk-startup.png",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-d6f6af84-1302-4ba9-914a-eacd3bd40e3b.png",
+      "selected": true
+    },
+    {
+      "id": "stand-lk-active",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Make ONE 2D fighting sprite by editing the supplied H1 reference. Keep exactly her face, black bob, red cropped jacket with white stripes, white top, loose black trousers with red stripe, wrapped hands, red shoes; crisp anime outline and cel shading. Preserve square canvas, camera, head/body scale and root center at50percent width, floor at95.2percent height. Character facing RIGHT. Truly transparent alpha background. Never crop extremities. No added text, panel, ground, shadow, effects or extra limbs. Do not resize body to match changed silhouette. POSE: Standing light kick IMPACT: extend forward lower leg horizontally RIGHT into a short waist-level front kick. Red shoe sole pushes to right near canvas edge at 64 percent canvas height. Rear support foot stays on reference floor. Torso centered, fists guard.",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-lk-active.png",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-22cc2148-ff41-42f7-9402-0eb63df3d7c3.png",
+      "selected": true
+    },
+    {
+      "id": "stand-lk-recovery",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Make ONE 2D fighting sprite by editing the supplied H1 reference. Keep exactly her face, black bob, red cropped jacket with white stripes, white top, loose black trousers with red stripe, wrapped hands, red shoes; crisp anime outline and cel shading. Preserve square canvas, camera, head/body scale and root center at50percent width, floor at95.2percent height. Character facing RIGHT. Truly transparent alpha background. Never crop extremities. No added text, panel, ground, shadow, effects or extra limbs. Do not resize body to match changed silhouette. POSE: Standing light kick RECOVERY: sharply retract kicking foot under raised knee, knee lower than startup and about to place foot on floor. Rear support foot stays on reference floor. Fists guard.",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-lk-recovery.png",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-f72a36d4-eb72-4286-b464-50214b56222b.png",
+      "selected": true
+    },
+    {
+      "id": "stand-hk-startup",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Make ONE 2D fighting sprite by editing the supplied H1 reference. Keep exactly her face, black bob, red cropped jacket with white stripes, white top, loose black trousers with red stripe, wrapped hands, red shoes; crisp anime outline and cel shading. Preserve square canvas, camera, head/body scale and root center at50percent width, floor at95.2percent height. Character facing RIGHT. Truly transparent alpha background. Never crop extremities. No added text, panel, ground, shadow, effects or extra limbs. Do not resize body to match changed silhouette. POSE: Standing heavy OVERHEAD kick STARTUP: visibly raise forward leg, knee folded and foot lifted up beside shoulder to prepare an axe kick. Rear leg planted. Keep head and all toes fully inside canvas. Hands protect head, torso stays around same center.",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-hk-startup.png",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-d177e8a9-d026-4538-838d-ac5782d7898f.png",
+      "selected": true
+    },
+    {
+      "id": "stand-hk-active",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Create ONE transparent 2D fighting sprite by editing supplied H1 reference. Keep exact face, black bob, red cropped jacket with white stripes, white top, black trousers/red stripe, hand wraps and red shoes; crisp anime outlines and cel shading. Same square canvas, anatomical scale, head size, camera and pelvis/root at50percent width. Reference floor95.2percent height. Face RIGHT. Full body, ALL fingers/hair/shoes inside transparent margins. No text, effects, ground, shadow, extra limbs or size fitting. Standing heavy OVERHEAD axe kick IMPACT: leg driving diagonally down toward RIGHT, knee nearly straight, heel striking opponent upper body at about 63 percent canvas height, red sole angled downward. Distinct downward heel strike, not a horizontal front kick. Rear support foot planted at reference floor, arms guard. Keep full extended foot inside margin.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-83eb41bc-b422-4a65-9a13-8024c662e50f.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-hk-active.png",
+      "selected": true
+    },
+    {
+      "id": "stand-hk-recovery",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Create ONE transparent 2D fighting sprite by editing supplied H1 reference. Keep exact face, black bob, red cropped jacket with white stripes, white top, black trousers/red stripe, hand wraps and red shoes; crisp anime outlines and cel shading. Same square canvas, anatomical scale, head size, camera and pelvis/root at50percent width. Reference floor95.2percent height. Face RIGHT. Full body, ALL fingers/hair/shoes inside transparent margins. No text, effects, ground, shadow, extra limbs or size fitting. Standing heavy OVERHEAD kick RECOVERY: striking leg now lowered, bent knee around hip height and foot withdrawing toward body after downward heel strike. Torso regaining balance, fists raised. Rear support foot planted. Distinct from neutral idle.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-0316801d-8835-4fb8-9ea3-0f54c43b7b60.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-hk-recovery.png",
+      "selected": true
+    },
+    {
+      "id": "crouch-lp-startup",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Create ONE transparent 2D fighting sprite by editing supplied H1 reference. Keep exact face, black bob, red cropped jacket with white stripes, white top, black trousers/red stripe, hand wraps and red shoes; crisp anime outlines and cel shading. Same square canvas, anatomical scale, head size, camera and pelvis/root at50percent width. Reference floor95.2percent height. Face RIGHT. Full body, ALL fingers/hair/shoes inside transparent margins. No text, effects, ground, shadow, extra limbs or size fitting. Crouching light punch STARTUP: stay in exactly the same low squat with same head height and both shoes fixed. Draw lead wrapped fist slightly back toward chest, rear hand guards face.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-79c754c4-176d-4c94-941d-271694ed1ea3.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-lp-startup.png",
+      "selected": true
+    },
+    {
+      "id": "crouch-lp-active",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Create ONE transparent 2D fighting sprite by editing supplied H1 reference. Keep exact face, black bob, red cropped jacket with white stripes, white top, black trousers/red stripe, hand wraps and red shoes; crisp anime outlines and cel shading. Same square canvas, anatomical scale, head size, camera and pelvis/root at50percent width. Reference floor95.2percent height. Face RIGHT. Full body, ALL fingers/hair/shoes inside transparent margins. No text, effects, ground, shadow, extra limbs or size fitting. Crouching light punch IMPACT: stay in exactly the same squat, same pelvis and shoes. Extend lead arm horizontally RIGHT at opponent lower torso level, fist around 72 percent canvas height. Other hand guards cheek. Full fist inside transparent margin.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-fd39c882-9554-4ec7-b1f8-3e5d7189393a.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-lp-active.png",
+      "selected": true
+    },
+    {
+      "id": "crouch-lp-recovery",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Create ONE transparent 2D fighting sprite by editing supplied H1 reference. Keep exact face, black bob, red cropped jacket with white stripes, white top, black trousers/red stripe, hand wraps and red shoes; crisp anime outlines and cel shading. Same square canvas, anatomical scale, head size, camera and pelvis/root at50percent width. Reference floor95.2percent height. Face RIGHT. Full body, ALL fingers/hair/shoes inside transparent margins. No text, effects, ground, shadow, extra limbs or size fitting. Crouching light punch RECOVERY: same squat, shoes and pelvis. Retract lead fist halfway toward chest with elbow bent, fist between chest and former impact position. Other hand guards cheek.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-3cb697a1-9040-4d05-aa08-3eaf70868b4b.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-lp-recovery.png",
+      "selected": false
+    },
+    {
+      "id": "crouch-hp-startup",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Create ONE transparent 2D fighting sprite by editing supplied H1 reference. Keep exact face, black bob, red cropped jacket with white stripes, white top, black trousers/red stripe, hand wraps and red shoes; crisp anime outlines and cel shading. Same square canvas, anatomical scale, head size, camera and pelvis/root at50percent width. Reference floor95.2percent height. Face RIGHT. Full body, ALL fingers/hair/shoes inside transparent margins. No text, effects, ground, shadow, extra limbs or size fitting. Crouching heavy punch STARTUP: same squat and planted shoes. Deeply draw rear wrapped fist back beside waist, rotate shoulders for power; front fist guarding face. Keep head/pelvis height identical.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-8cb96144-8cf4-4004-b42d-94eb911b4bca.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-hp-startup.png",
+      "selected": false
+    },
+    {
+      "id": "crouch-hp-active",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Edit exactly this H1 game sprite to ONE new pose. Genuine transparent background. Lock her anatomy, head size, face, black bob, red jacket/white stripes, white top, black trousers, wraps, red shoes. Same cel shading/lineart. Same1254squarecanvas. Fullbody facingRIGHT. Do not zoom or enlarge or center the silhouette. Keep pelvis/root x627 and floor y1194. Every hand/foot fully inside20px margin. No shadows/ground/text/effects. CRITICAL: preserve reference's huge EMPTY top40% of image. Head top stays near y490, head width about245px, low crouched whole body stays in lower56% of image. Planted support shoe near x380 and other shoe near x825. Do not make crouching character fill the canvas. Change only limb action, never scale figure. Crouching heavy punch IMPACT: same low squat and shoe positions. Rotate shoulders and strongly extend rear arm straight RIGHT at low torso height, fist around 72 percent canvas height and close to right edge but fully inside. Other hand protects face. Not an uppercut.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-7c9ba429-439d-4e86-a5d7-0c4ee24eadba.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-hp-active.png",
+      "selected": true
+    },
+    {
+      "id": "crouch-hp-recovery",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Edit exactly this H1 game sprite to ONE new pose. Genuine transparent background. Lock her anatomy, head size, face, black bob, red jacket/white stripes, white top, black trousers, wraps, red shoes. Same cel shading/lineart. Same1254squarecanvas. Fullbody facingRIGHT. Do not zoom or enlarge or center the silhouette. Keep pelvis/root x627 and floor y1194. Every hand/foot fully inside20px margin. No shadows/ground/text/effects. CRITICAL: preserve reference's huge EMPTY top40% of image. Head top stays near y490, head width about245px, low crouched whole body stays in lower56% of image. Planted support shoe near x380 and other shoe near x825. Do not make crouching character fill the canvas. Change only limb action, never scale figure. Crouching heavy punch RECOVERY: same squat and planted shoes. Rear striking fist retracts to half extension at low torso height, elbow bent, shoulders unwinding, front fist guards face.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-77529b88-ad22-4556-88f9-978a4b6a6e90.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-hp-recovery.png",
+      "selected": true
+    },
+    {
+      "id": "crouch-hk-startup",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Edit exactly this H1 game sprite to ONE new pose. Genuine transparent background. Lock her anatomy, head size, face, black bob, red jacket/white stripes, white top, black trousers, wraps, red shoes. Same cel shading/lineart. Same1254squarecanvas. Fullbody facingRIGHT. Do not zoom or enlarge or center the silhouette. Keep pelvis/root x627 and floor y1194. Every hand/foot fully inside20px margin. No shadows/ground/text/effects. CRITICAL: preserve reference's huge EMPTY top40% of image. Head top stays near y490, head width about245px, low crouched whole body stays in lower56% of image. Planted support shoe near x380 and other shoe near x825. Do not make crouching character fill the canvas. Change only limb action, never scale figure. Crouching heavy LOW sweeping kick STARTUP: stay low, weight over the rear LEFT support shoe, coil forward knee close to body to prepare a long ankle-height sweep RIGHT. Both wrapped hands guard. Body scale and head size unchanged.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-6f073e9a-611b-4241-a690-6fc899ec4915.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-hk-startup.png",
+      "selected": false
+    },
+    {
+      "id": "crouch-hk-active",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Edit exactly this H1 game sprite to ONE new pose. Genuine transparent background. Lock her anatomy, head size, face, black bob, red jacket/white stripes, white top, black trousers, wraps, red shoes. Same cel shading/lineart. Same1254squarecanvas. Fullbody facingRIGHT. Do not zoom or enlarge or center the silhouette. Keep pelvis/root x627 and floor y1194. Every hand/foot fully inside20px margin. No shadows/ground/text/effects. CRITICAL: preserve reference's huge EMPTY top40% of image. Head top stays near y490, head width about245px, low crouched whole body stays in lower56% of image. Planted support shoe near x380 and other shoe near x825. Do not make crouching character fill the canvas. Change only limb action, never scale figure. Crouching heavy LOW sweep IMPACT: keep left rear support shoe planted and crouched hips at same height. Fully extend the other leg RIGHT along ground, red shoe at opponent ankles near right canvas edge, shin horizontal. Upper body stays low and rear hand guards. Full shoe visible, no clipping.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-043fb710-c201-49ed-b02a-ff9f653bc308.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-hk-active.png",
+      "selected": true
+    },
+    {
+      "id": "crouch-hk-recovery",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Edit exactly this H1 game sprite to ONE new pose. Genuine transparent background. Lock her anatomy, head size, face, black bob, red jacket/white stripes, white top, black trousers, wraps, red shoes. Same cel shading/lineart. Same1254squarecanvas. Fullbody facingRIGHT. Do not zoom or enlarge or center the silhouette. Keep pelvis/root x627 and floor y1194. Every hand/foot fully inside20px margin. No shadows/ground/text/effects. CRITICAL: preserve reference's huge EMPTY top40% of image. Head top stays near y490, head width about245px, low crouched whole body stays in lower56% of image. Planted support shoe near x380 and other shoe near x825. Do not make crouching character fill the canvas. Change only limb action, never scale figure. Crouching heavy LOW sweep RECOVERY: retract the sweeping leg until foot is close beside crouched body, knee bent at least 90 degrees. Same left support shoe planted and low hips, hands guarding. Clearly recovering rather than extended sweep.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-c187abba-265c-4664-9155-73d9a0a17587.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-hk-recovery.png",
+      "selected": true
+    },
+    {
+      "id": "stand-guard",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Edit exactly this H1 game sprite to ONE new pose. Genuine transparent background. Lock her anatomy, head size, face, black bob, red jacket/white stripes, white top, black trousers, wraps, red shoes. Same cel shading/lineart. Same1254squarecanvas. Fullbody facingRIGHT. Do not zoom or enlarge or center the silhouette. Keep pelvis/root x627 and floor y1194. Every hand/foot fully inside20px margin. No shadows/ground/text/effects. Preserve head top75 and head size. Standing BLOCK reaction: exact same planted legs, head and pelvis size/positions. Raise both wrapped forearms tightly in front of face and upper chest, elbows bent, braced against strike coming from RIGHT. Slight inward chin, no impact effects.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-d64dfc4f-c367-4a81-8568-c432d643674c.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-guard.png",
+      "selected": true
+    },
+    {
+      "id": "crouch-guard",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Edit supplied H1 reference to ONE game sprite with transparent alpha. Keep EXACT anatomy and head size, black bob/face, red jacket white stripes, white top, black pants red stripe, wraps and red shoes, anime lines/cel shading. Same square1254 canvas; root atx627, floor1194. No zoom or body resizing. Fullbody entirely within margins, no text/effects/shadows/ground. CRITICAL same huge empty upper40percent, head top490 and width245, whole crouching body only in lower56percent. Never enlarge to fill canvas. Crouching BLOCK reaction: exact same low squat, head size, pelvis and shoe positions. Both wrapped forearms raised close together in front of face and low chest, braced against attack from RIGHT. No effects.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-4d273ff1-d10e-406f-b3c7-91b263b74063.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-guard.png",
+      "selected": true
+    },
+    {
+      "id": "stand-hit",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Edit supplied H1 reference to ONE game sprite with transparent alpha. Keep EXACT anatomy and head size, black bob/face, red jacket white stripes, white top, black pants red stripe, wraps and red shoes, anime lines/cel shading. Same square1254 canvas; root atx627, floor1194. No zoom or body resizing. Fullbody entirely within margins, no text/effects/shadows/ground. Standing HIT reaction: receiving a body strike from RIGHT, shoulders and head recoil slightly LEFT, eyes briefly shut with pain, mouth small grimace. Hands momentarily lowered apart, torso arched a little backwards. Feet stay planted on identical reference floor. Non-graphic, no wound or impact effect.",
+      "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-2d43029d-61f5-44b6-842d-a1880da79fca.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/stand-hit.png",
+      "selected": true
+    },
+    {
+      "id": "crouch-hit",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+      "prompt": "Use case: identity-preserve. Edit supplied H1 reference to ONE game sprite with transparent alpha. Keep EXACT anatomy and head size, black bob/face, red jacket white stripes, white top, black pants red stripe, wraps and red shoes, anime lines/cel shading. Same square1254 canvas; root atx627, floor1194. No zoom or body resizing. Fullbody entirely within margins, no text/effects/shadows/ground. CRITICAL same huge empty upper40percent, head top490 and width245, whole crouching body only in lower56percent. Never enlarge to fill canvas. Crouching HIT reaction: remain low on same planted feet, shoulders/head recoil LEFT, eyes briefly closed in pain and wrapped hands momentarily open/lowered. Preserve squat height and body proportions. Non-graphic, no injury or effects.",
+      "toolOutputPath": "C:/Users/SSAFY/.codex/generated_images/01a0efa5-70d4-71a2-82da-d46b89c396be/exec-8b674245-9832-4d21-83ce-b34533fe016b.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/crouch-hit.png",
+      "selected": true
+    },
+    {
+      "id": "ko-0",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Edit supplied H1 reference to ONE game sprite with transparent alpha. Keep EXACT anatomy and head size, black bob/face, red jacket white stripes, white top, black pants red stripe, wraps and red shoes, anime lines/cel shading. Same square1254 canvas; root atx627, floor1194. No zoom or body resizing. Fullbody entirely within margins, no text/effects/shadows/ground. KNOCKDOWN frame 1 of 3: staggering backward LEFT after defeat, knees buckle deeply, torso leans backward LEFT, hands loose, eyes closed. Body is lower due bent knees, not resized. Feet still meet reference floor. Entire full body inside canvas. Non-graphic.",
+      "toolOutputPath": "C:/Users/SSAFY/.codex/generated_images/01a0efa5-70d4-71a2-82da-d46b89c396be/exec-b441c58c-e361-4d87-a152-6584d15be9d8.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/ko-0.png",
+      "selected": true
+    },
+    {
+      "id": "ko-1",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Edit supplied H1 reference to ONE game sprite with transparent alpha. Keep EXACT anatomy and head size, black bob/face, red jacket white stripes, white top, black pants red stripe, wraps and red shoes, anime lines/cel shading. Same square1254 canvas; root atx627, floor1194. No zoom or body resizing. Fullbody entirely within margins, no text/effects/shadows/ground. KNOCKDOWN frame 2 of 3: collapsing backward LEFT, hips very low, one hip and a wrapped hand near reference ground, legs folding toward RIGHT, torso diagonal leaning left. Eyes closed. Anatomical body and head same size as reference, never shrink body to fit. Full body inside canvas. Non-graphic.",
+      "toolOutputPath": "C:/Users/SSAFY/.codex/generated_images/01a0efa5-70d4-71a2-82da-d46b89c396be/exec-de507397-f841-4c72-a7f3-bddf681437d9.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/ko-1.png",
+      "selected": true
+    },
+    {
+      "id": "ko-2",
+      "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+      "prompt": "Use case: identity-preserve. Edit supplied H1 reference to ONE game sprite with transparent alpha. Keep EXACT anatomy and head size, black bob/face, red jacket white stripes, white top, black pants red stripe, wraps and red shoes, anime lines/cel shading. Same square1254 canvas; root atx627, floor1194. No zoom or body resizing. Fullbody entirely within margins, no text/effects/shadows/ground. KNOCKDOWN final frame: lying on back/side along floor, HEAD to LEFT, bent legs and red shoes to RIGHT, one knee bent so whole body fits. Eyes closed, relaxed arms, same anatomy and head size as reference. Lowest body point on reference floor at95.2percent canvasheight. Do not stretch, shrink, zoom, add shadows or floor. Entire character must fit with transparent margin. Non-graphic.",
+      "toolOutputPath": "C:/Users/SSAFY/.codex/generated_images/01a0efa5-70d4-71a2-82da-d46b89c396be/exec-e0dd9f50-8a9a-46d5-8e6d-f35a0350a66f.png",
+      "savedPath": "assets/characters/h1/generated/combat-v1/ko-2.png",
+      "selected": true
+    }
+  ]
+}

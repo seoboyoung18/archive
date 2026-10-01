@@ -6,7 +6,7 @@ import { inflateSync } from 'node:zlib';
 const root = new URL('../assets/characters/h1/', import.meta.url);
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const decoded = new Map();
-for (const version of ['v1', 'v2', 'movement-v1']) {
+for (const version of ['v1', 'v2', 'movement-v1', 'combat-v1']) {
 const manifest = JSON.parse(readFileSync(new URL(`derived/${version}/manifest.json`, root), 'utf8').replace(/^\uFEFF/, ''));
 assert.equal(hash(readFileSync(new URL('reference.png', root))), manifest.referenceSha256, 'Reference changed');
 assert.deepEqual(manifest.root, [256, 448]);
@@ -15,6 +15,7 @@ assert.equal(manifest.displayScale, 0.625);
 let ids = ['idle', 'startup', 'active', 'recovery'];
 if (version === 'v2') ids.push('crouch', 'crouch-startup', 'crouch-active', 'crouch-recovery');
 if (version === 'movement-v1') ids = ['idle-1','walk-0','walk-1','walk-2','walk-3','jump-rise','jump-apex','jump-fall'];
+if (version === 'combat-v1') ids = ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-hk'].flatMap(a => ['startup','active','recovery'].map(p => `${a}-${p}`)).concat(['stand-guard','crouch-guard','stand-hit','crouch-hit','ko-0','ko-1','ko-2']);
 assert.deepEqual(manifest.frames.map(frame => frame.id), ids);
 
 function decode(bytes) {
@@ -74,7 +75,16 @@ for (const frame of manifest.frames) {
     assert.equal(frame.rootMode, 'idle-virtual-ground');
     assert.equal(frame.sourceRoot[1], 1194, 'Jump root must not follow curled feet');
   } else assert.ok(Math.abs(bounds.bottom + 1 - 448) <= 1, 'Soles must meet baseline');
-  if (!frame.id.startsWith('crouch')) assert.ok(Math.abs(bounds.top - 64) <= (version === 'movement-v1' ? 5 : 1), 'Body height drift');
+  if (version === 'combat-v1') {
+    // Attacks and knockdowns change posture; do not stretch every silhouette to idle height.
+    assert.deepEqual(frame.sourceSize, [1254,1254], 'Review common scale for new source dimensions');
+    assert.equal(frame.scale, 384/1120, 'Preserve the calibrated anatomical scale');
+    const b = frame.sourceBounds;
+    assert.ok(b.left > 0 && b.top > 0 && b.right < 1253 && b.bottom < 1253, 'Source sprite clipped');
+    if (frame.id.startsWith('crouch')) assert.ok(bounds.top > 160 && bounds.top < 448, 'Crouch should stay low');
+    if (frame.id.startsWith('ko-')) assert.equal(frame.rootMode, 'body-bottom');
+  }
+  else if (!frame.id.startsWith('crouch')) assert.ok(Math.abs(bounds.top - 64) <= (version === 'movement-v1' ? 5 : 1), 'Body height drift');
   else assert.ok(bounds.top > 160 && bounds.top < 448, 'Crouch should be lower, never scaled to standing height');
   assert.ok(Math.abs(frame.sourceRoot[0] * frame.scale + frame.offset[0] - 256) < 0.0001);
   assert.ok(Math.abs(frame.sourceRoot[1] * frame.scale + frame.offset[1] - 448) < 0.0001);
@@ -98,4 +108,4 @@ for (const version of ['v1', 'v2']) for (const id of ['startup', 'active', 'reco
 for (const id of ['crouch-startup', 'crouch-active', 'crouch-recovery']) {
   console.log(`${id} support foot overlap (x100..229, y410..447): ${overlap(decoded.get('v2/crouch'), decoded.get(`v2/${id}`), 100, 230, 410, 448)}`);
 }
-console.log('PASS: v1/v2 preserved and 8 movement drafts. Visual consistency requires separate review.');
+console.log('PASS: all source/output hashes, 512x512 RGBA, roots and margins. 41 unique pose drafts; visual consistency requires separate review.');

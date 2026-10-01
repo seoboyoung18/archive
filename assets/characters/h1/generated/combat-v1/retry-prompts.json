@@ -1,0 +1,26 @@
+[
+  {
+    "id": "crouch-lp-recovery",
+    "prompt": "Use case: identity-preserve. Edit the supplied H1 crouch reference into ONE transparent 2D fighting sprite. Preserve exact face, black bob, red jacket/white stripes, white top, black pants/red stripe, wrapped hands, red shoes, anime outline and cel shading. CRITICAL preserve canvas framing and anatomical size: square1254, head top around490, head width245, shoes bottom1194; huge empty upper40 percent. Never enlarge or zoom body to fill canvas. Center root x627. Full limbs within canvas, no shadow/ground/effects/text. Change only arms: recovering a short crouching jab, forward fist halfway drawn back at low chest height with bent elbow, other fist guarding. Keep bent legs, head, torso and shoes exactly in reference positions.",
+    "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+    "savedPath": "assets/characters/h1/generated/combat-v1/crouch-lp-recovery-v2.png",
+    "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-006e9d24-483f-4c5a-92ca-0142de403eca.png",
+    "status": "selected-draft"
+  },
+  {
+    "id": "crouch-hp-startup",
+    "prompt": "Use case: identity-preserve. Edit the supplied H1 crouch reference into ONE transparent 2D fighting sprite. Preserve exact face, black bob, red jacket/white stripes, white top, black pants/red stripe, wrapped hands, red shoes, anime outline and cel shading. CRITICAL preserve canvas framing and anatomical size: square1254, head top around490, head width245, shoes bottom1194; huge empty upper40 percent. Never enlarge or zoom body to fill canvas. Center root x627. Full limbs within canvas, no shadow/ground/effects/text. Change only arms and slight shoulder twist: rear wrapped fist drawn back beside ribs, front fist guarding face, winding up a powerful low straight punch. Both knees bent and both shoes planted exactly as reference.",
+    "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+    "savedPath": "assets/characters/h1/generated/combat-v1/crouch-hp-startup-v2.png",
+    "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-e2bc4b3c-34e6-467b-b99d-922dff1be50d.png",
+    "status": "selected-draft"
+  },
+  {
+    "id": "crouch-hk-startup",
+    "prompt": "Use case: identity-preserve. Edit the supplied H1 crouch reference into ONE transparent 2D fighting sprite. Preserve exact face, black bob, red jacket/white stripes, white top, black pants/red stripe, wrapped hands, red shoes, anime outline and cel shading. CRITICAL preserve canvas framing and anatomical size: square1254, head top around490, head width245, shoes bottom1194; huge empty upper40 percent. Never enlarge or zoom body to fill canvas. Center root x627. Full limbs within canvas, no shadow/ground/effects/text. Preparing a low sweep BEFORE extending the leg. Both knees deeply BENT in the squat, both red shoes still tucked under knees exactly as reference. NO straight leg, NO extended kick. Change only shoulders leaning slightly backward and hands opening for balance. Preserve reference leg positions.",
+    "reference": "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png",
+    "savedPath": "assets/characters/h1/generated/combat-v1/crouch-hk-startup-v2.png",
+    "toolOutputPath": "C:\\Users\\SSAFY\\.codex\\generated_images\\01a0efa5-70d4-71a2-82da-d46b89c396be\\exec-6f2b9c38-2ee4-41d5-a743-552568633046.png",
+    "status": "selected-draft"
+  }
+]

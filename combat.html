@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>차원격투 · H1 전투 검수</title></head>
+<body><main>
+  <header><p class="eyebrow">DIMENSION FIGHT / COMBAT STUDY 01</p><h1>H1 <span>첫 번째 타격</span></h1>
+    <p class="intro">공격과 방어, 피격을 확인합니다. 상대는 검수용 표적이며 AI·라운드 승패는 아직 없습니다.</p>
+    <a class="page-link" href="/movement.html">이동 검수 →</a> <a class="page-link" href="/">공격 시안 →</a>
+  </header>
+  <section class="viewer" aria-label="H1 전투 검수">
+    <div class="viewer-header"><strong>PLAYER vs CPU 표적</strong><output id="status" aria-live="polite">이미지 로딩 중</output></div>
+    <div class="health-row"><label>PLAYER <meter id="player-health" min="0" max="100" value="100">100</meter><output id="player-hp">100 / 100</output></label><label>CPU <meter id="cpu-health" min="0" max="100" value="100">100</meter><output id="cpu-hp">100 / 100</output></label></div>
+    <div id="game" tabindex="0" role="group" aria-label="H1 전투 조작 화면" aria-describedby="controls-help"></div>
+    <div class="toolbar"><button id="start" disabled>전투 시작</button><button id="pause" disabled>일시정지</button><button id="reset" disabled>검수 초기화</button>
+      <label>표적 입력 <select id="target" disabled><option value="none">입력 없음</option><option value="stand">선 뒤 방향</option><option value="crouch">앉은 뒤 방향</option></select></label>
+      <label><input id="boxes" type="checkbox" checked/> 판정·기준점</label>
+    </div><p id="error" role="alert" hidden></p><button id="retry" hidden>이미지 다시 불러오기</button>
+  </section>
+  <div class="movement-rules" id="controls-help"><section><h2>WASD + U / I / J / K</h2><p>W 점프 · A/D 이동 · S 앉기<br/>U 약손 · I 강손 · J 약발 · K 강발<br/>상대 반대 방향이 방어입니다. S와 함께 누르면 앉은 방어입니다. 공중 공격·방어는 없습니다.</p></section>
+    <section><h2>타격을 확인하는 방법</h2><p>D로 접근한 뒤 공격하세요. 표적 입력을 바꾸면 선 방어·앉은 방어를 검수할 수 있습니다. 중단인 선 강발은 앉은 방어를, 하단인 앉은 발은 선 방어를 뚫습니다.</p></section>
+    <section><h2>멈춤과 초기화</h2><p>Esc 정지·재개. 다른 버튼이나 창으로 포커스를 옮기면 정지합니다. 계속하기 또는 게임 영역에서 Enter/Esc로 재개합니다. KO 뒤에는 검수 초기화로 다시 시작합니다.</p></section></div>
+  <details><summary>검수 수치</summary><p id="telemetry"></p><p id="last-hit">타격 기록 없음</p></details>
+  <footer><span>H1 전투 v0.3 · 41포즈 시안</span><span>경기·AI 연결 전 검수 화면</span></footer>
+</main><script type="module" src="/src/combat-preview.ts"></script></body></html>

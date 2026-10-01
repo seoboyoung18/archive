@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  build: { rolldownOptions: { input: { index: 'index.html', movement: 'movement.html' } } },
+  build: { rolldownOptions: { input: { index: 'index.html', movement: 'movement.html', combat: 'combat.html' } } },
 });
