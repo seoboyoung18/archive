@@ -1,0 +1,16 @@
+[
+  {
+    "id": "stand-hk-active-v3",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v2.png"
+    ],
+    "prompt": "Edit only the ARMS and upper jacket anatomy of this standing high kick sprite. The reference has confusing duplicated shoulders/sleeves. Redraw the upper body with exactly TWO arms, both in a compact boxing guard. DELETE the entire backward-reaching arm at far screen-left and fill that entire area with TRANSPARENCY. The near shoulder is the large foreground rounded shoulder left of the face; give it ONE bent forearm with white wrapped fist in front of lower chest. The far shoulder has ONE bent forearm with fist guarding the cheek on the screen-right. Two shoulders, two elbows, two hands, no dangling sleeves or skin stubs. Clean jacket front/side: white stripes only on the two actual sleeves, none on jacket hem or placket. Keep all legs, red stripe on near ATTACK leg, pivoted plain support leg, turned pelvis/waist, face/hair, head size, camera, pose and exact1254x1254 transparent framing unchanged. Don't straighten waist or rotate body back frontal. The whole body remains in the same kick, repair arms only. No effects or text."
+  },
+  {
+    "id": "crouch-hk-active-v3",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-active-v2.png"
+    ],
+    "prompt": "Edit only the ARMS and upper jacket anatomy of this crouching low kick sprite. The reference has confusing duplicated shoulders/sleeves. Redraw the upper body with exactly TWO arms, both in a compact boxing guard. DELETE the entire backward-reaching arm at far screen-left and fill that entire area with TRANSPARENCY. The near shoulder is the large foreground rounded shoulder left of the face; give it ONE bent forearm with white wrapped fist in front of lower chest. The far shoulder has ONE bent forearm with fist guarding the cheek on the screen-right. Two shoulders, two elbows, two hands, no dangling sleeves or skin stubs. Clean jacket front/side: white stripes only on the two actual sleeves, none on jacket hem or placket. Keep all legs, red stripe on near ATTACK leg, pivoted plain support leg, turned pelvis/waist, face/hair, head size, camera, pose and exact1254x1254 transparent framing unchanged. Don't straighten waist or rotate body back frontal. The whole body remains in the same kick, repair arms only. No effects or text."
+  }
+]

@@ -6,7 +6,7 @@ import { inflateSync } from 'node:zlib';
 const root = new URL('../assets/characters/h1/', import.meta.url);
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const decoded = new Map();
-for (const version of ['v1', 'v2', 'movement-v1', 'combat-v1', 'motion-v1', 'walk-v2', 'attack-motion-v1']) {
+for (const version of ['v1', 'v2', 'movement-v1', 'combat-v1', 'motion-v1', 'walk-v2', 'attack-motion-v1', 'opposite-limbs-v1']) {
 const manifest = JSON.parse(readFileSync(new URL(`derived/${version}/manifest.json`, root), 'utf8').replace(/^\uFEFF/, ''));
 assert.equal(hash(readFileSync(new URL('reference.png', root))), manifest.referenceSha256, 'Reference changed');
 assert.deepEqual(manifest.root, [256, 448]);
@@ -20,6 +20,7 @@ if (version === 'walk-v2') ids = Array.from({length:12},(_,i)=>`walk-${String(i)
 if (version === 'attack-motion-v1') ids = ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-lk','crouch-hk'].flatMap(a => (a === 'stand-hk' ? ['lift','apex','descend','retract','settle'] : ['extend','retract','settle']).map(p => `${a}-${p}`));
 if (version === 'attack-motion-v1') ids.push('stand-lk-startup','stand-lk-recovery','stand-hk-recovery');
 if (version === 'combat-v1') ids = ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-hk'].flatMap(a => ['startup','active','recovery'].map(p => `${a}-${p}`)).concat(['stand-guard','crouch-guard','stand-hit','crouch-hit','ko-0','ko-1','ko-2']);
+if (version === 'opposite-limbs-v1') ids = ['stand-hp','stand-hk','crouch-hp','crouch-hk'].flatMap(a => (a === 'stand-hk' ? ['startup','lift','apex','descend','active','retract','recovery','settle'] : ['startup','extend','active','retract','recovery','settle']).map(p => `${a}-${p}`));
 assert.deepEqual(manifest.frames.map(frame => frame.id), ids);
 
 function decode(bytes) {
@@ -79,7 +80,7 @@ for (const frame of manifest.frames) {
     assert.equal(frame.rootMode, 'idle-virtual-ground');
     assert.equal(frame.sourceRoot[1], 1194, 'Jump root must not follow curled feet');
   } else assert.ok(Math.abs(bounds.bottom + 1 - 448) <= 1, 'Soles must meet baseline');
-  if (version === 'combat-v1' || version === 'attack-motion-v1') {
+  if (version === 'combat-v1' || version === 'attack-motion-v1' || version === 'opposite-limbs-v1') {
     // Attacks and knockdowns change posture; do not stretch every silhouette to idle height.
     assert.deepEqual(frame.sourceSize, [1254,1254], 'Review common scale for new source dimensions');
     assert.equal(frame.scale, 384/1120, 'Preserve the calibrated anatomical scale');

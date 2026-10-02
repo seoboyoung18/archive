@@ -2,13 +2,18 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
 import { H1 } from '../src/characters/h1.ts';
-import { H1_POSES, combatPose } from '../src/characters/h1-poses.ts';
+import { H1_POSES, H1_PREVIOUS_HEAVY_POSES, combatPose } from '../src/characters/h1-poses.ts';
 import { createCombat, stepCombat, attackPhase, COMBAT_NEUTRAL as N } from '../src/combat/combat.ts';
 
 test('All 75 distinct pose keys resolve to 75 existing sprite files without fallback', () => {
   assert.equal(Object.keys(H1_POSES).length,75);
   assert.equal(new Set(Object.values(H1_POSES)).size,75);
   for(const path of Object.values(H1_POSES)) assert.ok(existsSync(new URL(`../assets/characters/h1/derived/${path}`,import.meta.url)),path);
+  assert.equal(Object.keys(H1_PREVIOUS_HEAVY_POSES).length,26);
+  for(const [pose,path] of Object.entries(H1_POSES)) {
+    assert.equal(path.startsWith('opposite-limbs-v1/'), /^(stand|crouch)-h[pk]-/.test(pose), pose);
+  }
+  for(const path of Object.values(H1_PREVIOUS_HEAVY_POSES)) assert.ok(existsSync(new URL(`../assets/characters/h1/derived/${path}`,import.meta.url)),path);
 });
 test('Every attack uses the combat age for startup/active/recovery and exits at its total length', () => {
   // Independent fixture transcribed from h1-all-attack-frames.md, not the pose implementation.

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "stand-hk-startup",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. EARLY WINDUP: body mostly near neutral; shift weight onto plain FRONT leg. Near striped rear heel lifts, striped rear knee bends slightly preparing to leave ground. Plain support shoe begins turning outward and stepping slightly inward under weight, from neutral foot location toward the impact support location. Pelvis coils opposite kick, torso leans slightly away, both hands guard. No extended leg yet, no raised knee above waist."
+  },
+  {
+    "id": "stand-hk-lift",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. CHAMBER: all weight on PLAIN support leg whose shoe is now at SAME position as impact and turned halfway outward. Lift NEAR STRIPED knee in front of waist, lower leg folded with striped foot near opposite knee. Pelvis turns about halfway toward impact and near hip advances across foreground. Shoulders and waist follow together with counterlean. Two hands guard. Not yet extended."
+  },
+  {
+    "id": "stand-hk-apex",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. HIGH APEX BEFORE DESCENT: fully rotate pelvis to nearly impact orientation, pivot PLAIN supporting shoe so toes point left exactly like impact, keep support sole position. NEAR STRIPED leg extends HIGH diagonally up-right: knee aroundx800,y370, footx1070,y210 ABOVE head/chest, a high preparatory kick. Torso leans left in balance, waist rotates, two hands guard. Same head placement and size, do not zoom. All foot pixels inside margin."
+  },
+  {
+    "id": "stand-hk-descend",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. DESCENDING PRECONTACT: keep same turned pelvis, leaning torso, pivoted plain support shoe position as impact. Near striped attacking leg is descending from high apex but still higher/straighter than impact: near knee aroundx820,y440, attacking footx1150,y490. Continuous red stripe follows near attacking thigh/calf across foreground. Still a preparation frame; two hands guard. Do not lower foot below impact."
+  },
+  {
+    "id": "stand-hk-retract",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. EARLY RECOVERY: pivoted PLAIN support shoe in same place/direction as impact. NEAR striped attacking knee folds inward toward waist, foot returns aroundx910,y760. Hips/waist remain mostly rotated but start unwinding, torso stays counterleaning. Two hands in guard. No return to frontal stance yet and do not switch legs."
+  },
+  {
+    "id": "stand-hk-recovery",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. LATER RECOVERY: NEAR striped kicking leg lowers behind body with bent knee and foot suspended nearx430,y1040, plain support foot holds impact location while pivoting halfway back toward neutral. Pelvis/waist/shoulders untwist halfway, torso becomes upright. Both fists return guard. Near striped foot is lowered toward rear landing, not another kick."
+  },
+  {
+    "id": "stand-hk-settle",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. FINAL LANDING: almost exact neutral stance in Input2. NEAR striped foot has landed behind at neutral rear location, plain front foot readjusts toward neutral direction/position. Hips and shoulders finish untwisting together, guard restored, subtle weight settling. Whole body upright at neutral head height. Do not leave a raised knee or remain on one leg."
+  },
+  {
+    "id": "crouch-hk-startup",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. LOW WINDUP: remain deep squat at neutral head top~490. Shift weight onto FAR PLAIN folded leg, support shoe starts turning outward and adjusting under pelvis. Near striped knee starts lifting inward from neutral, near rear heel leaves floor. Pelvis and waist coil slightly opposite sweep, shoulders follow, two fists guard. No leg extension yet. Large transparent upper half."
+  },
+  {
+    "id": "crouch-hk-extend",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. LOW LATE PREPARATION: head top~495, very low center. PLAIN supporting shoe is same position as impact, toe pivots screen-left. Pelvis and waist rotate almost to impact, torso counterleans. NEAR RED-STRIPED thigh crosses foreground and knee partially extends toward right, foot reaches onlyx1000,y1040 while knee remains visibly bent. Same opposite leg from light kick. Two fists guard. Do not fully straighten sweep yet."
+  },
+  {
+    "id": "crouch-hk-retract",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. LOW EARLY RECOVERY: same plain support sole position as impact and head height~495. NEAR striped sweep leg retracts slightly: attacking knee bends more, foot nearx995,y1030. Torso/hips remain turned and balanced on plain folded leg. This is85% reach, not neutral. Exactly two guarding arms."
+  },
+  {
+    "id": "crouch-hk-settle",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. LOW MIDDLE RECOVERY (comes BEFORE final recovery in timeline): near striped attacking knee pulls close across hips and foot returns toward screen-left rear, suspended aroundx460,y1100. Plain support shoe stays planted and begins pivoting back. Hips/waist and shoulders unwind halfway to neutral squat; head top~490. Still low, no standing up, no extended kick. Two guarding arms."
+  },
+  {
+    "id": "crouch-hk-recovery",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Create one1254x1254 transparent full-body H1 anime fighting-game frame. Input1 is corrected heavy kick impact: near RIGHT RED-STRIPED leg attacks, FAR PLAIN leg supports. Input2 is neutral. Preserve adult identity black bob/red jacket white sleeve stripes/white top/black pants/red sneakers/wrapped hands. Same head size and body scale, gaze RIGHT, fixed camera, full body unclipped. EXACTLY TWO ARMS in compact guard: near fist at lower chest, far fist by cheek. No extra arm/sleeve. Preserve near/far limb identity; no mirror. The red-stripe thigh is always ATTACK leg, plain leg SUPPORT. Rotate plain supporting shoe and hips/waist with action. No text, effects, ground shadow or background. LOW FINAL RECOVERY: almost original neutral deep squat from input2, near striped foot landed rear-left, plain far foot front-right. Both knees spread back to original squat; hips and torso finish uncoiling. Both fists in normal guard. Exact crouch scale and head top~490, big transparent upper half. This is final landing after middle recovery, do not lift either foot again."
+  }
+]

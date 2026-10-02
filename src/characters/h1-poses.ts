@@ -40,6 +40,15 @@ for (const attack of ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','
 
 for (const pose of ['stand-lk-startup','stand-lk-recovery','stand-hk-recovery']) H1_POSES[pose] = `attack-motion-v1/${pose}.png`;
 
+/** Retained only for the visual before/after review; combat always uses H1_POSES. */
+export const H1_PREVIOUS_HEAVY_POSES: Record<string, string> = {};
+for (const attack of ['stand-hp','stand-hk','crouch-hp','crouch-hk']) {
+  for (const pose of Object.values(H1_ATTACK_FRAMES[attack]!).flat()) {
+    H1_PREVIOUS_HEAVY_POSES[pose] = H1_POSES[pose]!;
+    H1_POSES[pose] = `opposite-limbs-v1/${pose}.png`;
+  }
+}
+
 export function combatPose(f: CombatFighter, definition: CharacterDefinition, koFrame = 0): string {
   if (f.action === 'ko') return `ko-${Math.min(2, Math.floor(Math.max(0, koFrame) / 6))}`;
   if (f.action === 'attack' && f.attack) {

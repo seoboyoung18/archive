@@ -1,0 +1,82 @@
+[
+  {
+    "id": "stand-hp-startup",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hp-active.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create ONE transparent1254x1254 full body animation inbetween. Reference1=correct full-body near RIGHT rear-arm cross punch at impact, Reference2=neutral pose and identity. Preserve exact adult H1 face, black bob, red jacket white sleeve stripes, white sports top, black pants/red stripe on near RIGHT rear leg, wraps/red shoes. Gaze right. Same head and body scale and camera, no text/effects/extra limbs. Near RIGHT arm starts at screen-left shoulder and crosses IN FRONT of white shirt when extending; far LEFT arm stays in cheek guard. Keep this anatomical identity through entire motion, never switch punching arm. Foot→hip→waist→shoulder rotation, not isolated arm. Exactly two arms/two legs. Standing boxer: head top80, soles1185, no zoom or shrinking. EARLY PREPARATION at roughly15% twist: coil near right shoulder and hip backward, near fist pulled near lower ribs, far fist cheek guard. Weight on bent rear striped leg, front plain knee slightly relaxed. Rear heel still mostly grounded beginning to pivot, both feet near NEUTRAL positions. Torso mostly neutral but visibly winding up. Do NOT extend punch yet."
+  },
+  {
+    "id": "stand-hp-extend",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hp-active.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create ONE transparent1254x1254 full body animation inbetween. Reference1=correct full-body near RIGHT rear-arm cross punch at impact, Reference2=neutral pose and identity. Preserve exact adult H1 face, black bob, red jacket white sleeve stripes, white sports top, black pants/red stripe on near RIGHT rear leg, wraps/red shoes. Gaze right. Same head and body scale and camera, no text/effects/extra limbs. Near RIGHT arm starts at screen-left shoulder and crosses IN FRONT of white shirt when extending; far LEFT arm stays in cheek guard. Keep this anatomical identity through entire motion, never switch punching arm. Foot→hip→waist→shoulder rotation, not isolated arm. Exactly two arms/two legs. Standing boxer: head top80, soles1185, no zoom or shrinking. LATE PREPARATION at65% of impact twist: rear striped heel lifting on toes, rear knee swivels inward, pelvis/waist rotating and near shoulder driving toward target. Near right elbow bent about125degrees, fist halfway toward impact atx940 (not fully extended), red sleeve crossing shirt. Front plain leg accepts weight. Interpolate pelvis and feet between neutral and impact, don’t lock body."
+  },
+  {
+    "id": "stand-hp-retract",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hp-active.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create ONE transparent1254x1254 full body animation inbetween. Reference1=correct full-body near RIGHT rear-arm cross punch at impact, Reference2=neutral pose and identity. Preserve exact adult H1 face, black bob, red jacket white sleeve stripes, white sports top, black pants/red stripe on near RIGHT rear leg, wraps/red shoes. Gaze right. Same head and body scale and camera, no text/effects/extra limbs. Near RIGHT arm starts at screen-left shoulder and crosses IN FRONT of white shirt when extending; far LEFT arm stays in cheek guard. Keep this anatomical identity through entire motion, never switch punching arm. Foot→hip→waist→shoulder rotation, not isolated arm. Exactly two arms/two legs. Standing boxer: head top80, soles1185, no zoom or shrinking. EARLY RECOVERY at85% extension: near right punching fist retracts only a little from impact, elbow bends about155degrees. Torso/pelvis remain mostly turned and rear striped heel remains raised. Far fist still guards cheek. Front leg takes weight. A distinct slight retraction, not already neutral and not a second punch."
+  },
+  {
+    "id": "stand-hp-recovery",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hp-active.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create ONE transparent1254x1254 full body animation inbetween. Reference1=correct full-body near RIGHT rear-arm cross punch at impact, Reference2=neutral pose and identity. Preserve exact adult H1 face, black bob, red jacket white sleeve stripes, white sports top, black pants/red stripe on near RIGHT rear leg, wraps/red shoes. Gaze right. Same head and body scale and camera, no text/effects/extra limbs. Near RIGHT arm starts at screen-left shoulder and crosses IN FRONT of white shirt when extending; far LEFT arm stays in cheek guard. Keep this anatomical identity through entire motion, never switch punching arm. Foot→hip→waist→shoulder rotation, not isolated arm. Exactly two arms/two legs. Standing boxer: head top80, soles1185, no zoom or shrinking. MIDDLE RECOVERY at40% twist: near right arm folds back across chest toward near ribs, wrapped fist nearx670 in front of torso. Waist and shoulders begin uncoiling together, rear heel descends partway; rear knee opens toward neutral. Weight moves back toward balance. Far arm remains cheek guard. Clearly halfway between impact and neutral."
+  },
+  {
+    "id": "stand-hp-settle",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hp-active.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+    ],
+    "prompt": "Create ONE transparent1254x1254 full body animation inbetween. Reference1=correct full-body near RIGHT rear-arm cross punch at impact, Reference2=neutral pose and identity. Preserve exact adult H1 face, black bob, red jacket white sleeve stripes, white sports top, black pants/red stripe on near RIGHT rear leg, wraps/red shoes. Gaze right. Same head and body scale and camera, no text/effects/extra limbs. Near RIGHT arm starts at screen-left shoulder and crosses IN FRONT of white shirt when extending; far LEFT arm stays in cheek guard. Keep this anatomical identity through entire motion, never switch punching arm. Foot→hip→waist→shoulder rotation, not isolated arm. Exactly two arms/two legs. Standing boxer: head top80, soles1185, no zoom or shrinking. FINAL RECOVERY at10% twist: almost neutral guard in Reference2, near right fist returned before chest, far fist guards. Both feet almost neutral direction, rear heel touches down, pelvis and shoulders finish untwisting. Subtle residual shoulder turn and weight settling. Do NOT keep the full impact pose or punch extension."
+  },
+  {
+    "id": "crouch-hp-startup",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-active.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Create ONE transparent1254x1254 full body animation inbetween. Reference1=correct full-body near RIGHT rear-arm cross punch at impact, Reference2=neutral pose and identity. Preserve exact adult H1 face, black bob, red jacket white sleeve stripes, white sports top, black pants/red stripe on near RIGHT rear leg, wraps/red shoes. Gaze right. Same head and body scale and camera, no text/effects/extra limbs. Near RIGHT arm starts at screen-left shoulder and crosses IN FRONT of white shirt when extending; far LEFT arm stays in cheek guard. Keep this anatomical identity through entire motion, never switch punching arm. Foot→hip→waist→shoulder rotation, not isolated arm. Exactly two arms/two legs. Keep LOW crouch: head top around470..495, soles around1185, large empty transparent upper half. Preserve crouched anatomy, not a standing boxer; rear knee pivots within squat. EARLY PREPARATION at roughly15% twist: coil near right shoulder and hip backward, near fist pulled near lower ribs, far fist cheek guard. Weight on bent rear striped leg, front plain knee slightly relaxed. Rear heel still mostly grounded beginning to pivot, both feet near NEUTRAL positions. Torso mostly neutral but visibly winding up. Do NOT extend punch yet."
+  },
+  {
+    "id": "crouch-hp-extend",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-active.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Create ONE transparent1254x1254 full body animation inbetween. Reference1=correct full-body near RIGHT rear-arm cross punch at impact, Reference2=neutral pose and identity. Preserve exact adult H1 face, black bob, red jacket white sleeve stripes, white sports top, black pants/red stripe on near RIGHT rear leg, wraps/red shoes. Gaze right. Same head and body scale and camera, no text/effects/extra limbs. Near RIGHT arm starts at screen-left shoulder and crosses IN FRONT of white shirt when extending; far LEFT arm stays in cheek guard. Keep this anatomical identity through entire motion, never switch punching arm. Foot→hip→waist→shoulder rotation, not isolated arm. Exactly two arms/two legs. Keep LOW crouch: head top around470..495, soles around1185, large empty transparent upper half. Preserve crouched anatomy, not a standing boxer; rear knee pivots within squat. LATE PREPARATION at65% of impact twist: rear striped heel lifting on toes, rear knee swivels inward, pelvis/waist rotating and near shoulder driving toward target. Near right elbow bent about125degrees, fist halfway toward impact atx940 (not fully extended), red sleeve crossing shirt. Front plain leg accepts weight. Interpolate pelvis and feet between neutral and impact, don’t lock body."
+  },
+  {
+    "id": "crouch-hp-retract",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-active.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Create ONE transparent1254x1254 full body animation inbetween. Reference1=correct full-body near RIGHT rear-arm cross punch at impact, Reference2=neutral pose and identity. Preserve exact adult H1 face, black bob, red jacket white sleeve stripes, white sports top, black pants/red stripe on near RIGHT rear leg, wraps/red shoes. Gaze right. Same head and body scale and camera, no text/effects/extra limbs. Near RIGHT arm starts at screen-left shoulder and crosses IN FRONT of white shirt when extending; far LEFT arm stays in cheek guard. Keep this anatomical identity through entire motion, never switch punching arm. Foot→hip→waist→shoulder rotation, not isolated arm. Exactly two arms/two legs. Keep LOW crouch: head top around470..495, soles around1185, large empty transparent upper half. Preserve crouched anatomy, not a standing boxer; rear knee pivots within squat. EARLY RECOVERY at85% extension: near right punching fist retracts only a little from impact, elbow bends about155degrees. Torso/pelvis remain mostly turned and rear striped heel remains raised. Far fist still guards cheek. Front leg takes weight. A distinct slight retraction, not already neutral and not a second punch."
+  },
+  {
+    "id": "crouch-hp-recovery",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-active.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Create ONE transparent1254x1254 full body animation inbetween. Reference1=correct full-body near RIGHT rear-arm cross punch at impact, Reference2=neutral pose and identity. Preserve exact adult H1 face, black bob, red jacket white sleeve stripes, white sports top, black pants/red stripe on near RIGHT rear leg, wraps/red shoes. Gaze right. Same head and body scale and camera, no text/effects/extra limbs. Near RIGHT arm starts at screen-left shoulder and crosses IN FRONT of white shirt when extending; far LEFT arm stays in cheek guard. Keep this anatomical identity through entire motion, never switch punching arm. Foot→hip→waist→shoulder rotation, not isolated arm. Exactly two arms/two legs. Keep LOW crouch: head top around470..495, soles around1185, large empty transparent upper half. Preserve crouched anatomy, not a standing boxer; rear knee pivots within squat. MIDDLE RECOVERY at40% twist: near right arm folds back across chest toward near ribs, wrapped fist nearx670 in front of torso. Waist and shoulders begin uncoiling together, rear heel descends partway; rear knee opens toward neutral. Weight moves back toward balance. Far arm remains cheek guard. Clearly halfway between impact and neutral."
+  },
+  {
+    "id": "crouch-hp-settle",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-active.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Create ONE transparent1254x1254 full body animation inbetween. Reference1=correct full-body near RIGHT rear-arm cross punch at impact, Reference2=neutral pose and identity. Preserve exact adult H1 face, black bob, red jacket white sleeve stripes, white sports top, black pants/red stripe on near RIGHT rear leg, wraps/red shoes. Gaze right. Same head and body scale and camera, no text/effects/extra limbs. Near RIGHT arm starts at screen-left shoulder and crosses IN FRONT of white shirt when extending; far LEFT arm stays in cheek guard. Keep this anatomical identity through entire motion, never switch punching arm. Foot→hip→waist→shoulder rotation, not isolated arm. Exactly two arms/two legs. Keep LOW crouch: head top around470..495, soles around1185, large empty transparent upper half. Preserve crouched anatomy, not a standing boxer; rear knee pivots within squat. FINAL RECOVERY at10% twist: almost neutral guard in Reference2, near right fist returned before chest, far fist guards. Both feet almost neutral direction, rear heel touches down, pelvis and shoulders finish untwisting. Subtle residual shoulder turn and weight settling. Do NOT keep the full impact pose or punch extension."
+  }
+]

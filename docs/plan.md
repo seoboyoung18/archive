@@ -1,6 +1,7 @@
 # 작업 계획
 
-현재 요청(2026-10-01): [기존 공격7종의 프레임 보완](specs/h1-all-attack-frames.md)을 진행한다. [H1 경기 진행 v0.1](specs/h1-match-flow.md)은 초안 작성만 완료했으며 구현 승인은 계속 대기한다.
+현재 요청(2026-10-02): [강공격의 반대 손발·전신 회전 보완](specs/h1-opposite-limbs.md)을 검수한다. [H1 경기 진행 v0.1](specs/h1-match-flow.md)은 초안 작성만 완료했으며 구현 승인은 계속 대기한다.
+26포즈 교체와 자동 검사·브라우저 비교 결과는 [검수 기록](reviews/h1-opposite-limbs.md)에 있다. 최종 체감과 남은 높이/지지발 전환을 확인한 뒤 후속 상세 명세로 진행한다.
 후속 요청: [모션 재검수](reviews/h1-motion-followup.md) 후 [콤보·잡기·효과음 확장](specs/h1-combat-expansion.md)을 검토한다. 정해진2~3타 연계와 U+I 잡기는 방향 선택이며 상세 수치와 경기 구현 우선순위는 확인 전이다.
 
 1. GitHub 연결 후 기존 README와 파일 및 작업 지침 확인.

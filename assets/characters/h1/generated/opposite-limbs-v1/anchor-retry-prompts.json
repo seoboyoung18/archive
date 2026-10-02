@@ -1,0 +1,16 @@
+[
+  {
+    "id": "stand-hk-active-v2",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active.png"
+    ],
+    "prompt": "Edit this transparent H1 kick sprite to fix anatomy only. There are accidentally THREE arms. REMOVE the extra dangling red sleeve and skin stub in the CENTER-LEFT around x410 y415..520, immediately beside the bare waist, and restore a clean continuous red jacket side seam in that spot. KEEP the complete backward-reaching arm on far screen-left ending in a wrapped hand at x180,y490, AND KEEP the bent guard arm ending in a wrapped fist next to the face at x670,y245. These are the ONLY TWO arms. Do not add another hand or sleeve. Preserve exact pose, all leg anatomy, red stripe on foreground kicking leg, pivoted plain support leg and shoe, hip/waist rotation, face, hair, gaze right, 1254x1254 framing, same scale and transparent background. No effects or text."
+  },
+  {
+    "id": "crouch-hk-active-v2",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-active.png"
+    ],
+    "prompt": "Edit transparent H1 low sweep sprite. Fix THREE ARMS to exactly TWO: DELETE the extra center dangling arm from sleeve aroundx490,y770 down to fist x475,y940, restoring clean red jacket side and bare waist beneath. KEEP the backward arm ending at x210,y870 and KEEP the guard arm next to right cheek at x720,y700. No extra sleeve, hand or limb. Preserve same near RED-STRIPED right attacking leg and far PLAIN folded supporting leg, strongly turned waist/torso and hips. Also RAISE only the extended attacking shin and shoe about55px so its lowest sole is y1115, clearly above support shoe sole y1145: supporting plain-leg shoe must remain lowest and touch ground, it points screen-left. Preserve small crouched anatomy, head top495, large transparent upper half and exact identity, same 1254x1254 canvas. No text, background or effects."
+  }
+]

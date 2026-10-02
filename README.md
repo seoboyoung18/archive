@@ -17,7 +17,7 @@
 |---|---|---|
 | ![H1](assets/characters/h1/reference.png) | ![B1](assets/characters/b1/reference.png) | ![R3](assets/characters/r3/reference.png) |
 
-기준 이미지는 단일 자세이며 애니메이션 시트가 아닙니다. 현재 시안은 H1의 `generated`, `derived` 아래 `v2`, `movement-v1`, `combat-v1`, `motion-v1`, `walk-v2`, `attack-motion-v1`에 있으며 이전 버전과 탈락 후보도 보존합니다.
+기준 이미지는 단일 자세이며 애니메이션 시트가 아닙니다. 현재 시안은 H1의 `generated`, `derived` 아래 `v2`, `movement-v1`, `combat-v1`, `motion-v1`, `walk-v2`, `attack-motion-v1`, `opposite-limbs-v1`에 있으며 이전 버전과 탈락 후보도 보존합니다.
 
 ## 로컬 실행
 
@@ -58,3 +58,5 @@ Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은
 [공격7종 프레임 명세](docs/specs/h1-all-attack-frames.md) · [공격 보완 검수](docs/reviews/h1-all-attack-frames.md) · [동작 전후 비교](docs/reviews/evidence/h1-motion-comparison.html)
 
 새 공격 그림 정렬은 `pwsh -File scripts/normalize-h1.ps1 -Version attack-motion-v1`로 재현합니다. 비교 화면의 동작 선택에서 공격8종을 고른 뒤 느린 재생·1F 이동·왼쪽 보기를 사용할 수 있습니다.
+
+강손·강발4종의 반대 손발과 전신 회전은 [수정 명세](docs/specs/h1-opposite-limbs.md)를 따릅니다. `-Version opposite-limbs-v1`로26장을 정렬합니다. 비교 화면은 강공격의 이전26포즈와 보완본을 같은 시간에 재생하며 아래에서 약/강의 실제 공격 손발도 나란히 확인할 수 있습니다.

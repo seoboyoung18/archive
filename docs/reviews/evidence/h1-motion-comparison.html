@@ -7,7 +7,7 @@
 </style>
 <style>.poses{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.poses figure{margin:0;background:#243247;border-radius:8px;text-align:center}.poses img{display:block;width:100%;height:auto}.poses figcaption{font:13px monospace;padding:8px}@media(max-width:720px){.poses{grid-template-columns:repeat(3,1fr)}}</style>
 <main>
-<h1>H1 모션 전후 비교</h1><p>걷기는 이전 8포즈·0.4초와 새 교차 보행 12포즈·0.8초를 비교합니다. 공격은 이전3장과 현재6~8장을 비교합니다. 제자리 포즈 재생이며 실제 이동·타격 판정은 <a href="../../../combat.html">전투 화면</a>에서 확인하세요.</p>
+<h1>H1 모션 전후 비교</h1><p>강손·강발은 이전 동작과 반대 손발·전신 회전 보완본을 같은 시간으로 비교합니다. 약공격은 이전3장과 현재6장, 걷기는 이전8포즈·0.4초와 현재12포즈·0.8초를 비교합니다. 실제 이동·타격 판정은 <a href="../../../combat.html">전투 화면</a>에서 확인하세요.</p>
 <div class="controls">
 <label>동작 <select id="action"><option value="walk">걷기</option><option value="stand-lp">선 약손</option><option value="stand-hp">선 강손</option><option value="stand-lk">선 약발</option><option value="stand-hk">선 강발</option><option value="crouch-lp">앉은 약손</option><option value="crouch-hp">앉은 강손</option><option value="crouch-lk">앉은 약발</option><option value="crouch-hk">앉은 강발</option></select></label>
 <label>속도 <select id="speed"><option value="1">1배</option><option value="0.5">0.5배</option><option value="0.25">0.25배</option></select></label>
@@ -18,10 +18,11 @@
 <div class="grid"><section class="panel"><h2>이전 시안</h2><div class="stage"><img id="old" class="sprite" alt="이전 H1 포즈"></div><p id="old-label" class="caption"></p></section><section class="panel"><h2>현재 보완본</h2><div class="stage"><img id="new" class="sprite" alt="보완 H1 포즈"></div><p id="new-label" class="caption"></p></section></div>
 <footer>걷기: 8장×3F → 12장×4F (양발 교차) / 약손: 6·3·15F → 3·3·3·5·5·5F<br>후진은 새 보행을 역순으로 재생합니다. 공격 뒤 대기30F는 관찰용입니다. 타격 판정 시간은 기존 그대로입니다. 탭을 숨기면 정지합니다. 느린 재생은 게임 속도를 바꾸지 않습니다.</footer>
 <h2 id="pose-heading">새 보행 한 주기 · 12포즈</h2><p id="pose-description">양발 교차와 지지발을 확인하세요.</p><div id="poses" class="poses"></div>
+<h2>약·강 공격의 손발 비교</h2><p>약손은 먼 쪽 앞손, 강손은 흰 상의 앞을 가로지르는 가까운 뒤손입니다. 약발은 줄 없는 다리, 강발은 빨간 옆선 다리로 찹니다. 강발의 반대쪽 지지발과 골반 회전을 함께 확인하세요.</p><div id="limb-pairs" class="grid"></div>
 </main>
 <script type="module">
 import { combatPose } from '../../../src/characters/h1-poses.ts';
-import { H1_POSES, H1_ATTACK_FRAMES } from '../../../src/characters/h1-poses.ts';
+import { H1_POSES, H1_ATTACK_FRAMES, H1_PREVIOUS_HEAVY_POSES } from '../../../src/characters/h1-poses.ts';
 import { H1 } from '../../../src/characters/h1.ts';
 import { createCombat } from '../../../src/combat/combat.ts';
 const base=new URL('../../../assets/characters/h1/derived/',location.href);
@@ -31,12 +32,22 @@ const $=id=>document.getElementById(id);
 let frame=0,playing=false,last=0,pending=0,ready=false;
 const paths=[...Array.from({length:4},(_,i)=>`movement-v1/walk-${i}.png`),...Array.from({length:4},(_,i)=>`motion-v1/walk-mid-${i}.png`),'v2/idle.png','v2/startup.png','v2/active.png','v2/recovery.png',...['lp-extend','lp-retract','lp-settle'].map(x=>`motion-v1/${x}.png`)];
 paths.push(...Object.values(H1_POSES));
+paths.push(...Object.values(H1_PREVIOUS_HEAVY_POSES));
 paths.push('combat-v1/stand-lk-startup.png','combat-v1/stand-lk-recovery.png','combat-v1/stand-hk-recovery.png');
 paths.push(...Array.from({length:12},(_,i)=>`walk-v2/walk-${String(i).padStart(2,'0')}.png`));
 function stop(){playing=false;pending=0;last=0;$('play').textContent='재생'}
 
 function selected(){const key=$('action').value;const a=H1.attacks[key];return {key,a,total:a?a.startup+a.active+a.recovery:48}}
+function limbPairs(){
+ $('limb-pairs').replaceChildren();
+ for(const [label,light,heavy] of [['선 손','stand-lp','stand-hp'],['선 발','stand-lk','stand-hk'],['앉은 손','crouch-lp','crouch-hp'],['앉은 발','crouch-lk','crouch-hk']]){
+  const section=document.createElement('section'),heading=document.createElement('h3'),row=document.createElement('div');section.className='panel';heading.textContent=label;heading.style.padding='0 18px';row.className='grid';row.style.gridTemplateColumns='repeat(2,minmax(0,1fr))';
+  for(const [key,text] of [[light,'약'],[heavy,'강']]){const figure=document.createElement('figure'),im=document.createElement('img'),caption=document.createElement('figcaption');figure.style.margin='0';im.src=new URL(H1_POSES[key+'-active'],base).href;im.alt=label+' '+text+' 유효 자세';im.style.width='100%';im.style.transform=$('mirror').checked?'scaleX(-1)':'none';caption.textContent=text;caption.style.textAlign='center';figure.append(im,caption);row.append(figure)}
+  section.append(heading,row);$('limb-pairs').append(section);
+ }
+}
 function contactStrip(){
+ limbPairs();
  const {key,a}=selected();const poses=[];
  if(!a){for(let i=0;i<12;i++)poses.push({pose:'walk-'+String(i).padStart(2,'0'),from:i*4,to:i*4+3,phase:'보행'})}
  else{let from=0;for(const phase of ['startup','active','recovery']){const list=H1_ATTACK_FRAMES[key][phase];list.forEach((pose,i)=>{const first=Math.ceil(i*a[phase]/list.length),last=Math.ceil((i+1)*a[phase]/list.length)-1;poses.push({pose,from:from+first,to:from+last,phase:phase==='active'?'유효':phase==='startup'?'준비':'회복'})});from+=a[phase]}}
@@ -51,7 +62,8 @@ function render(){
  const oldWalk=segment%2===0?'movement-v1/walk-'+segment/2+'.png':'motion-v1/walk-mid-'+Math.floor(segment/2)+'.png';
  const phase=a?(frame<a.startup?'startup':frame<a.startup+a.active?'active':frame<total?'recovery':'idle'):'walk';
  const idle=crouch?'v2/crouch.png':'v2/idle.png';
- const prior=walk?oldWalk:phase==='idle'?idle:oldPosePath(key,phase);
+ const pose=combatPose(f,H1);
+ const prior=walk?oldWalk:phase==='idle'?idle:H1_PREVIOUS_HEAVY_POSES[pose]??oldPosePath(key,phase);
  const current=a&&frame>=total?idle:H1_POSES[combatPose(f,H1)];
  for(const [id,path] of [['old',prior],['new',current]]){$(id).src=new URL(path,base).href;$(id).style.transform=$('mirror').checked?'scaleX(-1)':'none';$(id+'-label').textContent=path}
  $('status').textContent=$('action').selectedOptions[0].textContent+' · '+frame+'F / '+(walk?'현재48F 반복 (이전24F)':'공격'+total+'F + 대기30F · '+phase)+' · '+(playing?'재생 중':'정지');
