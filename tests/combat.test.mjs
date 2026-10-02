@@ -239,8 +239,9 @@ test('Input pulses: all attack keys, priority, physical repeats, inactive/reset 
   }
   for(const code of ['KeyU','KeyI','KeyJ','KeyK','KeyW','KeyS','KeyA','KeyD']) b.keyDown(code);
   const all=b.sample(); assert.equal(all.axis,0); assert.equal(all.crouch,false); assert.equal(all.jump,false);
-  assert.equal(tick(createCombat(),all).fighters[0].attack.key,'stand-hk');
-  b.reset(); assert.deepEqual(b.sample(),N); b.keyDown('KeyU'); assert.deepEqual(b.sample().attacks,[]);
+  // Approved G: a physically overlapping U+I consumes feet before basic-attack priority.
+  assert.equal(tick(createCombat(),all).fighters[0].action,'grab');
+  b.reset(); assert.deepEqual(b.sample(),{...N,handEvents:[]}); b.keyDown('KeyU'); assert.deepEqual(b.sample().attacks,[]);
   b.keyUp('KeyU'); b.keyDown('KeyU',false,false); b.keyDown('KeyU'); assert.deepEqual(b.sample().attacks,[]);
   b.keyUp('KeyU'); b.keyDown('KeyU'); assert.deepEqual(b.sample().attacks,['lp']);
 });
@@ -253,7 +254,8 @@ test('Held attack and pulses pressed during recovery never replay when free', ()
     b.keyDown('KeyU',true); s=tick(s,b.sample());
   }
   assert.equal(s.fighters[0].nextAttackId,2); assert.equal(s.fighters[0].action,'free');
-  b.keyUp('KeyU'); b.keyDown('KeyU'); s=tick(s,b.sample()); assert.equal(s.fighters[0].attack.serial,2);
+  // Approved G: a fresh short tap commits immediately; a held new hand would wait up to 3F.
+  b.keyUp('KeyU'); b.keyDown('KeyU'); b.keyUp('KeyU'); s=tick(s,b.sample()); assert.equal(s.fighters[0].attack.serial,2);
 });
 test('Logical input replay is identical at 30/60/144 render Hz', () => {
   const outcomes=[];

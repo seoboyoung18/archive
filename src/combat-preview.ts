@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import './style.css';
 import koArt from '../assets/ui/ko/options-v1/a-impact.png';
-import { createCombat, stepCombat, clearComboInputs, attackPhase, worldRect, COMBAT_NEUTRAL, type CombatInput } from './combat/combat.ts';
+import { createCombat, stepCombat, clearComboInputs, attackPhase, worldRect, grabPoseState, COMBAT_NEUTRAL, type CombatInput } from './combat/combat.ts';
 import { FixedStep } from './combat/fixed-step.ts';
 import { CombatInputBuffer } from './input/combat-input.ts';
 import { combatPose, H1_POSES } from './characters/h1-poses.ts';
@@ -11,12 +11,18 @@ import { H1_ASSETS } from './characters/h1-assets.ts';
 const get = <T extends Element>(id: string) => document.querySelector<T>(`#${id}`)!;
 const surface = get<HTMLDivElement>('game'), start = get<HTMLButtonElement>('start');
 const pauseButton = get<HTMLButtonElement>('pause'), resetButton = get<HTMLButtonElement>('reset');
+const targetGrabButton = get<HTMLButtonElement>('target-grab');
 const target = get<HTMLSelectElement>('target'), boxes = get<HTMLInputElement>('boxes');
 const status = get<HTMLOutputElement>('status'), error = get<HTMLParagraphElement>('error'), retry = get<HTMLButtonElement>('retry');
 const telemetry = get<HTMLParagraphElement>('telemetry'), lastHit = get<HTMLParagraphElement>('last-hit');
 const hp = [get<HTMLMeterElement>('player-health'), get<HTMLMeterElement>('cpu-health')];
 const hpText = [get<HTMLOutputElement>('player-hp'), get<HTMLOutputElement>('cpu-hp')];
 const listeners = new AbortController(), input = new CombatInputBuffer();
+const names = ['PLAYER', 'CPU'] as const;
+// A real overlapping short tap uses the same public hand interpreter as physical keys.
+const grabInput = (): CombatInput => ({ ...COMBAT_NEUTRAL, attacks: ['hp', 'lp'], handEvents: [
+  { slot: 'lp', down: true }, { slot: 'hp', down: true }, { slot: 'hp', down: false }, { slot: 'lp', down: false },
+] });
 
 class CombatScene extends Phaser.Scene {
   private combat = createCombat();
@@ -29,6 +35,8 @@ class CombatScene extends Phaser.Scene {
   private loadFailed = false;
   private koFrame = 0;
   private koBanner!: Phaser.GameObjects.Image;
+  private targetGrabQueued = false;
+  private targetTechUsed = false;
 
   private failLoad() {
     this.loadFailed = true; error.hidden = false; retry.hidden = false;
@@ -52,9 +60,9 @@ class CombatScene extends Phaser.Scene {
     this.add.text(48, 40, 'DIMENSION FIGHT / COMBAT', { fontFamily: 'sans-serif', fontSize: '20px', color: '#a3b3c6' });
     for (let i = 0; i < 2; i++) {
       this.sprites.push(this.add.image(0, 0, 'idle-0').setOrigin(0.5, 0.875).setScale(0.625));
-      this.labels.push(this.add.text(0, 0, i === 0 ? 'PLAYER' : 'CPU / TARGET', { fontFamily: 'monospace', fontSize: '16px', color: i === 0 ? '#79e3cb' : '#ffc78d' }).setOrigin(0.5, 1));
+      this.labels.push(this.add.text(0, 0, i === 0 ? 'PLAYER' : 'CPU / TARGET', { fontFamily: 'monospace', fontSize: '16px', color: i === 0 ? '#79e3cb' : '#ffc78d' }).setOrigin(0.5, 1).setDepth(10));
     }
-    this.guides = this.add.graphics();
+    this.guides = this.add.graphics().setDepth(10);
     this.koBanner = this.add.image(640, 270, 'ko-banner').setDepth(20).setVisible(false);
     this.koBanner.setScale(640 / this.koBanner.width);
     const options = { signal: listeners.signal };
@@ -62,9 +70,17 @@ class CombatScene extends Phaser.Scene {
     pauseButton.addEventListener('click', () => this.pause(), options);
     resetButton.addEventListener('click', () => {
       this.pause(); this.combat = createCombat(); this.koFrame = 0;
+      this.targetGrabQueued = false; this.targetTechUsed = false;
       lastHit.textContent = '타격 기록 없음'; status.value = '초기화 완료 · 계속하기로 시작'; this.renderCombat();
     }, options);
-    target.addEventListener('change', () => { this.pause(); status.value = '표적 입력 변경 · 계속하기로 시작'; }, options);
+    target.addEventListener('change', () => {
+      this.pause(); this.targetGrabQueued = false; this.targetTechUsed = false;
+      status.value = '표적 입력 변경 · 계속하기로 시작'; this.renderCombat();
+    }, options);
+    targetGrabButton.addEventListener('click', event => {
+      if (event.detail > 1 || !this.canTargetGrab()) return;
+      this.pause(); this.targetGrabQueued = true; this.resume(); this.renderCombat();
+    }, options);
     boxes.addEventListener('change', () => this.renderCombat(), options);
     surface.addEventListener('pointerdown', () => surface.focus(), options);
     surface.addEventListener('blur', () => this.pause(), options);
@@ -86,6 +102,7 @@ class CombatScene extends Phaser.Scene {
   private pause() {
     if (!this.ready) return;
     this.paused = true; input.reset(); this.clock.reset();
+    this.targetGrabQueued = false;
     this.combat = clearComboInputs(this.combat);
     start.disabled = false; pauseButton.disabled = true; status.value = '일시정지 · 계속하기로 재개';
     this.renderCombat();
@@ -97,9 +114,19 @@ class CombatScene extends Phaser.Scene {
     status.value = this.combat.ended ? 'K O!! · 검수 초기화로 다시 시작' : '전투 검수 중'; surface.focus();
   }
   private targetInput(): CombatInput {
-    if (target.value === 'none') return COMBAT_NEUTRAL;
     const [p, cpu] = this.combat.fighters;
+    if (this.targetGrabQueued) { this.targetGrabQueued = false; return grabInput(); }
+    // The previous state is H, so the upcoming common tick is the first allowed H+1.
+    if (target.value === 'tech' && !this.targetTechUsed && cpu.grab?.kind === 'success'
+      && cpu.grab.role === 'target' && cpu.grab.age === 0) {
+      this.targetTechUsed = true; return grabInput();
+    }
+    if (target.value === 'none' || target.value === 'tech') return COMBAT_NEUTRAL;
     return { ...COMBAT_NEUTRAL, axis: cpu.x > p.x ? 1 : -1, crouch: target.value === 'crouch' };
+  }
+  private canTargetGrab(): boolean {
+    const cpu = this.combat.fighters[1];
+    return this.ready && !this.combat.ended && !this.targetGrabQueued && cpu.grounded && cpu.action === 'free';
   }
   private renderCombat() {
     this.guides.clear();
@@ -108,7 +135,9 @@ class CombatScene extends Phaser.Scene {
       const def = this.combat.definitions[i];
       const y = f.action === 'ko' ? STAGE.floor : f.y;
       const pose = combatPose(f, def, this.koFrame);
-      this.sprites[i]!.setTexture(pose).setPosition(f.x, y).setFlipX(f.facing === -1);
+      const grab = grabPoseState(f);
+      const depth = grab?.kind === 'success' && grab.role === 'attacker' && grab.age < 18 ? 3 : i;
+      this.sprites[i]!.setTexture(pose).setPosition(f.x, y).setFlipX(f.facing === -1).setDepth(depth);
       this.labels[i]!.setPosition(f.x, y - (f.action === 'ko' ? 125 : f.posture === 'crouch' ? 162 : 255));
       hp[i]!.value = f.hp; hpText[i]!.value = `${f.hp} / ${def.maxHp}`;
       if (boxes.checked && !this.combat.ended) {
@@ -122,18 +151,27 @@ class CombatScene extends Phaser.Scene {
         }
       }
     });
-    telemetry.textContent = `F ${this.combat.frame} · ` + this.combat.fighters.map((f, i) =>
+    targetGrabButton.disabled = !this.canTargetGrab();
+    telemetry.textContent = `F ${this.combat.frame} · 표적 풀기 ${target.value === 'tech' ? this.targetTechUsed ? '1회 사용' : '1회 대기' : '꺼짐'} · ` + this.combat.fighters.map((f, i) =>
       `${i === 0 ? 'PLAYER' : 'CPU'} x=${f.x.toFixed(1)} ${f.action}/${f.posture} ${f.attack ? `${f.attack.key} ${f.attack.age}F ${attackPhase(f, this.combat.definitions[i])}` : ''}`
-      + (f.combo ? ` [연계 단계 ${f.combo.step + 1} · 명중 ${f.combo.confirmed ? '확인' : '대기'} · 다음 입력 ${f.combo.queued ? '예약' : '없음'}]` : '')).join(' · ');
+      + (f.combo ? ` [연계 단계 ${f.combo.step + 1} · 명중 ${f.combo.confirmed ? '확인' : '대기'} · 다음 입력 ${f.combo.queued ? '예약' : '없음'}]` : '')
+      + (f.hands.pending ? ` [손 ${f.hands.pending.slot} 조합 대기]` : '')
+      + (grabPoseState(f) ? ` [잡기 ${grabPoseState(f)!.kind}/${grabPoseState(f)!.role} ${grabPoseState(f)!.age}F · 대상 ${grabPoseState(f)!.targetPosture}]` : '')).join(' · ');
   }
   update(_time: number, delta: number) {
     if (!this.ready || this.paused) return;
     this.clock.advance(delta, () => {
       if (this.combat.ended) { this.koFrame = Math.min(18, this.koFrame + 1); return; }
       this.combat = stepCombat(this.combat, [input.sample(), this.targetInput()]);
-      if (this.combat.events.length) lastHit.textContent = this.combat.events.map(e =>
-        `${e.attacker === 0 ? 'PLAYER' : 'CPU'} ${e.key} → ${e.blocked ? '방어 · 피해 0' : `피해 ${e.damage}`}`).join(' / ');
-      if (this.combat.ended) { input.reset(); status.value = 'K O!! · 검수 초기화로 다시 시작'; }
+      const events = [
+        ...this.combat.events.map(e => `${names[e.attacker]} ${e.key} → ${e.blocked ? '방어 · 피해 0' : `피해 ${e.damage}`}`),
+        ...this.combat.grabEvents.map(e => `${names[e.attacker]} → ${names[e.target]} ${e.kind === 'hold' ? '잡기 성공' : e.kind === 'impact' ? '잡기 충격' : '잡기 해제'} · 피해 ${e.damage}`),
+      ];
+      if (events.length) lastHit.textContent = events.join(' / ');
+      if (this.combat.ended) {
+        input.reset(); this.targetGrabQueued = false; this.targetTechUsed = false;
+        status.value = 'K O!! · 검수 초기화로 다시 시작';
+      }
     });
     this.renderCombat();
   }

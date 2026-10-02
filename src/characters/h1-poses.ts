@@ -1,4 +1,4 @@
-import { attackPhase, type CombatFighter } from '../combat/combat.ts';
+import { attackPhase, grabPoseState, type CombatFighter } from '../combat/combat.ts';
 import type { CharacterDefinition } from '../combat/definition.ts';
 import { movementPose } from '../combat/movement.ts';
 
@@ -47,6 +47,10 @@ H1_ATTACK_FRAMES['stand-hk'] = {
 
 for (const pose of ['stand-lk-startup','stand-lk-recovery','stand-hk-recovery']) H1_POSES[pose] = `attack-motion-v1/${pose}.png`;
 
+/** Grab artwork is separate from normal attacks and from KO artwork. */
+export const H1_GRAB_POSES = ["grab-ready","grab-reach","grab-retract","grab-settle","grab-stand-hold","grab-stand-brace","grab-stand-push","grab-crouch-hold","grab-crouch-brace","grab-crouch-push","grabbed-stand-hold","grabbed-stand-impact","grabbed-stand-recover","grabbed-crouch-hold","grabbed-crouch-impact","grabbed-crouch-recover","grab-release","grabbed-stand-escape","grabbed-crouch-escape"] as const;
+for (const pose of H1_GRAB_POSES) H1_POSES[pose] = `grab-v1/${pose}.png`;
+
 /** Retained only for the visual before/after review; combat always uses H1_POSES. */
 export const H1_PREVIOUS_HEAVY_POSES: Record<string, string> = {};
 for (const attack of ['stand-hp','stand-hk','crouch-hp','crouch-hk']) {
@@ -58,6 +62,17 @@ for (const attack of ['stand-hp','stand-hk','crouch-hp','crouch-hk']) {
 
 export function combatPose(f: CombatFighter, definition: CharacterDefinition, koFrame = 0): string {
   if (f.action === 'ko') return `ko-${Math.min(2, Math.floor(Math.max(0, koFrame) / 6))}`;
+  const grab = grabPoseState(f);
+  if (grab) {
+    const { kind, role, age, targetPosture } = grab;
+    if (kind === 'attempt') return age < 3 ? 'grab-ready' : age < 8 ? 'grab-reach' : age < 20 ? 'grab-retract' : 'grab-settle';
+    if (kind === 'escape') return role === 'target'
+      ? `grabbed-${targetPosture}-${age < 4 ? 'escape' : 'recover'}`
+      : age < 4 ? 'grab-release' : age < 8 ? 'grab-retract' : 'grab-settle';
+    if (role === 'target') return `grabbed-${targetPosture}-${age < 18 ? 'hold' : age < 24 ? 'impact' : 'recover'}`;
+    return age < 18 ? `grab-${targetPosture}-${age < 13 ? 'hold' : 'brace'}`
+      : age === 18 ? `grab-${targetPosture}-push` : age < 28 ? 'grab-retract' : 'grab-settle';
+  }
   if (f.action === 'attack' && f.attack) {
     const phase = attackPhase(f, definition);
     if (!phase) throw new Error('Attack pose requested outside its lifetime');

@@ -21,6 +21,7 @@ export function transitionH1Ai(ai: H1AiState, previous: MatchState, next: MatchS
   if ((next.combat !== previous.combat && next.combat.frame === 0)
     || (previous.phase === 'ready' && next.phase === 'playing')) return createH1Ai();
   if (previous.paused !== next.paused || previous.phase !== next.phase) return clearH1AiInput(ai);
+  if (next.combat.fighters[1].action === 'grab') return clearH1AiInput(ai);
   return ai;
 }
 
@@ -28,7 +29,7 @@ export function stepH1AiMatch(match: MatchState, ai: H1AiState, player: CombatIn
   if (match.phase !== 'playing' || match.paused) {
     return { match: stepMatch(match, [COMBAT_NEUTRAL, COMBAT_NEUTRAL]), ai };
   }
-  const choice = stepH1Ai(ai, () => observeH1Ai(match.combat, 1));
+  const choice = stepH1Ai(ai, () => observeH1Ai(match.combat, 1), match.combat.fighters[1].action === 'grab');
   const next = stepMatch(match, [player, choice.input]);
   return { match: next, ai: transitionH1Ai(choice.ai, match, next) };
 }

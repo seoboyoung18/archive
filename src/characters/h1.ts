@@ -4,6 +4,11 @@ import { H1_MOVEMENT } from '../combat/movement.ts';
 /** Approved H1 combat v0.3; coordinates are relative to the fighter's foot root. */
 export const H1: CharacterDefinition = {
   id: 'h1', maxHp: 100, movement: H1_MOVEMENT,
+  grab: {
+    inputWindow: 3, startup: 6, active: 2, recovery: 24, range: 96, damage: 18, push: 48,
+    techWindow: 12, impact: 18, targetRecovery: 30, attackerRecovery: 36,
+    escapeRecovery: 12, escapePush: 16,
+  },
   combo: {
     start: 'stand-lp',
     links: [

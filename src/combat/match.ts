@@ -1,4 +1,4 @@
-import { createCombat, stepCombat, clearComboInputs, clearCombos, type CombatInput, type CombatState } from './combat.ts';
+import { createCombat, stepCombat, clearComboInputs, clearCombos, clearGrabs, type CombatInput, type CombatState } from './combat.ts';
 import type { CharacterDefinition } from './definition.ts';
 
 export const ROUND_FRAMES = 60 * 60;
@@ -61,6 +61,6 @@ export function stepMatch(s: MatchState, inputs: readonly [CombatInput, CombatIn
   if (!result) return { ...s, combat, remainingFrames };
   const wins: [number, number] = [...s.wins];
   if (result.winner !== null) wins[result.winner]++;
-  return { ...s, combat: clearCombos(combat), remainingFrames, wins, result, resultAge: 0,
+  return { ...s, combat: clearGrabs(clearCombos(combat)), remainingFrames, wins, result, resultAge: 0,
     phase: wins.some(n => n === 2) ? 'match-result' : 'round-result' };
 }

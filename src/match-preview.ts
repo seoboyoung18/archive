@@ -9,6 +9,7 @@ import { STAGE } from './combat/movement.ts';
 import { MatchInputBuffer } from './input/match-input.ts';
 import { combatPose } from './characters/h1-poses.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
+import { grabPoseState } from './combat/combat.ts';
 
 const get = <T extends HTMLElement>(id: string) => document.querySelector<T>(`#${id}`)!;
 const surface = get('game'), status = get('status'), error = get('error');
@@ -56,7 +57,7 @@ class MatchScene extends Phaser.Scene {
     this.add.text(48, 40, 'DIMENSION FIGHT / FIRST TO TWO', { fontFamily: 'sans-serif', fontSize: '20px', color: '#a3b3c6' });
     for (let i = 0; i < 2; i++) {
       this.sprites.push(this.add.image(0, 0, 'idle-0').setOrigin(0.5, 0.875).setScale(0.625));
-      this.labels.push(this.add.text(0, 0, i === 0 ? 'PLAYER' : 'CPU / AI', { fontFamily: 'monospace', fontSize: '16px', color: i === 0 ? '#79e3cb' : '#ffc78d' }).setOrigin(0.5, 1));
+      this.labels.push(this.add.text(0, 0, i === 0 ? 'PLAYER' : 'CPU / AI', { fontFamily: 'monospace', fontSize: '16px', color: i === 0 ? '#79e3cb' : '#ffc78d' }).setOrigin(0.5, 1).setDepth(10));
     }
     this.koBanner = this.add.image(640, 270, 'ko-banner').setDepth(20).setVisible(false);
     this.koBanner.setScale(640 / this.koBanner.width);
@@ -108,7 +109,9 @@ class MatchScene extends Phaser.Scene {
     const s = this.match, ended = s.result !== null, available = resultReady(s);
     this.match.combat.fighters.forEach((f, i) => {
       const def = s.combat.definitions[i], y = f.action === 'ko' ? STAGE.floor : f.y;
-      this.sprites[i]!.setTexture(combatPose(f, def, s.resultAge)).setPosition(f.x, y).setFlipX(f.facing === -1);
+      const grab = grabPoseState(f);
+      const depth = grab?.kind === 'success' && grab.role === 'attacker' && grab.age < 18 ? 3 : i;
+      this.sprites[i]!.setTexture(combatPose(f, def, s.resultAge)).setPosition(f.x, y).setFlipX(f.facing === -1).setDepth(depth);
       this.labels[i]!.setPosition(f.x, y - (f.action === 'ko' ? 125 : f.posture === 'crouch' ? 162 : 255));
       health[i]!.value = f.hp; text(hp[i]!, `${f.hp} / ${def.maxHp}`);
     });
@@ -138,7 +141,9 @@ class MatchScene extends Phaser.Scene {
       : s.phase === 'playing' ? '경기 진행 중' : `${resultTitle.textContent} · ${available ? '진행 가능' : '쓰러짐 연출 중'}`);
     text(telemetry, `F ${s.combat.frame} · 남은 ${s.remainingFrames}F · 결과 연출 ${s.resultAge}F · ` + s.combat.fighters.map((f,i) =>
       `${names[i]} x=${f.x.toFixed(1)} ${f.action}/${f.posture} ${f.attack ? `${f.attack.key} ${f.attack.age}F` : ''}`
-      + (f.combo ? ` [연계 단계 ${f.combo.step + 1} · 명중 ${f.combo.confirmed ? '확인' : '대기'} · 다음 입력 ${f.combo.queued ? '예약' : '없음'}]` : '')).join(' · '));
+      + (f.combo ? ` [연계 단계 ${f.combo.step + 1} · 명중 ${f.combo.confirmed ? '확인' : '대기'} · 다음 입력 ${f.combo.queued ? '예약' : '없음'}]` : '')
+      + (f.hands.pending ? ` [손 ${f.hands.pending.slot} 조합 대기]` : '')
+      + (grabPoseState(f) ? ` [잡기 ${grabPoseState(f)!.kind}/${grabPoseState(f)!.role} ${grabPoseState(f)!.age}F · 대상 ${grabPoseState(f)!.targetPosture}]` : '')).join(' · '));
   }
   update(_time: number, delta: number) {
     if (!this.ready || this.match.paused || this.match.phase === 'ready') return;
@@ -146,8 +151,13 @@ class MatchScene extends Phaser.Scene {
       const previous = this.match;
       const next = stepH1AiMatch(previous, this.ai, input.sample());
       this.match = next.match; this.ai = next.ai;
-      if (this.match.combat.frame !== previous.combat.frame && this.match.combat.events.length) text(lastHit,
-        this.match.combat.events.map(e => `${names[e.attacker]} ${e.key} → 피해 ${e.damage}`).join(' / '));
+      if (this.match.combat.frame !== previous.combat.frame) {
+        const events = [
+          ...this.match.combat.events.map(e => `${names[e.attacker]} ${e.key} → ${e.blocked ? '방어 · ' : ''}피해 ${e.damage}`),
+          ...this.match.combat.grabEvents.map(e => `${names[e.attacker]} → ${names[e.target]} ${e.kind === 'hold' ? '잡기 성공' : e.kind === 'impact' ? '잡기 충격' : '잡기 해제'} · 피해 ${e.damage}`),
+        ];
+        if (events.length) text(lastHit, events.join(' / '));
+      }
       if (this.match.phase !== previous.phase) { input.reset(); this.clock.reset(); }
     });
     this.renderMatch();

@@ -30,7 +30,7 @@ function decide(s: H1AiState, view: H1AiObservation): { cursor: number; input: C
   const toward: Direction = other.x > self.x ? 1 : -1, away: Direction = toward === 1 ? -1 : 1;
   const d = Math.abs(other.x - self.x), crouch = self.grounded && self.posture === 'crouch';
   const keep = (input: CombatInput) => ({ cursor: s.cursor, input });
-  if (!self.grounded || ['ko', 'attack', 'hit'].includes(self.action)) return keep(command(0, crouch));
+  if (!self.grounded || ['ko', 'attack', 'hit', 'grab'].includes(self.action)) return keep(command(0, crouch));
   if (other.attack && (other.attack.phase === 'startup' || other.attack.phase === 'active')) {
     const attack = otherDef.attacks[other.attack.key];
     if (overlaps(worldRect(attack.box, other), worldRect(def.hurt[self.posture], self))) {
@@ -65,7 +65,9 @@ function decide(s: H1AiState, view: H1AiObservation): { cursor: number; input: C
 }
 
 /** Observation is lazy: only decision ticks can read the visible combat snapshot. */
-export function stepH1Ai(s: H1AiState, observe: () => H1AiObservation): { ai: H1AiState; input: CombatInput } {
+export function stepH1Ai(s: H1AiState, observe: () => H1AiObservation, locked = false): { ai: H1AiState; input: CombatInput } {
+  // Grab locks silence even previously held movement; the existing decision clock keeps running.
+  if (locked) return { ai: { ...s, axis: 0, crouch: false, untilDecision: s.untilDecision > 0 ? s.untilDecision - 1 : 11 }, input: command(0) };
   if (s.untilDecision > 0) return { ai: { ...s, untilDecision: s.untilDecision - 1 }, input: command(s.axis, s.crouch) };
   const { cursor, input } = decide(s, observe());
   return { ai: { cursor, untilDecision: 11, axis: input.axis, crouch: input.crouch }, input };

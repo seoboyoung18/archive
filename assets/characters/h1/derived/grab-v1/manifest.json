@@ -1,0 +1,644 @@
+﻿{
+    "canvas":  [
+                   512,
+                   512
+               ],
+    "displayScale":  0.625,
+    "referenceSha256":  "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+    "method":  "Shared scale from idle alpha height (384px); source canvas midpoint X; sole bottom Y except jumping uses idle virtual ground. No repainting.",
+    "frames":  [
+                   {
+                       "source":  "generated/grab-v1/grab-ready.png",
+                       "outputBounds":  {
+                                            "left":  105,
+                                            "right":  412,
+                                            "bottom":  447,
+                                            "top":  64
+                                        },
+                       "id":  "grab-ready",
+                       "sourceBounds":  {
+                                            "left":  189,
+                                            "right":  1084,
+                                            "bottom":  1193,
+                                            "top":  76
+                                        },
+                       "outputSha256":  "2982979b0459acbe89b538695f0b9f0c041b5c5c0662d312a6e34c078587891f",
+                       "output":  "derived/grab-v1/grab-ready.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1194
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      38.628571428571433
+                                  ],
+                       "sourceSha256":  "c9f26e2f17d882ee63ea4682f74ffac8ee412ec89eef5b619dd08eff90cc5b25",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grab-reach.png",
+                       "outputBounds":  {
+                                            "left":  94,
+                                            "right":  453,
+                                            "bottom":  447,
+                                            "top":  65
+                                        },
+                       "id":  "grab-reach",
+                       "sourceBounds":  {
+                                            "left":  156,
+                                            "right":  1201,
+                                            "bottom":  1196,
+                                            "top":  81
+                                        },
+                       "outputSha256":  "29f174dca7e5ac3ed09dcaec5853635f7c60dbb369f0e944c9cb57c3cc39131d",
+                       "output":  "derived/grab-v1/grab-reach.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1197
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      37.600000000000023
+                                  ],
+                       "sourceSha256":  "03f4245a6447a77928c0cb07fcebb1c4f89bb7a9f7a21c07202562486dc6d594",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grab-retract.png",
+                       "outputBounds":  {
+                                            "left":  106,
+                                            "right":  412,
+                                            "bottom":  447,
+                                            "top":  65
+                                        },
+                       "id":  "grab-retract",
+                       "sourceBounds":  {
+                                            "left":  190,
+                                            "right":  1083,
+                                            "bottom":  1192,
+                                            "top":  76
+                                        },
+                       "outputSha256":  "4c267d38aa7b331dc08bd5e4c418c6d8cd3d86d62f2aae5c19aff18cb7ce24f9",
+                       "output":  "derived/grab-v1/grab-retract.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1193
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      38.971428571428589
+                                  ],
+                       "sourceSha256":  "af9849303a54d61228e634c26b01e73749964f89487787d27b6340481febdf80",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grab-settle.png",
+                       "outputBounds":  {
+                                            "left":  105,
+                                            "right":  412,
+                                            "bottom":  447,
+                                            "top":  64
+                                        },
+                       "id":  "grab-settle",
+                       "sourceBounds":  {
+                                            "left":  189,
+                                            "right":  1084,
+                                            "bottom":  1193,
+                                            "top":  75
+                                        },
+                       "outputSha256":  "53e56d07af643f26928fa298790b164b9c3ccf7fd9959cc72cf85ceb6531e265",
+                       "output":  "derived/grab-v1/grab-settle.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1194
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      38.628571428571433
+                                  ],
+                       "sourceSha256":  "66e1fb3cfdf0054d7c761790e413ef8f6c93c93cea4f883c219ab92495921766",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grab-stand-hold.png",
+                       "outputBounds":  {
+                                            "left":  105,
+                                            "right":  421,
+                                            "bottom":  447,
+                                            "top":  65
+                                        },
+                       "id":  "grab-stand-hold",
+                       "sourceBounds":  {
+                                            "left":  187,
+                                            "right":  1110,
+                                            "bottom":  1193,
+                                            "top":  79
+                                        },
+                       "outputSha256":  "5829c1ec693757da24a8e342444da172c7a3539c2b22ec1ef23f963700311721",
+                       "output":  "derived/grab-v1/grab-stand-hold.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1194
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      38.628571428571433
+                                  ],
+                       "sourceSha256":  "883ff91bbe9b4a42238f07b70243ca231a8ab7742710d13e1f5876ae9a3c463e",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grab-stand-brace.png",
+                       "outputBounds":  {
+                                            "left":  105,
+                                            "right":  418,
+                                            "bottom":  447,
+                                            "top":  65
+                                        },
+                       "id":  "grab-stand-brace",
+                       "sourceBounds":  {
+                                            "left":  188,
+                                            "right":  1100,
+                                            "bottom":  1195,
+                                            "top":  81
+                                        },
+                       "outputSha256":  "cf4b158aeff6e2f49ad48e76dc512050e6ca2856511620b87750017c87b17e32",
+                       "output":  "derived/grab-v1/grab-stand-brace.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1196
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      37.942857142857122
+                                  ],
+                       "sourceSha256":  "df9c8838ced37003bb295936f199623670f161707ef02b43b5eea6b18eb498cd",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grab-stand-push.png",
+                       "outputBounds":  {
+                                            "left":  93,
+                                            "right":  463,
+                                            "bottom":  447,
+                                            "top":  65
+                                        },
+                       "id":  "grab-stand-push",
+                       "sourceBounds":  {
+                                            "left":  153,
+                                            "right":  1232,
+                                            "bottom":  1198,
+                                            "top":  83
+                                        },
+                       "outputSha256":  "2fbf4802617ea40c7cec4cd2433fd152462c0c9fd25fc439505d20d6e65dc732",
+                       "output":  "derived/grab-v1/grab-stand-push.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1199
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      36.914285714285711
+                                  ],
+                       "sourceSha256":  "68c01f279c3f4d91b6470dbe98a9d1fd9d3a1781727faa3ea19c1fe6b5f9002b",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grab-crouch-hold.png",
+                       "outputBounds":  {
+                                            "left":  99,
+                                            "right":  462,
+                                            "bottom":  447,
+                                            "top":  93
+                                        },
+                       "id":  "grab-crouch-hold",
+                       "sourceBounds":  {
+                                            "left":  171,
+                                            "right":  1230,
+                                            "bottom":  1169,
+                                            "top":  136
+                                        },
+                       "outputSha256":  "ca81bb5065f2e7acc9b1133b529dc3df30a7de43ed76d20e71c7ba86421d3874",
+                       "output":  "derived/grab-v1/grab-crouch-hold.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1170
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      46.857142857142833
+                                  ],
+                       "sourceSha256":  "52cbba0f5045d9edc7d1279c7178aa40a16139ea7b0e7ad8a07ee607666bab93",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grab-crouch-brace.png",
+                       "outputBounds":  {
+                                            "left":  98,
+                                            "right":  416,
+                                            "bottom":  447,
+                                            "top":  93
+                                        },
+                       "id":  "grab-crouch-brace",
+                       "sourceBounds":  {
+                                            "left":  168,
+                                            "right":  1095,
+                                            "bottom":  1170,
+                                            "top":  135
+                                        },
+                       "outputSha256":  "0e0bbda2f938ea14d15dd0fbe648b9fb4bcb64d445fa34b8e7327d94caf4c222",
+                       "output":  "derived/grab-v1/grab-crouch-brace.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1171
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      46.514285714285734
+                                  ],
+                       "sourceSha256":  "21732b59437a908d187831b5b57b9625980ef7504bd6abf929161283d2bbf474",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grab-crouch-push.png",
+                       "outputBounds":  {
+                                            "left":  99,
+                                            "right":  464,
+                                            "bottom":  447,
+                                            "top":  93
+                                        },
+                       "id":  "grab-crouch-push",
+                       "sourceBounds":  {
+                                            "left":  170,
+                                            "right":  1234,
+                                            "bottom":  1170,
+                                            "top":  135
+                                        },
+                       "outputSha256":  "ce9ae5f4385a0f72b139966c7a23489cf3527e4d719cb33c0160faff1eabe6a6",
+                       "output":  "derived/grab-v1/grab-crouch-push.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1171
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      46.514285714285734
+                                  ],
+                       "sourceSha256":  "1d7f3d13a4dab3464a669d541647312449c3ce3be589f26c5ab523abeada47e2",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grabbed-stand-hold.png",
+                       "outputBounds":  {
+                                            "left":  104,
+                                            "right":  415,
+                                            "bottom":  447,
+                                            "top":  63
+                                        },
+                       "id":  "grabbed-stand-hold",
+                       "sourceBounds":  {
+                                            "left":  185,
+                                            "right":  1092,
+                                            "bottom":  1195,
+                                            "top":  74
+                                        },
+                       "outputSha256":  "a96aa0f61ccc2f6679d49349792caf2fac0f0fcc4e419cae7aff127fbac86193",
+                       "output":  "derived/grab-v1/grabbed-stand-hold.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1196
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      37.942857142857122
+                                  ],
+                       "sourceSha256":  "f02e34bbd2d1d88ae38c3f8627edb02afa2fc4e0d08a810dfcc823224cf436f1",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grabbed-stand-impact.png",
+                       "outputBounds":  {
+                                            "left":  104,
+                                            "right":  420,
+                                            "bottom":  447,
+                                            "top":  69
+                                        },
+                       "id":  "grabbed-stand-impact",
+                       "sourceBounds":  {
+                                            "left":  184,
+                                            "right":  1105,
+                                            "bottom":  1194,
+                                            "top":  92
+                                        },
+                       "outputSha256":  "ef34b84baf1f9064d76992fca35b1be1d53d12a8289ddb4a6dc7bc5b14f36006",
+                       "output":  "derived/grab-v1/grabbed-stand-impact.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1195
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      38.285714285714278
+                                  ],
+                       "sourceSha256":  "01ae62f15d088fca213062839d10d0f0e7e377fc833c03128fb09abb111c3224",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grabbed-stand-recover.png",
+                       "outputBounds":  {
+                                            "left":  104,
+                                            "right":  420,
+                                            "bottom":  447,
+                                            "top":  66
+                                        },
+                       "id":  "grabbed-stand-recover",
+                       "sourceBounds":  {
+                                            "left":  183,
+                                            "right":  1107,
+                                            "bottom":  1196,
+                                            "top":  83
+                                        },
+                       "outputSha256":  "c7524eeec4c4d35dbee63292a722cd542cf1d188e934ff0a46bfe967bfbe13a7",
+                       "output":  "derived/grab-v1/grabbed-stand-recover.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1197
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      37.600000000000023
+                                  ],
+                       "sourceSha256":  "407a8132c2d94e169e9cb9f40dc219d431444b47a0dfc92683ea085e6f5adc1a",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grabbed-crouch-hold.png",
+                       "outputBounds":  {
+                                            "left":  156,
+                                            "right":  369,
+                                            "bottom":  447,
+                                            "top":  209
+                                        },
+                       "id":  "grabbed-crouch-hold",
+                       "sourceBounds":  {
+                                            "left":  335,
+                                            "right":  958,
+                                            "bottom":  1187,
+                                            "top":  491
+                                        },
+                       "outputSha256":  "a49ccdc452d427ee82048daac00b1ae34a4cf531788468c47cd4a217ce35bdb3",
+                       "output":  "derived/grab-v1/grabbed-crouch-hold.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1188
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      40.685714285714255
+                                  ],
+                       "sourceSha256":  "66b9ee1137dc6e0bfa60f65d563d687762815f403c396c7f2d5a9cf872c83ce5",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grabbed-crouch-impact.png",
+                       "outputBounds":  {
+                                            "left":  156,
+                                            "right":  368,
+                                            "bottom":  447,
+                                            "top":  211
+                                        },
+                       "id":  "grabbed-crouch-impact",
+                       "sourceBounds":  {
+                                            "left":  335,
+                                            "right":  954,
+                                            "bottom":  1189,
+                                            "top":  499
+                                        },
+                       "outputSha256":  "1baad988def4426d237648d1f5b56dfb098a452e6b3fbc172bfe9caa4c1f7e9a",
+                       "output":  "derived/grab-v1/grabbed-crouch-impact.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1190
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      40
+                                  ],
+                       "sourceSha256":  "7dc648ce7a48dc8526b60039f9b039824f0eb4237caf83fdaf8baf71508e3992",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grabbed-crouch-recover.png",
+                       "outputBounds":  {
+                                            "left":  155,
+                                            "right":  368,
+                                            "bottom":  447,
+                                            "top":  209
+                                        },
+                       "id":  "grabbed-crouch-recover",
+                       "sourceBounds":  {
+                                            "left":  334,
+                                            "right":  958,
+                                            "bottom":  1189,
+                                            "top":  491
+                                        },
+                       "outputSha256":  "b2563231b5798b02fd0d966adb186529cb121b7cd39f1901295dd9ecda967da8",
+                       "output":  "derived/grab-v1/grabbed-crouch-recover.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1190
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      40
+                                  ],
+                       "sourceSha256":  "e7d98fdbd62b663c352b35975e1f415e0932e179b801cbed8ba9db6f1259fbd9",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grab-release.png",
+                       "outputBounds":  {
+                                            "left":  105,
+                                            "right":  414,
+                                            "bottom":  447,
+                                            "top":  64
+                                        },
+                       "id":  "grab-release",
+                       "sourceBounds":  {
+                                            "left":  189,
+                                            "right":  1090,
+                                            "bottom":  1193,
+                                            "top":  75
+                                        },
+                       "outputSha256":  "7d1e68f005bd7e534067ce9112bdde246e6f801628b39814804160aa37be7623",
+                       "output":  "derived/grab-v1/grab-release.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1194
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      38.628571428571433
+                                  ],
+                       "sourceSha256":  "61ab6f1645418225bccdeb9d5f442d8f6083893419d7c33ddfd55a65c3605e0c",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grabbed-stand-escape.png",
+                       "outputBounds":  {
+                                            "left":  104,
+                                            "right":  415,
+                                            "bottom":  447,
+                                            "top":  63
+                                        },
+                       "id":  "grabbed-stand-escape",
+                       "sourceBounds":  {
+                                            "left":  184,
+                                            "right":  1093,
+                                            "bottom":  1195,
+                                            "top":  74
+                                        },
+                       "outputSha256":  "80f90e95269e78b80a6209347121d0b92f46e7b0281149ad3c5cf96763b02d84",
+                       "output":  "derived/grab-v1/grabbed-stand-escape.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1196
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      37.942857142857122
+                                  ],
+                       "sourceSha256":  "448faf4ec87eff00aab3b7bfcf637294d13c004b1802776b49c3235965307190",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/grab-v1/grabbed-crouch-escape.png",
+                       "outputBounds":  {
+                                            "left":  155,
+                                            "right":  381,
+                                            "bottom":  447,
+                                            "top":  208
+                                        },
+                       "id":  "grabbed-crouch-escape",
+                       "sourceBounds":  {
+                                            "left":  334,
+                                            "right":  992,
+                                            "bottom":  1188,
+                                            "top":  491
+                                        },
+                       "outputSha256":  "93b8c962586ba45989dd6333f57432b27a12502caf21170e7538f81ca7d101b2",
+                       "output":  "derived/grab-v1/grabbed-crouch-escape.png",
+                       "scale":  0.34285714285714286,
+                       "sourceRoot":  [
+                                          627,
+                                          1189
+                                      ],
+                       "offset":  [
+                                      41.028571428571439,
+                                      40.342857142857156
+                                  ],
+                       "sourceSha256":  "8074e3bf3d6cd51b017949f738c852e08600f796733f60f0f722196f8460c41f",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   }
+               ],
+    "status":  "draft",
+    "root":  [
+                 256,
+                 448
+             ],
+    "alphaThreshold":  8
+}

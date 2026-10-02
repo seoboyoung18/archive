@@ -16,11 +16,17 @@ export interface ComboLink {
   cancelStart: number; cancelEnd: number;
 }
 export interface ComboDefinition { start: AttackKey; links: readonly ComboLink[] }
+export interface GrabDefinition {
+  inputWindow: number; startup: number; active: number; recovery: number;
+  range: number; damage: number; push: number; techWindow: number; impact: number;
+  targetRecovery: number; attackerRecovery: number; escapeRecovery: number; escapePush: number;
+}
 export interface CharacterDefinition {
   id: string; maxHp: number; movement: MovementRules;
   hurt: Record<Posture, Rect>;
   attacks: Record<AttackKey, AttackDefinition>;
   combo?: ComboDefinition;
+  grab?: GrabDefinition;
 }
 export const ATTACK_SLOTS: readonly AttackSlot[] = ['lp', 'hp', 'lk', 'hk'];
 export const ATTACK_PRIORITY: readonly AttackSlot[] = ['hk', 'hp', 'lk', 'lp'];
@@ -55,6 +61,15 @@ export function validateCharacter(def: CharacterDefinition): void {
         || link.cancelStart > link.cancelEnd || link.cancelStart < attack.startup + attack.active
         || link.cancelEnd >= attack.startup + attack.active + attack.recovery) throw new Error('Invalid combo link');
       used.add(link.next); key = link.next;
+    }
+  }
+  if (def.grab) {
+    const g = def.grab;
+    if (![g.inputWindow, g.startup, g.active, g.recovery, g.techWindow, g.impact,
+      g.targetRecovery, g.attackerRecovery, g.escapeRecovery].every(n => Number.isInteger(n) && n > 0)
+      || ![g.range, g.damage].every(positive) || ![g.push, g.escapePush].every(n => Number.isFinite(n) && n >= 0)
+      || g.impact <= g.techWindow || g.targetRecovery <= g.impact || g.attackerRecovery < g.targetRecovery) {
+      throw new Error('Invalid grab definition');
     }
   }
 }

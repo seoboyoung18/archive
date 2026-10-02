@@ -210,7 +210,8 @@ test('C01/C05: held keys and OS repeat create neither a delayed follow-up nor an
   for (const validFollowup of [false, true]) {
     let s = close(); const buffer = new CombatInputBuffer(), starts = [];
     for (let frame = 0; frame < 100; frame++) {
-      if (frame === 0) buffer.keyDown('KeyU');
+      // G makes held U→I within 3F a grab: use a short initial U tap to retain C's age0 fixture.
+      if (frame === 0) { buffer.keyDown('KeyU'); buffer.keyUp('KeyU'); }
       if (frame === (validFollowup ? 3 : 2)) buffer.keyDown('KeyI');
       if (frame === 14) buffer.keyDown('KeyJ');
       buffer.keyDown('KeyU', true); buffer.keyDown('KeyI', true); buffer.keyDown('KeyJ', true);
@@ -218,7 +219,7 @@ test('C01/C05: held keys and OS repeat create neither a delayed follow-up nor an
       if (s.fighters[0].attack?.age === 0) starts.push(s.fighters[0].attack.key);
     }
     assert.deepEqual(starts, validFollowup ? ['stand-lp', 'stand-hp', 'stand-lk'] : ['stand-lp']);
-    buffer.keyUp('KeyU'); buffer.keyDown('KeyU');
+    buffer.keyUp('KeyU'); buffer.keyDown('KeyU'); buffer.keyUp('KeyU');
     s = tick(s, buffer.sample()); assert.equal(s.fighters[0].attack.key, 'stand-lp');
   }
 });

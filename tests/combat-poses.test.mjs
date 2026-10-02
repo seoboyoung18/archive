@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
 import { H1 } from '../src/characters/h1.ts';
 import { H1_POSES, H1_PREVIOUS_HEAVY_POSES, combatPose } from '../src/characters/h1-poses.ts';
-import { createCombat, stepCombat, attackPhase, COMBAT_NEUTRAL as N } from '../src/combat/combat.ts';
+import { createCombat, stepCombat, clearGrabs, attackPhase, COMBAT_NEUTRAL as N } from '../src/combat/combat.ts';
 
-test('All 75 distinct pose keys resolve to 75 existing sprite files without fallback', () => {
-  assert.equal(Object.keys(H1_POSES).length,75);
-  assert.equal(new Set(Object.values(H1_POSES)).size,75);
+test('All 94 distinct pose keys resolve to 94 existing sprite files without fallback', () => {
+  assert.equal(Object.keys(H1_POSES).length,94);
+  assert.equal(new Set(Object.values(H1_POSES)).size,94);
   for(const path of Object.values(H1_POSES)) assert.ok(existsSync(new URL(`../assets/characters/h1/derived/${path}`,import.meta.url)),path);
   assert.equal(Object.keys(H1_PREVIOUS_HEAVY_POSES).length,26);
   for(const [pose,path] of Object.entries(H1_POSES)) {
@@ -112,4 +112,126 @@ test('KO takes precedence: 0..5 / 6..11 / 12..17 then final pose holds; winner p
 test('Missing attack phase cannot silently render an idle placeholder', () => {
   const f=createCombat().fighters[0];
   assert.throws(()=>combatPose({...f,action:'attack',attack:{key:'stand-lp',age:24,serial:1,hitTargets:[]}},H1),/outside/);
+});
+
+const grabCommand = { ...N, attacks: ['lp', 'hp'], handEvents: [
+  { slot: 'lp', down: true }, { slot: 'hp', down: true },
+  { slot: 'hp', down: false }, { slot: 'lp', down: false },
+] };
+function grabPoseTick(s, side = 0, own = N, other = N) {
+  return stepCombat(s, side === 0 ? [own, other] : [other, own]);
+}
+function grabbedScene(posture = 'stand', side = 0, reversed = false, targetHp = 100) {
+  let s = createCombat();
+  s.fighters[0].x = reversed ? 584 : 500; s.fighters[1].x = reversed ? 500 : 584;
+  s.fighters[1 - side].hp = targetHp;
+  const targetInput = { ...N, crouch: posture === 'crouch' };
+  s = grabPoseTick(s, side, grabCommand, targetInput);
+  for (let age = 0; age <= 5; age++) {
+    assert.equal(combatPose(s.fighters[side], H1), age < 3 ? 'grab-ready' : 'grab-reach');
+    s = grabPoseTick(s, side, N, targetInput);
+  }
+  assert.equal(s.grabPair?.age, 0);
+  return s;
+}
+
+test('Grab artwork follows real hold, impact and living recovery with independent release boundaries', () => {
+  // Boundary expectations come from the approved grab storyboard, not injected pose states.
+  for (const posture of ['stand', 'crouch']) for (const side of [0, 1]) for (const reversed of [false, true]) {
+    let s = grabbedScene(posture, side, reversed);
+    const target = 1 - side, initial = s.fighters.map(f => f.x), direction = s.fighters[side].facing;
+    for (let age = 0; age <= 36; age++) {
+      const attackerPose = combatPose(s.fighters[side], H1), targetPose = combatPose(s.fighters[target], H1);
+      assert.equal(s.fighters[target].hp, age < 18 ? 100 : 82);
+      assert.equal(s.fighters[target].x, initial[target] + (age < 18 ? 0 : direction * 48));
+      assert.equal(s.fighters[side].x, initial[side]);
+      if (age < 13) assert.equal(attackerPose, `grab-${posture}-hold`);
+      else if (age < 18) assert.equal(attackerPose, `grab-${posture}-brace`);
+      else if (age === 18) assert.equal(attackerPose, `grab-${posture}-push`);
+      else if (age < 28) assert.equal(attackerPose, 'grab-retract');
+      else if (age < 36) assert.equal(attackerPose, 'grab-settle');
+      else assert.match(attackerPose, /^idle-/);
+      if (age < 18) assert.equal(targetPose, `grabbed-${posture}-hold`);
+      else if (age < 24) assert.equal(targetPose, `grabbed-${posture}-impact`);
+      else if (age < 30) assert.equal(targetPose, `grabbed-${posture}-recover`);
+      else if (posture === 'crouch') assert.equal(targetPose, 'crouch');
+      else assert.match(targetPose, /^idle-/);
+      assert.equal(s.fighters[target].action, age < 30 ? 'grab' : 'free');
+      assert.equal(s.fighters[side].action, age < 36 ? 'grab' : 'free');
+      assert.ok(!targetPose.startsWith('ko-'), 'a living target never uses a KO fallback');
+      s = grabPoseTick(s, side, N, { ...N, crouch: posture === 'crouch' });
+    }
+  }
+});
+
+test('A real escape separates hands immediately, shows role-specific recovery and exits at T+12', () => {
+  for (const posture of ['stand', 'crouch']) for (const side of [0, 1]) {
+    let s = grabbedScene(posture, side);
+    const target = 1 - side, initial = s.fighters.map(f => f.x);
+    s = grabPoseTick(s, side, N, grabCommand);
+    assert.deepEqual(s.grabEvents.map(e => e.kind), ['escape']);
+    assert.deepEqual(s.fighters.map(f => f.x), [initial[0] - 16, initial[1] + 16]);
+    for (let age = 0; age <= 12; age++) {
+      const attackerPose = combatPose(s.fighters[side], H1), targetPose = combatPose(s.fighters[target], H1);
+      assert.deepEqual(s.fighters.map(f => f.hp), [100, 100]);
+      if (age < 4) {
+        assert.equal(attackerPose, 'grab-release');
+        assert.equal(targetPose, `grabbed-${posture}-escape`);
+      } else if (age < 12) {
+        assert.equal(attackerPose, age < 8 ? 'grab-retract' : 'grab-settle');
+        assert.equal(targetPose, `grabbed-${posture}-recover`);
+      } else {
+        assert.match(attackerPose, /^idle-/);
+        if (posture === 'crouch') assert.equal(targetPose, 'crouch');
+        else assert.match(targetPose, /^idle-/);
+      }
+      s = grabPoseTick(s, side, N, { ...N, crouch: posture === 'crouch' });
+    }
+  }
+});
+
+test('Clearing actual grab locks retains distinct final pose snapshots without mutating the live state', () => {
+  const scenes = [];
+  let attempt = grabPoseTick(createCombat(), 0, grabCommand);
+  for (let i = 0; i < 12; i++) attempt = grabPoseTick(attempt);
+  scenes.push(attempt);
+  for (const posture of ['stand', 'crouch']) {
+    let success = grabbedScene(posture);
+    for (let i = 0; i < 17; i++) success = grabPoseTick(success);
+    scenes.push(success, grabPoseTick(success));
+    scenes.push(grabPoseTick(grabbedScene(posture), 0, N, grabCommand));
+  }
+  for (const live of scenes) {
+    const before = structuredClone(live), expected = live.fighters.map(f => combatPose(f, H1));
+    const cleared = clearGrabs(live);
+    assert.deepEqual(live, before);
+    assert.equal(cleared.grabPair, null);
+    assert.ok(cleared.fighters.every(f => f.grab === null && f.action !== 'grab'));
+    for (let i = 0; i < 2; i++) {
+      if (live.fighters[i].grab) {
+        assert.deepEqual(cleared.fighters[i].grabSnapshot, live.fighters[i].grab);
+        assert.notEqual(cleared.fighters[i].grabSnapshot, live.fighters[i].grab);
+      }
+      assert.equal(combatPose(cleared.fighters[i], H1, 999), expected[i]);
+    }
+    assert.deepEqual(clearGrabs(cleared), cleared);
+  }
+});
+
+test('Actual grab impact KO prioritizes the KO sequence while the winner keeps its final push snapshot', () => {
+  for (const posture of ['stand', 'crouch']) for (const side of [0, 1]) {
+    let s = grabbedScene(posture, side, false, 9);
+    for (let i = 0; i < 18; i++) s = grabPoseTick(s);
+    const target = 1 - side;
+    assert.equal(s.ended, true);
+    assert.equal(s.fighters[target].hp, 0);
+    assert.equal(s.fighters[target].action, 'ko');
+    assert.ok(s.fighters[target].grabSnapshot, 'a retained grab visual cannot override KO');
+    assert.equal(s.grabPair, null);
+    for (const [age, expected] of [[0, 'ko-0'], [5, 'ko-0'], [6, 'ko-1'], [11, 'ko-1'], [12, 'ko-2'], [999, 'ko-2']]) {
+      assert.equal(combatPose(s.fighters[target], H1, age), expected);
+      assert.equal(combatPose(s.fighters[side], H1, age), `grab-${posture}-push`);
+    }
+    assert.deepEqual(grabPoseTick(s, side, grabCommand, grabCommand), s);
+  }
 });
