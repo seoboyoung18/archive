@@ -48,6 +48,8 @@ npm run preview
 
 승인된 [H1 AI 대전 v0.1](docs/specs/h1-ai-match.md)은12F마다 공개된 상태를 보고 닿는 기본기를 순환 선택합니다. 선 방어/후진에 하단을 우선하고 앉은 상대에게 선 강발을 쓰지 않습니다. 현재 아래+뒤를 유지하면 모든 공격을 막거나 피할 수 있는 한계는 남습니다. [AI 검수 결과](docs/reviews/h1-ai-match.md)에 자동 검사와 실제 플레이 확인 범위를 구분했습니다.
 
+추가 실제 키 검수에서 PLAYER의2:1 최종 승리를 확인했습니다. 사람의 지속 방어/난이도 체감은 계속 확인 중입니다. [콤보 → 잡기 → 효과음 v0.2 상세안](docs/specs/h1-combat-expansion.md)은 검토용이며 새 입력·수치·제작 방식의 구현 승인은 아직 대기 중입니다.
+
 Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은 `-Version movement-v1`, 전투는 `-Version combat-v1`, 중간 포즈는 `-Version motion-v1`, 교차 보행은 `-Version walk-v2`, 이전 시안은 `-Version v1`을 지정합니다. 모든 자세에 대기 기준 공통 배율을 적용하며 점프에는 가상 지면을 사용합니다. ImageGen 재생성이 아닌 정렬 작업이며 정확한 프롬프트는 각 버전의 `prompts.json`과 각 재생성 프롬프트 JSON에 있습니다. `npm test`는 총93개 테스트를 수행합니다. 이는 완성 스프라이트나 체감 난이도 승인을 뜻하지 않습니다.
 
 [시안 작업 명세](docs/specs/h1-asset-preview.md) · [시안 검수 기록](docs/reviews/h1-preview.md)
