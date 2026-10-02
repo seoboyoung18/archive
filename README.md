@@ -7,6 +7,7 @@
 - 대상 저장소: https://github.com/seoboyoung18/dimension-fight
 - 현재 단계: H1 시안75포즈를 전투 검수 화면에 연결했습니다. 걷기는12장·0.8초, 기본 공격8종은 각각6장(선 강발8장)입니다. 사용자 선택 A안의 빨강·금색 `K O!!`가 체력0 종료 때 표시됩니다. 공격·방어·피해·KO를 확인할 수 있으며 AI·경기는 다음 단계입니다. 전체 모션 품질은 계속 보완 중입니다.
 - 개발 방식: [SDD](docs/SDD.md)
+- Git 운영: [1인 개발 컨벤션](docs/git-convention.md) — `main`에서 작업하고 검증 후 커밋·push합니다.
 - [확정 기획](docs/game-concept.md) · [결정 기록](docs/decisions.md)
 - [캐릭터 기준](docs/design/characters.md) · [H1 전투 명세 v0.3](docs/specs/h1-combat-draft.md)
 - [작업 계획](docs/plan.md)
