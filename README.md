@@ -5,7 +5,7 @@
 여러 세계의 인간·비스트·로봇이 대결하는 2D 애니메이션풍 격투게임.
 
 - 대상 저장소: https://github.com/seoboyoung18/dimension-fight
-- 현재 단계: H1 시안75포즈를 전투 검수 화면에 연결했습니다. 걷기는12장·0.8초, 기본 공격8종은 각각6장(선 강발8장)입니다. 사용자 선택 A안의 빨강·금색 `K O!!`가 체력0 종료 때 표시됩니다. 공격·방어·피해·KO를 확인할 수 있으며 AI·경기는 다음 단계입니다. 전체 모션 품질은 계속 보완 중입니다.
+- 현재 단계: H1 시안75포즈를 전투 검수 화면에 연결했습니다. 걷기는12장·0.8초, 기본 공격8종은 각각6장(선 강발8장)입니다. 사용자 선택 A안의 빨강·금색 `K O!!`가 체력0 종료 때 표시됩니다. 공격·방어·피해·KO에 더해 별도 경기 화면에서60초·2선승·재경기·전체 재시작을 확인할 수 있습니다. 상대는 입력 없는 표적이며 AI는 다음 단계입니다. 전체 모션 품질은 계속 보완 중입니다.
 - 개발 방식: [SDD](docs/SDD.md)
 - Git 운영: [1인 개발 컨벤션](docs/git-convention.md) — `main`에서 작업하고 검증 후 커밋·push합니다.
 - [확정 기획](docs/game-concept.md) · [결정 기록](docs/decisions.md)
@@ -42,7 +42,11 @@ npm run preview
 
 `build`는 타입 검사와 정적 빌드를 수행합니다. `preview`는 빌드 결과를 로컬에서 확인합니다. 이미지 검사는 파일 해시·RGBA·512×512·투명 경계·기준점 정렬을 확인하며 외형 검수를 대신하지 않습니다.
 
-Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은 `-Version movement-v1`, 전투는 `-Version combat-v1`, 중간 포즈는 `-Version motion-v1`, 교차 보행은 `-Version walk-v2`, 이전 시안은 `-Version v1`을 지정합니다. 모든 자세에 대기 기준 공통 배율을 적용하며 점프에는 가상 지면을 사용합니다. ImageGen 재생성이 아닌 정렬 작업이며 정확한 프롬프트는 각 버전의 `prompts.json`과 각 재생성 프롬프트 JSON에 있습니다. `npm test`는 총64개 테스트를 수행합니다. 이는 완성 스프라이트·전체 경기·AI 검증을 뜻하지 않습니다.
+**경기 화면:** http://127.0.0.1:5173/match.html — 경기 시작/Enter 후60초·먼저2승으로 진행합니다. 시간 종료는 높은 체력 쪽 승리, 동일 체력/동시 KO는 같은 라운드를 재경기합니다. KO18F 뒤 Enter/버튼으로 다음 라운드·재경기를 시작하고 최종 결과에서는 R/버튼으로 승수까지 초기화합니다. Esc는 정지/재개입니다. 상대는 입력 없는 표적이며 AI는 연결 전입니다. 기존 `combat.html`의 개별 공격 검수와 초기화는 그대로 사용할 수 있습니다.
+
+[경기 진행 명세](docs/specs/h1-match-flow.md) · [자동/브라우저 검증 결과](docs/reviews/h1-match-flow.md)
+
+Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은 `-Version movement-v1`, 전투는 `-Version combat-v1`, 중간 포즈는 `-Version motion-v1`, 교차 보행은 `-Version walk-v2`, 이전 시안은 `-Version v1`을 지정합니다. 모든 자세에 대기 기준 공통 배율을 적용하며 점프에는 가상 지면을 사용합니다. ImageGen 재생성이 아닌 정렬 작업이며 정확한 프롬프트는 각 버전의 `prompts.json`과 각 재생성 프롬프트 JSON에 있습니다. `npm test`는 총78개 테스트를 수행합니다. 이는 완성 스프라이트·AI 대전의 검증을 뜻하지 않습니다.
 
 [시안 작업 명세](docs/specs/h1-asset-preview.md) · [시안 검수 기록](docs/reviews/h1-preview.md)
 

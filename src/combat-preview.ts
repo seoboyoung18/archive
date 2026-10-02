@@ -6,16 +6,8 @@ import { FixedStep } from './combat/fixed-step.ts';
 import { CombatInputBuffer } from './input/combat-input.ts';
 import { combatPose, H1_POSES } from './characters/h1-poses.ts';
 import { STAGE } from './combat/movement.ts';
+import { H1_ASSETS } from './characters/h1-assets.ts';
 
-const files = import.meta.glob<string>([
-  '../assets/characters/h1/derived/v2/*.png',
-  '../assets/characters/h1/derived/movement-v1/*.png',
-  '../assets/characters/h1/derived/combat-v1/*.png',
-  '../assets/characters/h1/derived/motion-v1/*.png',
-  '../assets/characters/h1/derived/walk-v2/*.png',
-  '../assets/characters/h1/derived/attack-motion-v1/*.png',
-  '../assets/characters/h1/derived/opposite-limbs-v1/*.png',
-], { eager: true, query: '?url', import: 'default' });
 const get = <T extends Element>(id: string) => document.querySelector<T>(`#${id}`)!;
 const surface = get<HTMLDivElement>('game'), start = get<HTMLButtonElement>('start');
 const pauseButton = get<HTMLButtonElement>('pause'), resetButton = get<HTMLButtonElement>('reset');
@@ -46,8 +38,7 @@ class CombatScene extends Phaser.Scene {
   preload() {
     this.load.on('loaderror', () => this.failLoad());
     this.load.image('ko-banner', koArt);
-    for (const [key, path] of Object.entries(H1_POSES)) {
-      const url = files[`../assets/characters/h1/derived/${path}`];
+    for (const { key, url } of H1_ASSETS) {
       if (!url) this.failLoad(); else this.load.image(key, url);
     }
   }
