@@ -29,7 +29,7 @@ export function attackPhase(f: CombatFighter, def: CharacterDefinition): 'startu
   if (age < a.startup + a.active) return 'active';
   return age < a.startup + a.active + a.recovery ? 'recovery' : null;
 }
-export function worldRect(box: Rect, f: Fighter): Rect {
+export function worldRect(box: Rect, f: Pick<Fighter, 'x' | 'y' | 'facing'>): Rect {
   return { left: f.x + (f.facing === 1 ? box.left : -box.right),
     right: f.x + (f.facing === 1 ? box.right : -box.left), top: f.y + box.top, bottom: f.y + box.bottom };
 }

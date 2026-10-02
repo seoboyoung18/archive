@@ -1,8 +1,9 @@
 import Phaser from 'phaser';
 import './style.css';
 import koArt from '../assets/ui/ko/options-v1/a-impact.png';
-import { COMBAT_NEUTRAL } from './combat/combat.ts';
-import { createMatch, startMatch, stepMatch, pauseMatch, nextRound, restartMatch, resultReady, secondsRemaining, type MatchState } from './combat/match.ts';
+import { createMatch, startMatch, pauseMatch, nextRound, restartMatch, resultReady, secondsRemaining, type MatchState } from './combat/match.ts';
+import { createH1Ai } from './combat/h1-ai.ts';
+import { stepH1AiMatch, transitionH1Ai } from './combat/h1-ai-match.ts';
 import { FixedStep } from './combat/fixed-step.ts';
 import { STAGE } from './combat/movement.ts';
 import { MatchInputBuffer } from './input/match-input.ts';
@@ -23,6 +24,7 @@ const text = (node: HTMLElement, value: string) => { if (node.textContent !== va
 
 class MatchScene extends Phaser.Scene {
   private match = createMatch();
+  private ai = createH1Ai();
   private clock = new FixedStep();
   private ready = false;
   private loadFailed = false;
@@ -54,7 +56,7 @@ class MatchScene extends Phaser.Scene {
     this.add.text(48, 40, 'DIMENSION FIGHT / FIRST TO TWO', { fontFamily: 'sans-serif', fontSize: '20px', color: '#a3b3c6' });
     for (let i = 0; i < 2; i++) {
       this.sprites.push(this.add.image(0, 0, 'idle-0').setOrigin(0.5, 0.875).setScale(0.625));
-      this.labels.push(this.add.text(0, 0, i === 0 ? 'PLAYER' : 'CPU / TARGET', { fontFamily: 'monospace', fontSize: '16px', color: i === 0 ? '#79e3cb' : '#ffc78d' }).setOrigin(0.5, 1));
+      this.labels.push(this.add.text(0, 0, i === 0 ? 'PLAYER' : 'CPU / AI', { fontFamily: 'monospace', fontSize: '16px', color: i === 0 ? '#79e3cb' : '#ffc78d' }).setOrigin(0.5, 1));
     }
     this.koBanner = this.add.image(640, 270, 'ko-banner').setDepth(20).setVisible(false);
     this.koBanner.setScale(640 / this.koBanner.width);
@@ -96,6 +98,7 @@ class MatchScene extends Phaser.Scene {
   private transition(nextState: MatchState) {
     if (!this.ready || nextState === this.match) return;
     const previous = this.match;
+    this.ai = transitionH1Ai(this.ai, previous, nextState);
     this.match = nextState; input.reset(); this.clock.reset();
     if (nextState.combat !== previous.combat) text(lastHit, '타격 기록 없음');
     this.renderMatch();
@@ -140,7 +143,8 @@ class MatchScene extends Phaser.Scene {
     if (!this.ready || this.match.paused || this.match.phase === 'ready') return;
     this.clock.advance(delta, () => {
       const previous = this.match;
-      this.match = stepMatch(previous, [input.sample(), COMBAT_NEUTRAL]);
+      const next = stepH1AiMatch(previous, this.ai, input.sample());
+      this.match = next.match; this.ai = next.ai;
       if (this.match.combat.frame !== previous.combat.frame && this.match.combat.events.length) text(lastHit,
         this.match.combat.events.map(e => `${names[e.attacker]} ${e.key} → 피해 ${e.damage}`).join(' / '));
       if (this.match.phase !== previous.phase) { input.reset(); this.clock.reset(); }
