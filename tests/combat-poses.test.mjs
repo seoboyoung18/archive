@@ -21,7 +21,7 @@ test('Every attack uses the combat age for startup/active/recovery and exits at 
     'stand-lp': [['stand-lp-startup',3],['lp-extend',3],['stand-lp-active',3],['lp-retract',5],['stand-lp-recovery',5],['lp-settle',5]],
     'stand-hp': [['startup',5],['extend',5],['active',3],['retract',7],['recovery',7],['settle',7]],
     'stand-lk': [['startup',4],['extend',4],['active',4],['retract',6],['recovery',6],['settle',6]],
-    'stand-hk': [['startup',6],['lift',6],['apex',6],['descend',6],['active',4],['retract',8],['recovery',8],['settle',8]],
+    'stand-hk': [['startup',6],['lift',6],['apex',4],['descend',8],['active',7],['retract',7],['recovery',7],['settle',7]],
     'crouch-lp': [['startup',3],['extend',3],['active',3],['retract',5],['recovery',5],['settle',5]],
     'crouch-hp': [['startup',5],['extend',5],['active',3],['retract',7],['recovery',7],['settle',7]],
     'crouch-lk': [['startup',4],['extend',4],['active',4],['retract',6],['settle',6],['recovery',6]],
@@ -42,6 +42,41 @@ test('Every attack uses the combat age for startup/active/recovery and exits at 
     assert.match(combatPose(s.fighters[0],H1),/^idle-/);
   }
 });
+test('Standing heavy kick contacts on the first extension and never during descent, on either side', () => {
+  for (const facing of [1,-1]) {
+    let s=createCombat();
+    s.fighters[0].x=facing===1?500:600; s.fighters[1].x=facing===1?600:500;
+    s=stepCombat(s,[{...N,attacks:['hk']},N]);
+    for(let age=0;age<52;age++) {
+      assert.equal(s.fighters[0].attack.age,age);
+      assert.equal(s.fighters[1].hp,age<12?100:84,`age ${age}, facing ${facing}`);
+      assert.equal(s.events.length,age===12?1:0);
+      if(age>=12&&age<=15) {
+        assert.equal(attackPhase(s.fighters[0],H1),'active');
+        assert.equal(combatPose(s.fighters[0],H1),'stand-hk-apex');
+      }
+      if(age===16||age===24) assert.equal(attackPhase(s.fighters[0],H1),'recovery');
+      s=stepCombat(s,[N,N]);
+    }
+    assert.equal(s.fighters[0].attack,null);
+    assert.match(combatPose(s.fighters[0],H1),/^idle-/);
+  }
+});
+
+test('Missing the first heavy kick cannot hit an opponent entering during descent', () => {
+  for(const facing of [1,-1]) for(const enterAge of [16,24]) {
+    let s=createCombat();
+    s.fighters[0].x=facing===1?500:800; s.fighters[1].x=facing===1?800:500;
+    s=stepCombat(s,[{...N,attacks:['hk']},N]);
+    for(let age=1;age<52;age++) {
+      if(age===enterAge) s.fighters[1].x=s.fighters[0].x+facing*100;
+      s=stepCombat(s,[N,N]);
+      assert.equal(s.events.length,0,`late entry ${enterAge}, age ${age}`);
+      assert.equal(s.fighters[1].hp,100);
+    }
+  }
+});
+
 test('Walking presents twelve successive poses for four frames each and repeats every 48 frames', () => {
   const poses=['walk-00','walk-01','walk-02','walk-03','walk-04','walk-05','walk-06','walk-07','walk-08','walk-09','walk-10','walk-11'];
   const f=createCombat().fighters[0];

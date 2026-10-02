@@ -16,7 +16,7 @@
 </div>
 <p id="status" class="status" role="status">이미지 로딩 중</p>
 <div class="grid"><section class="panel"><h2>이전 시안</h2><div class="stage"><img id="old" class="sprite" alt="이전 H1 포즈"></div><p id="old-label" class="caption"></p></section><section class="panel"><h2>현재 보완본</h2><div class="stage"><img id="new" class="sprite" alt="보완 H1 포즈"></div><p id="new-label" class="caption"></p></section></div>
-<footer>걷기: 8장×3F → 12장×4F (양발 교차) / 약손: 6·3·15F → 3·3·3·5·5·5F<br>후진은 새 보행을 역순으로 재생합니다. 공격 뒤 대기30F는 관찰용입니다. 타격 판정 시간은 기존 그대로입니다. 탭을 숨기면 정지합니다. 느린 재생은 게임 속도를 바꾸지 않습니다.</footer>
+<footer>걷기: 8장×3F → 12장×4F (양발 교차) / 약손: 6·3·15F → 3·3·3·5·5·5F<br>선 강발: 첫 발 뻗기12–15F에 타격,16F부터 내려오기·회복(추가 피해 없음). 총52F·피해16 유지.<br>후진은 새 보행을 역순으로 재생합니다. 공격 뒤 대기30F는 관찰용입니다. 탭을 숨기면 정지합니다. 느린 재생은 게임 속도를 바꾸지 않습니다.</footer>
 <h2 id="pose-heading">새 보행 한 주기 · 12포즈</h2><p id="pose-description">양발 교차와 지지발을 확인하세요.</p><div id="poses" class="poses"></div>
 <h2>약·강 공격의 손발 비교</h2><p>약손은 먼 쪽 앞손, 강손은 흰 상의 앞을 가로지르는 가까운 뒤손입니다. 약발은 줄 없는 다리, 강발은 빨간 옆선 다리로 찹니다. 강발의 반대쪽 지지발과 골반 회전을 함께 확인하세요.</p><div id="limb-pairs" class="grid"></div>
 </main>
@@ -42,7 +42,7 @@ function limbPairs(){
  $('limb-pairs').replaceChildren();
  for(const [label,light,heavy] of [['선 손','stand-lp','stand-hp'],['선 발','stand-lk','stand-hk'],['앉은 손','crouch-lp','crouch-hp'],['앉은 발','crouch-lk','crouch-hk']]){
   const section=document.createElement('section'),heading=document.createElement('h3'),row=document.createElement('div');section.className='panel';heading.textContent=label;heading.style.padding='0 18px';row.className='grid';row.style.gridTemplateColumns='repeat(2,minmax(0,1fr))';
-  for(const [key,text] of [[light,'약'],[heavy,'강']]){const figure=document.createElement('figure'),im=document.createElement('img'),caption=document.createElement('figcaption');figure.style.margin='0';im.src=new URL(H1_POSES[key+'-active'],base).href;im.alt=label+' '+text+' 유효 자세';im.style.width='100%';im.style.transform=$('mirror').checked?'scaleX(-1)':'none';caption.textContent=text;caption.style.textAlign='center';figure.append(im,caption);row.append(figure)}
+  for(const [key,text] of [[light,'약'],[heavy,'강']]){const figure=document.createElement('figure'),im=document.createElement('img'),caption=document.createElement('figcaption');figure.style.margin='0';im.src=new URL(H1_POSES[H1_ATTACK_FRAMES[key].active[0]],base).href;im.alt=label+' '+text+' 유효 자세';im.style.width='100%';im.style.transform=$('mirror').checked?'scaleX(-1)':'none';caption.textContent=text;caption.style.textAlign='center';figure.append(im,caption);row.append(figure)}
   section.append(heading,row);$('limb-pairs').append(section);
  }
 }

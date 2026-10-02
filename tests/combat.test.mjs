@@ -27,12 +27,12 @@ function contact(key = 'stand-lp', defender = N, reversed = false) {
   return tick(s, N, defender);
 }
 
-test('Approved eight attacks: independent numeric fixture matches v0.3', () => {
+test('Approved eight attacks: numeric fixture includes the first-extension heavy kick correction', () => {
   const expected = {
     'stand-lp': [6,3,15,8,16,8,24,8,'normal',104,-190,-100],
     'stand-hp': [10,3,21,12,20,10,36,12,'normal',124,-190,-100],
     'stand-lk': [8,4,18,10,18,10,32,10,'normal',134,-155,-65],
-    'stand-hk': [24,4,24,16,24,12,48,16,'overhead',154,-155,-65],
+    'stand-hk': [12,4,36,16,24,12,48,16,'overhead',154,-155,-65],
     'crouch-lp': [6,3,15,6,16,8,24,8,'normal',96,-115,-65],
     'crouch-hp': [10,3,21,10,20,10,36,12,'normal',112,-115,-65],
     'crouch-lk': [8,4,18,8,18,10,32,10,'low',124,-60,-10],
@@ -160,7 +160,7 @@ test('Simultaneous active attacks both hit before cancellation, with mirrored pu
 });
 test('Corner pushes are clamped on either side without breaking minimum gap', () => {
   for(const reverse of [false,true]) {
-    const s=attacking(close(72,reverse),0,'stand-hk',23);
+    const s=attacking(close(72,reverse),0,'stand-hk',11);
     s.fighters[0].x=reverse?152:1128; s.fighters[1].x=reverse?80:1200;
     const result=tick(s);
     assert.equal(result.fighters[1].x,reverse?80:1200);

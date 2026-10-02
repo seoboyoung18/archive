@@ -38,6 +38,13 @@ for (const attack of ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','
   };
 }
 
+// The first full extension hits; the old asset named "active" depicts the lowered leg.
+H1_ATTACK_FRAMES['stand-hk'] = {
+  startup: ['stand-hk-startup', 'stand-hk-lift'],
+  active: ['stand-hk-apex'],
+  recovery: ['stand-hk-descend', 'stand-hk-active', 'stand-hk-retract', 'stand-hk-recovery', 'stand-hk-settle'],
+};
+
 for (const pose of ['stand-lk-startup','stand-lk-recovery','stand-hk-recovery']) H1_POSES[pose] = `attack-motion-v1/${pose}.png`;
 
 /** Retained only for the visual before/after review; combat always uses H1_POSES. */
