@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import './style.css';
 import koArt from '../assets/ui/ko/options-v1/a-impact.png';
-import { createCombat, stepCombat, attackPhase, worldRect, COMBAT_NEUTRAL, type CombatInput } from './combat/combat.ts';
+import { createCombat, stepCombat, clearComboInputs, attackPhase, worldRect, COMBAT_NEUTRAL, type CombatInput } from './combat/combat.ts';
 import { FixedStep } from './combat/fixed-step.ts';
 import { CombatInputBuffer } from './input/combat-input.ts';
 import { combatPose, H1_POSES } from './characters/h1-poses.ts';
@@ -86,7 +86,9 @@ class CombatScene extends Phaser.Scene {
   private pause() {
     if (!this.ready) return;
     this.paused = true; input.reset(); this.clock.reset();
+    this.combat = clearComboInputs(this.combat);
     start.disabled = false; pauseButton.disabled = true; status.value = '일시정지 · 계속하기로 재개';
+    this.renderCombat();
   }
   private resume() {
     if (!this.ready) return;
@@ -121,7 +123,8 @@ class CombatScene extends Phaser.Scene {
       }
     });
     telemetry.textContent = `F ${this.combat.frame} · ` + this.combat.fighters.map((f, i) =>
-      `${i === 0 ? 'PLAYER' : 'CPU'} x=${f.x.toFixed(1)} ${f.action}/${f.posture} ${f.attack ? `${f.attack.key} ${f.attack.age}F ${attackPhase(f, this.combat.definitions[i])}` : ''}`).join(' · ');
+      `${i === 0 ? 'PLAYER' : 'CPU'} x=${f.x.toFixed(1)} ${f.action}/${f.posture} ${f.attack ? `${f.attack.key} ${f.attack.age}F ${attackPhase(f, this.combat.definitions[i])}` : ''}`
+      + (f.combo ? ` [연계 단계 ${f.combo.step + 1} · 명중 ${f.combo.confirmed ? '확인' : '대기'} · 다음 입력 ${f.combo.queued ? '예약' : '없음'}]` : '')).join(' · ');
   }
   update(_time: number, delta: number) {
     if (!this.ready || this.paused) return;

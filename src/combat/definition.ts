@@ -10,10 +10,17 @@ export interface AttackDefinition {
   damage: number; hitstun: number; blockstun: number;
   push: number; blockPush: number; height: AttackHeight; box: Rect;
 }
+export interface ComboLink {
+  next: AttackKey;
+  inputStart: number; inputEnd: number;
+  cancelStart: number; cancelEnd: number;
+}
+export interface ComboDefinition { start: AttackKey; links: readonly ComboLink[] }
 export interface CharacterDefinition {
   id: string; maxHp: number; movement: MovementRules;
   hurt: Record<Posture, Rect>;
   attacks: Record<AttackKey, AttackDefinition>;
+  combo?: ComboDefinition;
 }
 export const ATTACK_SLOTS: readonly AttackSlot[] = ['lp', 'hp', 'lk', 'hk'];
 export const ATTACK_PRIORITY: readonly AttackSlot[] = ['hk', 'hp', 'lk', 'lp'];
@@ -34,6 +41,20 @@ export function validateCharacter(def: CharacterDefinition): void {
         || !['normal', 'overhead', 'low'].includes(a.height) || !rect(a.box)) {
         throw new Error(`Invalid attack: ${key}`);
       }
+    }
+  }
+  if (def.combo) {
+    let key = def.combo.start;
+    const used = new Set<AttackKey>([key]);
+    if (!def.attacks[key] || !def.combo.links.length) throw new Error('Invalid combo start');
+    for (const link of def.combo.links) {
+      const attack = def.attacks[key];
+      if (!def.attacks[link.next] || used.has(link.next)
+        || ![link.inputStart, link.inputEnd, link.cancelStart, link.cancelEnd].every(n => Number.isInteger(n) && n >= 0)
+        || link.inputStart > link.inputEnd || link.inputEnd > link.cancelEnd
+        || link.cancelStart > link.cancelEnd || link.cancelStart < attack.startup + attack.active
+        || link.cancelEnd >= attack.startup + attack.active + attack.recovery) throw new Error('Invalid combo link');
+      used.add(link.next); key = link.next;
     }
   }
 }

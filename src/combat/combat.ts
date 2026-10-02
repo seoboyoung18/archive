@@ -5,10 +5,12 @@ import { createFighters, stepMovement, STAGE, NEUTRAL, type Fighter, type MoveIn
 export interface CombatInput extends MoveInput { attacks: readonly AttackSlot[] }
 export const COMBAT_NEUTRAL: CombatInput = { ...NEUTRAL, attacks: [] };
 export interface AttackInstance { key: AttackKey; serial: number; age: number; hitTargets: number[] }
+export interface ComboProgress { step: number; confirmed: boolean; queued: boolean }
 export interface CombatFighter extends Fighter {
   id: 0 | 1; hp: number; posture: Posture;
   action: 'free' | 'attack' | 'hit' | 'guard' | 'ko';
   attack: AttackInstance | null; stun: number; nextAttackId: number;
+  combo: ComboProgress | null;
 }
 export interface HitEvent { attacker: 0 | 1; target: 0 | 1; attackId: number; key: AttackKey; blocked: boolean; damage: number }
 export interface CombatState {
@@ -19,7 +21,7 @@ export function createCombat(definitions: readonly [CharacterDefinition, Charact
   definitions.forEach(validateCharacter);
   const base = createFighters();
   const fighter = (id: 0 | 1): CombatFighter => ({ ...base[id], id, hp: definitions[id].maxHp,
-    posture: 'stand', action: 'free', attack: null, stun: 0, nextAttackId: 1 });
+    posture: 'stand', action: 'free', attack: null, stun: 0, nextAttackId: 1, combo: null });
   return { definitions, fighters: [fighter(0), fighter(1)], frame: 0, ended: false, events: [] };
 }
 export function attackPhase(f: CombatFighter, def: CharacterDefinition): 'startup' | 'active' | 'recovery' | null {
@@ -38,11 +40,43 @@ export function overlaps(a: Rect, b: Rect): boolean {
     && Math.min(a.bottom, b.bottom) > Math.max(a.top, b.top);
 }
 
+/** Pause drops the requested next key, while preserving attack age and hit confirmation. */
+export function clearComboInputs(s: CombatState): CombatState {
+  if (!s.fighters.some(f => f.combo?.queued)) return s;
+  const clear = (f: CombatFighter): CombatFighter => f.combo?.queued
+    ? { ...f, combo: { ...f.combo, queued: false } } : f;
+  return { ...s, fighters: [clear(s.fighters[0]), clear(s.fighters[1])] };
+}
+
+/** Round end also removes the chain's eligibility; it never changes the last hit or pose. */
+export function clearCombos(s: CombatState): CombatState {
+  if (!s.fighters.some(f => f.combo)) return s;
+  const clear = (f: CombatFighter): CombatFighter => f.combo ? { ...f, combo: null } : f;
+  return { ...s, fighters: [clear(s.fighters[0]), clear(s.fighters[1])] };
+}
+
+function advanceCombo(f: CombatFighter, input: CombatInput, def: CharacterDefinition): void {
+  if (!f.attack || !f.combo) return;
+  const link = def.combo?.links[f.combo.step];
+  const age = f.attack.age, attack = def.attacks[f.attack.key];
+  if ((link && age > link.cancelEnd) || (!f.combo.confirmed && age >= attack.startup + attack.active)) {
+    f.combo = null; return;
+  }
+  if (!link) return; // The final attack completes its normal recovery.
+  if (age >= link.inputStart && age <= link.inputEnd && input.attacks.length === 1
+    && input.attacks[0] === link.next.split('-')[1]) f.combo.queued = true;
+  if (f.combo.confirmed && f.combo.queued && age >= link.cancelStart) {
+    f.attack = { key: link.next, serial: f.nextAttackId++, age: 0, hitTargets: [] };
+    f.combo = { step: f.combo.step + 1, confirmed: false, queued: false };
+  }
+}
+
 /** One approved 1/60s tick. Callers stop calling while paused; ended combat is immutable. */
 export function stepCombat(previous: CombatState, inputs: readonly [CombatInput, CombatInput]): CombatState {
   if (previous.ended) return previous;
   const copy = (f: CombatFighter): CombatFighter => ({ ...f,
-    attack: f.attack ? { ...f.attack, hitTargets: [...f.attack.hitTargets] } : null });
+    attack: f.attack ? { ...f.attack, hitTargets: [...f.attack.hitTargets] } : null,
+    combo: f.combo ? { ...f.combo } : null });
   const fighters: [CombatFighter, CombatFighter] = [copy(previous.fighters[0]), copy(previous.fighters[1])];
   const movement: [MoveInput, MoveInput] = [NEUTRAL, NEUTRAL];
   const lockedFacing: [boolean, boolean] = [false, false];
@@ -50,7 +84,8 @@ export function stepCombat(previous: CombatState, inputs: readonly [CombatInput,
     const f = fighters[i], input = inputs[i], def = previous.definitions[i];
     if (f.attack) {
       f.attack.age++;
-      if (!attackPhase(f, def)) { f.attack = null; f.action = 'free'; }
+      if (!attackPhase(f, def)) { f.attack = null; f.combo = null; f.action = 'free'; }
+      else advanceCombo(f, input, def);
     }
     // A hit's following N ticks are blocked, including the tick that decrements to zero.
     if (f.action === 'hit' || f.action === 'guard') {
@@ -65,6 +100,7 @@ export function stepCombat(previous: CombatState, inputs: readonly [CombatInput,
       const slot = ATTACK_PRIORITY.find(candidate => input.attacks.includes(candidate));
       if (slot) {
         f.attack = { key: `${f.posture}-${slot}`, serial: f.nextAttackId++, age: 0, hitTargets: [] };
+        f.combo = def.combo?.start === f.attack.key ? { step: 0, confirmed: false, queued: false } : null;
         f.action = 'attack';
       }
     }
@@ -93,18 +129,25 @@ export function stepCombat(previous: CombatState, inputs: readonly [CombatInput,
     events.push({ attacker: i, target: j, attackId: a.serial, key: a.key, blocked, damage: blocked ? 0 : def.damage });
   }
   // Store contact history first; an attacker may also be hit in this same tick.
-  for (const event of events) fighters[event.attacker].attack!.hitTargets.push(event.target);
+  for (const event of events) {
+    const attacker = fighters[event.attacker];
+    attacker.attack!.hitTargets.push(event.target);
+    if (event.blocked) attacker.combo = null;
+    else if (attacker.combo) attacker.combo.confirmed = true;
+  }
   for (const event of events) {
     const target = fighters[event.target];
     const def = previous.definitions[event.attacker].attacks[event.key];
     target.hp = Math.max(0, target.hp - event.damage);
     target.action = event.blocked ? 'guard' : 'hit';
     target.attack = null;
+    target.combo = null;
     target.stun = event.blocked ? def.blockstun : def.hitstun;
     const direction = previous.fighters[event.target].x > previous.fighters[event.attacker].x ? 1 : -1;
     target.x = Math.max(STAGE.minX, Math.min(STAGE.maxX, target.x + direction * (event.blocked ? def.blockPush : def.push)));
   }
   const ended = fighters.some(f => f.hp === 0);
   for (const f of fighters) if (f.hp === 0) { f.action = 'ko'; f.attack = null; f.stun = 0; }
+  if (ended) for (const f of fighters) f.combo = null;
   return { ...previous, fighters, events, frame: previous.frame + 1, ended };
 }

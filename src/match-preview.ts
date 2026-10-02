@@ -100,7 +100,7 @@ class MatchScene extends Phaser.Scene {
     const previous = this.match;
     this.ai = transitionH1Ai(this.ai, previous, nextState);
     this.match = nextState; input.reset(); this.clock.reset();
-    if (nextState.combat !== previous.combat) text(lastHit, '타격 기록 없음');
+    if (nextState.combat !== previous.combat && nextState.combat.frame === 0) text(lastHit, '타격 기록 없음');
     this.renderMatch();
     if (!nextState.paused) surface.focus();
   }
@@ -137,7 +137,8 @@ class MatchScene extends Phaser.Scene {
     text(status, s.paused ? '일시정지 · 계속하기로 재개' : s.phase === 'ready' ? '준비 완료 · 경기 시작 또는 Enter'
       : s.phase === 'playing' ? '경기 진행 중' : `${resultTitle.textContent} · ${available ? '진행 가능' : '쓰러짐 연출 중'}`);
     text(telemetry, `F ${s.combat.frame} · 남은 ${s.remainingFrames}F · 결과 연출 ${s.resultAge}F · ` + s.combat.fighters.map((f,i) =>
-      `${names[i]} x=${f.x.toFixed(1)} ${f.action}/${f.posture} ${f.attack ? `${f.attack.key} ${f.attack.age}F` : ''}`).join(' · '));
+      `${names[i]} x=${f.x.toFixed(1)} ${f.action}/${f.posture} ${f.attack ? `${f.attack.key} ${f.attack.age}F` : ''}`
+      + (f.combo ? ` [연계 단계 ${f.combo.step + 1} · 명중 ${f.combo.confirmed ? '확인' : '대기'} · 다음 입력 ${f.combo.queued ? '예약' : '없음'}]` : '')).join(' · '));
   }
   update(_time: number, delta: number) {
     if (!this.ready || this.match.paused || this.match.phase === 'ready') return;
