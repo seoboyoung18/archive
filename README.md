@@ -46,6 +46,8 @@ npm run preview
 
 [경기 진행 명세](docs/specs/h1-match-flow.md) · [자동/브라우저 검증 결과](docs/reviews/h1-match-flow.md)
 
+다음 단계의 [H1 AI 대전 명세 v0.1](docs/specs/h1-ai-match.md)은 검토용입니다. 12F 판단·접근·기본기 순환·뒤 방향 방어와 경기 연결을 제안하며, 사용자 승인 전이므로 현재 화면은 계속 표적 경기입니다.
+
 Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은 `-Version movement-v1`, 전투는 `-Version combat-v1`, 중간 포즈는 `-Version motion-v1`, 교차 보행은 `-Version walk-v2`, 이전 시안은 `-Version v1`을 지정합니다. 모든 자세에 대기 기준 공통 배율을 적용하며 점프에는 가상 지면을 사용합니다. ImageGen 재생성이 아닌 정렬 작업이며 정확한 프롬프트는 각 버전의 `prompts.json`과 각 재생성 프롬프트 JSON에 있습니다. `npm test`는 총78개 테스트를 수행합니다. 이는 완성 스프라이트·AI 대전의 검증을 뜻하지 않습니다.
 
 [시안 작업 명세](docs/specs/h1-asset-preview.md) · [시안 검수 기록](docs/reviews/h1-preview.md)
