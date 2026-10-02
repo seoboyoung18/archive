@@ -32,7 +32,7 @@ test('Approved eight attacks: numeric fixture includes the first-extension heavy
     'stand-lp': [6,3,15,8,16,8,24,8,'normal',104,-190,-100],
     'stand-hp': [10,3,21,12,20,10,36,12,'normal',124,-190,-100],
     'stand-lk': [8,4,18,10,18,10,32,10,'normal',134,-155,-65],
-    'stand-hk': [12,4,36,16,24,12,48,16,'overhead',154,-155,-65],
+    'stand-hk': [12,4,36,16,24,12,48,16,'overhead',125,-230,-200],
     'crouch-lp': [6,3,15,6,16,8,24,8,'normal',96,-115,-65],
     'crouch-hp': [10,3,21,10,20,10,36,12,'normal',112,-115,-65],
     'crouch-lk': [8,4,18,8,18,10,32,10,'low',124,-60,-10],
@@ -42,7 +42,7 @@ test('Approved eight attacks: numeric fixture includes the first-extension heavy
   for (const [key, e] of Object.entries(expected)) {
     const a = H1.attacks[key];
     assert.deepEqual([a.startup,a.active,a.recovery,a.damage,a.hitstun,a.blockstun,a.push,a.blockPush,a.height,a.box.right,a.box.top,a.box.bottom],e);
-    assert.equal(a.box.left,36);
+    assert.equal(a.box.left,key==='stand-hk'?100:36);
   }
   assert.deepEqual(H1.hurt, {stand:{left:-36,right:36,top:-220,bottom:0},crouch:{left:-36,right:36,top:-120,bottom:0}});
 });
@@ -81,12 +81,16 @@ test('Both axes require positive overlap; mirroring uses root, not image dimensi
   assert.equal(tick(s).events.length,0);
 });
 
-for (const [key, expected] of [['stand-lp',[false,true,true]],['stand-hk',[false,true,false]],['crouch-lk',[false,false,true]]]) {
+for (const [key, expected] of [['stand-lp',[false,true,true]],['stand-hk',[false,true,null]],['crouch-lk',[false,false,true]]]) {
   test(`${key}: guard table none/standing/crouching and mirrored back direction`, () => {
     for (const reversed of [false,true]) {
       const away=reversed?-1:1;
       for (const [index, guard] of [N,input({axis:away}),input({axis:away,crouch:true})].entries()) {
         const s=contact(key,guard,reversed);
+        if(expected[index]===null) {
+          assert.equal(s.events.length,0); assert.equal(s.fighters[1].hp,100);
+          assert.equal(s.fighters[1].action,'free'); continue;
+        }
         assert.equal(s.events.length,1); assert.equal(s.events[0].blocked,expected[index]);
         assert.equal(s.fighters[1].hp, expected[index]?100:100-H1.attacks[key].damage);
       }
@@ -100,6 +104,34 @@ test('No auto guard from forward/crouch alone, and no guard event without overla
   const s=tick(attacking(close(300),0,'stand-lp',5),N,input({axis:1}));
   assert.equal(s.events.length,0); assert.equal(s.fighters[1].action,'free');
   assert.equal(s.fighters[1].x,804); // Backward movement remains movement until a contact.
+});
+
+test('Heavy kick only contacts the fully extended shoe tip, not the old torso or descending area', () => {
+  // Independent pixel annotations from the 512px apex sprite, with root (256,448), scale .625.
+  for(const facing of [1,-1]) for(const [pixelX,pixelY,hit] of [[444,96,true],[432,116,true],[400,144,false],[344,256,false],[496,272,false]]) {
+    const target=structuredClone(H1);
+    // A 2x2 logical-pixel probe at the annotated point in the attacker's sprite.
+    const x=facing*(pixelX-256)*0.625, y=(pixelY-448)*0.625;
+    target.hurt.stand={left:99-facing*x,right:101-facing*x,top:y-1,bottom:y+1};
+    let s=createCombat([H1,target]);
+    Object.assign(s.fighters[0],{x:600,facing});
+    Object.assign(s.fighters[1],{x:600+facing*100,facing:-facing});
+    s=attacking(s,0,'stand-hk',11);
+    const result=tick(s);
+    assert.equal(result.events.length,hit?1:0,`pixel ${pixelX},${pixelY}, facing ${facing}`);
+    assert.equal(result.fighters[1].hp,hit?84:100);
+  }
+});
+
+test('Heavy kick toe reach is 161px: touching misses, 1px overlap hits, standing guard blocks', () => {
+  for(const reversed of [false,true]) for(const [distance,expectedHp] of [[161,100],[160,84],[180,100]]) {
+    const result=tick(attacking(close(distance,reversed),0,'stand-hk',11));
+    assert.equal(result.fighters[1].hp,expectedHp);
+  }
+  for(const reversed of [false,true]) {
+    const result=contact('stand-hk',input({axis:reversed?-1:1}),reversed);
+    assert.equal(result.events[0].blocked,true); assert.equal(result.fighters[1].hp,100);
+  }
 });
 test('Attack start locks posture/facing, beats jump and disables backward guard', () => {
   let s=tick(close(300),input({axis:-1,crouch:true,jump:true,attacks:['lp','hp','lk','hk']}));

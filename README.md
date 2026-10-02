@@ -42,7 +42,7 @@ npm run preview
 
 `build`는 타입 검사와 정적 빌드를 수행합니다. `preview`는 빌드 결과를 로컬에서 확인합니다. 이미지 검사는 파일 해시·RGBA·512×512·투명 경계·기준점 정렬을 확인하며 외형 검수를 대신하지 않습니다.
 
-Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은 `-Version movement-v1`, 전투는 `-Version combat-v1`, 중간 포즈는 `-Version motion-v1`, 교차 보행은 `-Version walk-v2`, 이전 시안은 `-Version v1`을 지정합니다. 모든 자세에 대기 기준 공통 배율을 적용하며 점프에는 가상 지면을 사용합니다. ImageGen 재생성이 아닌 정렬 작업이며 정확한 프롬프트는 각 버전의 `prompts.json`과 각 재생성 프롬프트 JSON에 있습니다. `npm test`는 총62개 테스트를 수행합니다. 이는 완성 스프라이트·전체 경기·AI 검증을 뜻하지 않습니다.
+Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은 `-Version movement-v1`, 전투는 `-Version combat-v1`, 중간 포즈는 `-Version motion-v1`, 교차 보행은 `-Version walk-v2`, 이전 시안은 `-Version v1`을 지정합니다. 모든 자세에 대기 기준 공통 배율을 적용하며 점프에는 가상 지면을 사용합니다. ImageGen 재생성이 아닌 정렬 작업이며 정확한 프롬프트는 각 버전의 `prompts.json`과 각 재생성 프롬프트 JSON에 있습니다. `npm test`는 총64개 테스트를 수행합니다. 이는 완성 스프라이트·전체 경기·AI 검증을 뜻하지 않습니다.
 
 [시안 작업 명세](docs/specs/h1-asset-preview.md) · [시안 검수 기록](docs/reviews/h1-preview.md)
 
@@ -62,4 +62,4 @@ Windows에서 v2 정렬 재현: `pwsh -File scripts/normalize-h1.ps1`. 이동은
 
 강손·강발4종의 반대 손발과 전신 회전은 [수정 명세](docs/specs/h1-opposite-limbs.md)를 따릅니다. `-Version opposite-limbs-v1`로26장을 정렬합니다. 비교 화면은 강공격의 이전26포즈와 보완본을 같은 시간에 재생하며 아래에서 약/강의 실제 공격 손발도 나란히 확인할 수 있습니다.
 
-선 강발은 [첫 발차기 타격 기준](docs/specs/h1-heavy-kick-contact.md)에 따라12~15F에 타격하고16F부터 하강·회복합니다. 준비12/유효4/회복36F이며 총52F·피해16을 유지합니다. [검증 결과](docs/reviews/h1-heavy-kick-contact.md)를 참고하세요.
+선 강발은 [첫 발차기 타격 기준](docs/specs/h1-heavy-kick-contact.md)에 따라 다리가 완전히 펴진12~15F의 발끝에서 타격하고16F부터 하강·회복합니다. 비교 화면의 **공격 판정 표시**로 발끝과 빨간 영역을 확인할 수 있습니다. 준비12/유효4/회복36F이며 총52F·피해16을 유지합니다. [검증 결과](docs/reviews/h1-heavy-kick-contact.md)를 참고하세요.
