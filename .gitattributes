@@ -1,0 +1,2 @@
+# Preserve the generator's exact manifest bytes on Windows checkouts.
+assets/audio/h1/s1-v1/manifest.json text eol=lf
