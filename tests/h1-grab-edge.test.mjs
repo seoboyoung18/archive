@@ -64,6 +64,10 @@ function extent(pose, facing, v) {
 function base(f) {
   const v = { x: f.x, y: f.action === 'ko' ? 600 : f.y, angle: 0, originY: .875 };
   const g = grabPoseState(f);
+  if (f.action === 'free' && f.state === 'jump' && !f.grounded && !f.jumpInterrupted && !f.grabSnapshot) {
+    v.originY = .5; v.y -= 120;
+    v.angle = f.facing * 360 * Math.max(0, Math.min(1, (f.vy + 800) / 1600));
+  }
   if (g?.kind !== 'success' || g.role !== 'target') return v;
   const impact = g.impactAt ?? H1.grab.impact, turn = (g.techUntil ?? H1.grab.techWindow) + 1;
   const lift = Math.min(impact, turn + Math.max(1, Math.floor((impact - turn) / 3)));
@@ -127,7 +131,8 @@ test('A fixed logical root stays fixed through idle, crouch, guard, walk, jump a
     for (const walkDirection of [-1, 1]) for (let age = 0; age < 48; age++) {
       Object.assign(f, { state: 'walk', age, walkDirection, posture: 'stand', grounded: true, y: 600, vy: 0 }); check(s);
     }
-    for (const vy of [-800, -100, 0, 100, 800]) {
+    for (let tick = 0; tick <= 48; tick++) {
+      const vy = -800 + tick * 2000 / 60;
       Object.assign(f, { state: 'jump', posture: 'stand', grounded: false, y: 440, vy }); check(s);
     }
     for (const [key, attack] of Object.entries(H1.attacks)) for (let age = 0; age < attack.startup + attack.active + attack.recovery; age++) {
@@ -139,7 +144,7 @@ test('A fixed logical root stays fixed through idle, crouch, guard, walk, jump a
     }
   }
   for (const phases of Object.values(H1_ATTACK_FRAMES)) for (const frames of Object.values(phases)) for (const pose of frames) assert.ok(seen.has(pose), `${pose} must reach the PNG oracle`);
-  for (const pose of ['jump-rise', 'jump-apex', 'jump-fall', ...Array.from({ length: 12 }, (_, i) => `walk-${String(i).padStart(2, '0')}`)]) assert.ok(seen.has(pose));
+  for (const pose of ['jump-rise', 'jump-fall', 'flip-lift', 'flip-fold', 'flip-tuck', 'flip-coil', 'flip-release', 'flip-open', 'flip-landing', ...Array.from({ length: 12 }, (_, i) => `walk-${String(i).padStart(2, '0')}`), ...Array.from({ length: 12 }, (_, i) => `walk-mid-${String(i).padStart(2, '0')}`)]) assert.ok(seen.has(pose));
 });
 
 test('Every live success frame fits both exact alpha bodies through the same camera before and after independent recovery', () => {

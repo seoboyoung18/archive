@@ -1,0 +1,324 @@
+{
+  "status": "Structural checks passed; individual normalized image inspection complete. Full sequence playback is reviewed separately.",
+  "scale": 0.34285714285714286,
+  "root": [
+    256,
+    448
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "existingWalkObservedTopRange": [
+    62,
+    68
+  ],
+  "approvedMovementTopRange": [
+    59,
+    69
+  ],
+  "note": "walk-mid-02 top 61 is one texture pixel (0.625 unzoomed display pixel) above the previous observed range, within the unchanged 64+/-5 criterion. No per-pose body fitting or pixel painting.",
+  "frames": [
+    {
+      "id": "walk-mid-00",
+      "source": "generated/smooth-v1/walk-mid-00.png",
+      "sourceSha256": "ebdf5d966f642f98ad29f87a2a416c93b888848ec210fe89144c0d0fa3181c0d",
+      "outputSha256": "0f2941a52e17bc62bf36f38e3d7564caf036ed6cae5f2d56d0bf6f89ab4d50be",
+      "bodyBounds": {
+        "left": 146,
+        "top": 64,
+        "right": 390,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 74,
+        "top": 64,
+        "right": 390,
+        "bottom": 447
+      },
+      "maxRootDistance": 113.75
+    },
+    {
+      "id": "walk-mid-01",
+      "source": "generated/smooth-v1/walk-mid-01.png",
+      "sourceSha256": "1f264ce42339605e36a9ef8e014c1cf87b57a56ab0fbbc31af9d4f098330edd5",
+      "outputSha256": "a4814098abe3c312db27437c6e3661e7bfb5564aec6ccac41079ec075aaec53b",
+      "bodyBounds": {
+        "left": 151,
+        "top": 65,
+        "right": 377,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 74,
+        "top": 65,
+        "right": 386,
+        "bottom": 447
+      },
+      "maxRootDistance": 113.75
+    },
+    {
+      "id": "walk-mid-02",
+      "source": "generated/smooth-v1/walk-mid-02-v3.png",
+      "sourceSha256": "3d7e6c4bf3b01b3c46bcbb446c864bbd4ccc43d0755a5dc35aaec95504690da2",
+      "outputSha256": "1fcbd4b477afbd1ef7d5b185a822ae019fea099ee848b08512295faf1a595d45",
+      "bodyBounds": {
+        "left": 172,
+        "top": 61,
+        "right": 372,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 74,
+        "top": 61,
+        "right": 372,
+        "bottom": 454
+      },
+      "maxRootDistance": 113.75
+    },
+    {
+      "id": "walk-mid-03",
+      "source": "generated/smooth-v1/walk-mid-03-v2.png",
+      "sourceSha256": "b1c5c0e3905bd3143cccd025a3bc89a6e9aae5e0f284b596772594e56a56eb75",
+      "outputSha256": "2a705545511abb69a5cb192bc353eea459da4203ea8d97ba3ae03b989e5c1bed",
+      "bodyBounds": {
+        "left": 178,
+        "top": 66,
+        "right": 395,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 74,
+        "top": 66,
+        "right": 395,
+        "bottom": 448
+      },
+      "maxRootDistance": 113.75
+    },
+    {
+      "id": "walk-mid-04",
+      "source": "generated/smooth-v1/walk-mid-04.png",
+      "sourceSha256": "356810271e14ff59218e0b0745c157dd3c4230519816d8b948476d338b3194bb",
+      "outputSha256": "419b65ee96267c32555549da144009222c21d5324a64ae25ed0467a8e00e45a4",
+      "bodyBounds": {
+        "left": 148,
+        "top": 67,
+        "right": 401,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 74,
+        "top": 67,
+        "right": 401,
+        "bottom": 449
+      },
+      "maxRootDistance": 113.75
+    },
+    {
+      "id": "walk-mid-05",
+      "source": "generated/smooth-v1/walk-mid-05.png",
+      "sourceSha256": "aaf1109ea3053823319f54b920801f0d725b5420befbef3819707e475f501f10",
+      "outputSha256": "17d25286f9d5281fd1a0baa81b391d983a707e7b7267fa3a2f69ec9d9ac9f15a",
+      "bodyBounds": {
+        "left": 128,
+        "top": 67,
+        "right": 409,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 74,
+        "top": 67,
+        "right": 409,
+        "bottom": 449
+      },
+      "maxRootDistance": 113.75
+    },
+    {
+      "id": "walk-mid-06",
+      "source": "generated/smooth-v1/walk-mid-06.png",
+      "sourceSha256": "5b838639a7111bfb26404a88fe4bb08089335980028c6d7eb2b63a4d16cb767b",
+      "outputSha256": "25877e288d71caa5835423f471aa8348dbd586a04a4b4bacdff577a91b58ed62",
+      "bodyBounds": {
+        "left": 140,
+        "top": 68,
+        "right": 400,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 74,
+        "top": 67,
+        "right": 400,
+        "bottom": 448
+      },
+      "maxRootDistance": 113.75
+    },
+    {
+      "id": "walk-mid-07",
+      "source": "generated/smooth-v1/walk-mid-07-v2.png",
+      "sourceSha256": "d80280f9eaee7684dcd53269264e1f21cc6097dbacee853ad1e57cc8a827aa90",
+      "outputSha256": "34e3532fce38758bf2aa6b21b9c848969b3a9fb049139f8788119df3b9e55f5d",
+      "bodyBounds": {
+        "left": 159,
+        "top": 62,
+        "right": 392,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 74,
+        "top": 62,
+        "right": 392,
+        "bottom": 448
+      },
+      "maxRootDistance": 113.75
+    },
+    {
+      "id": "walk-mid-08",
+      "source": "generated/smooth-v1/walk-mid-08.png",
+      "sourceSha256": "50201372f8f301aad84453120cb45d3a529c1e06db0ca56848ae8c5d50edfa3d",
+      "outputSha256": "34e29d9b07abb529c302a733ad2f30e952d992583a824f65915597254a798cdd",
+      "bodyBounds": {
+        "left": 167,
+        "top": 66,
+        "right": 370,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 71,
+        "top": 52,
+        "right": 388,
+        "bottom": 448
+      },
+      "maxRootDistance": 115.625
+    },
+    {
+      "id": "walk-mid-09",
+      "source": "generated/smooth-v1/walk-mid-09.png",
+      "sourceSha256": "fc69b4c52333aca5d774d202a278e2476c6f4f36f9c15a5e942b3b6a7387aa31",
+      "outputSha256": "cc01e93b121c3f201cc02321f8df4874f0b47fadf18437af58581560bf9c4715",
+      "bodyBounds": {
+        "left": 178,
+        "top": 65,
+        "right": 406,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 71,
+        "top": 65,
+        "right": 406,
+        "bottom": 448
+      },
+      "maxRootDistance": 115.625
+    },
+    {
+      "id": "walk-mid-10",
+      "source": "generated/smooth-v1/walk-mid-10-v5.png",
+      "sourceSha256": "52c93697f87be037c398e4b9c868da17254c652e2775e5cb8a61e1dfd1bc1505",
+      "outputSha256": "d53940824c0293f6ce51c28ea4dfa0e9a04f749c52d004af54d5bf880aca2730",
+      "bodyBounds": {
+        "left": 178,
+        "top": 66,
+        "right": 419,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 74,
+        "top": 66,
+        "right": 420,
+        "bottom": 448
+      },
+      "maxRootDistance": 113.75
+    },
+    {
+      "id": "walk-mid-11",
+      "source": "generated/smooth-v1/walk-mid-11.png",
+      "sourceSha256": "b41083db10bcae3e6b8e55d71030f3c95a5cb8b785b388d2804977b91cb03841",
+      "outputSha256": "0f58d176eb9a68adaa877f30cfb8d2a7af350c6190264f307925b3bce96cd4fb",
+      "bodyBounds": {
+        "left": 143,
+        "top": 67,
+        "right": 399,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 71,
+        "top": 67,
+        "right": 399,
+        "bottom": 449
+      },
+      "maxRootDistance": 115.625
+    },
+    {
+      "id": "idle-in",
+      "source": "generated/smooth-v1/idle-in.png",
+      "sourceSha256": "76f43d85512112f8c2e4e6aa4f023791b101bc77321de35dce282c0c55d34830",
+      "outputSha256": "6e5ad2a80e330e2e680c0d7fc634a1e5e21483b0d17f444324abe16c0ded4eb3",
+      "bodyBounds": {
+        "left": 104,
+        "top": 64,
+        "right": 413,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 77,
+        "top": 64,
+        "right": 414,
+        "bottom": 447
+      },
+      "maxRootDistance": 111.875
+    },
+    {
+      "id": "idle-out",
+      "source": "generated/smooth-v1/idle-out.png",
+      "sourceSha256": "2a30427e63cbce936ffb250d54665e40c445f8136439996a2afc05e4a1b96e2a",
+      "outputSha256": "91396de6d59ab410169359c94fa92201c6f402920f3942bba8ab2ec9cdd05c5f",
+      "bodyBounds": {
+        "left": 105,
+        "top": 66,
+        "right": 414,
+        "bottom": 447
+      },
+      "actualAlphaBounds": {
+        "left": 103,
+        "top": 66,
+        "right": 414,
+        "bottom": 447
+      },
+      "maxRootDistance": 99.375
+    }
+  ],
+  "maxRootDistance": 115.625,
+  "rejectedSources": [
+    {
+      "source": "generated/smooth-v1/walk-mid-10.png",
+      "reason": "17 bottom-edge alpha=1 pixels outside the silhouette"
+    },
+    {
+      "source": "generated/smooth-v1/walk-mid-03.png",
+      "reason": "Near/far leg stripe continuity was wrong"
+    },
+    {
+      "source": "generated/smooth-v1/walk-mid-02.png",
+      "reason": "Body-height drift compared with adjacent existing walking poses"
+    },
+    {
+      "source": "generated/smooth-v1/walk-mid-07.png",
+      "reason": "Body-height drift compared with adjacent existing walking poses"
+    },
+    {
+      "source": "generated/smooth-v1/walk-mid-10-v2.png",
+      "reason": "Body-height drift compared with adjacent existing walking poses"
+    },
+    {
+      "source": "generated/smooth-v1/walk-mid-02-v2.png",
+      "reason": "Body-height drift compared with adjacent existing walking poses"
+    },
+    {
+      "source": "generated/smooth-v1/walk-mid-10-v3.png",
+      "reason": "Body-height drift compared with adjacent existing walking poses"
+    },
+    {
+      "source": "generated/smooth-v1/walk-mid-10-v4.png",
+      "reason": "Body-height drift compared with adjacent existing walking poses"
+    }
+  ]
+}

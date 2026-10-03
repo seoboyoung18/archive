@@ -1,0 +1,1045 @@
+{
+  "status": "14 selected originals structurally verified and individually inspected; previous candidates preserved. Sequence playback approval is separate.",
+  "tool": "built-in image_gen",
+  "canvasSplitting": false,
+  "frames": [
+    {
+      "id": "walk-mid-00",
+      "prompt": "Use case: identity-preserve. Asset type: ONE transparent 2D fighting-game animation sprite, an actual new in-between drawing. Input 1 is H1's identity and costume reference only; input 2 is existing walk frame 00; input 3 is existing walk frame 01. Draw precisely the halfway motion from input 2 toward input 3, preserving the established anime ink lines, cel shading, same adult female body proportions, black bob, red cropped track jacket/white stripes, white cropped top, charcoal pants with the red stripe on the NEAR/right leg, white hand wraps and red sneakers. The fighter faces RIGHT in the same side/three-quarter game view, arms in the SAME guard. One person only, exactly two arms and two legs. Keep the head, torso and hips nearly coincident with the two supplied walking frames, and keep the SAME anatomical size relative to the full canvas: at 1254x1254 the hair top is near y=74, standing ground y=1194 and world root center x=627. Use exactly the same canvas composition, never zoom in or shrink to fit. The nearer red-striped leg remains the FRONT supporting leg, its front shoe halfway between the positions in frame 00 and 01, heel transitioning naturally toward full planted contact; the farther unstriped rear leg begins its small forward recovery, shoe halfway between the two supplied rear-shoe positions. No swapped limbs or second stride, no large torso movement. This should be recognizably between the two frames rather than identical to either. Genuine transparent RGBA background, preferably 1254x1254 square, complete silhouette with clear transparent margins on all edges. No floor, shadow, scenery, motion trails, text, sheet, panel or second figure. Preserve identity, foot-ground alignment, color, line weight, and body scale; only the tiny half-step pose and corresponding natural clothing folds change.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-00.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-01.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:/Users/PC/.codex/generated_images/01a0fd21-2b1e-7543-a69d-367f147366b5/exec-5d090c3a-b7dd-476c-a190-fb214f19997d.png",
+      "source": "generated/smooth-v1/walk-mid-00.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "ebdf5d966f642f98ad29f87a2a416c93b888848ec210fe89144c0d0fa3181c0d",
+      "rgbaSha256": "944c5454949820760811b6719ea4211298828b6f0e4a1267641e45d918e4f831",
+      "alphaOccupiedPixels": 318917,
+      "sourceBoundsAlpha0": {
+        "left": 41,
+        "top": 21,
+        "right": 1167,
+        "bottom": 1195
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-00.png",
+          "sha256": "4808189e9b4239cc0086634d1f1d3ecd00776c57e843328372aa0ad09618a795"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-01.png",
+          "sha256": "3255e383987ed82ead746394f915ce2ddb736421ae1bf03286a7720c67a980e3"
+        }
+      ],
+      "sourceBounds": {
+        "left": 307,
+        "top": 74,
+        "right": 1019,
+        "bottom": 1192
+      }
+    },
+    {
+      "id": "walk-mid-01",
+      "revision": "walk-mid-01",
+      "prompt": "Create ONE actual new animation in-between drawing for H1, not a sheet or multiple panels. Image1 is the identity reference; image2 is BEFORE, image3 AFTER. Precisely halfway between the two walking poses, same head/torso coordinates, guard hands, anatomical size, adult female face and black bob, red cropped striped jacket, white cropped top, charcoal pants, red stripe on NEAR right leg, wrapped hands, red sneakers. Same right-facing game view, anime outlines and restrained cel shading. Exactly one figure, two arms and two legs, continuously correct limb ownership. Preserve1254x1254 full canvas composition: hair at y74, standing sole baseline1194, root center627. Never zoom or shrink to fit. Genuine transparent RGBA including all blank pixels; clean fully transparent exterior with NO faint speckles/alpha noise/ground/shadows. Keep all visible content away from every canvas edge. No text, motion trails, duplicate limbs, background or new action. Near red-striped leg is the FRONT grounded support. Its shoe halfway from aboutx910 toward860, sole stays on1194. Far unstriped rear leg lifts and swings forward, rear sneaker halfway between positions in refs, knee beginning to flex. Torso remains at same coordinates. This is a small half-step; not a crossed-leg pose yet.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-01.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-02.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-914216e1-e9e0-46d8-bb93-089853d759df.png",
+      "source": "generated/smooth-v1/walk-mid-01.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "1f264ce42339605e36a9ef8e014c1cf87b57a56ab0fbbc31af9d4f098330edd5",
+      "rgbaSha256": "5d1baaed756ab564149218ab1343973e6738d6d66ccb1e9408d61ea2170e5692",
+      "alphaOccupiedPixels": 295198,
+      "sourceBoundsAlpha0": {
+        "left": 97,
+        "top": 39,
+        "right": 1217,
+        "bottom": 1211
+      },
+      "sourceBounds": {
+        "left": 322,
+        "top": 81,
+        "right": 980,
+        "bottom": 1195
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-01.png",
+          "sha256": "3255e383987ed82ead746394f915ce2ddb736421ae1bf03286a7720c67a980e3"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-02.png",
+          "sha256": "16bc65c42c8c895c4297294eac906159867d465dd8e0c5f7fba0a6dc281e09a0"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-02",
+      "revision": "walk-mid-02-v3",
+      "prompt": "Make ONE transparent game animation in-between between these TWO images of exactly the same adult H1 fighter. Use image1 as an exact composition/size template: preserve head, hair, face, torso, arm guard, linework and clothing. Modify only the leg/hip pose into a halfway moment toward image2, while retaining image1 character stature. Near red-striped front leg is the support, foot aroundx810; far plain rear leg passes forward but remains behind support. A small flex of support knee keeps the pelvis low and prevents the character becoming taller. Hair top aroundy80, bottom of planted sole aroundy1190 on1254x1254 canvas: approximately1110 pixels tall, NOT1135. This sprite must match both references' head-to-floor size and prevent a tall-frame jump in the animation. Do not zoom the whole image. Keep the upper body about5pixels lower than first reference and draw slightly bent support knee, same head size and limb thickness. Exact right-facing side/3quarter anime style, same red jacket/white top/dark pants/red stripe/shoes. Exactly one person, two legs and two arms. Genuine transparent RGBA, clear transparent margins, no shadow, no floor, no text, no alpha speckles or motion blur. Single sprite only.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-02.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03-v2.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-dde42c34-0dd6-4c92-9892-e04a16c65c7f.png",
+      "source": "generated/smooth-v1/walk-mid-02-v3.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "3d7e6c4bf3b01b3c46bcbb446c864bbd4ccc43d0755a5dc35aaec95504690da2",
+      "rgbaSha256": "602ae66aec8bfaaa158a88aa625e49f1dbf83365ad7df0600b261f61d49f57d0",
+      "alphaOccupiedPixels": 291704,
+      "sourceBoundsAlpha0": {
+        "left": 97,
+        "top": 21,
+        "right": 1209,
+        "bottom": 1221
+      },
+      "sourceBounds": {
+        "left": 382,
+        "top": 74,
+        "right": 966,
+        "bottom": 1200
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-02.png",
+          "sha256": "16bc65c42c8c895c4297294eac906159867d465dd8e0c5f7fba0a6dc281e09a0"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03-v2.png",
+          "sha256": "ddbc7cfb9293107656f2a98fbca7cb0ae7d5c8bbb433d011b97424aafb141733"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-03",
+      "revision": "walk-mid-03-v2",
+      "prompt": "Draw ONE new in-between animation sprite, a single transparent image, not a sheet. Reference1: H1 identity/costume. Reference2 BEFORE and reference3 AFTER: match their SAME anatomical scale and head/torso/guard coordinates. Adult female black bob, red cropped white-striped jacket, white top, charcoal pants, red stripe only on the NEAR right leg, hand wraps, red sneakers; right-facing fighting-game side/three-quarter view, same anime outline and cel shading. One person, exactly two arms and two legs. Precise halfway pose between the two walking frames, not duplicate of endpoint, no extra stride. True RGBA transparency, square1254x1254, hairtop74, plantedsole1194, rootcenter627. Identical canvas composition; no zoom, no body-fit scale. All edges clear transparent margin with zero stray pixels. No text, effects, floor, shadows, background or duplicate body. Keep body proportions and face stable. CRITICAL leg identity: red stripe MUST run down the REAR/SCREEN-LEFT grounded leg, from near hip through knee to rear ankle. The FRONT/SCREEN-RIGHT swinging leg must be PLAIN dark pants, NO red stripe. Make an intermediate early forward swing: near red-striped leg supports with shoe centered625 on ground1194; far plain leg swings forward with shoe centered850 abouty1090, knee mildly bent. Thus stance narrower than after frame04, wider than before03; KEEP RED STRIPE ON SCREEN-LEFT SUPPORT LEG. Arms and torso remain coincident with references.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03-v2.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-04.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-d767b5e4-15e0-470b-b45c-11ac2e55e559.png",
+      "source": "generated/smooth-v1/walk-mid-03-v2.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "b1c5c0e3905bd3143cccd025a3bc89a6e9aae5e0f284b596772594e56a56eb75",
+      "rgbaSha256": "50cf540f339dada2ac82687d1614b4941eb9fabf73fea010c43cf7da3c6bf7d1",
+      "alphaOccupiedPixels": 303660,
+      "sourceBoundsAlpha0": {
+        "left": 89,
+        "top": 21,
+        "right": 1195,
+        "bottom": 1215
+      },
+      "sourceBounds": {
+        "left": 401,
+        "top": 74,
+        "right": 1033,
+        "bottom": 1186
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03-v2.png",
+          "sha256": "ddbc7cfb9293107656f2a98fbca7cb0ae7d5c8bbb433d011b97424aafb141733"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-04.png",
+          "sha256": "30285d89b8391f078734f7e4fd70f91f930e90cb7d56229469b1e34efe0081cc"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-04",
+      "prompt": "Create ONE actual in-between drawing for the same H1 fighter, not a sheet. Image 1 is identity/costume reference; images 2 and 3 are the BEFORE and AFTER walking animation poses. Precisely interpolate the pose halfway between 2 and 3 while keeping their SAME head/torso position, anatomical size, guard fists, line weight and cel shading. H1 is an adult female with short black bob, red cropped track jacket/white stripes, white cropped shirt, charcoal pants with red stripe on the NEAR/right leg, white hand wraps, red sneakers. Facing RIGHT in the same side/three-quarter view. Exactly one person, two arms and two legs; maintain limb identity and continuous joints. Square transparent RGBA canvas1254x1254, full anatomical scale as those two frames: hair top about74, imaginary ground1194, rootcenter627. Do not scale each pose to fit; retain the same composition and clear transparent margins. No background, floor, shadows, text, ghosting, trails or duplicate figure. Only the intermediate leg/weight shift and corresponding clothing folds change. The far UNSTRIPED leg is swinging forward, with its shoe heel lowering toward its coming contact. The nearer RED-STRIPED leg is behind as the support, its heel beginning to lift with the toe still grounded. The stance should be halfway in width between frames04 and05, preserving their leg ownership. Keep the same head and arm silhouettes rather than moving the body around the canvas.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-04.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-05.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-6f8e6839-9349-4e1c-9fc5-857913b7a9a6.png",
+      "source": "generated/smooth-v1/walk-mid-04.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "356810271e14ff59218e0b0745c157dd3c4230519816d8b948476d338b3194bb",
+      "rgbaSha256": "d621e0a3ae80feec7d25124754e442179ee87adb986e4d7fd0604a552280e095",
+      "alphaOccupiedPixels": 318652,
+      "sourceBoundsAlpha0": {
+        "left": 65,
+        "top": 21,
+        "right": 1231,
+        "bottom": 1213
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-04.png",
+          "sha256": "30285d89b8391f078734f7e4fd70f91f930e90cb7d56229469b1e34efe0081cc"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-05.png",
+          "sha256": "1d22c94129936a64ce9973e38bc8109bd683e0039c96720eafbf2573d2580efa"
+        }
+      ],
+      "sourceBounds": {
+        "left": 312,
+        "top": 75,
+        "right": 1050,
+        "bottom": 1184
+      }
+    },
+    {
+      "id": "walk-mid-05",
+      "revision": "walk-mid-05",
+      "prompt": "Draw ONE new in-between animation sprite, a single transparent image, not a sheet. Reference1: H1 identity/costume. Reference2 BEFORE and reference3 AFTER: match their SAME anatomical scale and head/torso/guard coordinates. Adult female black bob, red cropped white-striped jacket, white top, charcoal pants, red stripe only on the NEAR right leg, hand wraps, red sneakers; right-facing fighting-game side/three-quarter view, same anime outline and cel shading. One person, exactly two arms and two legs. Precise halfway pose between the two walking frames, not duplicate of endpoint, no extra stride. True RGBA transparency, square1254x1254, hairtop74, plantedsole1194, rootcenter627. Identical canvas composition; no zoom, no body-fit scale. All edges clear transparent margin with zero stray pixels. No text, effects, floor, shadows, background or duplicate body. Keep body proportions and face stable. Both reference poses show near RED-STRIPED leg trailing on SCREEN LEFT and plain unstriped leg forward on SCREEN RIGHT. Preserve that ownership. Midway step: rear striped shoe halfway between two rear positions, its heel raised with toe nearly down, and front plain shoe slightly lowering from an upward toe to approach heel contact. Small midpoint pose only, nearly same spread and upper-body anchor.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-05.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-06-v2.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-8f9e3506-816a-463a-b875-2a1b43a968e7.png",
+      "source": "generated/smooth-v1/walk-mid-05.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "aaf1109ea3053823319f54b920801f0d725b5420befbef3819707e475f501f10",
+      "rgbaSha256": "a90b2408f09e430466d12f2ead312686c9d2f8aec359eaed9a7ab432eff29b99",
+      "alphaOccupiedPixels": 324874,
+      "sourceBoundsAlpha0": {
+        "left": 65,
+        "top": 72,
+        "right": 1217,
+        "bottom": 1189
+      },
+      "sourceBounds": {
+        "left": 256,
+        "top": 75,
+        "right": 1075,
+        "bottom": 1183
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-05.png",
+          "sha256": "1d22c94129936a64ce9973e38bc8109bd683e0039c96720eafbf2573d2580efa"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-06-v2.png",
+          "sha256": "0d2810abe624ea1c851a0499feaa96979276c91eb32976aac5d2e77d334a6299"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-06",
+      "prompt": "Use case identity-preserve. Create ONE new clean in-between drawing for the same H1 fighter. Reference1 defines identity/costume; references2 and3 are the BEFORE and AFTER walking poses. Match the same anatomical size, head/torso position and guard hands of those two frames, and draw their precise halfway leg motion. Adult female H1, short black bob, red cropped jacket with white stripes, white cropped top, charcoal pants, a red stripe on the NEAR right leg only, hand wraps, red sneakers. RIGHT-facing side/three-quarter game view, same anime outlines and cel shading. Exactly one character, two legs and two arms with correct joint continuity. Transparent RGBA square1254x1254, preserve full-canvas anatomical scale: hair top about74, baseline1194, rootcenter627. No zoom or per-pose fitting. Clear transparent outer margins; no floor/background/shadow/trails/text/multiple figures. Only natural intermediate pose and cloth folds change; do not freeze at either endpoint. The far unstriped leg is the FRONT leg taking weight, its sneaker halfway between the first forward heel-contact and second flat contact. The near red-striped leg stays BEHIND, heel lifted with toe about to leave the ground, halfway between the two rear positions. Slightly narrow the wide split of frame06 toward07. Preserve the exact limb stripe ownership and stable upper body.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-06-v2.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-07-v2.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-05fc2ceb-5bd1-445a-bde7-731307df7849.png",
+      "source": "generated/smooth-v1/walk-mid-06.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "5b838639a7111bfb26404a88fe4bb08089335980028c6d7eb2b63a4d16cb767b",
+      "rgbaSha256": "57813b6f9d25d65c82b28ae4eb6de170c3badba9780ecd07dd7d215ec14deec6",
+      "alphaOccupiedPixels": 314088,
+      "sourceBoundsAlpha0": {
+        "left": 41,
+        "top": 19,
+        "right": 1217,
+        "bottom": 1189
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-06-v2.png",
+          "sha256": "0d2810abe624ea1c851a0499feaa96979276c91eb32976aac5d2e77d334a6299"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-07-v2.png",
+          "sha256": "6e4b14f9aa939a260c92da6b7b46ac4962eaf8d94bf656c6180fdb7017872406"
+        }
+      ],
+      "sourceBounds": {
+        "left": 290,
+        "top": 75,
+        "right": 1049,
+        "bottom": 1183
+      }
+    },
+    {
+      "id": "walk-mid-07",
+      "revision": "walk-mid-07-v2",
+      "prompt": "EDIT the first image as a single transparent fighting game sprite. Images2 and3 are the bounding BEFORE/AFTER animation templates, not extra people. Keep the same H1 identity, black bob/face, costume/stripes, line art, cel shading, right-facing view and single character. Preserve upper-body shape and scale, head size and limb thickness. This edit corrects posture alignment in a 1254x1254 sprite, NOT zooming or scaling the whole person. Required stable shared canvas: HAIR TOP y74-76, PLANTED SOLE BOTTOM y1193 (ground line1194), rootcenter x627. The silhouette height must be1118-1120 source pixels, like the templates. Use natural minor knee/ankle posture adjustment, no enlarged head/body. Full true transparent RGBA background; zero alpha at the entire canvas border, no shadow/no stray speckles/no text or effects. Exactly two arms/two legs; keep hand guard unchanged. First candidate was TOO TALL: hairy70 andsoley1204. Correct tohairy75 andsoley1193 while keeping anatomical scale. Far PLAIN front leg is grounded support nearx900. Near RED-STRIPED rear leg just left the floor, bend the knee only HALF as much as candidate and lower its lifted rear shoe to approximatelyy1060, between frame07 and08, keeping rear shoe behind on the LEFT. Halfway knee angle/toe lift; not the full high rear-leg pose from frame08. Head/guard/torso align with endpoints.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/smooth-v1/walk-mid-07.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-07-v2.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-08-v4.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-47d85a85-4ae6-46d5-a181-90321f8dbc6b.png",
+      "source": "generated/smooth-v1/walk-mid-07-v2.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "d80280f9eaee7684dcd53269264e1f21cc6097dbacee853ad1e57cc8a827aa90",
+      "rgbaSha256": "1cc109fceb31e0be3e00ddc00681a551dd1438e93751ba668a712bb7a3a9ddee",
+      "alphaOccupiedPixels": 312292,
+      "sourceBoundsAlpha0": {
+        "left": 19,
+        "top": 21,
+        "right": 1209,
+        "bottom": 1207
+      },
+      "sourceBounds": {
+        "left": 346,
+        "top": 79,
+        "right": 1025,
+        "bottom": 1204
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/smooth-v1/walk-mid-07.png",
+          "sha256": "148a645e377d2c876b1b654947f8a08fa5acd926c9876778b60580dbf6d885a4"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-07-v2.png",
+          "sha256": "6e4b14f9aa939a260c92da6b7b46ac4962eaf8d94bf656c6180fdb7017872406"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-08-v4.png",
+          "sha256": "d815518625a65166d38a9318ca9d56c2f21e992a59c472ba2e3563eb7dc0f403"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-08",
+      "prompt": "Use case identity-preserve. Create ONE new clean in-between drawing for the same H1 fighter. Reference1 defines identity/costume; references2 and3 are the BEFORE and AFTER walking poses. Match the same anatomical size, head/torso position and guard hands of those two frames, and draw their precise halfway leg motion. Adult female H1, short black bob, red cropped jacket with white stripes, white cropped top, charcoal pants, a red stripe on the NEAR right leg only, hand wraps, red sneakers. RIGHT-facing side/three-quarter game view, same anime outlines and cel shading. Exactly one character, two legs and two arms with correct joint continuity. Transparent RGBA square1254x1254, preserve full-canvas anatomical scale: hair top about74, baseline1194, rootcenter627. No zoom or per-pose fitting. Clear transparent outer margins; no floor/background/shadow/trails/text/multiple figures. Only natural intermediate pose and cloth folds change; do not freeze at either endpoint. The far UNSTRIPED leg remains the grounded support, travelling halfway from ahead of hips toward beneath them. The near RED-STRIPED leg is lifted and swinging from BEHIND toward its passing position; its bent knee and red-striped shin are midway between reference2 and3, shoe approximately x475 y1005, still just behind the supporting knee rather than already ahead. The supporting unstriped shoe is around x755 on ground1194. Never switch which leg owns the stripe or invent an extra leg.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-08-v4.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-09.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-752230c8-4f95-4a9c-8e54-5c347ce1ba19.png",
+      "source": "generated/smooth-v1/walk-mid-08.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "50201372f8f301aad84453120cb45d3a529c1e06db0ca56848ae8c5d50edfa3d",
+      "rgbaSha256": "d549add3db709255d50a5dd072112548f1ef8ecee95ced362bbc6bdeb5e81347",
+      "alphaOccupiedPixels": 288335,
+      "sourceBoundsAlpha0": {
+        "left": 65,
+        "top": 21,
+        "right": 1217,
+        "bottom": 1229
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-08-v4.png",
+          "sha256": "d815518625a65166d38a9318ca9d56c2f21e992a59c472ba2e3563eb7dc0f403"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-09.png",
+          "sha256": "6419d0889376b8cdcbac9d3282e0c765eb66844fa37d02bd0346177a87844710"
+        }
+      ],
+      "sourceBounds": {
+        "left": 370,
+        "top": 76,
+        "right": 960,
+        "bottom": 1189
+      }
+    },
+    {
+      "id": "walk-mid-09",
+      "revision": "walk-mid-09",
+      "prompt": "Draw ONE new in-between animation sprite, a single transparent image, not a sheet. Reference1: H1 identity/costume. Reference2 BEFORE and reference3 AFTER: match their SAME anatomical scale and head/torso/guard coordinates. Adult female black bob, red cropped white-striped jacket, white top, charcoal pants, red stripe only on the NEAR right leg, hand wraps, red sneakers; right-facing fighting-game side/three-quarter view, same anime outline and cel shading. One person, exactly two arms and two legs. Precise halfway pose between the two walking frames, not duplicate of endpoint, no extra stride. True RGBA transparency, square1254x1254, hairtop74, plantedsole1194, rootcenter627. Identical canvas composition; no zoom, no body-fit scale. All edges clear transparent margin with zero stray pixels. No text, effects, floor, shadows, background or duplicate body. Keep body proportions and face stable. Near red-striped leg advances out of the passing pose, its knee begins straightening forward and its shoe swings halfway from nearbodyx660 y1030 to x970 y1060, aboutx815 y1045, TOE slightly upward. Far plain leg is the grounded support underneath/rear aroundx610. Correct knee arc halfway between supplied near-leg positions, same head and guard, continuous proportions.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-09.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-36b11c2f-685c-448a-ae7d-f4d2fad286d6.png",
+      "source": "generated/smooth-v1/walk-mid-09.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "fc69b4c52333aca5d774d202a278e2476c6f4f36f9c15a5e942b3b6a7387aa31",
+      "rgbaSha256": "c0e49c600803aa9526d20021e83be5301384c7e40e78f292976fd397a72e83df",
+      "alphaOccupiedPixels": 296252,
+      "sourceBoundsAlpha0": {
+        "left": 59,
+        "top": 21,
+        "right": 1197,
+        "bottom": 1221
+      },
+      "sourceBounds": {
+        "left": 401,
+        "top": 75,
+        "right": 1065,
+        "bottom": 1189
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-09.png",
+          "sha256": "6419d0889376b8cdcbac9d3282e0c765eb66844fa37d02bd0346177a87844710"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+          "sha256": "62e986640a161720c93e0b8e97ae1baffd19b9218c2f138f3912dc0b40681e7b"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-10",
+      "revision": "walk-mid-10-v5",
+      "prompt": "Edit this ONE image into the next half-step of its walk animation. Keep the entire upper body including hairtop/face/head/torso/arms/guard exactly unchanged in shape, size and canvas position. Adult female H1 right-facing anime fighter. Keep the PLAIN UNSTRIPED far leg as a firmly grounded support: its red sneaker sole remains fully planted on the SAME ground baseline as the source image, y1193. Move that support shoe only slightly rearward from image1, aroundx535 rather than lifting it. The NEAR RED-STRIPED leg is the advancing swing leg; slightly straighten/lower it from the source, front shoe aboutx950 with its sole lowest point aroundy1150, still hovering above the ground and preparing heel contact. This produces an intermediate step between a forward swing and heel contact. TWO legs exactly; near red stripe in FRONT screen-right, plain support behind. Crucial: do NOT lift the plain grounded rear shoe off its existing baseline and do NOT reduce the standing height. Preserve source stature: hairtopy74, lowest planted sneaker sole1193, about1120pixel hair-to-ground height on1254squarecanvas. No zoom, shrink, cropping, body-fitting, camera shift or whole-person scaling. Preserve face, jacket folds, palette, limb thickness, art style and clear linework. True transparent background, fully transparent outer margins, no ground/shadow/no stray alpha speckles/text/effects. One sprite, one person.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-16714dc2-5515-41c6-af75-8badf5389b7b.png",
+      "source": "generated/smooth-v1/walk-mid-10-v5.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "52c93697f87be037c398e4b9c868da17254c652e2775e5cb8a61e1dfd1bc1505",
+      "rgbaSha256": "7a3470cc184ff4cfe8519ffc742916637a49e380286c84f16ebf3e8fb18e41e0",
+      "alphaOccupiedPixels": 314792,
+      "sourceBoundsAlpha0": {
+        "left": 97,
+        "top": 72,
+        "right": 1235,
+        "bottom": 1213
+      },
+      "sourceBounds": {
+        "left": 401,
+        "top": 75,
+        "right": 1105,
+        "bottom": 1188
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+          "sha256": "62e986640a161720c93e0b8e97ae1baffd19b9218c2f138f3912dc0b40681e7b"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-11",
+      "revision": "walk-mid-11",
+      "prompt": "Draw ONE new in-between animation sprite, a single transparent image, not a sheet. Reference1: H1 identity/costume. Reference2 BEFORE and reference3 AFTER: match their SAME anatomical scale and head/torso/guard coordinates. Adult female black bob, red cropped white-striped jacket, white top, charcoal pants, red stripe only on the NEAR right leg, hand wraps, red sneakers; right-facing fighting-game side/three-quarter view, same anime outline and cel shading. One person, exactly two arms and two legs. Precise halfway pose between the two walking frames, not duplicate of endpoint, no extra stride. True RGBA transparency, square1254x1254, hairtop74, plantedsole1194, rootcenter627. Identical canvas composition; no zoom, no body-fit scale. All edges clear transparent margin with zero stray pixels. No text, effects, floor, shadows, background or duplicate body. Keep body proportions and face stable. Loop seam midpoint: near red-striped leg stays forward screen-right and lowers its upward-pointed shoe heel toward flat contact, halfway between11 and00. Far plain trailing leg shoe moves just a little backward, heel raised and toe near baseline. Match near-identical upper bodies exactly. Small transitional heel roll, not another stride; finish connects back to frame00 smoothly. Keep hairtop74 and standing sole1194.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-11.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-00.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-2c2349a4-bffe-4a7a-821c-319fa0025afc.png",
+      "source": "generated/smooth-v1/walk-mid-11.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "b41083db10bcae3e6b8e55d71030f3c95a5cb8b785b388d2804977b91cb03841",
+      "rgbaSha256": "b12f06eed353a53f0205ccd1385d5a6055cd78027d26ce0265c80dfccac292d5",
+      "alphaOccupiedPixels": 313687,
+      "sourceBoundsAlpha0": {
+        "left": 65,
+        "top": 21,
+        "right": 1209,
+        "bottom": 1189
+      },
+      "sourceBounds": {
+        "left": 297,
+        "top": 74,
+        "right": 1045,
+        "bottom": 1182
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-11.png",
+          "sha256": "f01e167c08be495b50c7bfaaa3e7374306fd20e8c27433b05360d8acbe6e5976"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-00.png",
+          "sha256": "4808189e9b4239cc0086634d1f1d3ecd00776c57e843328372aa0ad09618a795"
+        }
+      ]
+    },
+    {
+      "id": "idle-in",
+      "prompt": "Use case identity-preserve. Create ONE real new in-between sprite drawing of H1's subtle idle breathing loop, not a sheet. Image1 defines identity/costume, image2 is the BEFORE pose and image3 the AFTER pose. Preserve the exact same two planted shoes/ankles, stance width, leg lengths, pelvis position, head size/location, black bob hairstyle, face, red cropped jacket with white stripes, white cropped shirt, charcoal pants with red stripe, hand wraps and red sneakers from the idle references. RIGHT-facing same game camera, crisp anime outlines and identical restrained cel shading. Exactly one adult female character with two arms and two legs. Real transparent RGBA background, square1254x1254: hair near74, soles1194, rootcenter627, same scale and transparent margin as references. Do not zoom, crop, fit the body to bounding box, add ground/shadow/background/effects/text or duplicate limbs. Tiny changes only in breathing upper chest, shoulders, guard elbows and their cloth folds; feet and pelvis must remain fixed. This is the middle of INHALING from idle0 toward idle1. Draw the shoulder and guard-arm silhouettes at the exact half positions between the supplied frames, the chest gently expanding and jacket lapel beginning to follow the rising breath. No new fighting action or large bounce. Distinct midpoint drawing, not a copy of either endpoint.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/idle-1.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-dfc2685e-6047-4f22-9ae5-73a9d78b259c.png",
+      "source": "generated/smooth-v1/idle-in.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "76f43d85512112f8c2e4e6aa4f023791b101bc77321de35dce282c0c55d34830",
+      "rgbaSha256": "ed025fc4a7c327fa40216f698fe27187027edef33fea332b01585008a759e6d0",
+      "alphaOccupiedPixels": 365132,
+      "sourceBoundsAlpha0": {
+        "left": 51,
+        "top": 21,
+        "right": 1193,
+        "bottom": 1194
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+          "sha256": "7915499a1578002f858faf54fdf3baffe450b812447fa2bd9367d7c8dbecad9c"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/idle-1.png",
+          "sha256": "e244bcbc78fb8e47e3a1f4f0799833921c9e8fcef3ec84f468f25d9681cb9587"
+        }
+      ],
+      "sourceBounds": {
+        "left": 186,
+        "top": 75,
+        "right": 1087,
+        "bottom": 1192
+      }
+    },
+    {
+      "id": "idle-out",
+      "prompt": "Use case identity-preserve. Create ONE real new in-between sprite drawing of H1's subtle idle breathing loop, not a sheet. Image1 defines identity/costume, image2 is the BEFORE pose and image3 the AFTER pose. Preserve the exact same two planted shoes/ankles, stance width, leg lengths, pelvis position, head size/location, black bob hairstyle, face, red cropped jacket with white stripes, white cropped shirt, charcoal pants with red stripe, hand wraps and red sneakers from the idle references. RIGHT-facing same game camera, crisp anime outlines and identical restrained cel shading. Exactly one adult female character with two arms and two legs. Real transparent RGBA background, square1254x1254: hair near74, soles1194, rootcenter627, same scale and transparent margin as references. Do not zoom, crop, fit the body to bounding box, add ground/shadow/background/effects/text or duplicate limbs. Tiny changes only in breathing upper chest, shoulders, guard elbows and their cloth folds; feet and pelvis must remain fixed. This is the middle of EXHALING from idle1 back toward idle0. Draw shoulder and guard-arm silhouettes halfway returning between the supplied frames; jacket/lapel and sleeves settle with a tiny natural delayed cloth fold, different from an inhale, while head and planted feet remain aligned. No new fighting action or large bounce. Distinct return midpoint drawing, not an identical copy of either endpoint.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/idle-1.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-2bfb2ecd-7e61-44c5-a084-6241a2bf70e4.png",
+      "source": "generated/smooth-v1/idle-out.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "2a30427e63cbce936ffb250d54665e40c445f8136439996a2afc05e4a1b96e2a",
+      "rgbaSha256": "b05ae8c08ca84e9e06462fe528074d7ba78693a525b54591577a6a00b52996ff",
+      "alphaOccupiedPixels": 359998,
+      "sourceBoundsAlpha0": {
+        "left": 97,
+        "top": 78,
+        "right": 1193,
+        "bottom": 1195
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/movement-v1/idle-1.png",
+          "sha256": "e244bcbc78fb8e47e3a1f4f0799833921c9e8fcef3ec84f468f25d9681cb9587"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+          "sha256": "7915499a1578002f858faf54fdf3baffe450b812447fa2bd9367d7c8dbecad9c"
+        }
+      ],
+      "sourceBounds": {
+        "left": 186,
+        "top": 80,
+        "right": 1090,
+        "bottom": 1192
+      }
+    }
+  ],
+  "rejectedCandidates": [
+    {
+      "id": "walk-mid-10",
+      "prompt": "Use case identity-preserve. Create ONE new clean in-between drawing for the same H1 fighter. Reference1 defines identity/costume; references2 and3 are the BEFORE and AFTER walking poses. Match the same anatomical size, head/torso position and guard hands of those two frames, and draw their precise halfway leg motion. Adult female H1, short black bob, red cropped jacket with white stripes, white cropped top, charcoal pants, a red stripe on the NEAR right leg only, hand wraps, red sneakers. RIGHT-facing side/three-quarter game view, same anime outlines and cel shading. Exactly one character, two legs and two arms with correct joint continuity. Transparent RGBA square1254x1254, preserve full-canvas anatomical scale: hair top about74, baseline1194, rootcenter627. No zoom or per-pose fitting. Clear transparent outer margins; no floor/background/shadow/trails/text/multiple figures. Only natural intermediate pose and cloth folds change; do not freeze at either endpoint. The NEAR red-striped leg swings forward preparing to plant its heel, its shoe halfway between the reference forward positions, with ankle lowering slightly. The far unstriped leg supports from behind and begins toe push-off. Leg separation halfway between10 and11, no new stride or limb swap. Both hands/head/torso remain anchored to the references, with a subtle continuous hip weight shift.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-11.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-9db9fc59-571d-48f1-9e2a-683309cd25ef.png",
+      "source": "generated/smooth-v1/walk-mid-10.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "5ce7be14a2bbeafe9ee9981ecebe7d0c16248bf4626bf42f982386837e59396b",
+      "rgbaSha256": "a8e30aef15c28c0e9cf31a2c5a1799e1f700a885f5c4ae3ed8dfae2d8430a4a5",
+      "alphaOccupiedPixels": 307313,
+      "sourceBoundsAlpha0": {
+        "left": 69,
+        "top": 20,
+        "right": 1199,
+        "bottom": 1253
+      },
+      "nonzeroEdgePixels": 17,
+      "edgeAlphaMax": 1,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+          "sha256": "62e986640a161720c93e0b8e97ae1baffd19b9218c2f138f3912dc0b40681e7b"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-11.png",
+          "sha256": "f01e167c08be495b50c7bfaaa3e7374306fd20e8c27433b05360d8acbe6e5976"
+        }
+      ],
+      "rejection": "17 bottom-edge alpha=1 pixels outside the silhouette",
+      "sourceBounds": {
+        "left": 326,
+        "top": 73,
+        "right": 1040,
+        "bottom": 1176
+      }
+    },
+    {
+      "id": "walk-mid-03",
+      "revision": "walk-mid-03",
+      "prompt": "Create ONE actual new animation in-between drawing for H1, not a sheet or multiple panels. Image1 is the identity reference; image2 is BEFORE, image3 AFTER. Precisely halfway between the two walking poses, same head/torso coordinates, guard hands, anatomical size, adult female face and black bob, red cropped striped jacket, white cropped top, charcoal pants, red stripe on NEAR right leg, wrapped hands, red sneakers. Same right-facing game view, anime outlines and restrained cel shading. Exactly one figure, two arms and two legs, continuously correct limb ownership. Preserve1254x1254 full canvas composition: hair at y74, standing sole baseline1194, root center627. Never zoom or shrink to fit. Genuine transparent RGBA including all blank pixels; clean fully transparent exterior with NO faint speckles/alpha noise/ground/shadows. Keep all visible content away from every canvas edge. No text, motion trails, duplicate limbs, background or new action. Near RED-STRIPED leg remains support and moves back from beneath hip to behind, planted shoe halfway aroundx625 onbaseline1194. Far UNSTRIPED leg passes from behind the support to ahead, lower leg and shoe raised aroundx850 y1080, halfway into forward swing. Preserve distinct far/near legs and correct knees, not two red stripes. This is the transition from the close passing pose to the next step.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03-v2.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-04.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-bb65eaf0-d0e0-437a-a914-67217805e791.png",
+      "source": "generated/smooth-v1/walk-mid-03.png",
+      "rejection": "Near/far leg stripe continuity was wrong",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "51ee74ffea3e3d4f52495db1294b0b08023dc0ab16953969ff7264f3b13e842a",
+      "rgbaSha256": "df59cc92824fdd2eb92d3975d3b564ac71b39b1c8e7a45b527f77a48b576b9c9",
+      "alphaOccupiedPixels": 300099,
+      "sourceBoundsAlpha0": {
+        "left": 49,
+        "top": 75,
+        "right": 1193,
+        "bottom": 1187
+      },
+      "sourceBounds": {
+        "left": 401,
+        "top": 77,
+        "right": 1027,
+        "bottom": 1178
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03-v2.png",
+          "sha256": "ddbc7cfb9293107656f2a98fbca7cb0ae7d5c8bbb433d011b97424aafb141733"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-04.png",
+          "sha256": "30285d89b8391f078734f7e4fd70f91f930e90cb7d56229469b1e34efe0081cc"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-02",
+      "prompt": "Create ONE actual in-between drawing for the same H1 fighter, not a sheet. Image 1 is identity/costume reference; images 2 and 3 are the BEFORE and AFTER walking animation poses. Precisely interpolate the pose halfway between 2 and 3 while keeping their SAME head/torso position, anatomical size, guard fists, line weight and cel shading. H1 is an adult female with short black bob, red cropped track jacket/white stripes, white cropped shirt, charcoal pants with red stripe on the NEAR/right leg, white hand wraps, red sneakers. Facing RIGHT in the same side/three-quarter view. Exactly one person, two arms and two legs; maintain limb identity and continuous joints. Square transparent RGBA canvas1254x1254, full anatomical scale as those two frames: hair top about74, imaginary ground1194, rootcenter627. Do not scale each pose to fit; retain the same composition and clear transparent margins. No background, floor, shadows, text, ghosting, trails or duplicate figure. Only the intermediate leg/weight shift and corresponding clothing folds change. The nearer RED-STRIPED leg remains the grounded support as it travels from ahead of the hips toward underneath them. The farther UNSTRIPED leg is lifted and swinging forward from behind; draw it halfway toward the pass, still behind the support leg, rear sneaker around x540 y1050, never exchange which leg carries the red stripe. Front/support shoe slides in world-relative walk artwork only halfway between the supplied positions, around x805 on ground1194. Make a distinct midpoint, not either endpoint.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-02.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03-v2.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-2aff4697-56ae-4d9a-a9b5-1b6a69ca4af4.png",
+      "source": "generated/smooth-v1/walk-mid-02.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "dc40f65df7f18b1221f04b8b0d4e57aac22d2ab45e6d50a70f7ed20383b8a567",
+      "rgbaSha256": "29ab1945e18de6beac41ec504dae9f2286534379331036eb69f5c1946bcce3e3",
+      "alphaOccupiedPixels": 294303,
+      "sourceBoundsAlpha0": {
+        "left": 57,
+        "top": 21,
+        "right": 1217,
+        "bottom": 1220
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-02.png",
+          "sha256": "16bc65c42c8c895c4297294eac906159867d465dd8e0c5f7fba0a6dc281e09a0"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03-v2.png",
+          "sha256": "ddbc7cfb9293107656f2a98fbca7cb0ae7d5c8bbb433d011b97424aafb141733"
+        }
+      ],
+      "sourceBounds": {
+        "left": 367,
+        "top": 70,
+        "right": 917,
+        "bottom": 1204
+      },
+      "rejection": "Body-height drift compared with adjacent existing walking poses"
+    },
+    {
+      "id": "walk-mid-07",
+      "revision": "walk-mid-07",
+      "prompt": "Draw ONE new in-between animation sprite, a single transparent image, not a sheet. Reference1: H1 identity/costume. Reference2 BEFORE and reference3 AFTER: match their SAME anatomical scale and head/torso/guard coordinates. Adult female black bob, red cropped white-striped jacket, white top, charcoal pants, red stripe only on the NEAR right leg, hand wraps, red sneakers; right-facing fighting-game side/three-quarter view, same anime outline and cel shading. One person, exactly two arms and two legs. Precise halfway pose between the two walking frames, not duplicate of endpoint, no extra stride. True RGBA transparency, square1254x1254, hairtop74, plantedsole1194, rootcenter627. Identical canvas composition; no zoom, no body-fit scale. All edges clear transparent margin with zero stray pixels. No text, effects, floor, shadows, background or duplicate body. Keep body proportions and face stable. Near red-striped leg is behind, lifting from toe-off into recovery: bend the near rear knee about halfway, and raise the rear red sneaker halfway from first rear-shoe y1130 toward second y930, roughlyy1030. The far plain leg remains FRONT screen-right grounded support with shoe atsameplace on1194. Stripe follows rear raised knee and shin, never moves to the supporting front leg. No body bounce.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-07-v2.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-08-v4.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-0aa46f0e-5ebe-48e7-81e2-05479c5e66ed.png",
+      "source": "generated/smooth-v1/walk-mid-07.png",
+      "rejection": "Body-height drift compared with adjacent existing walking poses",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "148a645e377d2c876b1b654947f8a08fa5acd926c9876778b60580dbf6d885a4",
+      "rgbaSha256": "c67e1c27820a7ff4d4e8a97d79bc68be80a8f33f581fa3450dab9bb4e5ec9017",
+      "alphaOccupiedPixels": 309707,
+      "sourceBoundsAlpha0": {
+        "left": 21,
+        "top": 20,
+        "right": 1209,
+        "bottom": 1211
+      },
+      "sourceBounds": {
+        "left": 330,
+        "top": 70,
+        "right": 1020,
+        "bottom": 1204
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-07-v2.png",
+          "sha256": "6e4b14f9aa939a260c92da6b7b46ac4962eaf8d94bf656c6180fdb7017872406"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-08-v4.png",
+          "sha256": "d815518625a65166d38a9318ca9d56c2f21e992a59c472ba2e3563eb7dc0f403"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-10",
+      "revision": "walk-mid-10-v2",
+      "prompt": "Create ONE actual new animation in-between drawing for H1, not a sheet or multiple panels. Image1 is the identity reference; image2 is BEFORE, image3 AFTER. Precisely halfway between the two walking poses, same head/torso coordinates, guard hands, anatomical size, adult female face and black bob, red cropped striped jacket, white cropped top, charcoal pants, red stripe on NEAR right leg, wrapped hands, red sneakers. Same right-facing game view, anime outlines and restrained cel shading. Exactly one figure, two arms and two legs, continuously correct limb ownership. Preserve1254x1254 full canvas composition: hair at y74, standing sole baseline1194, root center627. Never zoom or shrink to fit. Genuine transparent RGBA including all blank pixels; clean fully transparent exterior with NO faint speckles/alpha noise/ground/shadows. Keep all visible content away from every canvas edge. No text, motion trails, duplicate limbs, background or new action. The near red-striped leg has swung forward and is lowering into a heel contact; shoe and ankle halfway between the two reference positions. Far unstriped leg supports from behind, halfway through toe push-off. Smoothly intermediate width; front toe points slightly upward. Keep reference head/torso unchanged, standing supporting sole on1194. Clear transparent margins especially the bottom60pixels; absolutely no stray low-opacity pixels outside the person.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-11.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-7ba290b2-a80a-40f2-8a5c-c035cd9de651.png",
+      "source": "generated/smooth-v1/walk-mid-10-v2.png",
+      "rejection": "Body-height drift compared with adjacent existing walking poses",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "a46a6e0e740e851e8f4b6750a9ce002b235ffbc5610a83ed05c72fa96205643d",
+      "rgbaSha256": "52e6655da656441a3234a86ef4e4e6502b1b3a360d8ad16cf7d237e71ce8377c",
+      "alphaOccupiedPixels": 310110,
+      "sourceBoundsAlpha0": {
+        "left": 51,
+        "top": 71,
+        "right": 1193,
+        "bottom": 1183
+      },
+      "sourceBounds": {
+        "left": 297,
+        "top": 74,
+        "right": 1050,
+        "bottom": 1176
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/reference.png",
+          "sha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+          "sha256": "62e986640a161720c93e0b8e97ae1baffd19b9218c2f138f3912dc0b40681e7b"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-11.png",
+          "sha256": "f01e167c08be495b50c7bfaaa3e7374306fd20e8c27433b05360d8acbe6e5976"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-02",
+      "revision": "walk-mid-02-v2",
+      "prompt": "EDIT the first image as a single transparent fighting game sprite. Images2 and3 are the bounding BEFORE/AFTER animation templates, not extra people. Keep the same H1 identity, black bob/face, costume/stripes, line art, cel shading, right-facing view and single character. Preserve upper-body shape and scale, head size and limb thickness. This edit corrects posture alignment in a 1254x1254 sprite, NOT zooming or scaling the whole person. Required stable shared canvas: HAIR TOP y74-76, PLANTED SOLE BOTTOM y1193 (ground line1194), rootcenter x627. The silhouette height must be1118-1120 source pixels, like the templates. Use natural minor knee/ankle posture adjustment, no enlarged head/body. Full true transparent RGBA background; zero alpha at the entire canvas border, no shadow/no stray speckles/no text or effects. Exactly two arms/two legs; keep hand guard unchanged. First candidate was TOO TALL: hairy70 andsoley1204. Correct tohairy75 andsoley1193 while keeping anatomical scale. Near RED-STRIPED leg remains the FRONT supporting leg with shoe halfway between before and after, planted nearx805. Far PLAIN leg swings from behind toward passing; shoe lifted, aroundx560 y1050. Draw the exact halfway width. Slightly flex the support knee to restore the common head-to-ground height, no deeper body bob. Preserve front stripe and rear plain leg.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/smooth-v1/walk-mid-02.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-02.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03-v2.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-f8d3c3e0-1247-41b1-ab9b-2bdc4c801561.png",
+      "source": "generated/smooth-v1/walk-mid-02-v2.png",
+      "rejection": "Body-height drift compared with adjacent existing walking poses",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "b3de5f22b82ff813dd7abb57390be141741a99f21f49b709cde4486aae41c74c",
+      "rgbaSha256": "184fdd6ca7f251a1f1b88a7cf14630145e6107133ad6bf230b3515d28f25ad7e",
+      "alphaOccupiedPixels": 296895,
+      "sourceBoundsAlpha0": {
+        "left": 119,
+        "top": 69,
+        "right": 1217,
+        "bottom": 1208
+      },
+      "sourceBounds": {
+        "left": 354,
+        "top": 71,
+        "right": 936,
+        "bottom": 1206
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/smooth-v1/walk-mid-02.png",
+          "sha256": "dc40f65df7f18b1221f04b8b0d4e57aac22d2ab45e6d50a70f7ed20383b8a567"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-02.png",
+          "sha256": "16bc65c42c8c895c4297294eac906159867d465dd8e0c5f7fba0a6dc281e09a0"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03-v2.png",
+          "sha256": "ddbc7cfb9293107656f2a98fbca7cb0ae7d5c8bbb433d011b97424aafb141733"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-10",
+      "revision": "walk-mid-10-v3",
+      "prompt": "EDIT the first image as a single transparent fighting game sprite. Images2 and3 are the bounding BEFORE/AFTER animation templates, not extra people. Keep the same H1 identity, black bob/face, costume/stripes, line art, cel shading, right-facing view and single character. Preserve upper-body shape and scale, head size and limb thickness. This edit corrects posture alignment in a 1254x1254 sprite, NOT zooming or scaling the whole person. Required stable shared canvas: HAIR TOP y74-76, PLANTED SOLE BOTTOM y1193 (ground line1194), rootcenter x627. The silhouette height must be1118-1120 source pixels, like the templates. Use natural minor knee/ankle posture adjustment, no enlarged head/body. Full true transparent RGBA background; zero alpha at the entire canvas border, no shadow/no stray speckles/no text or effects. Exactly two arms/two legs; keep hand guard unchanged. First candidate is TOO SHORT: frontsoley1176. Keep hairtop exactlyy74 and head/torso unchanged. Naturally extend the forward RED-STRIPED leg downward by17pixels at its knee/ankle, so its heel sole reachesy1193 ataboutx930; this is a soft first heel contact, toe slightly up. Far plain trailing leg remains behind screen-left with toe just leaving baseline. Do not shorten torso, enlarge head, zoom or fit the figure. Match1119-pixel hair-to-plantedsole height, with60transparentpixels below. Keep the whole canvas and side orientation unchanged.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/smooth-v1/walk-mid-10-v2.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-11.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-c7892971-7b60-44c7-9bd6-387bc8af09b5.png",
+      "source": "generated/smooth-v1/walk-mid-10-v3.png",
+      "rejection": "Body-height drift compared with adjacent existing walking poses",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "02793ae6636ee262970dbc836cff23093cbdf98b03f5eefdf43e80e9fd01ea8f",
+      "rgbaSha256": "4a11a23e5dd5314bc481c29ac8c7da6761610e412de42f3bc93f7199e962632b",
+      "alphaOccupiedPixels": 314709,
+      "sourceBoundsAlpha0": {
+        "left": 87,
+        "top": 57,
+        "right": 1193,
+        "bottom": 1221
+      },
+      "sourceBounds": {
+        "left": 293,
+        "top": 74,
+        "right": 1063,
+        "bottom": 1178
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/smooth-v1/walk-mid-10-v2.png",
+          "sha256": "a46a6e0e740e851e8f4b6750a9ce002b235ffbc5610a83ed05c72fa96205643d"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+          "sha256": "62e986640a161720c93e0b8e97ae1baffd19b9218c2f138f3912dc0b40681e7b"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-11.png",
+          "sha256": "f01e167c08be495b50c7bfaaa3e7374306fd20e8c27433b05360d8acbe6e5976"
+        }
+      ]
+    },
+    {
+      "id": "walk-mid-10",
+      "revision": "walk-mid-10-v4",
+      "prompt": "Make ONE actual new walking in-between sprite between the TWO reference images of the same adult fighter H1. Use image1's head, torso, arm guard and planted far shoe height as the exact stable composition. Same anatomical size, no zoom, no silhouette fitting. Near red-striped leg begins placing its extended forward heel on the same ground as image1's planted back shoe, while the plain far leg trails halfway backward toward image2. Extend and lower near shin/ankle so its planted heel reaches baseliney1198; retain headtopy74, giving1124 pixels head-to-floor on square1254canvas. This in-between must NOT draw shortened legs or a floating front shoe; firm early heel contact close to y1198, slight upturned toe. Existing attempts were18pixels too short: prioritize the full standing leg length and same torso anatomy as reference1. Same right-facing anime side/threequarter view, exactly same head/face/bob/red cropped jacket/white top/charcoal pants/nearredstripe/wrappedhands/redsneakers. One person only, exactly two arms and legs. True transparent RGBA, blank transparent margin around silhouette especially bottom55pixels, no faint alpha pixels outside body, no floor/shadow/text/trails/background. Only one intermediate drawing, no sheet.",
+      "referencedImages": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-11.png"
+      ],
+      "tool": "built-in image_gen",
+      "toolOutput": "C:\\Users\\PC\\.codex\\generated_images\\01a0fd21-2b1e-7543-a69d-367f147366b5\\exec-209bab7a-8ef9-4643-bf01-ceb74e60eb42.png",
+      "source": "generated/smooth-v1/walk-mid-10-v4.png",
+      "rejection": "Body-height drift compared with adjacent existing walking poses",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "7a88187edd402003f8a1f4a244077039e96084598bde32ab50b0e0b1a34baf60",
+      "rgbaSha256": "fa9221e8a030d3b1409a1c7bb859228f868eb460b87b6088d7bd03292229175d",
+      "alphaOccupiedPixels": 305911,
+      "sourceBoundsAlpha0": {
+        "left": 19,
+        "top": 21,
+        "right": 1215,
+        "bottom": 1177
+      },
+      "sourceBounds": {
+        "left": 294,
+        "top": 75,
+        "right": 1072,
+        "bottom": 1174
+      },
+      "nonzeroEdgePixels": 0,
+      "edgeAlphaMax": 0,
+      "referenceSha256": [
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+          "sha256": "62e986640a161720c93e0b8e97ae1baffd19b9218c2f138f3912dc0b40681e7b"
+        },
+        {
+          "path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-11.png",
+          "sha256": "f01e167c08be495b50c7bfaaa3e7374306fd20e8c27433b05360d8acbe6e5976"
+        }
+      ]
+    }
+  ]
+}

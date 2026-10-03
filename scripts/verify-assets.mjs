@@ -6,25 +6,6 @@ import { inflateSync } from 'node:zlib';
 const root = new URL('../assets/characters/h1/', import.meta.url);
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const decoded = new Map();
-for (const version of ['v1', 'v2', 'movement-v1', 'combat-v1', 'motion-v1', 'walk-v2', 'attack-motion-v1', 'opposite-limbs-v1', 'grab-v1', 'throw-v1']) {
-const manifest = JSON.parse(readFileSync(new URL(`derived/${version}/manifest.json`, root), 'utf8').replace(/^\uFEFF/, ''));
-assert.equal(hash(readFileSync(new URL('reference.png', root))), manifest.referenceSha256, 'Reference changed');
-assert.deepEqual(manifest.root, [256, 448]);
-assert.deepEqual(manifest.canvas, [512, 512]);
-assert.equal(manifest.displayScale, 0.625);
-let ids = ['idle', 'startup', 'active', 'recovery'];
-if (version === 'v2') ids.push('crouch', 'crouch-startup', 'crouch-active', 'crouch-recovery');
-if (version === 'movement-v1') ids = ['idle-1','walk-0','walk-1','walk-2','walk-3','jump-rise','jump-apex','jump-fall'];
-if (version === 'motion-v1') ids = ['lp-extend','lp-retract','lp-settle','walk-mid-0','walk-mid-1','walk-mid-2','walk-mid-3'];
-if (version === 'walk-v2') ids = Array.from({length:12},(_,i)=>`walk-${String(i).padStart(2,'0')}`);
-if (version === 'attack-motion-v1') ids = ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-lk','crouch-hk'].flatMap(a => (a === 'stand-hk' ? ['lift','apex','descend','retract','settle'] : ['extend','retract','settle']).map(p => `${a}-${p}`));
-if (version === 'attack-motion-v1') ids.push('stand-lk-startup','stand-lk-recovery','stand-hk-recovery');
-if (version === 'combat-v1') ids = ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-hk'].flatMap(a => ['startup','active','recovery'].map(p => `${a}-${p}`)).concat(['stand-guard','crouch-guard','stand-hit','crouch-hit','ko-0','ko-1','ko-2']);
-if (version === 'opposite-limbs-v1') ids = ['stand-hp','stand-hk','crouch-hp','crouch-hk'].flatMap(a => (a === 'stand-hk' ? ['startup','lift','apex','descend','active','retract','recovery','settle'] : ['startup','extend','active','retract','recovery','settle']).map(p => `${a}-${p}`));
-if (version === 'grab-v1') ids = ["grab-ready","grab-reach","grab-retract","grab-settle","grab-stand-hold","grab-stand-brace","grab-stand-push","grab-crouch-hold","grab-crouch-brace","grab-crouch-push","grabbed-stand-hold","grabbed-stand-impact","grabbed-stand-recover","grabbed-crouch-hold","grabbed-crouch-impact","grabbed-crouch-recover","grab-release","grabbed-stand-escape","grabbed-crouch-escape"];
-if (version === 'throw-v1') ids = ['throw-turn','throw-lift','throw-slam','thrown-air','thrown-down','thrown-rise'];
-assert.deepEqual(manifest.frames.map(frame => frame.id), ids);
-
 function decode(bytes) {
   assert.equal(bytes.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
   const width = bytes.readUInt32BE(16), height = bytes.readUInt32BE(20);
@@ -56,6 +37,25 @@ function decode(bytes) {
   }
   return { width, height, pixels };
 }
+
+for (const version of ['v1', 'v2', 'movement-v1', 'combat-v1', 'motion-v1', 'walk-v2', 'attack-motion-v1', 'opposite-limbs-v1', 'grab-v1', 'throw-v1']) {
+const manifest = JSON.parse(readFileSync(new URL(`derived/${version}/manifest.json`, root), 'utf8').replace(/^\uFEFF/, ''));
+assert.equal(hash(readFileSync(new URL('reference.png', root))), manifest.referenceSha256, 'Reference changed');
+assert.deepEqual(manifest.root, [256, 448]);
+assert.deepEqual(manifest.canvas, [512, 512]);
+assert.equal(manifest.displayScale, 0.625);
+let ids = ['idle', 'startup', 'active', 'recovery'];
+if (version === 'v2') ids.push('crouch', 'crouch-startup', 'crouch-active', 'crouch-recovery');
+if (version === 'movement-v1') ids = ['idle-1','walk-0','walk-1','walk-2','walk-3','jump-rise','jump-apex','jump-fall'];
+if (version === 'motion-v1') ids = ['lp-extend','lp-retract','lp-settle','walk-mid-0','walk-mid-1','walk-mid-2','walk-mid-3'];
+if (version === 'walk-v2') ids = Array.from({length:12},(_,i)=>`walk-${String(i).padStart(2,'0')}`);
+if (version === 'attack-motion-v1') ids = ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-lk','crouch-hk'].flatMap(a => (a === 'stand-hk' ? ['lift','apex','descend','retract','settle'] : ['extend','retract','settle']).map(p => `${a}-${p}`));
+if (version === 'attack-motion-v1') ids.push('stand-lk-startup','stand-lk-recovery','stand-hk-recovery');
+if (version === 'combat-v1') ids = ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-hk'].flatMap(a => ['startup','active','recovery'].map(p => `${a}-${p}`)).concat(['stand-guard','crouch-guard','stand-hit','crouch-hit','ko-0','ko-1','ko-2']);
+if (version === 'opposite-limbs-v1') ids = ['stand-hp','stand-hk','crouch-hp','crouch-hk'].flatMap(a => (a === 'stand-hk' ? ['startup','lift','apex','descend','active','retract','recovery','settle'] : ['startup','extend','active','retract','recovery','settle']).map(p => `${a}-${p}`));
+if (version === 'grab-v1') ids = ["grab-ready","grab-reach","grab-retract","grab-settle","grab-stand-hold","grab-stand-brace","grab-stand-push","grab-crouch-hold","grab-crouch-brace","grab-crouch-push","grabbed-stand-hold","grabbed-stand-impact","grabbed-stand-recover","grabbed-crouch-hold","grabbed-crouch-impact","grabbed-crouch-recover","grab-release","grabbed-stand-escape","grabbed-crouch-escape"];
+if (version === 'throw-v1') ids = ['throw-turn','throw-lift','throw-slam','thrown-air','thrown-down','thrown-rise'];
+assert.deepEqual(manifest.frames.map(frame => frame.id), ids);
 
 for (const frame of manifest.frames) {
   assert.equal(frame.scale, manifest.frames[0].scale, 'Sequence must share scale');
@@ -99,6 +99,103 @@ for (const frame of manifest.frames) {
   console.log(`${version}/${frame.id}: 512x512 RGBA, transparent margins, root aligned, hashes intact`);
 }
 }
+// These sources use the already-normalized 512 canvas proportions, not the older full-body scale.
+function alphaBounds(image, threshold = 8, checkEdge = true) {
+  const { width, height, pixels } = image;
+  const bounds = { left: width, top: height, right: -1, bottom: -1 };
+  let transparent = 0;
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+    const alpha = pixels[(y * width + x) * 4 + 3];
+    if (!alpha) transparent++;
+    if (checkEdge && (!x || !y || x === width - 1 || y === height - 1)) assert.equal(alpha, 0, 'Sprite clipped');
+    if (alpha >= threshold) {
+      bounds.left = Math.min(bounds.left, x); bounds.right = Math.max(bounds.right, x);
+      bounds.top = Math.min(bounds.top, y); bounds.bottom = Math.max(bounds.bottom, y);
+    }
+  }
+  assert.ok(bounds.right >= bounds.left && bounds.bottom >= bounds.top, 'Empty sprite');
+  assert.ok(transparent > width * height / 2, 'Expected transparent background');
+  return bounds;
+}
+for (const version of ['flip-v1', 'supplement-v1', 'reaction-smooth-v1']) {
+  const manifest = JSON.parse(readFileSync(new URL(`derived/${version}/manifest.json`, root), 'utf8').replace(/^\uFEFF/, ''));
+  assert.equal(hash(readFileSync(new URL('reference.png', root))), manifest.referenceSha256, 'Reference changed');
+  assert.deepEqual(manifest.canvas, [512, 512]); assert.deepEqual(manifest.root, [256, 448]);
+  assert.equal(manifest.displayScale, .625); assert.equal(manifest.alphaThreshold, 8);
+  assert.ok(manifest.frames.length > 0, `${version}: no frames`);
+  assert.equal(new Set(manifest.frames.map(f => f.id)).size, manifest.frames.length, 'Duplicate frame id');
+  for (const frame of manifest.frames) {
+    assert.match(frame.id, /^[a-z0-9]+(?:-[a-z0-9]+)*$/); assert.ok(!frame.id.includes('rejected'));
+    assert.equal(frame.source, `generated/${version}/${frame.id}.png`);
+    assert.equal(frame.output, `derived/${version}/${frame.id}.png`);
+    const sourceBytes = readFileSync(new URL(frame.source, root)), outputBytes = readFileSync(new URL(frame.output, root));
+    assert.equal(hash(sourceBytes), frame.sourceSha256); assert.equal(hash(outputBytes), frame.outputSha256);
+    const source = decode(sourceBytes), output = decode(outputBytes);
+    assert.deepEqual([source.width, source.height], [1254, 1254]); assert.deepEqual(frame.sourceSize, [1254, 1254]);
+    assert.deepEqual([output.width, output.height], [512, 512]);
+    assert.deepEqual(alphaBounds(source, 8, false), frame.sourceBounds); assert.deepEqual(alphaBounds(output), frame.outputBounds);
+    const b = frame.sourceBounds;
+    assert.ok(b.left > 0 && b.top > 0 && b.right < 1253 && b.bottom < 1253, `${version}/${frame.id}: source silhouette clipped`);
+    assert.equal(frame.scale, 512 / 1254, 'Preserve the source canvas ratio for every pose');
+    assert.equal(frame.sourceRoot[0], 627); assert.ok(Math.abs(frame.offset[0]) < 1e-8);
+    if (version === 'flip-v1') {
+      assert.equal(frame.rootMode, 'canvas-virtual-ground'); assert.equal(frame.sourceRoot[1], 1254 * .875);
+      assert.equal(frame.offset[1], 0, 'Curled feet must not move the virtual ground');
+    } else {
+      assert.equal(frame.sourceRoot[1], frame.sourceBounds.bottom + 1);
+      assert.equal(frame.rootMode, /^(ko-|thrown-down)/.test(frame.id) ? 'body-bottom' : 'sole-bottom');
+      assert.ok(Math.abs(frame.outputBounds.bottom + 1 - 448) <= 1, 'Soles/body must meet baseline');
+    }
+    assert.ok(Math.abs(frame.sourceRoot[0] * frame.scale + frame.offset[0] - 256) < 1e-8);
+    assert.ok(Math.abs(frame.sourceRoot[1] * frame.scale + frame.offset[1] - 448) < 1e-8);
+    console.log(`${version}/${frame.id}: fixed canvas ratio, RGBA, transparent margins, roots and hashes intact`);
+  }
+}
+// The walking/idle in-betweens reference the old 1254 full-body artwork,
+// so retain its single calibrated anatomical scale rather than fitting each pose.
+{
+  const version = 'smooth-v1';
+  const manifest = JSON.parse(readFileSync(new URL(`derived/${version}/manifest.json`, root), 'utf8').replace(/^\uFEFF/, ''));
+  const prompts = JSON.parse(readFileSync(new URL(`generated/${version}/prompts.json`, root), 'utf8'));
+  const ids = [...Array.from({ length: 12 }, (_, i) => `walk-mid-${String(i).padStart(2, '0')}`), 'idle-in', 'idle-out'];
+  assert.deepEqual(manifest.frames.map(f => f.id), ids);
+  assert.deepEqual(prompts.frames.map(f => f.id), ids);
+  assert.equal(hash(readFileSync(new URL('reference.png', root))), manifest.referenceSha256, 'Reference changed');
+  assert.deepEqual(manifest.canvas, [512, 512]); assert.deepEqual(manifest.root, [256, 448]);
+  assert.equal(manifest.displayScale, .625); assert.equal(manifest.alphaThreshold, 8);
+  const sourcePixels = new Set(), outputPixels = new Set();
+  const previousOutputPixels = new Set([...decoded.values()].map(hash));
+  for (const frame of manifest.frames) {
+    const prompt = prompts.frames.find(f => f.id === frame.id);
+    assert.equal(frame.source, prompt.source, 'Only the selected original may enter the runtime');
+    assert.equal(frame.output, `derived/${version}/${frame.id}.png`);
+    assert.ok(!prompts.rejectedCandidates.some(f => f.source === frame.source), 'Rejected candidate selected');
+    const sourceBytes = readFileSync(new URL(frame.source, root)), outputBytes = readFileSync(new URL(frame.output, root));
+    assert.equal(hash(sourceBytes), frame.sourceSha256); assert.equal(hash(sourceBytes), prompt.sourceSha256);
+    assert.equal(hash(outputBytes), frame.outputSha256);
+    const source = decode(sourceBytes), output = decode(outputBytes);
+    assert.deepEqual([source.width, source.height], [1254, 1254]); assert.deepEqual(frame.sourceSize, [1254, 1254]);
+    assert.deepEqual([output.width, output.height], [512, 512]);
+    assert.deepEqual(alphaBounds(source, 8), frame.sourceBounds);
+    assert.deepEqual(alphaBounds(source, 1), frame.sourceBoundsAlpha0);
+    assert.deepEqual(alphaBounds(output, 8), frame.outputBounds);
+    assert.deepEqual(alphaBounds(output, 1), frame.outputBoundsAlpha0);
+    assert.equal(frame.scale, 384 / 1120, 'Preserve the calibrated anatomical scale');
+    assert.equal(frame.sourceCanvasScale, 1); assert.equal(frame.sourceRoot[0], 627);
+    assert.equal(frame.sourceRoot[1], frame.sourceBounds.bottom + 1); assert.equal(frame.rootMode, 'sole-bottom');
+    assert.ok(Math.abs(frame.outputBounds.bottom + 1 - 448) <= 1, 'Soles must meet baseline');
+    assert.ok(Math.abs(frame.outputBounds.top - 64) <= 5, `${version}/${frame.id}: body height drift`);
+    assert.ok(Math.abs(frame.sourceRoot[0] * frame.scale + frame.offset[0] - 256) < 1e-8);
+    assert.ok(Math.abs(frame.sourceRoot[1] * frame.scale + frame.offset[1] - 448) < 1e-8);
+    assert.ok(!previousOutputPixels.has(hash(output.pixels)), 'An in-between must not duplicate a previous output');
+    sourcePixels.add(hash(source.pixels)); outputPixels.add(hash(output.pixels));
+    decoded.set(`${version}/${frame.id}`, output.pixels);
+    console.log(`${version}/${frame.id}: fixed anatomical scale, RGBA, actual alpha margins, roots and hashes intact`);
+  }
+  assert.equal(sourcePixels.size, ids.length, 'Generated in-betweens must be distinct drawings');
+  assert.equal(outputPixels.size, ids.length, 'Normalized in-betweens must remain distinct');
+  for (const candidate of prompts.rejectedCandidates) assert.equal(hash(readFileSync(new URL(candidate.source, root))), candidate.sourceSha256, 'Previous generated candidate must be preserved');
+}
 // Silhouette overlap measures foot stability, not artistic approval.
 function overlap(a, b, x0, x1, y0, y1) {
   let intersection = 0, union = 0;
@@ -121,4 +218,4 @@ for (const [attack, phase] of [['stand-lk','startup'],['stand-lk','recovery'],['
   const active = decoded.get(`combat-v1/${attack}-active`);
   for (const version of ['combat-v1','attack-motion-v1']) console.log(`${version}/${attack}-${phase} support foot overlap with impact (x100..199,y400..447): ${overlap(active, decoded.get(`${version}/${attack}-${phase}`), 100, 200, 400, 448)}`);
 }
-console.log('PASS: all source/output hashes, 512x512 RGBA, roots and margins. 100 runtime poses; previous versions preserved. Visual consistency requires separate review.');
+console.log('PASS: all source/output hashes, 512x512 RGBA, roots and margins. Current registry is checked by combat-poses tests; previous versions preserved. Visual consistency requires separate review.');

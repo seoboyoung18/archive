@@ -104,7 +104,7 @@ test('M08/M09: results freeze combat, KO animates exactly 18 ticks and early tra
   let s=tick(punchOnLastTick(startMatch(createMatch()),0));const combat=structuredClone(s.combat);
   for(let age=0;age<=18;age++){
     assert.equal(s.resultAge,age);assert.equal(resultReady(s),age===18);
-    assert.equal(combatPose(s.combat.fighters[1],H1,s.resultAge),`ko-${Math.min(2,Math.floor(age/6))}`);
+    assert.equal(combatPose(s.combat.fighters[1],H1,s.resultAge),age<3?'ko-0':age<6?'ko-mid-01':age<9?'ko-1':age<12?'ko-mid-12':'ko-2');
     assert.deepEqual(s.combat,combat);assert.deepEqual(s.wins,[1,0]);assert.equal(s.remainingFrames,0);
     if(age<18){assert.equal(nextRound(s),s);s=tick(s,{...N,axis:1,attacks:['hk']});}
   }

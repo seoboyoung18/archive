@@ -48,12 +48,12 @@ test('Animation changes, a complete stationary jump and KO age never move the ca
     for (let tick = 0; tick <= 48; tick++) {
       const f = s.fighters[0], v = combatVisuals(s)[0]; seen.add(combatPose(f, H1));
       assert.deepEqual(combatCamera(s), camera);
-      close(v.x, a, 'jump retains its logical x'); close(v.y, f.y, 'jump keeps original world y');
+      close(v.x, a, 'jump retains its logical x'); close(v.y, f.y - (f.grounded ? 0 : 120), 'flip pivots around the body center without moving the logical root');
       close(worldToScreen(camera, v.x, v.y).x, screenRoot.x, 'jump cannot cause horizontal camera movement');
       if (tick < 48) s = stepCombat(s, [{ ...N, jump: tick === 0 }, N]);
     }
     assert.equal(s.fighters[0].grounded, true);
-    for (const pose of ['jump-rise', 'jump-apex', 'jump-fall']) assert.ok(seen.has(pose));
+    for (const pose of ['jump-rise', 'flip-lift', 'flip-fold', 'flip-tuck', 'flip-coil', 'flip-release', 'flip-open', 'jump-fall', 'flip-landing']) assert.ok(seen.has(pose));
     for (const action of ['free', 'hit', 'guard', 'ko']) for (const posture of ['stand', 'crouch']) for (const age of [0, 6, 12, 18, 47]) {
       const variant = structuredClone(s), f = variant.fighters[0];
       Object.assign(f, { action, posture, age, hp: action === 'ko' ? 0 : 50, facing: -f.facing });

@@ -31,11 +31,11 @@ test('Airborne jump is ignored, horizontal control allowed, landing uses current
   for (let i = 2; i < 48; i++) fighters = stepMovement(fighters, [{ ...NEUTRAL, crouch: true }, NEUTRAL]);
   assert.equal(fighters[0].state, 'crouch'); near(fighters[0].y, 600);
 });
-test('Simultaneous approach splits overlap; ordering and minimum gap survive airborne approach', () => {
+test('Simultaneous grounded approach splits overlap and preserves ordering and minimum gap', () => {
   let fighters = createFighters(); fighters[0].x = 500; fighters[1].x = 574;
   fighters = stepMovement(fighters, [right, left]); near(fighters[0].x, 501); near(fighters[1].x, 573);
   for (let i = 0; i < 120; i++) {
-    fighters = stepMovement(fighters, [{ ...right, jump: i === 0 }, { ...left, jump: i === 0 }]);
+    fighters = stepMovement(fighters, [right, left]);
     near(fighters[1].x - fighters[0].x, 72);
   }
 });

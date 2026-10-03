@@ -10,6 +10,10 @@ const files = import.meta.glob<string>([
   '../../assets/characters/h1/derived/opposite-limbs-v1/*.png',
   '../../assets/characters/h1/derived/grab-v1/*.png',
   '../../assets/characters/h1/derived/throw-v1/*.png',
+  '../../assets/characters/h1/derived/flip-v1/*.png',
+  '../../assets/characters/h1/derived/smooth-v1/*.png',
+  '../../assets/characters/h1/derived/supplement-v1/*.png',
+  '../../assets/characters/h1/derived/reaction-smooth-v1/*.png',
 ], { eager: true, query: '?url', import: 'default' });
 
 /** Both combat and match inspectors load the same current pose set. */

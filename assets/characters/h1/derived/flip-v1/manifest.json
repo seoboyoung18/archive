@@ -1,0 +1,248 @@
+﻿{
+    "canvas":  [
+                   512,
+                   512
+               ],
+    "displayScale":  0.625,
+    "referenceSha256":  "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+    "method":  "Fixed full-canvas scale 512/1254 from derived-512 reference proportions; source canvas midpoint X; sole/body bottom Y, or canvas 0.875 virtual ground for flip-v1. No per-pose scaling or repainting.",
+    "frames":  [
+                   {
+                       "source":  "generated/flip-v1/flip-coil.png",
+                       "outputBounds":  {
+                                            "left":  182,
+                                            "right":  336,
+                                            "bottom":  360,
+                                            "top":  111
+                                        },
+                       "id":  "flip-coil",
+                       "sourceBounds":  {
+                                            "left":  446,
+                                            "right":  824,
+                                            "bottom":  882,
+                                            "top":  272
+                                        },
+                       "outputSha256":  "98c959c658b610a984d5ccc9b2b7e65bd994b3eeee596b07e2dea4f90d6e0e15",
+                       "output":  "derived/flip-v1/flip-coil.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1097.25
+                                      ],
+                       "offset":  [
+                                      0,
+                                      0
+                                  ],
+                       "sourceSha256":  "4ef26ca217f80ee9d20da9165306ea004810581d78a8004a7230d38346e44c42",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "canvas-virtual-ground"
+                   },
+                   {
+                       "source":  "generated/flip-v1/flip-fold.png",
+                       "outputBounds":  {
+                                            "left":  180,
+                                            "right":  341,
+                                            "bottom":  362,
+                                            "top":  67
+                                        },
+                       "id":  "flip-fold",
+                       "sourceBounds":  {
+                                            "left":  441,
+                                            "right":  836,
+                                            "bottom":  889,
+                                            "top":  166
+                                        },
+                       "outputSha256":  "436e5bd7c5907c7ff9012bae7b88fda3e1c6e2abd6978ac9298375e9d1e96000",
+                       "output":  "derived/flip-v1/flip-fold.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1097.25
+                                      ],
+                       "offset":  [
+                                      0,
+                                      0
+                                  ],
+                       "sourceSha256":  "54f347d47114ba46afcc91532dfb7a50fcf38bfd360b716188c69e8abc95883f",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "canvas-virtual-ground"
+                   },
+                   {
+                       "source":  "generated/flip-v1/flip-landing.png",
+                       "outputBounds":  {
+                                            "left":  126,
+                                            "right":  410,
+                                            "bottom":  452,
+                                            "top":  65
+                                        },
+                       "id":  "flip-landing",
+                       "sourceBounds":  {
+                                            "left":  308,
+                                            "right":  1005,
+                                            "bottom":  1108,
+                                            "top":  159
+                                        },
+                       "outputSha256":  "aca503b460bc7538e8daef44825dfe339600bb88c280599f1a64521aa512be4d",
+                       "output":  "derived/flip-v1/flip-landing.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1097.25
+                                      ],
+                       "offset":  [
+                                      0,
+                                      0
+                                  ],
+                       "sourceSha256":  "5427723bbbbc69db1dad597d2335040fd710d01ab07d2b58916e7f44c99c09ed",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "canvas-virtual-ground"
+                   },
+                   {
+                       "source":  "generated/flip-v1/flip-lift.png",
+                       "outputBounds":  {
+                                            "left":  182,
+                                            "right":  344,
+                                            "bottom":  405,
+                                            "top":  65
+                                        },
+                       "id":  "flip-lift",
+                       "sourceBounds":  {
+                                            "left":  447,
+                                            "right":  844,
+                                            "bottom":  992,
+                                            "top":  159
+                                        },
+                       "outputSha256":  "74ea106f87e2c88c9371b620772d591b527127ab6292f7cb69a85be8be593a28",
+                       "output":  "derived/flip-v1/flip-lift.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1097.25
+                                      ],
+                       "offset":  [
+                                      0,
+                                      0
+                                  ],
+                       "sourceSha256":  "33ad125b45e3f387606d91d21c51aed29c3966ecdbaa77dae9fb8ca3e67259bf",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "canvas-virtual-ground"
+                   },
+                   {
+                       "source":  "generated/flip-v1/flip-open.png",
+                       "outputBounds":  {
+                                            "left":  165,
+                                            "right":  349,
+                                            "bottom":  451,
+                                            "top":  65
+                                        },
+                       "id":  "flip-open",
+                       "sourceBounds":  {
+                                            "left":  405,
+                                            "right":  856,
+                                            "bottom":  1106,
+                                            "top":  159
+                                        },
+                       "outputSha256":  "634c9f0249ba0a17fdf27023f77a97d64679d58dba3bc17fc30ac642da53e5b7",
+                       "output":  "derived/flip-v1/flip-open.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1097.25
+                                      ],
+                       "offset":  [
+                                      0,
+                                      0
+                                  ],
+                       "sourceSha256":  "2b7d61d4b1f77718f6854151c5474bb2f56b9409b8fd1e97c6135d6da665bf3c",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "canvas-virtual-ground"
+                   },
+                   {
+                       "source":  "generated/flip-v1/flip-release.png",
+                       "outputBounds":  {
+                                            "left":  167,
+                                            "right":  344,
+                                            "bottom":  449,
+                                            "top":  64
+                                        },
+                       "id":  "flip-release",
+                       "sourceBounds":  {
+                                            "left":  408,
+                                            "right":  843,
+                                            "bottom":  1099,
+                                            "top":  157
+                                        },
+                       "outputSha256":  "0407555bb5a9acf387fc703e10017beea5e90347aa5b6012d22f549918fc2c60",
+                       "output":  "derived/flip-v1/flip-release.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1097.25
+                                      ],
+                       "offset":  [
+                                      0,
+                                      0
+                                  ],
+                       "sourceSha256":  "b21d6590021aa37d4dbab0835f8f6cca37a3efb6d85a544de2dd369ba4cad685",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "canvas-virtual-ground"
+                   },
+                   {
+                       "source":  "generated/flip-v1/flip-tuck.png",
+                       "outputBounds":  {
+                                            "left":  187,
+                                            "right":  338,
+                                            "bottom":  353,
+                                            "top":  98
+                                        },
+                       "id":  "flip-tuck",
+                       "sourceBounds":  {
+                                            "left":  459,
+                                            "right":  829,
+                                            "bottom":  865,
+                                            "top":  241
+                                        },
+                       "outputSha256":  "ccf10c14d0cd3584005042aed5833760091ca166ae6083d8b1532a252747fe21",
+                       "output":  "derived/flip-v1/flip-tuck.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1097.25
+                                      ],
+                       "offset":  [
+                                      0,
+                                      0
+                                  ],
+                       "sourceSha256":  "b09c514ed8f3cb5ab3436a96b0bdee8e079649a8cc64ee21dc0e03b0273a3fb4",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "canvas-virtual-ground"
+                   }
+               ],
+    "status":  "draft",
+    "root":  [
+                 256,
+                 448
+             ],
+    "alphaThreshold":  8
+}

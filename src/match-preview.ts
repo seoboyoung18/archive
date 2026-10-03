@@ -6,11 +6,10 @@ import { createH1Ai } from './combat/h1-ai.ts';
 import { stepH1AiMatch, transitionH1Ai } from './combat/h1-ai-match.ts';
 import { FixedStep } from './combat/fixed-step.ts';
 import { MatchInputBuffer } from './input/match-input.ts';
-import { combatPose } from './characters/h1-poses.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
-import { grabPoseState } from './combat/combat.ts';
-import { combatVisuals } from './characters/h1-visual.ts';
-import { combatCamera, applyCombatCamera, configureCombatCameras, H1_CAMERA_MARGIN } from './characters/h1-camera.ts';
+import { grabPoseState, type CombatState } from './combat/combat.ts';
+import { sampleCombatRender } from './characters/h1-render.ts';
+import { applyCombatCamera, configureCombatCameras, H1_CAMERA_MARGIN } from './characters/h1-camera.ts';
 import { createCombatAudioControls } from './audio/combat-audio-controls.ts';
 
 const get = <T extends HTMLElement>(id: string) => document.querySelector<T>(`#${id}`)!;
@@ -27,6 +26,7 @@ const text = (node: HTMLElement, value: string) => { if (node.textContent !== va
 
 class MatchScene extends Phaser.Scene {
   private match = createMatch();
+  private previousCombat: CombatState | null = null;
   private ai = createH1Ai();
   private clock = new FixedStep();
   private ready = false;
@@ -110,6 +110,7 @@ class MatchScene extends Phaser.Scene {
     const previous = this.match;
     this.ai = transitionH1Ai(this.ai, previous, nextState);
     this.match = nextState; input.reset(); this.clock.reset();
+    this.previousCombat = null;
     if (nextState.combat !== previous.combat && nextState.combat.frame === 0) { text(lastHit, '타격 기록 없음'); this.audio.beginSession(); }
     if (nextState.paused || nextState.phase === 'ready') this.audio.pause();
     else this.audio.resume();
@@ -118,11 +119,12 @@ class MatchScene extends Phaser.Scene {
   }
   private renderMatch() {
     const s = this.match, ended = s.result !== null, available = resultReady(s);
-    applyCombatCamera(this.cameras.main, combatCamera(s.combat));
-    const visuals = combatVisuals(s.combat, s.resultAge);
-    this.match.combat.fighters.forEach((f, i) => {
+    const rendered = sampleCombatRender(s.phase === 'playing' && !s.paused ? this.previousCombat : null, s.combat, this.clock.alpha, s.resultAge);
+    applyCombatCamera(this.cameras.main, rendered.camera);
+    const visuals = rendered.visuals;
+    rendered.fighters.forEach((f, i) => {
       const def = s.combat.definitions[i], visual = visuals[i]!;
-      this.sprites[i]!.setTexture(combatPose(f, def, s.resultAge)).setOrigin(0.5, visual.originY)
+      this.sprites[i]!.setTexture(rendered.poses[i]!).setOrigin(0.5, visual.originY)
         .setPosition(visual.x, visual.y).setFlipX(f.facing === -1).setAngle(visual.angle).setDepth(visual.depth);
       this.labels[i]!.setPosition(visual.x, visual.y - visual.labelHeight);
       health[i]!.value = f.hp; text(hp[i]!, `${f.hp} / ${def.maxHp}`);
@@ -162,6 +164,7 @@ class MatchScene extends Phaser.Scene {
     if (!this.ready || this.match.paused || this.match.phase === 'ready') return;
     this.clock.advance(delta, () => {
       const previous = this.match;
+      this.previousCombat = previous.combat;
       const next = stepH1AiMatch(previous, this.ai, input.sample());
       this.match = next.match; this.ai = next.ai;
       if (this.match.combat.frame !== previous.combat.frame) {

@@ -1,6 +1,7 @@
 import { grabPoseState, type CombatFighter, type CombatState } from '../combat/combat.ts';
 import type { CharacterDefinition } from '../combat/definition.ts';
 import { STAGE } from '../combat/movement.ts';
+import { flipProgress, isFreeFlip } from './h1-jump.ts';
 
 export interface CombatVisual {
   x: number; y: number; angle: number; originY: number; depth: number; labelHeight: number;
@@ -10,6 +11,12 @@ export function combatVisual(f: CombatFighter, def: CharacterDefinition, _koFram
   const g = grabPoseState(f);
   const result = { x: f.x, y: f.action === 'ko' ? STAGE.floor : f.y, angle: 0,
     originY: 0.875, depth: f.id as number, labelHeight: f.action === 'ko' ? 125 : f.posture === 'crouch' ? 162 : 255 };
+  if (isFreeFlip(f)) {
+    result.originY = 0.5;
+    result.y -= 120;
+    result.angle = f.facing * 360 * flipProgress(f, def);
+    result.labelHeight = 135;
+  }
   if (g?.kind !== 'success') return result;
   const impact = g.impactAt ?? def.grab!.impact, turn = (g.techUntil ?? def.grab!.techWindow) + 1;
   const lift = Math.min(impact, turn + Math.max(1, Math.floor((impact - turn) / 3)));

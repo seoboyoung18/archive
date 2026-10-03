@@ -1,6 +1,7 @@
 import { attackPhase, grabPoseState, type CombatFighter } from '../combat/combat.ts';
 import type { CharacterDefinition } from '../combat/definition.ts';
 import { movementPose } from '../combat/movement.ts';
+import { flipProgress, isFreeFlip } from './h1-jump.ts';
 
 /** Paths are relative to assets/characters/h1/derived. Every state has an explicit asset. */
 export const H1_POSES: Record<string, string> = {
@@ -63,18 +64,41 @@ for (const attack of ['stand-hp','stand-hk','crouch-hp','crouch-hk']) {
   }
 }
 
+export const H1_FLIP_POSES = ['flip-lift', 'flip-fold', 'flip-tuck', 'flip-coil', 'flip-release', 'flip-open', 'flip-landing'];
+for (const pose of H1_FLIP_POSES) H1_POSES[pose] = `flip-v1/${pose}.png`;
+for (const pose of ['idle-in', 'idle-out']) H1_POSES[pose] = `smooth-v1/${pose}.png`;
+export const H1_WALK_FRAMES: string[] = [];
+for (let i = 0; i < 12; i++) {
+  const suffix = String(i).padStart(2, '0'), middle = `walk-mid-${suffix}`;
+  H1_POSES[middle] = `smooth-v1/${middle}.png`;
+  H1_WALK_FRAMES.push(`walk-${suffix}`, middle);
+}
+for (const [attack, frames] of Object.entries(H1_ATTACK_FRAMES)) {
+  for (const phase of ['start', 'recover']) {
+    const pose = `${attack}-${phase}-mid`;
+    H1_POSES[pose] = `supplement-v1/${pose}.png`;
+  }
+  // Late-extension candidates sit after the old extend; crosses and axe-kick lifts unfold earlier.
+  const late = ['stand-lp', 'stand-lk', 'crouch-lp', 'crouch-lk'].includes(attack);
+  frames.startup.splice(late ? 2 : 1, 0, `${attack}-start-mid`);
+  const retract = frames.recovery.findIndex(pose => pose.endsWith('retract'));
+  frames.recovery.splice(retract + 1, 0, `${attack}-recover-mid`);
+}
+for (const pose of ['stand-hit-settle', 'crouch-hit-settle', 'ko-mid-01', 'ko-mid-12',
+  'throw-turn-mid', 'throw-drop-mid', 'thrown-rise-mid', 'grab-release-mid']) H1_POSES[pose] = `reaction-smooth-v1/${pose}.png`;
+
 export function combatPose(f: CombatFighter, definition: CharacterDefinition, koFrame = 0): string {
   const grab = grabPoseState(f);
   if (f.action === 'ko') {
     if (grab?.kind === 'success' && grab.role === 'target') return 'thrown-down';
-    return `ko-${Math.min(2, Math.floor(Math.max(0, koFrame) / 6))}`;
+    return ['ko-0', 'ko-mid-01', 'ko-1', 'ko-mid-12', 'ko-2'][Math.min(4, Math.floor(Math.max(0, koFrame) / 3))]!;
   }
   if (grab) {
     const { kind, role, age, targetPosture } = grab;
     if (kind === 'attempt') return age < 3 ? 'grab-ready' : age < 8 ? 'grab-reach' : age < 20 ? 'grab-retract' : 'grab-settle';
     if (kind === 'escape') return role === 'target'
       ? `grabbed-${targetPosture}-${age < 4 ? 'escape' : 'recover'}`
-      : age < 4 ? 'grab-release' : age < 8 ? 'grab-retract' : 'grab-settle';
+      : age < 2 ? 'grab-release' : age < 4 ? 'grab-release-mid' : age < 8 ? 'grab-retract' : 'grab-settle';
     const impact = grab.impactAt ?? definition.grab!.impact, turn = (grab.techUntil ?? definition.grab!.techWindow) + 1;
     const lift = Math.min(impact, turn + Math.max(1, Math.floor((impact - turn) / 3)));
     if (role === 'target') {
@@ -82,12 +106,14 @@ export function combatPose(f: CombatFighter, definition: CharacterDefinition, ko
       if (age < impact) return 'thrown-air';
       const recovery = Math.max(1, grab.releaseAt - impact);
       if (age < impact + recovery / 3) return 'thrown-down';
+      if (age < impact + recovery / 2) return 'thrown-rise-mid';
       if (age < impact + recovery * 2 / 3) return 'thrown-rise';
       return `grabbed-${targetPosture}-recover`;
     }
     if (age < turn) return `grab-${targetPosture}-hold`;
-    if (age < lift) return 'throw-turn';
-    if (age < impact) return age < lift + (impact - lift) / 2 ? 'throw-lift' : 'throw-slam';
+    if (age < lift) return age < turn + (lift - turn) / 2 ? 'throw-turn' : 'throw-turn-mid';
+    if (age < impact) return age < lift + (impact - lift) / 4 ? 'throw-lift'
+      : age < lift + (impact - lift) / 2 ? 'throw-drop-mid' : 'throw-slam';
     return age < impact + (grab.releaseAt - impact) / 2 ? 'throw-slam' : 'grab-settle';
   }
   if (f.action === 'attack' && f.attack) {
@@ -99,11 +125,19 @@ export function combatPose(f: CombatFighter, definition: CharacterDefinition, ko
     const phaseAge = f.attack.age - (phase === 'startup' ? 0 : phase === 'active' ? attack.startup : attack.startup + attack.active);
     return frames[Math.floor(phaseAge * frames.length / attack[phase])]!;
   }
-  if (f.action === 'hit' || f.action === 'guard') return `${f.posture}-${f.action}`;
-  if (f.state === 'walk') {
-    const segment = Math.floor(f.age / 4) % 12;
-    const index = f.walkDirection === f.facing ? segment : (12 - segment) % 12;
-    return `walk-${String(index).padStart(2, '0')}`;
+  if (f.action === 'hit') return `${f.posture}-hit${f.grounded && f.stun <= 4 ? '-settle' : ''}`;
+  if (f.action === 'guard') return `${f.posture}-guard`;
+  if (isFreeFlip(f)) {
+    const tick = Math.round(flipProgress(f, definition) * 48);
+    return tick < 4 ? 'jump-rise' : tick < 6 ? 'flip-lift' : tick < 10 ? 'flip-fold'
+      : tick < 17 ? 'flip-tuck' : tick < 29 ? 'flip-coil' : tick < 33 ? 'flip-tuck'
+      : tick < 37 ? 'flip-release' : tick < 41 ? 'flip-open' : tick < 45 ? 'jump-fall' : 'flip-landing';
   }
+  if (f.state === 'walk') {
+    const segment = Math.floor(f.age / 2) % 24;
+    const index = f.walkDirection === f.facing ? segment : (24 - segment) % 24;
+    return H1_WALK_FRAMES[index]!;
+  }
+  if (f.state === 'idle') return ['idle-0', 'idle-in', 'idle-1', 'idle-out'][Math.floor(f.age % 30 * 4 / 30)]!;
   return movementPose(f);
 }

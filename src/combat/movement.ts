@@ -6,6 +6,7 @@ export interface Fighter {
   x: number; y: number; vy: number; facing: Direction;
   state: MovementState; age: number; grounded: boolean;
   walkDirection: Direction;
+  jumpInterrupted?: boolean; // Presentation stays interrupted after an airborne hit until landing.
 }
 export const H1_MOVEMENT: MovementRules = { speed: 240, jumpSpeed: -800, gravity: 2000 };
 export const STAGE = { floor: 600, minX: 80, maxX: 1200, gap: 72 } as const;
@@ -14,8 +15,8 @@ export const DT = 1 / 60;
 
 export function createFighters(): [Fighter, Fighter] {
   return [
-    { x: 400, y: 600, vy: 0, facing: 1, state: 'idle', age: 0, grounded: true, walkDirection: 1 },
-    { x: 880, y: 600, vy: 0, facing: -1, state: 'idle', age: 0, grounded: true, walkDirection: -1 },
+    { x: 400, y: 600, vy: 0, facing: 1, state: 'idle', age: 0, grounded: true, walkDirection: 1, jumpInterrupted: false },
+    { x: 880, y: 600, vy: 0, facing: -1, state: 'idle', age: 0, grounded: true, walkDirection: -1, jumpInterrupted: false },
   ];
 }
 
@@ -25,6 +26,7 @@ function advance(f: Fighter, input: MoveInput, rules: MovementRules): Fighter {
   if (next.grounded && input.jump && !crouching) {
     next.grounded = false;
     next.vy = rules.jumpSpeed;
+    next.jumpInterrupted = false;
   }
   const dx = crouching ? 0 : input.axis * rules.speed * DT;
   next.x = Math.max(STAGE.minX, Math.min(STAGE.maxX, next.x + dx));
@@ -32,7 +34,7 @@ function advance(f: Fighter, input: MoveInput, rules: MovementRules): Fighter {
     next.y += next.vy * DT + 0.5 * rules.gravity * DT * DT;
     next.vy += rules.gravity * DT;
     if (next.y >= STAGE.floor - 1e-9 && next.vy >= 0) {
-      next.y = STAGE.floor; next.vy = 0; next.grounded = true;
+      next.y = STAGE.floor; next.vy = 0; next.grounded = true; next.jumpInterrupted = false;
     }
   }
   crouching = next.grounded && input.crouch;
@@ -42,19 +44,24 @@ function advance(f: Fighter, input: MoveInput, rules: MovementRules): Fighter {
   return next;
 }
 
-/** Both tentative moves are resolved together; vertical position never permits passing. */
+/** Airborne fighters can cross; only two grounded bodies require horizontal separation. */
 export function stepMovement(
   fighters: readonly [Fighter, Fighter],
   inputs: readonly [MoveInput, MoveInput],
   rules: readonly [MovementRules, MovementRules] = [H1_MOVEMENT, H1_MOVEMENT],
 ): [Fighter, Fighter] {
   const next: [Fighter, Fighter] = [advance(fighters[0], inputs[0], rules[0]), advance(fighters[1], inputs[1], rules[1])];
-  const leftIndex = fighters[0].x <= fighters[1].x ? 0 : 1;
-  const left = next[leftIndex], right = next[1 - leftIndex]!;
-  if (right.x - left.x < STAGE.gap) {
-    const middle = (left.x + right.x) / 2;
-    left.x = Math.max(STAGE.minX, Math.min(STAGE.maxX - STAGE.gap, middle - STAGE.gap / 2));
-    right.x = left.x + STAGE.gap;
+  if (next[0].grounded && next[1].grounded) {
+    // Ground movement cannot swap sides. A landing uses its new side; an exact tie keeps the old order.
+    const previousOrder = fighters[0].x <= fighters[1].x ? 0 : 1;
+    const leftIndex = (fighters[0].grounded && fighters[1].grounded) || next[0].x === next[1].x
+      ? previousOrder : next[0].x < next[1].x ? 0 : 1;
+    const left = next[leftIndex], right = next[1 - leftIndex]!;
+    if (right.x - left.x < STAGE.gap) {
+      const middle = (left.x + right.x) / 2;
+      left.x = Math.max(STAGE.minX, Math.min(STAGE.maxX - STAGE.gap, middle - STAGE.gap / 2));
+      right.x = left.x + STAGE.gap;
+    }
   }
   for (const index of [0, 1] as const) {
     // An airborne fighter keeps its takeoff orientation; grounded fighters face the opponent.

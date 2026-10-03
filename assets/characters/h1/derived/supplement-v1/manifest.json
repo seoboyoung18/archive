@@ -1,0 +1,545 @@
+﻿{
+    "canvas":  [
+                   512,
+                   512
+               ],
+    "displayScale":  0.625,
+    "referenceSha256":  "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+    "method":  "Fixed full-canvas scale 512/1254 from derived-512 reference proportions; source canvas midpoint X; sole/body bottom Y, or canvas 0.875 virtual ground for flip-v1. No per-pose scaling or repainting.",
+    "frames":  [
+                   {
+                       "source":  "generated/supplement-v1/crouch-hk-recover-mid.png",
+                       "outputBounds":  {
+                                            "left":  205,
+                                            "right":  364,
+                                            "bottom":  447,
+                                            "top":  210
+                                        },
+                       "id":  "crouch-hk-recover-mid",
+                       "sourceBounds":  {
+                                            "left":  503,
+                                            "right":  892,
+                                            "bottom":  1115,
+                                            "top":  534
+                                        },
+                       "outputSha256":  "129775f996725e0fc69d2ee55d0a18721ed570f6624658a26bbb89a82a1dae06",
+                       "output":  "derived/supplement-v1/crouch-hk-recover-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1116
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -7.6555023923444878
+                                  ],
+                       "sourceSha256":  "14e05449fe50e5cd8809610ba9d94f50be852e8eaec7d0937da651fe62c6f5ab",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/crouch-hk-start-mid.png",
+                       "outputBounds":  {
+                                            "left":  181,
+                                            "right":  360,
+                                            "bottom":  447,
+                                            "top":  210
+                                        },
+                       "id":  "crouch-hk-start-mid",
+                       "sourceBounds":  {
+                                            "left":  444,
+                                            "right":  882,
+                                            "bottom":  1110,
+                                            "top":  529
+                                        },
+                       "outputSha256":  "69728f9ef650283e993fc06684b25dc2f463ecb176374272dd7e69abee7ad7d6",
+                       "output":  "derived/supplement-v1/crouch-hk-start-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1111
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -5.6140350877192873
+                                  ],
+                       "sourceSha256":  "4b67193a7097829fb7b71193c5fc7c703f0c3398d5f9eabff5f41a5fa1ddf6a0",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/crouch-hp-recover-mid.png",
+                       "outputBounds":  {
+                                            "left":  139,
+                                            "right":  381,
+                                            "bottom":  447,
+                                            "top":  201
+                                        },
+                       "id":  "crouch-hp-recover-mid",
+                       "sourceBounds":  {
+                                            "left":  341,
+                                            "right":  933,
+                                            "bottom":  1099,
+                                            "top":  496
+                                        },
+                       "outputSha256":  "77b378e60eb1bc0caa7423611d7ef859cc5b08865bb7ecad8556c24f9657277c",
+                       "output":  "derived/supplement-v1/crouch-hp-recover-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1100
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -1.1228070175438347
+                                  ],
+                       "sourceSha256":  "536d177b35c1b7f0ad6ce25be38d45b9d9bb3b2df0f6e9328deb547d026e7baa",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/crouch-hp-start-mid.png",
+                       "outputBounds":  {
+                                            "left":  141,
+                                            "right":  386,
+                                            "bottom":  447,
+                                            "top":  190
+                                        },
+                       "id":  "crouch-hp-start-mid",
+                       "sourceBounds":  {
+                                            "left":  347,
+                                            "right":  947,
+                                            "bottom":  1097,
+                                            "top":  466
+                                        },
+                       "outputSha256":  "4a9a2052ea7dc6fc359bddb69a7f80c45b82fdd3435fa95b231ff1875e583c2e",
+                       "output":  "derived/supplement-v1/crouch-hp-start-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1098
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.30622009569378861
+                                  ],
+                       "sourceSha256":  "18fe70d26ec85d9a32e39eb23c16453f4f678a695e31aaffba0569e571acbe87",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/crouch-lk-recover-mid.png",
+                       "outputBounds":  {
+                                            "left":  155,
+                                            "right":  361,
+                                            "bottom":  447,
+                                            "top":  207
+                                        },
+                       "id":  "crouch-lk-recover-mid",
+                       "sourceBounds":  {
+                                            "left":  379,
+                                            "right":  884,
+                                            "bottom":  1097,
+                                            "top":  508
+                                        },
+                       "outputSha256":  "08d91643937a75fae423858dc8812f8cd00790636344523c22f32dab5931a06e",
+                       "output":  "derived/supplement-v1/crouch-lk-recover-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1098
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.30622009569378861
+                                  ],
+                       "sourceSha256":  "514628232a506ef7940eb847ac3fb5fbb4836a993572b7a53e70526f299032ff",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/crouch-lk-start-mid.png",
+                       "outputBounds":  {
+                                            "left":  144,
+                                            "right":  418,
+                                            "bottom":  447,
+                                            "top":  210
+                                        },
+                       "id":  "crouch-lk-start-mid",
+                       "sourceBounds":  {
+                                            "left":  354,
+                                            "right":  1025,
+                                            "bottom":  1097,
+                                            "top":  517
+                                        },
+                       "outputSha256":  "ca6b16fd85fd3201ebb791829e989d3d0aef30cc25406b3804bd1b347749529e",
+                       "output":  "derived/supplement-v1/crouch-lk-start-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1098
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.30622009569378861
+                                  ],
+                       "sourceSha256":  "89b0cdb7cf74a28cdbb6a242523ef86c84751c4332b396fe0b2a821dab5c2437",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/crouch-lp-recover-mid.png",
+                       "outputBounds":  {
+                                            "left":  133,
+                                            "right":  369,
+                                            "bottom":  447,
+                                            "top":  192
+                                        },
+                       "id":  "crouch-lp-recover-mid",
+                       "sourceBounds":  {
+                                            "left":  327,
+                                            "right":  904,
+                                            "bottom":  1096,
+                                            "top":  472
+                                        },
+                       "outputSha256":  "f974b385bab5b1ecd037df60347613d6137e9678cadfc529dd02cc95790aa9f8",
+                       "output":  "derived/supplement-v1/crouch-lp-recover-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1097
+                                      ],
+                       "offset":  [
+                                      0,
+                                      0.10207336523126287
+                                  ],
+                       "sourceSha256":  "ae5e6ee42e44d04a140c1b180358e67e232367026c3053f885a2f67878f1bdc9",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/crouch-lp-start-mid.png",
+                       "outputBounds":  {
+                                            "left":  146,
+                                            "right":  384,
+                                            "bottom":  447,
+                                            "top":  204
+                                        },
+                       "id":  "crouch-lp-start-mid",
+                       "sourceBounds":  {
+                                            "left":  359,
+                                            "right":  941,
+                                            "bottom":  1097,
+                                            "top":  501
+                                        },
+                       "outputSha256":  "e6a0464cd7eb3efae1e72a8a01faa71dbc62ae12fcef2165c1ce12d6155bb440",
+                       "output":  "derived/supplement-v1/crouch-lp-start-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1098
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.30622009569378861
+                                  ],
+                       "sourceSha256":  "324bf334e239290557a7c07bdb54bae1a41f501b67ebfc3234c0b22a79b90140",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/stand-hk-recover-mid.png",
+                       "outputBounds":  {
+                                            "left":  176,
+                                            "right":  406,
+                                            "bottom":  447,
+                                            "top":  60
+                                        },
+                       "id":  "stand-hk-recover-mid",
+                       "sourceBounds":  {
+                                            "left":  430,
+                                            "right":  996,
+                                            "bottom":  1101,
+                                            "top":  153
+                                        },
+                       "outputSha256":  "491d117ee33a57e20355e49e0b24e6216df65fac16b1dec36e81051bee817849",
+                       "output":  "derived/supplement-v1/stand-hk-recover-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1102
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -1.9393939393939377
+                                  ],
+                       "sourceSha256":  "8c63b811e6a99904a59af7b6e6ee54f231a22f97057fb4c3b646a197ae942bcd",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/stand-hk-start-mid.png",
+                       "outputBounds":  {
+                                            "left":  168,
+                                            "right":  377,
+                                            "bottom":  447,
+                                            "top":  42
+                                        },
+                       "id":  "stand-hk-start-mid",
+                       "sourceBounds":  {
+                                            "left":  412,
+                                            "right":  924,
+                                            "bottom":  1137,
+                                            "top":  145
+                                        },
+                       "outputSha256":  "4df893a8fde8a5ffbfcd174e1f82b943d0b9a14b7e2b81e80838f8b4281356a1",
+                       "output":  "derived/supplement-v1/stand-hk-start-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1138
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -16.637958532695393
+                                  ],
+                       "sourceSha256":  "3261db23bc0c1947e97bd6303ba02a2564189fd173945e8edcf6f6513e9dd925",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/stand-hp-recover-mid.png",
+                       "outputBounds":  {
+                                            "left":  102,
+                                            "right":  427,
+                                            "bottom":  447,
+                                            "top":  69
+                                        },
+                       "id":  "stand-hp-recover-mid",
+                       "sourceBounds":  {
+                                            "left":  250,
+                                            "right":  1046,
+                                            "bottom":  1098,
+                                            "top":  172
+                                        },
+                       "outputSha256":  "217e78bb18817ee06d84914b0b6e5928dde92ac533cd78ec0d454b0ab0745dfb",
+                       "output":  "derived/supplement-v1/stand-hp-recover-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1099
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.71451355661884008
+                                  ],
+                       "sourceSha256":  "6be868bffd5ada9a19383f9aeedb68e4783f323949aa6479fda5b5e34baff58f",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/stand-hp-start-mid.png",
+                       "outputBounds":  {
+                                            "left":  98,
+                                            "right":  429,
+                                            "bottom":  447,
+                                            "top":  67
+                                        },
+                       "id":  "stand-hp-start-mid",
+                       "sourceBounds":  {
+                                            "left":  240,
+                                            "right":  1051,
+                                            "bottom":  1097,
+                                            "top":  164
+                                        },
+                       "outputSha256":  "055cf55ca2c4037d8c71375b4ccef3fc8f18b208a9ab008823564c97fbde6877",
+                       "output":  "derived/supplement-v1/stand-hp-start-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1098
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.30622009569378861
+                                  ],
+                       "sourceSha256":  "5c18183406b356155de47f4809f34e5c4c1585bdfd45855e23668166303c30ae",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/stand-lk-recover-mid.png",
+                       "outputBounds":  {
+                                            "left":  98,
+                                            "right":  341,
+                                            "bottom":  447,
+                                            "top":  36
+                                        },
+                       "id":  "stand-lk-recover-mid",
+                       "sourceBounds":  {
+                                            "left":  242,
+                                            "right":  835,
+                                            "bottom":  1124,
+                                            "top":  117
+                                        },
+                       "outputSha256":  "d3dddcb435347bdb9eb4caddd72e9c361b9be964a97c6841b13955e724b67985",
+                       "output":  "derived/supplement-v1/stand-lk-recover-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1125
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -11.330143540669837
+                                  ],
+                       "sourceSha256":  "01dd2e6e5221e5dce371d08eb0cdd62084fa92058515f815d07e575f5d88f688",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/stand-lk-start-mid.png",
+                       "outputBounds":  {
+                                            "left":  94,
+                                            "right":  424,
+                                            "bottom":  447,
+                                            "top":  48
+                                        },
+                       "id":  "stand-lk-start-mid",
+                       "sourceBounds":  {
+                                            "left":  231,
+                                            "right":  1040,
+                                            "bottom":  1099,
+                                            "top":  120
+                                        },
+                       "outputSha256":  "cae9854c3bde99d31e1fcae296876b105b9f4a716c44f6dde333509042c7b47b",
+                       "output":  "derived/supplement-v1/stand-lk-start-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1100
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -1.1228070175438347
+                                  ],
+                       "sourceSha256":  "382dd6143d2870c1943a99bc63a575e4a8f52828b007e151a67a423caa7b69fc",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/stand-lp-recover-mid.png",
+                       "outputBounds":  {
+                                            "left":  104,
+                                            "right":  413,
+                                            "bottom":  447,
+                                            "top":  63
+                                        },
+                       "id":  "stand-lp-recover-mid",
+                       "sourceBounds":  {
+                                            "left":  257,
+                                            "right":  1013,
+                                            "bottom":  1097,
+                                            "top":  155
+                                        },
+                       "outputSha256":  "2dd777bb5e55420d8421646cf8616e74786eadb5e88f22bf9cdf8478b8853c6e",
+                       "output":  "derived/supplement-v1/stand-lp-recover-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1098
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.30622009569378861
+                                  ],
+                       "sourceSha256":  "014fcd0c3125cc26b95ba7a27bd32cbf978cdf9c4f9a5932bd4b86b7f2ec00af",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/supplement-v1/stand-lp-start-mid.png",
+                       "outputBounds":  {
+                                            "left":  105,
+                                            "right":  413,
+                                            "bottom":  447,
+                                            "top":  63
+                                        },
+                       "id":  "stand-lp-start-mid",
+                       "sourceBounds":  {
+                                            "left":  257,
+                                            "right":  1012,
+                                            "bottom":  1096,
+                                            "top":  156
+                                        },
+                       "outputSha256":  "39d60a5f3eff33dfefc1bc9422cd5ce540f7ed7bf46cb5369016823000101335",
+                       "output":  "derived/supplement-v1/stand-lp-start-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1097
+                                      ],
+                       "offset":  [
+                                      0,
+                                      0.10207336523126287
+                                  ],
+                       "sourceSha256":  "d5b3902a2592405b27345cea8a90afdc19f4accb72a62f291a86cc02f8dce9ff",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   }
+               ],
+    "status":  "draft",
+    "root":  [
+                 256,
+                 448
+             ],
+    "alphaThreshold":  8
+}

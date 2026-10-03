@@ -1,13 +1,15 @@
 # 차원격투 · Dimension Fight
 
-최신 화면 보완: 사용자 승인 [거리 대응 카메라 A](docs/specs/h1-camera-framing.md)를 연결했습니다. 가까이에서는 기존 크기, 양 끝에서는 최대 약14.9% 축소하며 그림과 실제 판정이 함께 움직입니다. [전후 비교](docs/reviews/evidence/h1-camera-review.html)와 [검수 기록](docs/reviews/h1-camera-framing.md)을 제공합니다.
+최신 동작: W 제자리 / W+A/D 방향 점프로 한 바퀴 회전하며 상대를 통과합니다. 새 그림45장과 위치·회전 보간으로 걷기·공격·반응 연결을 보완했습니다. 점프 높이/체공 시간, 공격 유효 시점과 피해는 유지합니다. [명세](docs/specs/h1-smooth-flip.md) · [모션 비교](docs/reviews/evidence/h1-smooth-review.html) · [검수 기록](docs/reviews/h1-smooth-flip.md).
+
+이전 화면 보완: 사용자 승인 [거리 대응 카메라 A](docs/specs/h1-camera-framing.md)를 연결했습니다. 가까이에서는 기존 크기, 양 끝에서는 최대 약14.9% 축소하며 그림과 실제 판정이 함께 움직입니다. [전후 비교](docs/reviews/evidence/h1-camera-review.html)와 [검수 기록](docs/reviews/h1-camera-framing.md)을 제공합니다.
 
 차원을 넘어 모인 인물들의 격투
 
 여러 세계의 인간·비스트·로봇이 대결하는 2D 애니메이션풍 격투게임.
 
 - 대상 저장소: https://github.com/seoboyoung18/dimension-fight
-- 현재 단계: H1 시안100포즈를 사용하는 **H1 대 H1 AI 대전**에 C 콤보와 회전 메치기·풀기를 연결했습니다. S1의 합성 효과음9종·청취 화면에 이어 사용자가 **S2 게임 연결과 초기 소리 켜짐·음량30%**를 선택해 표적·AI 경기 연결과 자동 검증을 완료했습니다. 내장 브라우저의 초기 활성화와 잡기 사건 재생도 확인했습니다. 기존94포즈를 보존하고 메치기6포즈를 추가했으며 걷기12장·0.8초와 기본 공격8종은 유지합니다. CPU가 접근·공격·방어하며60초·2선승·재경기·전체 재시작으로 플레이합니다. 사용자 선택 A안의 빨강·금색 `K O!!`를 사용합니다. 메치기의 자동·실제 확인 범위는 [검수 기록](docs/reviews/h1-throw-revision.md)을 따르며 독립 Chrome/Edge와 난이도·입력 체감 전체를 검증한 것으로 보지 않습니다.
+- 현재 단계: H1 시안145포즈를 사용하는 **H1 대 H1 AI 대전**에 C 콤보와 회전 메치기·풀기를 연결했습니다. S1의 합성 효과음9종·청취 화면에 이어 사용자가 **S2 게임 연결과 초기 소리 켜짐·음량30%**를 선택해 표적·AI 경기 연결과 자동 검증을 완료했습니다. 내장 브라우저의 초기 활성화와 잡기 사건 재생도 확인했습니다. 기존100포즈를 보존하고 새 중간 그림45장을 추가했으며 걷기24장·0.8초와 기본 공격8종을 사용합니다. CPU가 접근·공격·방어하며60초·2선승·재경기·전체 재시작으로 플레이합니다. 사용자 선택 A안의 빨강·금색 `K O!!`를 사용합니다. 메치기의 자동·실제 확인 범위는 [검수 기록](docs/reviews/h1-throw-revision.md)을 따르며 독립 Chrome/Edge와 난이도·입력 체감 전체를 검증한 것으로 보지 않습니다.
 - 개발 방식: [SDD](docs/SDD.md)
 - Git 운영: [1인 개발 컨벤션](docs/git-convention.md) — `main`에서 작업하고 검증 후 커밋·push합니다.
 - [확정 기획](docs/game-concept.md) · [결정 기록](docs/decisions.md)

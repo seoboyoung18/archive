@@ -1,0 +1,161 @@
+{
+  "purpose": "Eight new basic attack recovery inbetweens. Existing active artwork and combat timing unchanged. Fixed canvas 512/1254 normalization is performed separately by root.",
+  "frames": [
+    {
+      "id": "stand-lp-recover-mid",
+      "status": "accepted-pending-root-alignment-review",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: stylized-concept. Asset: ONE new transparent 2D fighting-game animation sprite, recovery inbetween only. The two supplied images are exact style, identity, outfit, anatomical scale and fixed-canvas position references, ordered previous pose then following pose. Draw one coherent new pose exactly halfway between them. Preserve same short black bob woman, red cropped jacket with white stripes, white crop top and hand wraps, black pants with one red stripe, red trainers, identical clean outlined anime cel shading. Face screen RIGHT. Output 1254x1254 RGBA transparent. Treat the entire 512x512 reference canvas as scaled uniformly by 1254/512: do NOT crop, recenter, zoom the figure or enlarge its silhouette. Ground sole line corresponds to reference y448, hence source y1097; center/root x627. Keep the planted supporting shoe location, body size and margins. Both shoes/arms remain anatomically attached. No background, floor, cast shadow, lettering, aura, speedlines, ghost limbs, duplicates or extra person. This is recovering to guard, NOT a new strike. Light punch: the farther/right-side forearm retracts halfway from its forward bent fist in Image1 to the near-face guard in Image2. The near/left-side arm stays parked by the chest. Keep both feet and lower body at the same coordinates. Front fist around reference x333 y156, midway, elbow bent.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/motion-v1/lp-retract.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/v2/recovery.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-541c7c45-0b7d-4bdc-b44c-795b6456d7b9.png",
+      "savedPath": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/supplement-v1/stand-lp-recover-mid.png",
+      "sourceSha256": "014fcd0c3125cc26b95ba7a27bd32cbf978cdf9c4f9a5932bd4b86b7f2ec00af",
+      "referenceSha256": [
+        "d5f16629cd0db5f5b7b45501527592776a1e8a4107211ce6f5ad87a63d85804e",
+        "b5afc0c5ea273f78dedb174eb1785e6ed80d4c79225fec859323930ffa72784f"
+      ]
+    },
+    {
+      "id": "stand-hp-recover-mid",
+      "status": "accepted-pending-root-alignment-review",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: stylized-concept. Asset: ONE new transparent 2D fighting-game animation sprite, recovery inbetween only. The two supplied images are exact style, identity, outfit, anatomical scale and fixed-canvas position references, ordered previous pose then following pose. Draw one coherent new pose exactly halfway between them. Preserve same short black bob woman, red cropped jacket with white stripes, white crop top and hand wraps, black pants with one red stripe, red trainers, identical clean outlined anime cel shading. Face screen RIGHT. Output 1254x1254 RGBA transparent. Treat the entire 512x512 reference canvas as scaled uniformly by 1254/512: do NOT crop, recenter, zoom the figure or enlarge its silhouette. Ground sole line corresponds to reference y448, hence source y1097; center/root x627. Keep the planted supporting shoe location, body size and margins. Both shoes/arms remain anatomically attached. No background, floor, cast shadow, lettering, aura, speedlines, ghost limbs, duplicates or extra person. This is recovering to guard, NOT a new strike. Heavy punch MUST use the NEAR arm that crosses the front of the torso from the red shoulder on image-left to screen-right. Bring that crossed punching forearm halfway back toward the chest, with fist around reference x311 y174 between refs. The other FAR hand stays guarding the face. Preserve the near shoulder/sleeve crossing in front, same torso twist and planted right shoe/raised rear heel. Do not substitute the far arm/light punch.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/stand-hp-retract.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/stand-hp-recovery.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-27fd4e8b-d39c-418b-8bf1-d8bd47f13167.png",
+      "savedPath": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/supplement-v1/stand-hp-recover-mid.png",
+      "sourceSha256": "6be868bffd5ada9a19383f9aeedb68e4783f323949aa6479fda5b5e34baff58f",
+      "referenceSha256": [
+        "114d948cef641c6cbe707b2682e41c2347e16b1dfa140b916a543adea0d1f2ae",
+        "b6f7dfb354fa79c0552f9db097b5a1274c202dd4870d31c58e5b6c526005cce1"
+      ]
+    },
+    {
+      "id": "stand-lk-recover-mid",
+      "status": "accepted-pending-root-alignment-review",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: stylized-concept. Asset: ONE new transparent 2D fighting-game animation sprite, recovery inbetween only. The two supplied images are exact style, identity, outfit, anatomical scale and fixed-canvas position references, ordered previous pose then following pose. Draw one coherent new pose exactly halfway between them. Preserve same short black bob woman, red cropped jacket with white stripes, white crop top and hand wraps, black pants with one red stripe, red trainers, identical clean outlined anime cel shading. Face screen RIGHT. Output 1254x1254 RGBA transparent. Treat the entire 512x512 reference canvas as scaled uniformly by 1254/512: do NOT crop, recenter, zoom the figure or enlarge its silhouette. Ground sole line corresponds to reference y448, hence source y1097; center/root x627. Keep the planted supporting shoe location, body size and margins. Both shoes/arms remain anatomically attached. No background, floor, cast shadow, lettering, aura, speedlines, ghost limbs, duplicates or extra person. This is recovering to guard, NOT a new strike. Light kick uses the plain BLACK unstriped far leg. Keep red-striped near leg planted at the exact image-left supporting shoe. The plain black kicking leg is partly lowering/folding between refs, knee still forward near hip height, bent knee and shin descending diagonally, airborne shoe midway around reference x333 y290. Both fists still guard, same body size.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/attack-motion-v1/stand-lk-retract.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/attack-motion-v1/stand-lk-recovery.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-53df6295-148e-421d-b674-f40f8b6f5bf6.png",
+      "savedPath": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/supplement-v1/stand-lk-recover-mid.png",
+      "sourceSha256": "01dd2e6e5221e5dce371d08eb0cdd62084fa92058515f815d07e575f5d88f688",
+      "referenceSha256": [
+        "94f4bf638dbd0c73ff45efd8151acfaa333404f12fe284aa775c1806bfb6676a",
+        "bc368021855b1f1e4c9b02e44a991e23ddea8ad61e020d9478df356871c32e67"
+      ]
+    },
+    {
+      "id": "stand-hk-recover-mid",
+      "status": "accepted-pending-root-alignment-review",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: stylized-concept. Asset: ONE new transparent 2D fighting-game animation sprite, recovery inbetween only. The two supplied images are exact style, identity, outfit, anatomical scale and fixed-canvas position references, ordered previous pose then following pose. Draw one coherent new pose exactly halfway between them. Preserve same short black bob woman, red cropped jacket with white stripes, white crop top and hand wraps, black pants with one red stripe, red trainers, identical clean outlined anime cel shading. Face screen RIGHT. Output 1254x1254 RGBA transparent. Treat the entire 512x512 reference canvas as scaled uniformly by 1254/512: do NOT crop, recenter, zoom the figure or enlarge its silhouette. Ground sole line corresponds to reference y448, hence source y1097; center/root x627. Keep the planted supporting shoe location, body size and margins. Both shoes/arms remain anatomically attached. No background, floor, cast shadow, lettering, aura, speedlines, ghost limbs, duplicates or extra person. This is recovering to guard, NOT a new strike. Heavy kick MUST use the RED-STRIPED near leg. It is lowering from the high tucked bent knee of Image1 toward the behind-body recovery step of Image2. Make one midway recovery pose: red-striped thigh angled down-forward, knee at reference x293 y272, bent shin trailing down-left with shoe around x245 y346, still off ground. The unstriped far leg remains planted at exact supporting shoe near reference x310 y445. Keep near red stripe running continuously hip→moving thigh→shin; never kick with the plain leg. Same guarded torso and face.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/stand-hk-retract.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/stand-hk-recovery.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-f129ce77-04a3-4282-951f-edea487fe1a5.png",
+      "savedPath": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/supplement-v1/stand-hk-recover-mid.png",
+      "sourceSha256": "8c63b811e6a99904a59af7b6e6ee54f231a22f97057fb4c3b646a197ae942bcd",
+      "referenceSha256": [
+        "aea38710086e9bc099c29eb95e70e2200c75851f97a4b875f0cc3140e0d112c3",
+        "9238ca8e93f7fb56ce3eaf4d79970d16977ad33d62e2042f8decfd26d529f221"
+      ]
+    },
+    {
+      "id": "crouch-lp-recover-mid",
+      "status": "accepted-pending-root-alignment-review",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: stylized-concept. Asset: ONE new transparent 2D fighting-game animation sprite, recovery inbetween only. The two supplied images are exact style, identity, outfit, anatomical scale and fixed-canvas position references, ordered previous pose then following pose. Draw one coherent new pose exactly halfway between them. Preserve same short black bob woman, red cropped jacket with white stripes, white crop top and hand wraps, black pants with one red stripe, red trainers, identical clean outlined anime cel shading. Face screen RIGHT. Output 1254x1254 RGBA transparent. Treat the entire 512x512 reference canvas as scaled uniformly by 1254/512: do NOT crop, recenter, zoom the figure or enlarge its silhouette. Ground sole line corresponds to reference y448, hence source y1097; center/root x627. Keep the planted supporting shoe location, body size and margins. Both shoes/arms remain anatomically attached. No background, floor, cast shadow, lettering, aura, speedlines, ghost limbs, duplicates or extra person. This is recovering to guard, NOT a new strike. Crouching light punch: stay in the same low crouch, head around reference y201 (source y492), soles y448. The far/right-side punching arm retracts halfway from the extended Image1 fist to guard in Image2, with new bent elbow and fist at reference x350 y286. The near/left arm remains close in guard. Do not stand up, grow taller, or swap punching arms. Feet/lower body in a natural halfway transition, same body scale.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/attack-motion-v1/crouch-lp-retract.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/combat-v1/crouch-lp-recovery.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-41320356-49db-46ce-b8a9-35261f0b4249.png",
+      "savedPath": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/supplement-v1/crouch-lp-recover-mid.png",
+      "sourceSha256": "ae5e6ee42e44d04a140c1b180358e67e232367026c3053f885a2f67878f1bdc9",
+      "referenceSha256": [
+        "09fdce3203065236b70c93466e8dc4c75087dc1f8cf8ff0bc13d185432fff172",
+        "dc430dac650cff457615a6f729cbc8baca8c0b4f28cef21715b3cd5c9501aa56"
+      ]
+    },
+    {
+      "id": "crouch-hp-recover-mid",
+      "status": "accepted-pending-root-alignment-review",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: stylized-concept. Asset: ONE new transparent 2D fighting-game animation sprite, recovery inbetween only. The two supplied images are exact style, identity, outfit, anatomical scale and fixed-canvas position references, ordered previous pose then following pose. Draw one coherent new pose exactly halfway between them. Preserve same short black bob woman, red cropped jacket with white stripes, white crop top and hand wraps, black pants with one red stripe, red trainers, identical clean outlined anime cel shading. Face screen RIGHT. Output 1254x1254 RGBA transparent. Treat the entire 512x512 reference canvas as scaled uniformly by 1254/512: do NOT crop, recenter, zoom the figure or enlarge its silhouette. Ground sole line corresponds to reference y448, hence source y1097; center/root x627. Keep the planted supporting shoe location, body size and margins. Both shoes/arms remain anatomically attached. No background, floor, cast shadow, lettering, aura, speedlines, ghost limbs, duplicates or extra person. This is recovering to guard, NOT a new strike. CROUCHING HEAVY PUNCH recovery midpoint. Image 1 is the preceding retract frame. Preserve exactly its legs, crouch height, face, body scale and lower-body coordinates. Change ONLY the near/foreground punching arm which runs across the chest from the image-left shoulder. Its current fist is far forward at x428/512. Bring that fist backward ONLY to x355/512, keeping it still visibly IN FRONT OF THE FACE, not at the chest! Bend its elbow to about 120 degrees, elbow around x296/512,y303/512, with forearm extending diagonally up-right to the fist at x355/512,y285/512. In output1254 these are fist x869,y698; elbow x725,y742. The near RED sleeve remains across the front of the white crop top. Far hand remains wrapped and vertical at face x335/512,y268/512, visibly distinct behind the forward moving fist. Do not swap arms, do not return the moving fist to the chest or to finished guard. Head stays y200/512, soles448/512. One halfway bent arm, no ghost/doubled limb. Transparent square1254.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-retract.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-bb8240a2-cf5f-4c71-99ce-63e48ba73281.png",
+      "savedPath": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/supplement-v1/crouch-hp-recover-mid.png",
+      "sourceSha256": "536d177b35c1b7f0ad6ce25be38d45b9d9bb3b2df0f6e9328deb547d026e7baa",
+      "referenceSha256": [
+        "ce67ef2d465cd7f73f02ded023261d19c05acaad569d2f17bdcc9cc93877d9e8"
+      ]
+    },
+    {
+      "id": "crouch-lk-recover-mid",
+      "status": "accepted-pending-root-alignment-review",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: stylized-concept. Asset: ONE new transparent 2D fighting-game animation sprite, recovery inbetween only. The two supplied images are exact style, identity, outfit, anatomical scale and fixed-canvas position references, ordered previous pose then following pose. Draw one coherent new pose exactly halfway between them. Preserve same short black bob woman, red cropped jacket with white stripes, white crop top and hand wraps, black pants with one red stripe, red trainers, identical clean outlined anime cel shading. Face screen RIGHT. Output 1254x1254 RGBA transparent. Treat the entire 512x512 reference canvas as scaled uniformly by 1254/512: do NOT crop, recenter, zoom the figure or enlarge its silhouette. Ground sole line corresponds to reference y448, hence source y1097; center/root x627. Keep the planted supporting shoe location, body size and margins. Both shoes/arms remain anatomically attached. No background, floor, cast shadow, lettering, aura, speedlines, ghost limbs, duplicates or extra person. This is recovering to guard, NOT a new strike. Crouching LIGHT kick: retain the red-striped near leg deeply bent and planted with shoe at reference x175 y445. The plain BLACK unstriped far leg is returning from a low kick, halfway between Image1 extended-low and Image2 folded-under: bend the far knee more, airborne shoe around reference x355 y407, low but slightly above ground. Fists guard; head remains reference y211 (source y517), never enlarge or stand up.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/attack-motion-v1/crouch-lk-retract.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/attack-motion-v1/crouch-lk-settle.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-5ccc5a7c-bfed-4f77-8fcb-36bcf4a5f765.png",
+      "savedPath": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/supplement-v1/crouch-lk-recover-mid.png",
+      "sourceSha256": "514628232a506ef7940eb847ac3fb5fbb4836a993572b7a53e70526f299032ff",
+      "referenceSha256": [
+        "33a49a9f661a347ce5e3eedb856f35741741bb25a0b984e55d78a81668370c7f",
+        "03ff1321484ecdce8d69accd72779a48f490852ec069ef1b884d54c214c129f2"
+      ]
+    },
+    {
+      "id": "crouch-hk-recover-mid",
+      "status": "accepted-pending-root-alignment-review",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: stylized-concept. Asset: ONE new transparent 2D fighting-game animation sprite, recovery inbetween only. The two supplied images are exact style, identity, outfit, anatomical scale and fixed-canvas position references, ordered previous pose then following pose. Draw one coherent new pose exactly halfway between them. Preserve same short black bob woman, red cropped jacket with white stripes, white crop top and hand wraps, black pants with one red stripe, red trainers, identical clean outlined anime cel shading. Face screen RIGHT. Output 1254x1254 RGBA transparent. Treat the entire 512x512 reference canvas as scaled uniformly by 1254/512: do NOT crop, recenter, zoom the figure or enlarge its silhouette. Ground sole line corresponds to reference y448, hence source y1097; center/root x627. Keep the planted supporting shoe location, body size and margins. Both shoes/arms remain anatomically attached. No background, floor, cast shadow, lettering, aura, speedlines, ghost limbs, duplicates or extra person. This is recovering to guard, NOT a new strike. Crouching HEAVY kick: preserve the RED-STRIPED NEAR leg as the moving leg, returning from the low forward sweep of Image1 toward its tucked rear position of Image2. Create an intermediate bent knee pulled close across the front, red stripe clearly on its thigh and shin, red-striped foot around reference x280 y383 slightly off ground, before passing rearward. The UNSTRIPED FAR leg supports the body low on the floor. Head stays around reference y215 (source y527), crouched torso same scale; do not stand or use the plain leg as the moving kick. Fists remain guard.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/crouch-hk-retract.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/crouch-hk-settle.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-203eaa7a-80a9-4ee9-92a5-07407563a62c.png",
+      "savedPath": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/supplement-v1/crouch-hk-recover-mid.png",
+      "sourceSha256": "14e05449fe50e5cd8809610ba9d94f50be852e8eaec7d0937da651fe62c6f5ab",
+      "referenceSha256": [
+        "67355d77aa094752822be3db4d763e6bc13f805731f9e8c5bc1e2b9ea7b3b84f",
+        "613b7de80b37623d3313ec5c24bfa64890595027f9de329ec18e3a46b3595bea"
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "id": "crouch-hp-recover-mid-attempt1",
+      "reason": "Recovery fist almost at final chest guard; insufficient halfway retraction.",
+      "prompt": "Use case: stylized-concept. Asset: ONE new transparent 2D fighting-game animation sprite, recovery inbetween only. The two supplied images are exact style, identity, outfit, anatomical scale and fixed-canvas position references, ordered previous pose then following pose. Draw one coherent new pose exactly halfway between them. Preserve same short black bob woman, red cropped jacket with white stripes, white crop top and hand wraps, black pants with one red stripe, red trainers, identical clean outlined anime cel shading. Face screen RIGHT. Output 1254x1254 RGBA transparent. Treat the entire 512x512 reference canvas as scaled uniformly by 1254/512: do NOT crop, recenter, zoom the figure or enlarge its silhouette. Ground sole line corresponds to reference y448, hence source y1097; center/root x627. Keep the planted supporting shoe location, body size and margins. Both shoes/arms remain anatomically attached. No background, floor, cast shadow, lettering, aura, speedlines, ghost limbs, duplicates or extra person. This is recovering to guard, NOT a new strike. Crouching HEAVY punch: stay low with head around reference y200 (source y490) and soles y448. The NEAR red-sleeved arm crosses the front of the torso from image-left shoulder toward screen-right; it must remain the recovering punch arm. Bend and draw that crossing arm halfway back, fist around reference x355 y286. The OTHER far forearm stays upright against the face. Keep the twisted crouched hips, rear red-striped leg and feet positions. Never convert this to the far-arm light punch. Same scale, no enlargement.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-retract.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-recovery.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-d9521f76-946f-4c57-9464-3af67898777b.png",
+      "sourceSha256": "989065674b8ee8711b410b837550aeab28ff09deee68057c73ee5cfc61e3217a"
+    }
+  ]
+}

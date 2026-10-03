@@ -1,6 +1,7 @@
 const STEP_MS = 1000 / 60;
 export class FixedStep {
   private pending = 0;
+  get alpha() { return this.pending / STEP_MS; }
   reset() { this.pending = 0; }
   advance(deltaMs: number, step: () => void): number {
     this.pending += Math.max(0, deltaMs);

@@ -152,7 +152,8 @@ export function stepCombat(previous: CombatState, inputs: readonly [CombatInput,
         f.action = 'attack';
       }
     }
-    lockedFacing[i] = f.action === 'attack' || f.action === 'hit' || f.action === 'grab' || !f.grounded;
+    // Movement preserves airborne facing and turns a free fighter on the landing tick.
+    lockedFacing[i] = f.action === 'attack' || f.action === 'hit' || f.action === 'grab';
     movement[i] = f.action === 'free' ? { ...input, jump: input.jump && !hand.consumeJump }
       : { axis: 0, jump: false, crouch: f.posture === 'crouch' };
   }
@@ -169,6 +170,7 @@ export function stepCombat(previous: CombatState, inputs: readonly [CombatInput,
   }
 
   // Collect both contacts before cancelling attacks or changing health/stun/positions.
+  const contactX = [fighters[0].x, fighters[1].x] as const;
   const events: HitEvent[] = [];
   const grabCandidates: (0 | 1)[] = [];
   for (const i of [0, 1] as const) {
@@ -202,11 +204,12 @@ export function stepCombat(previous: CombatState, inputs: readonly [CombatInput,
     const def = previous.definitions[event.attacker].attacks[event.key];
     target.hp = Math.max(0, target.hp - event.damage);
     target.action = event.blocked ? 'guard' : 'hit';
+    if (!event.blocked && !target.grounded) target.jumpInterrupted = true;
     target.attack = null;
     target.combo = null;
     target.grab = null; target.hands = clearHandIntent(target.hands);
     target.stun = event.blocked ? def.blockstun : def.hitstun;
-    const direction = previous.fighters[event.target].x > previous.fighters[event.attacker].x ? 1 : -1;
+    const direction = contactX[event.target] > contactX[event.attacker] ? 1 : -1;
     target.x = Math.max(STAGE.minX, Math.min(STAGE.maxX, target.x + direction * (event.blocked ? def.blockPush : def.push)));
   }
   const clampX = (x: number) => Math.max(STAGE.minX, Math.min(STAGE.maxX, x));

@@ -9,8 +9,9 @@ import { H1_POSES, combatPose } from '../src/characters/h1-poses.ts';
 import { combatVisual } from '../src/characters/h1-visual.ts';
 import { combatCamera, worldToScreen } from '../src/characters/h1-camera.ts';
 
-const reactions = ['stand-hit', 'crouch-hit', 'ko-0', 'ko-1', 'ko-2'];
-const koAges = [0, 5, 6, 11, 12, 18];
+const reactions = ['stand-hit', 'crouch-hit', 'ko-0', 'ko-1', 'ko-2', 'stand-hit-settle', 'crouch-hit-settle', 'ko-mid-01', 'ko-mid-12'];
+const koAges = [0, 2, 3, 5, 6, 8, 9, 11, 12, 18];
+const koPose = age => age < 3 ? 'ko-0' : age < 6 ? 'ko-mid-01' : age < 9 ? 'ko-1' : age < 12 ? 'ko-mid-12' : 'ko-2';
 const close = (a, b, message) => assert.ok(Math.abs(a - b) < 1e-8, `${message}: ${a} != ${b}`);
 
 // Independent asset oracle. Decode RGBA using PNG filters and include every alpha>0 pixel,
@@ -85,7 +86,8 @@ function inspect(s, age = 0) {
 test('Reaction asset oracle matches manifest alignment pixels and detects the omitted low-alpha fringe', () => {
   const manifest = JSON.parse(readFileSync(new URL('../assets/characters/h1/derived/combat-v1/manifest.json', import.meta.url), 'utf8').replace(/^\uFEFF/, ''));
   assert.equal(manifest.alphaThreshold, 8);
-  for (const pose of reactions) assert.deepEqual(bounds[pose][8], manifest.frames.find(f => f.id === pose).outputBounds);
+  const additions = JSON.parse(readFileSync(new URL('../assets/characters/h1/derived/reaction-smooth-v1/manifest.json', import.meta.url), 'utf8').replace(/^\uFEFF/, ''));
+  for (const pose of reactions) assert.deepEqual(bounds[pose][8], [...manifest.frames, ...additions.frames].find(f => f.id === pose).outputBounds);
   for (const pose of ['stand-hit', 'crouch-hit', 'ko-0', 'ko-1']) assert.ok(bounds[pose][1].left < bounds[pose][8].left, `${pose} fringe must participate in boundary checks`);
 });
 
@@ -103,7 +105,7 @@ test('Common KO uses the displayed pose bounds at ages 0/5/6/11/12/18 and while 
     const camera = combatCamera(m.combat);
     for (let age = 0; age <= 18; age++) {
       if (koAges.includes(age)) {
-        assert.equal(m.resultAge, age); assert.equal(combatPose(m.combat.fighters[1], H1, age), `ko-${Math.min(2, Math.floor(age / 6))}`);
+        assert.equal(m.resultAge, age); assert.equal(combatPose(m.combat.fighters[1], H1, age), koPose(age));
         inspect(m.combat, m.resultAge); assert.deepEqual(combatCamera(m.combat), camera);
       }
       m = stepMatch(m, [N, N]);

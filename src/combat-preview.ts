@@ -1,13 +1,13 @@
 import Phaser from 'phaser';
 import './style.css';
 import koArt from '../assets/ui/ko/options-v1/a-impact.png';
-import { createCombat, stepCombat, clearComboInputs, attackPhase, worldRect, grabPoseState, COMBAT_NEUTRAL, type CombatInput } from './combat/combat.ts';
+import { createCombat, stepCombat, clearComboInputs, attackPhase, worldRect, grabPoseState, COMBAT_NEUTRAL, type CombatInput, type CombatState } from './combat/combat.ts';
 import { FixedStep } from './combat/fixed-step.ts';
 import { CombatInputBuffer } from './input/combat-input.ts';
-import { combatPose, H1_POSES } from './characters/h1-poses.ts';
+import { H1_POSES } from './characters/h1-poses.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
-import { combatVisuals } from './characters/h1-visual.ts';
-import { combatCamera, applyCombatCamera, configureCombatCameras, H1_CAMERA_MARGIN } from './characters/h1-camera.ts';
+import { sampleCombatRender } from './characters/h1-render.ts';
+import { applyCombatCamera, configureCombatCameras, H1_CAMERA_MARGIN } from './characters/h1-camera.ts';
 import { createCombatAudioControls } from './audio/combat-audio-controls.ts';
 
 const get = <T extends Element>(id: string) => document.querySelector<T>(`#${id}`)!;
@@ -29,6 +29,7 @@ const grabInput = (): CombatInput => ({ ...COMBAT_NEUTRAL, attacks: ['hp', 'lp']
 
 class CombatScene extends Phaser.Scene {
   private combat = createCombat();
+  private previousCombat: CombatState | null = null;
   private clock = new FixedStep();
   private sprites: Phaser.GameObjects.Image[] = [];
   private labels: Phaser.GameObjects.Text[] = [];
@@ -115,6 +116,7 @@ class CombatScene extends Phaser.Scene {
     this.audio.pause();
     if (!this.ready) return;
     this.paused = true; input.reset(); this.clock.reset();
+    this.previousCombat = null;
     this.targetGrabQueued = false;
     this.combat = clearComboInputs(this.combat);
     start.disabled = false; pauseButton.disabled = true; status.value = '일시정지 · 계속하기로 재개';
@@ -123,6 +125,7 @@ class CombatScene extends Phaser.Scene {
   private resume() {
     if (!this.ready) return;
     this.paused = false; input.reset(); this.clock.reset();
+    this.previousCombat = null;
     this.audio.resume();
     start.textContent = '계속하기'; start.disabled = true; pauseButton.disabled = false;
     status.value = this.combat.ended ? 'K O!! · 검수 초기화로 다시 시작' : '전투 검수 중'; surface.focus();
@@ -143,13 +146,14 @@ class CombatScene extends Phaser.Scene {
     return this.ready && !this.combat.ended && !this.targetGrabQueued && cpu.grounded && cpu.action === 'free';
   }
   private renderCombat() {
-    applyCombatCamera(this.cameras.main, combatCamera(this.combat));
+    const rendered = sampleCombatRender(this.paused ? null : this.previousCombat, this.combat, this.clock.alpha, this.koFrame);
+    applyCombatCamera(this.cameras.main, rendered.camera);
     this.guides.clear();
     this.koBanner.setVisible(this.combat.ended && this.combat.fighters.some(f => f.hp === 0));
-    const visuals = combatVisuals(this.combat, this.koFrame);
-    this.combat.fighters.forEach((f, i) => {
+    const visuals = rendered.visuals;
+    rendered.fighters.forEach((f, i) => {
       const def = this.combat.definitions[i];
-      const pose = combatPose(f, def, this.koFrame);
+      const pose = rendered.poses[i]!;
       const visual = visuals[i]!;
       this.sprites[i]!.setTexture(pose).setOrigin(0.5, visual.originY).setPosition(visual.x, visual.y)
         .setFlipX(f.facing === -1).setAngle(visual.angle).setDepth(visual.depth);
@@ -177,6 +181,7 @@ class CombatScene extends Phaser.Scene {
     if (!this.ready || this.paused) return;
     this.clock.advance(delta, () => {
       if (this.combat.ended) { this.koFrame = Math.min(18, this.koFrame + 1); return; }
+      this.previousCombat = this.combat;
       this.combat = stepCombat(this.combat, [input.sample(), this.targetInput()]);
       this.audio.consume(this.combat);
       const events = [

@@ -5,27 +5,27 @@ import { H1 } from '../src/characters/h1.ts';
 import { H1_POSES, H1_PREVIOUS_HEAVY_POSES, combatPose } from '../src/characters/h1-poses.ts';
 import { createCombat, stepCombat, clearGrabs, attackPhase, COMBAT_NEUTRAL as N } from '../src/combat/combat.ts';
 
-test('All 100 distinct pose keys resolve to 100 existing sprite files without fallback', () => {
-  assert.equal(Object.keys(H1_POSES).length,100);
-  assert.equal(new Set(Object.values(H1_POSES)).size,100);
+test('All 145 distinct pose keys resolve to existing sprite files, preserving the original heavy artwork', () => {
+  assert.equal(Object.keys(H1_POSES).length,145);
+  assert.equal(new Set(Object.values(H1_POSES)).size,145);
   for(const path of Object.values(H1_POSES)) assert.ok(existsSync(new URL(`../assets/characters/h1/derived/${path}`,import.meta.url)),path);
   assert.equal(Object.keys(H1_PREVIOUS_HEAVY_POSES).length,26);
   for(const [pose,path] of Object.entries(H1_POSES)) {
-    assert.equal(path.startsWith('opposite-limbs-v1/'), /^(stand|crouch)-h[pk]-/.test(pose), pose);
+    assert.equal(path.startsWith('opposite-limbs-v1/'), /^(stand|crouch)-h[pk]-/.test(pose) && !pose.endsWith('-mid'), pose);
   }
   for(const path of Object.values(H1_PREVIOUS_HEAVY_POSES)) assert.ok(existsSync(new URL(`../assets/characters/h1/derived/${path}`,import.meta.url)),path);
 });
 test('Every attack uses the combat age for startup/active/recovery and exits at its total length', () => {
-  // Independent fixture transcribed from h1-all-attack-frames.md, not the pose implementation.
+  // Explicit smooth-frame durations; original startup/active/recovery totals remain unchanged.
   const fixture = {
-    'stand-lp': [['stand-lp-startup',3],['lp-extend',3],['stand-lp-active',3],['lp-retract',5],['stand-lp-recovery',5],['lp-settle',5]],
-    'stand-hp': [['startup',5],['extend',5],['active',3],['retract',7],['recovery',7],['settle',7]],
-    'stand-lk': [['startup',4],['extend',4],['active',4],['retract',6],['recovery',6],['settle',6]],
-    'stand-hk': [['startup',6],['lift',6],['apex',4],['descend',8],['active',7],['retract',7],['recovery',7],['settle',7]],
-    'crouch-lp': [['startup',3],['extend',3],['active',3],['retract',5],['recovery',5],['settle',5]],
-    'crouch-hp': [['startup',5],['extend',5],['active',3],['retract',7],['recovery',7],['settle',7]],
-    'crouch-lk': [['startup',4],['extend',4],['active',4],['retract',6],['settle',6],['recovery',6]],
-    'crouch-hk': [['startup',7],['extend',7],['active',4],['retract',8],['settle',8],['recovery',8]],
+    'stand-lp': [['stand-lp-startup',2],['lp-extend',2],['stand-lp-start-mid',2],['stand-lp-active',3],['lp-retract',4],['stand-lp-recover-mid',4],['stand-lp-recovery',4],['lp-settle',3]],
+    'stand-hp': [['startup',4],['start-mid',3],['extend',3],['active',3],['retract',6],['recover-mid',5],['recovery',5],['settle',5]],
+    'stand-lk': [['startup',3],['extend',3],['start-mid',2],['active',4],['retract',5],['recover-mid',4],['recovery',5],['settle',4]],
+    'stand-hk': [['startup',4],['start-mid',4],['lift',4],['apex',4],['descend',6],['active',6],['retract',6],['recover-mid',6],['recovery',6],['settle',6]],
+    'crouch-lp': [['startup',2],['extend',2],['start-mid',2],['active',3],['retract',4],['recover-mid',4],['recovery',4],['settle',3]],
+    'crouch-hp': [['startup',4],['start-mid',3],['extend',3],['active',3],['retract',6],['recover-mid',5],['recovery',5],['settle',5]],
+    'crouch-lk': [['startup',3],['extend',3],['start-mid',2],['active',4],['retract',5],['recover-mid',4],['settle',5],['recovery',4]],
+    'crouch-hk': [['startup',5],['start-mid',5],['extend',4],['active',4],['retract',6],['recover-mid',6],['settle',6],['recovery',6]],
   };
   for(const [key,a] of Object.entries(H1.attacks)) {
     const expected=fixture[key].flatMap(([pose,duration])=>Array(duration).fill(key==='stand-lp'?pose:`${key}-${pose}`));
@@ -77,12 +77,14 @@ test('Missing the first heavy kick cannot hit an opponent entering during descen
   }
 });
 
-test('Walking presents twelve successive poses for four frames each and repeats every 48 frames', () => {
-  const poses=['walk-00','walk-01','walk-02','walk-03','walk-04','walk-05','walk-06','walk-07','walk-08','walk-09','walk-10','walk-11'];
+test('Walking presents 24 alternating key and middle poses for two frames each; idle remains a 30F cycle', () => {
+  const poses=Array.from({length:12},(_,i)=>{const n=String(i).padStart(2,'0');return [`walk-${n}`,`walk-mid-${n}`];}).flat();
   const f=createCombat().fighters[0];
-  for(let cycle=0;cycle<3;cycle++) for(let segment=0;segment<12;segment++) for(let offset=0;offset<4;offset++) {
-    assert.equal(combatPose({...f,state:'walk',age:cycle*48+segment*4+offset},H1),poses[segment]);
+  for(let cycle=0;cycle<3;cycle++) for(let segment=0;segment<24;segment++) for(let offset=0;offset<2;offset++) {
+    assert.equal(combatPose({...f,state:'walk',age:cycle*48+segment*2+offset},H1),poses[segment]);
   }
+  const idle=[...Array(8).fill('idle-0'),...Array(7).fill('idle-in'),...Array(8).fill('idle-1'),...Array(7).fill('idle-out')];
+  for(let age=0;age<90;age++) assert.equal(combatPose({...f,age},H1),idle[age%30]);
 });
 test('Forward/backward walking follows travel relative to facing on both sides without changing speed', () => {
   for(const facing of [-1,1]) for(const axis of [-1,1]) {
@@ -99,13 +101,17 @@ test('Forward/backward walking follows travel relative to facing on both sides w
 test('Hit and guard use locked/current posture even if the movement state is stale', () => {
   const f=createCombat().fighters[0];
   for(const action of ['hit','guard']) for(const posture of ['stand','crouch']) {
-    assert.equal(combatPose({...f,action,posture,state:'walk'},H1),`${posture}-${action}`);
+    assert.equal(combatPose({...f,action,posture,state:'walk',stun:5},H1),`${posture}-${action}`);
+    for(const stun of [0,1,4]) {
+      assert.equal(combatPose({...f,action,posture,state:'walk',stun},H1),`${posture}-${action}${action==='hit'?'-settle':''}`);
+      if(action==='hit') assert.equal(combatPose({...f,action,posture,state:'jump',grounded:false,stun},H1),`${posture}-hit`);
+    }
   }
 });
-test('KO takes precedence: 0..5 / 6..11 / 12..17 then final pose holds; winner pose stays frozen', () => {
+test('KO adds middle artwork at F3 and F9 but retains the final pose from F12 and the 18F result duration', () => {
   const f=createCombat().fighters[0];
   const ko={...f,action:'ko',attack:{key:'stand-lp',age:6,serial:1,hitTargets:[]}};
-  for(const [frame,expected] of [[0,0],[5,0],[6,1],[11,1],[12,2],[17,2],[18,2],[999,2]]) assert.equal(combatPose(ko,H1,frame),`ko-${expected}`);
+  for(const [frame,expected] of [[0,'ko-0'],[2,'ko-0'],[3,'ko-mid-01'],[5,'ko-mid-01'],[6,'ko-1'],[8,'ko-1'],[9,'ko-mid-12'],[11,'ko-mid-12'],[12,'ko-2'],[17,'ko-2'],[18,'ko-2'],[999,'ko-2']]) assert.equal(combatPose(ko,H1,frame),expected);
   const winner={...f,state:'walk',age:7};
   assert.equal(combatPose(winner,H1,0),combatPose(winner,H1,18));
 });
@@ -146,14 +152,17 @@ test('Throw artwork follows hold, turn, lift, slam and living get-up with indepe
       assert.equal(s.fighters[target].x, initial[target] + (age < 36 ? 0 : direction * 48));
       assert.equal(s.fighters[side].x, initial[side]);
       if (age < 13) assert.equal(attackerPose, `grab-${posture}-hold`);
-      else if (age < 20) assert.equal(attackerPose, 'throw-turn');
-      else if (age < 28) assert.equal(attackerPose, 'throw-lift');
+      else if (age < 17) assert.equal(attackerPose, 'throw-turn');
+      else if (age < 20) assert.equal(attackerPose, 'throw-turn-mid');
+      else if (age < 24) assert.equal(attackerPose, 'throw-lift');
+      else if (age < 28) assert.equal(attackerPose, 'throw-drop-mid');
       else if (age < 45) assert.equal(attackerPose, 'throw-slam');
       else if (age < 54) assert.equal(attackerPose, 'grab-settle');
       else assert.match(attackerPose, /^idle-/);
       if (age < 20) assert.equal(targetPose, `grabbed-${posture}-hold`);
       else if (age < 36) assert.equal(targetPose, 'thrown-air');
       else if (age < 48) assert.equal(targetPose, 'thrown-down');
+      else if (age < 54) assert.equal(targetPose, 'thrown-rise-mid');
       else if (age < 60) assert.equal(targetPose, 'thrown-rise');
       else if (age < 72) assert.equal(targetPose, `grabbed-${posture}-recover`);
       else if (posture === 'crouch') assert.equal(targetPose, 'crouch');
@@ -177,7 +186,7 @@ test('A real escape separates hands immediately, shows role-specific recovery an
       const attackerPose = combatPose(s.fighters[side], H1), targetPose = combatPose(s.fighters[target], H1);
       assert.deepEqual(s.fighters.map(f => f.hp), [100, 100]);
       if (age < 4) {
-        assert.equal(attackerPose, 'grab-release');
+        assert.equal(attackerPose, age < 2 ? 'grab-release' : 'grab-release-mid');
         assert.equal(targetPose, `grabbed-${posture}-escape`);
       } else if (age < 12) {
         assert.equal(attackerPose, age < 8 ? 'grab-retract' : 'grab-settle');
@@ -201,7 +210,7 @@ test('Clearing actual grab locks retains distinct final pose snapshots without m
     let success = grabbedScene(posture);
     // Each animation transition can be the final timeout frame, including after the attacker releases.
     for (let age = 0; age < 72; age++) {
-      if ([12,13,19,20,27,28,35,36,44,45,47,48,53,54,59,60,71].includes(age)) scenes.push(success);
+      if ([12,13,16,17,19,20,23,24,27,28,35,36,44,45,47,48,53,54,59,60,71].includes(age)) scenes.push(success);
       success = grabPoseTick(success);
     }
     scenes.push(grabPoseTick(grabbedScene(posture), 0, N, grabCommand));

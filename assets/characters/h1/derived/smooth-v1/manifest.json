@@ -1,0 +1,661 @@
+{
+  "alphaThreshold": 8,
+  "referenceSha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+  "status": "candidate; normalized and structurally checked, motion quality requires sequence review",
+  "method": "Uniform calibrated anatomical scale 384/1120 from original idle. Full 1254 source canvas, midpoint X and sole-bottom Y; no bbox fitting, crop, repaint or sheet splitting.",
+  "displayScale": 0.625,
+  "frames": [
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1167,
+        "bottom": 1195,
+        "left": 41,
+        "top": 21
+      },
+      "sourceRoot": [
+        627.0,
+        1193
+      ],
+      "sourceSha256": "ebdf5d966f642f98ad29f87a2a416c93b888848ec210fe89144c0d0fa3181c0d",
+      "offset": [
+        41.02857142857144,
+        38.97142857142859
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 390,
+        "bottom": 447,
+        "left": 74,
+        "top": 64
+      },
+      "source": "generated/smooth-v1/walk-mid-00.png",
+      "output": "derived/smooth-v1/walk-mid-00.png",
+      "sourceBounds": {
+        "right": 1019,
+        "bottom": 1192,
+        "left": 307,
+        "top": 74
+      },
+      "outputSha256": "0f2941a52e17bc62bf36f38e3d7564caf036ed6cae5f2d56d0bf6f89ab4d50be",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-00",
+      "outputBounds": {
+        "right": 390,
+        "bottom": 447,
+        "left": 146,
+        "top": 64
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1217,
+        "bottom": 1211,
+        "left": 97,
+        "top": 39
+      },
+      "sourceRoot": [
+        627.0,
+        1196
+      ],
+      "sourceSha256": "1f264ce42339605e36a9ef8e014c1cf87b57a56ab0fbbc31af9d4f098330edd5",
+      "offset": [
+        41.02857142857144,
+        37.94285714285712
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 386,
+        "bottom": 447,
+        "left": 74,
+        "top": 65
+      },
+      "source": "generated/smooth-v1/walk-mid-01.png",
+      "output": "derived/smooth-v1/walk-mid-01.png",
+      "sourceBounds": {
+        "right": 980,
+        "bottom": 1195,
+        "left": 322,
+        "top": 81
+      },
+      "outputSha256": "a4814098abe3c312db27437c6e3661e7bfb5564aec6ccac41079ec075aaec53b",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-01",
+      "outputBounds": {
+        "right": 377,
+        "bottom": 447,
+        "left": 151,
+        "top": 65
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1209,
+        "bottom": 1221,
+        "left": 97,
+        "top": 21
+      },
+      "sourceRoot": [
+        627.0,
+        1201
+      ],
+      "sourceSha256": "3d7e6c4bf3b01b3c46bcbb446c864bbd4ccc43d0755a5dc35aaec95504690da2",
+      "offset": [
+        41.02857142857144,
+        36.2285714285714
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 372,
+        "bottom": 454,
+        "left": 74,
+        "top": 61
+      },
+      "source": "generated/smooth-v1/walk-mid-02-v3.png",
+      "output": "derived/smooth-v1/walk-mid-02.png",
+      "sourceBounds": {
+        "right": 966,
+        "bottom": 1200,
+        "left": 382,
+        "top": 74
+      },
+      "outputSha256": "1fcbd4b477afbd1ef7d5b185a822ae019fea099ee848b08512295faf1a595d45",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-02",
+      "outputBounds": {
+        "right": 372,
+        "bottom": 447,
+        "left": 172,
+        "top": 61
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1195,
+        "bottom": 1215,
+        "left": 89,
+        "top": 21
+      },
+      "sourceRoot": [
+        627.0,
+        1187
+      ],
+      "sourceSha256": "b1c5c0e3905bd3143cccd025a3bc89a6e9aae5e0f284b596772594e56a56eb75",
+      "offset": [
+        41.02857142857144,
+        41.02857142857141
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 395,
+        "bottom": 448,
+        "left": 74,
+        "top": 66
+      },
+      "source": "generated/smooth-v1/walk-mid-03-v2.png",
+      "output": "derived/smooth-v1/walk-mid-03.png",
+      "sourceBounds": {
+        "right": 1033,
+        "bottom": 1186,
+        "left": 401,
+        "top": 74
+      },
+      "outputSha256": "2a705545511abb69a5cb192bc353eea459da4203ea8d97ba3ae03b989e5c1bed",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-03",
+      "outputBounds": {
+        "right": 395,
+        "bottom": 447,
+        "left": 178,
+        "top": 66
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1231,
+        "bottom": 1213,
+        "left": 65,
+        "top": 21
+      },
+      "sourceRoot": [
+        627.0,
+        1185
+      ],
+      "sourceSha256": "356810271e14ff59218e0b0745c157dd3c4230519816d8b948476d338b3194bb",
+      "offset": [
+        41.02857142857144,
+        41.71428571428572
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 401,
+        "bottom": 449,
+        "left": 74,
+        "top": 67
+      },
+      "source": "generated/smooth-v1/walk-mid-04.png",
+      "output": "derived/smooth-v1/walk-mid-04.png",
+      "sourceBounds": {
+        "right": 1050,
+        "bottom": 1184,
+        "left": 312,
+        "top": 75
+      },
+      "outputSha256": "419b65ee96267c32555549da144009222c21d5324a64ae25ed0467a8e00e45a4",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-04",
+      "outputBounds": {
+        "right": 401,
+        "bottom": 447,
+        "left": 148,
+        "top": 67
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1217,
+        "bottom": 1189,
+        "left": 65,
+        "top": 72
+      },
+      "sourceRoot": [
+        627.0,
+        1184
+      ],
+      "sourceSha256": "aaf1109ea3053823319f54b920801f0d725b5420befbef3819707e475f501f10",
+      "offset": [
+        41.02857142857144,
+        42.05714285714288
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 409,
+        "bottom": 449,
+        "left": 74,
+        "top": 67
+      },
+      "source": "generated/smooth-v1/walk-mid-05.png",
+      "output": "derived/smooth-v1/walk-mid-05.png",
+      "sourceBounds": {
+        "right": 1075,
+        "bottom": 1183,
+        "left": 256,
+        "top": 75
+      },
+      "outputSha256": "17d25286f9d5281fd1a0baa81b391d983a707e7b7267fa3a2f69ec9d9ac9f15a",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-05",
+      "outputBounds": {
+        "right": 409,
+        "bottom": 447,
+        "left": 128,
+        "top": 67
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1217,
+        "bottom": 1189,
+        "left": 41,
+        "top": 19
+      },
+      "sourceRoot": [
+        627.0,
+        1184
+      ],
+      "sourceSha256": "5b838639a7111bfb26404a88fe4bb08089335980028c6d7eb2b63a4d16cb767b",
+      "offset": [
+        41.02857142857144,
+        42.05714285714288
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 400,
+        "bottom": 448,
+        "left": 74,
+        "top": 67
+      },
+      "source": "generated/smooth-v1/walk-mid-06.png",
+      "output": "derived/smooth-v1/walk-mid-06.png",
+      "sourceBounds": {
+        "right": 1049,
+        "bottom": 1183,
+        "left": 290,
+        "top": 75
+      },
+      "outputSha256": "25877e288d71caa5835423f471aa8348dbd586a04a4b4bacdff577a91b58ed62",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-06",
+      "outputBounds": {
+        "right": 400,
+        "bottom": 447,
+        "left": 140,
+        "top": 68
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1209,
+        "bottom": 1207,
+        "left": 19,
+        "top": 21
+      },
+      "sourceRoot": [
+        627.0,
+        1205
+      ],
+      "sourceSha256": "d80280f9eaee7684dcd53269264e1f21cc6097dbacee853ad1e57cc8a827aa90",
+      "offset": [
+        41.02857142857144,
+        34.85714285714283
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 392,
+        "bottom": 448,
+        "left": 74,
+        "top": 62
+      },
+      "source": "generated/smooth-v1/walk-mid-07-v2.png",
+      "output": "derived/smooth-v1/walk-mid-07.png",
+      "sourceBounds": {
+        "right": 1025,
+        "bottom": 1204,
+        "left": 346,
+        "top": 79
+      },
+      "outputSha256": "34e3532fce38758bf2aa6b21b9c848969b3a9fb049139f8788119df3b9e55f5d",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-07",
+      "outputBounds": {
+        "right": 392,
+        "bottom": 447,
+        "left": 159,
+        "top": 62
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1217,
+        "bottom": 1229,
+        "left": 65,
+        "top": 21
+      },
+      "sourceRoot": [
+        627.0,
+        1190
+      ],
+      "sourceSha256": "50201372f8f301aad84453120cb45d3a529c1e06db0ca56848ae8c5d50edfa3d",
+      "offset": [
+        41.02857142857144,
+        40.0
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 388,
+        "bottom": 448,
+        "left": 71,
+        "top": 52
+      },
+      "source": "generated/smooth-v1/walk-mid-08.png",
+      "output": "derived/smooth-v1/walk-mid-08.png",
+      "sourceBounds": {
+        "right": 960,
+        "bottom": 1189,
+        "left": 370,
+        "top": 76
+      },
+      "outputSha256": "34e29d9b07abb529c302a733ad2f30e952d992583a824f65915597254a798cdd",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-08",
+      "outputBounds": {
+        "right": 370,
+        "bottom": 447,
+        "left": 167,
+        "top": 66
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1197,
+        "bottom": 1221,
+        "left": 59,
+        "top": 21
+      },
+      "sourceRoot": [
+        627.0,
+        1190
+      ],
+      "sourceSha256": "fc69b4c52333aca5d774d202a278e2476c6f4f36f9c15a5e942b3b6a7387aa31",
+      "offset": [
+        41.02857142857144,
+        40.0
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 406,
+        "bottom": 448,
+        "left": 71,
+        "top": 65
+      },
+      "source": "generated/smooth-v1/walk-mid-09.png",
+      "output": "derived/smooth-v1/walk-mid-09.png",
+      "sourceBounds": {
+        "right": 1065,
+        "bottom": 1189,
+        "left": 401,
+        "top": 75
+      },
+      "outputSha256": "cc01e93b121c3f201cc02321f8df4874f0b47fadf18437af58581560bf9c4715",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-09",
+      "outputBounds": {
+        "right": 406,
+        "bottom": 447,
+        "left": 178,
+        "top": 65
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1235,
+        "bottom": 1213,
+        "left": 97,
+        "top": 72
+      },
+      "sourceRoot": [
+        627.0,
+        1189
+      ],
+      "sourceSha256": "52c93697f87be037c398e4b9c868da17254c652e2775e5cb8a61e1dfd1bc1505",
+      "offset": [
+        41.02857142857144,
+        40.342857142857156
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 420,
+        "bottom": 448,
+        "left": 74,
+        "top": 66
+      },
+      "source": "generated/smooth-v1/walk-mid-10-v5.png",
+      "output": "derived/smooth-v1/walk-mid-10.png",
+      "sourceBounds": {
+        "right": 1105,
+        "bottom": 1188,
+        "left": 401,
+        "top": 75
+      },
+      "outputSha256": "d53940824c0293f6ce51c28ea4dfa0e9a04f749c52d004af54d5bf880aca2730",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-10",
+      "outputBounds": {
+        "right": 419,
+        "bottom": 447,
+        "left": 178,
+        "top": 66
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1209,
+        "bottom": 1189,
+        "left": 65,
+        "top": 21
+      },
+      "sourceRoot": [
+        627.0,
+        1183
+      ],
+      "sourceSha256": "b41083db10bcae3e6b8e55d71030f3c95a5cb8b785b388d2804977b91cb03841",
+      "offset": [
+        41.02857142857144,
+        42.39999999999998
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 399,
+        "bottom": 449,
+        "left": 71,
+        "top": 67
+      },
+      "source": "generated/smooth-v1/walk-mid-11.png",
+      "output": "derived/smooth-v1/walk-mid-11.png",
+      "sourceBounds": {
+        "right": 1045,
+        "bottom": 1182,
+        "left": 297,
+        "top": 74
+      },
+      "outputSha256": "0f58d176eb9a68adaa877f30cfb8d2a7af350c6190264f307925b3bce96cd4fb",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "walk-mid-11",
+      "outputBounds": {
+        "right": 399,
+        "bottom": 447,
+        "left": 143,
+        "top": 67
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1193,
+        "bottom": 1194,
+        "left": 51,
+        "top": 21
+      },
+      "sourceRoot": [
+        627.0,
+        1193
+      ],
+      "sourceSha256": "76f43d85512112f8c2e4e6aa4f023791b101bc77321de35dce282c0c55d34830",
+      "offset": [
+        41.02857142857144,
+        38.97142857142859
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 414,
+        "bottom": 447,
+        "left": 77,
+        "top": 64
+      },
+      "source": "generated/smooth-v1/idle-in.png",
+      "output": "derived/smooth-v1/idle-in.png",
+      "sourceBounds": {
+        "right": 1087,
+        "bottom": 1192,
+        "left": 186,
+        "top": 75
+      },
+      "outputSha256": "6e5ad2a80e330e2e680c0d7fc634a1e5e21483b0d17f444324abe16c0ded4eb3",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "idle-in",
+      "outputBounds": {
+        "right": 413,
+        "bottom": 447,
+        "left": 104,
+        "top": 64
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    },
+    {
+      "sourceBoundsAlpha0": {
+        "right": 1193,
+        "bottom": 1195,
+        "left": 97,
+        "top": 78
+      },
+      "sourceRoot": [
+        627.0,
+        1193
+      ],
+      "sourceSha256": "2a30427e63cbce936ffb250d54665e40c445f8136439996a2afc05e4a1b96e2a",
+      "offset": [
+        41.02857142857144,
+        38.97142857142859
+      ],
+      "sourceCanvasScale": 1,
+      "outputBoundsAlpha0": {
+        "right": 414,
+        "bottom": 447,
+        "left": 103,
+        "top": 66
+      },
+      "source": "generated/smooth-v1/idle-out.png",
+      "output": "derived/smooth-v1/idle-out.png",
+      "sourceBounds": {
+        "right": 1090,
+        "bottom": 1192,
+        "left": 186,
+        "top": 80
+      },
+      "outputSha256": "91396de6d59ab410169359c94fa92201c6f402920f3942bba8ab2ec9cdd05c5f",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "id": "idle-out",
+      "outputBounds": {
+        "right": 414,
+        "bottom": 447,
+        "left": 105,
+        "top": 66
+      },
+      "rootMode": "sole-bottom",
+      "scale": 0.34285714285714286
+    }
+  ],
+  "root": [
+    256,
+    448
+  ],
+  "canvas": [
+    512,
+    512
+  ]
+}
