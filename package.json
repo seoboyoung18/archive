@@ -10,7 +10,9 @@
     "typecheck": "tsc --noEmit",
     "build": "npm run typecheck && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "verify:assets": "node scripts/verify-assets.mjs"
+    "verify:assets": "node scripts/verify-assets.mjs",
+    "generate:sounds": "node scripts/generate-h1-sounds.mjs",
+    "verify:sounds": "node scripts/verify-sounds.mjs"
   },
   "dependencies": { "phaser": "4.2.1" },
   "devDependencies": { "typescript": "7.0.2", "vite": "8.3.1" }
