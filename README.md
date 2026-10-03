@@ -1,5 +1,7 @@
 # 차원격투 · Dimension Fight
 
+최신 화면 보완: 사용자 승인 [거리 대응 카메라 A](docs/specs/h1-camera-framing.md)를 연결했습니다. 가까이에서는 기존 크기, 양 끝에서는 최대 약14.9% 축소하며 그림과 실제 판정이 함께 움직입니다. [전후 비교](docs/reviews/evidence/h1-camera-review.html)와 [검수 기록](docs/reviews/h1-camera-framing.md)을 제공합니다.
+
 차원을 넘어 모인 인물들의 격투
 
 여러 세계의 인간·비스트·로봇이 대결하는 2D 애니메이션풍 격투게임.

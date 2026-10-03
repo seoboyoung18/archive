@@ -5,6 +5,7 @@ import { createCombat, stepCombat, clearGrabs, COMBAT_NEUTRAL as N } from '../sr
 import { H1 } from '../src/characters/h1.ts';
 import { combatPose } from '../src/characters/h1-poses.ts';
 import { combatVisual } from '../src/characters/h1-visual.ts';
+import { combatCamera, worldToScreen } from '../src/characters/h1-camera.ts';
 
 const chord = { ...N, attacks: ['lp','hp'], handEvents: [
   {slot:'lp',down:true},{slot:'hp',down:true},{slot:'hp',down:false},{slot:'lp',down:false},
@@ -49,7 +50,7 @@ test('Mirrored throw arcs are symmetric before hitting arena limits',()=>{
   }
 });
 
-test('Adopted unrotated throw artwork still contains the recorded alignment bounds inside stage edges',()=>{
+test('Adopted unrotated throw artwork keeps its recorded alignment bounds inside the camera',()=>{
   const manifest=JSON.parse(readFileSync(new URL('../assets/characters/h1/derived/throw-v1/manifest.json',import.meta.url),'utf8').replace(/^\uFEFF/,''));
   const bounds=Object.fromEntries(manifest.frames.map(f=>[f.id,f.outputBounds]));
   for(const corner of ['left','right'])for(const dir of [-1,1]) {
@@ -57,11 +58,12 @@ test('Adopted unrotated throw artwork still contains the recorded alignment boun
     for(let age=0;age<60;age++) {
       const f=s.fighters[1],pose=combatPose(f,H1),v=combatVisual(f,H1),b=bounds[pose];
       // The old rotated bbox included transparent corners. Exact rotated alpha-cell
-      // coverage and minimum correction are checked independently in h1-grab-edge.
+      // coverage after the common camera is checked independently in h1-grab-edge.
       if(b && v.angle === 0)for(const x of [b.left,b.right])for(const y of [b.top,b.bottom]) {
         const dx=(x-256)*0.625*f.facing,dy=(y-512*v.originY)*0.625,r=v.angle*Math.PI/180;
         const worldX=v.x+dx*Math.cos(r)-dy*Math.sin(r);
-        assert.ok(worldX>=0 && worldX<=1280,`${corner} dir${dir} H${age} ${pose} clips at ${worldX}`);
+        const screenX=worldToScreen(combatCamera(s),worldX,v.y).x;
+        assert.ok(screenX>=-1e-8 && screenX<=1280+1e-8,`${corner} dir${dir} H${age} ${pose} clips at ${screenX}`);
       }
       s=stepCombat(s,[N,N]);
     }

@@ -10,6 +10,7 @@ import { combatPose } from './characters/h1-poses.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
 import { grabPoseState } from './combat/combat.ts';
 import { combatVisuals } from './characters/h1-visual.ts';
+import { combatCamera, applyCombatCamera, configureCombatCameras, H1_CAMERA_MARGIN } from './characters/h1-camera.ts';
 import { createCombatAudioControls } from './audio/combat-audio-controls.ts';
 
 const get = <T extends HTMLElement>(id: string) => document.querySelector<T>(`#${id}`)!;
@@ -56,11 +57,11 @@ class MatchScene extends Phaser.Scene {
     if (this.loadFailed) return;
     if (!this.textures.exists('ko-banner') || H1_ASSETS.some(({key}) => !this.textures.exists(key))) { this.failLoad(); return; }
     const stage = this.add.graphics();
-    stage.fillStyle(0x1e2938).fillRect(0, 600, 1280, 120);
+    stage.fillStyle(0x1e2938).fillRect(-H1_CAMERA_MARGIN, 600, 1280 + H1_CAMERA_MARGIN * 2, 720);
     stage.lineStyle(1, 0x33445a, 0.5);
     for (let x = 80; x <= 1200; x += 80) stage.lineBetween(x, 150, x, 600);
-    stage.lineStyle(2, 0x71849a).lineBetween(0, 600, 1280, 600);
-    this.add.text(48, 40, 'DIMENSION FIGHT / FIRST TO TWO', { fontFamily: 'sans-serif', fontSize: '20px', color: '#a3b3c6' });
+    stage.lineStyle(2, 0x71849a).lineBetween(-H1_CAMERA_MARGIN, 600, 1280 + H1_CAMERA_MARGIN, 600);
+    const heading = this.add.text(48, 40, 'DIMENSION FIGHT / FIRST TO TWO', { fontFamily: 'sans-serif', fontSize: '20px', color: '#a3b3c6' });
     for (let i = 0; i < 2; i++) {
       this.sprites.push(this.add.image(0, 0, 'idle-0').setOrigin(0.5, 0.875).setScale(0.625));
       this.labels.push(this.add.text(0, 0, i === 0 ? 'PLAYER' : 'CPU / AI', { fontFamily: 'monospace', fontSize: '16px', color: i === 0 ? '#79e3cb' : '#ffc78d' }).setOrigin(0.5, 1).setDepth(10));
@@ -68,6 +69,7 @@ class MatchScene extends Phaser.Scene {
     this.koBanner = this.add.image(640, 270, 'ko-banner').setDepth(20).setVisible(false);
     this.koBanner.setScale(640 / this.koBanner.width);
     this.resultBanner = this.add.text(640, 270, '', { fontFamily: 'sans-serif', fontSize: '64px', fontStyle: 'bold', color: '#ffe1a3', stroke: '#141e2b', strokeThickness: 8 }).setOrigin(0.5).setDepth(20);
+    configureCombatCameras(this, [stage, ...this.sprites, ...this.labels], [heading, this.koBanner, this.resultBanner]);
     const options = { signal: listeners.signal };
     const button = (node: HTMLButtonElement, action: () => void) => node.addEventListener('click', event => {
       if (event.detail <= 1 && !node.disabled) action();
@@ -116,6 +118,7 @@ class MatchScene extends Phaser.Scene {
   }
   private renderMatch() {
     const s = this.match, ended = s.result !== null, available = resultReady(s);
+    applyCombatCamera(this.cameras.main, combatCamera(s.combat));
     const visuals = combatVisuals(s.combat, s.resultAge);
     this.match.combat.fighters.forEach((f, i) => {
       const def = s.combat.definitions[i], visual = visuals[i]!;

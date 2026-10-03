@@ -7,6 +7,7 @@ import { CombatInputBuffer } from './input/combat-input.ts';
 import { combatPose, H1_POSES } from './characters/h1-poses.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
 import { combatVisuals } from './characters/h1-visual.ts';
+import { combatCamera, applyCombatCamera, configureCombatCameras, H1_CAMERA_MARGIN } from './characters/h1-camera.ts';
 import { createCombatAudioControls } from './audio/combat-audio-controls.ts';
 
 const get = <T extends Element>(id: string) => document.querySelector<T>(`#${id}`)!;
@@ -57,11 +58,11 @@ class CombatScene extends Phaser.Scene {
   create() {
     if (this.loadFailed || !this.textures.exists('ko-banner') || !Object.keys(H1_POSES).every(key => this.textures.exists(key))) return;
     const stage = this.add.graphics();
-    stage.fillStyle(0x1e2938).fillRect(0, 600, 1280, 120);
+    stage.fillStyle(0x1e2938).fillRect(-H1_CAMERA_MARGIN, 600, 1280 + H1_CAMERA_MARGIN * 2, 720);
     stage.lineStyle(1, 0x33445a, 0.5);
     for (let x = 80; x <= 1200; x += 80) stage.lineBetween(x, 150, x, 600);
-    stage.lineStyle(2, 0x71849a).lineBetween(0, 600, 1280, 600);
-    this.add.text(48, 40, 'DIMENSION FIGHT / COMBAT', { fontFamily: 'sans-serif', fontSize: '20px', color: '#a3b3c6' });
+    stage.lineStyle(2, 0x71849a).lineBetween(-H1_CAMERA_MARGIN, 600, 1280 + H1_CAMERA_MARGIN, 600);
+    const heading = this.add.text(48, 40, 'DIMENSION FIGHT / COMBAT', { fontFamily: 'sans-serif', fontSize: '20px', color: '#a3b3c6' });
     for (let i = 0; i < 2; i++) {
       this.sprites.push(this.add.image(0, 0, 'idle-0').setOrigin(0.5, 0.875).setScale(0.625));
       this.labels.push(this.add.text(0, 0, i === 0 ? 'PLAYER' : 'CPU / TARGET', { fontFamily: 'monospace', fontSize: '16px', color: i === 0 ? '#79e3cb' : '#ffc78d' }).setOrigin(0.5, 1).setDepth(10));
@@ -69,6 +70,7 @@ class CombatScene extends Phaser.Scene {
     this.guides = this.add.graphics().setDepth(10);
     this.koBanner = this.add.image(640, 270, 'ko-banner').setDepth(20).setVisible(false);
     this.koBanner.setScale(640 / this.koBanner.width);
+    configureCombatCameras(this, [stage, ...this.sprites, ...this.labels, this.guides], [heading, this.koBanner]);
     const options = { signal: listeners.signal };
     start.addEventListener('click', () => this.resume(), options);
     pauseButton.addEventListener('click', () => this.pause(), options);
@@ -141,6 +143,7 @@ class CombatScene extends Phaser.Scene {
     return this.ready && !this.combat.ended && !this.targetGrabQueued && cpu.grounded && cpu.action === 'free';
   }
   private renderCombat() {
+    applyCombatCamera(this.cameras.main, combatCamera(this.combat));
     this.guides.clear();
     this.koBanner.setVisible(this.combat.ended && this.combat.fighters.some(f => f.hp === 0));
     const visuals = combatVisuals(this.combat, this.koFrame);

@@ -5,8 +5,9 @@ import { inflateSync } from 'node:zlib';
 import { createCombat, stepCombat, clearGrabs, grabPoseState, COMBAT_NEUTRAL as N } from '../src/combat/combat.ts';
 import { createMatch, startMatch, stepMatch, pauseMatch } from '../src/combat/match.ts';
 import { H1 } from '../src/characters/h1.ts';
-import { H1_POSES, combatPose } from '../src/characters/h1-poses.ts';
+import { H1_POSES, H1_ATTACK_FRAMES, combatPose } from '../src/characters/h1-poses.ts';
 import * as display from '../src/characters/h1-visual.ts';
+import { combatCamera, worldToScreen, H1_CAMERA_MARGIN } from '../src/characters/h1-camera.ts';
 
 const close = (a, b, why) => assert.ok(Math.abs(a - b) < 1e-8, `${why}: ${a} != ${b}`);
 const chord = { ...N, attacks: ['lp', 'hp'], handEvents: [
@@ -48,10 +49,8 @@ function pixels(pose) {
   }
   assert.ok(points.length); cache.set(pose, points); return points;
 }
-const included = pose => /^(idle-[01]|crouch|(?:stand|crouch)-(?:hit|guard)|ko-[012])$/.test(pose)
-  || /^(grab(?:bed)?-|throw)/.test(pose);
 function extent(pose, facing, v) {
-  const points = pose.startsWith('idle-') ? [...pixels('idle-0'), ...pixels('idle-1')] : pixels(pose);
+  const points = pixels(pose);
   const r = v.angle * Math.PI / 180, cos = Math.cos(r), sin = Math.sin(r);
   let left = Infinity, right = -Infinity;
   for (const [x, y] of points) {
@@ -60,7 +59,6 @@ function extent(pose, facing, v) {
   }
   return [left, right];
 }
-const fit = ([left, right]) => Math.max(-left, Math.min(1280 - right, 0));
 
 // The approved pre-boundary throw arc. This oracle contains no clamping of the image.
 function base(f) {
@@ -81,22 +79,21 @@ function base(f) {
   return v;
 }
 const render = (s, age = 0) => display.combatVisuals(s, age);
-function inspect(s, paired = false, age = 0) {
-  const before = structuredClone(s), raw = s.fighters.map(base), visuals = render(s, age);
+function inspect(s, age = 0) {
+  const before = structuredClone(s), raw = s.fighters.map(base), visuals = render(s, age), camera = combatCamera(s);
   const poses = s.fighters.map((f, i) => combatPose(f, s.definitions[i], age));
-  const edges = raw.map((v, i) => extent(poses[i], s.fighters[i].facing, v));
-  const shared = fit([Math.min(...edges.map(b => b[0])), Math.max(...edges.map(b => b[1]))]);
   for (let i = 0; i < 2; i++) {
     const f = s.fighters[i], v = visuals[i], pose = poses[i];
-    const dx = paired ? shared : included(pose) ? fit(edges[i]) : 0;
-    close(v.x, raw[i].x + dx, `${pose} ${f.x}/${f.facing} age${grabPoseState(f)?.age} minimum ${paired ? 'pair' : 'individual'} correction`);
-    for (const key of ['y', 'angle', 'originY']) close(v[key], raw[i][key], `${pose} keeps original ${key}`);
-    if (included(pose)) {
-      const [left, right] = extent(pose, f.facing, v);
-      assert.ok(left >= -1e-8 && right <= 1280 + 1e-8, `${pose} clips [${left},${right}]`);
-    }
-    if (!paired) assert.deepEqual(v, display.combatVisual(f, s.definitions[i], age), 'single API must keep individual correction compatibility');
+    for (const key of ['x', 'y', 'angle', 'originY']) close(v[key], raw[i][key], `${pose} keeps original world ${key}`);
+    const [left, right] = extent(pose, f.facing, v);
+    assert.ok(left >= f.x - H1_CAMERA_MARGIN - 1e-8 && right <= f.x + H1_CAMERA_MARGIN + 1e-8,
+      `${pose} raw alpha/arc exceeds the measured root envelope`);
+    const screenLeft = worldToScreen(camera, left, 600).x, screenRight = worldToScreen(camera, right, 600).x;
+    assert.ok(screenLeft >= -1e-8 && screenRight <= 1280 + 1e-8, `${pose} alpha clips after the common camera at [${screenLeft},${screenRight}]`);
+    assert.deepEqual(v, display.combatVisual(f, s.definitions[i], age), 'single and two-fighter APIs share the same raw presentation');
   }
+  const a = worldToScreen(camera, visuals[0].x, visuals[0].y), b = worldToScreen(camera, visuals[1].x, visuals[1].y);
+  close(b.x - a.x, (raw[1].x - raw[0].x) * camera.zoom, 'one camera preserves the complete relative pose');
   assert.deepEqual(s, before, 'display must not mutate simulation or snapshots');
   return visuals;
 }
@@ -114,42 +111,53 @@ function capture(options = {}) {
   return { ...setup, s };
 }
 
-test('Stationary idle union is frame-stable; crouch and both guards fit corners without moving walk/jump/attacks', () => {
+test('A fixed logical root stays fixed through idle, crouch, guard, walk, jump and every attack phase', () => {
+  const seen = new Set(), check = s => { seen.add(combatPose(s.fighters[0], H1)); return inspect(s); };
   for (const x of [80, 640, 1200]) for (const facing of [-1, 1]) {
     const s = createCombat(), f = s.fighters[0]; Object.assign(f, { x, facing });
+    s.fighters[1].x = x === 80 ? 1200 : 80;
+    const camera = combatCamera(s), root = worldToScreen(camera, x, 600);
     const idleX = [];
-    for (const age of [0, 14, 15, 29, 30, 44, 45]) { f.age = age; idleX.push(inspect(s)[0].x); }
+    for (const age of [0, 14, 15, 29, 30, 44, 45]) { f.age = age; idleX.push(check(s)[0].x); }
     assert.equal(new Set(idleX).size, 1, 'idle artwork changes must not move the display root');
     for (const posture of ['stand', 'crouch']) {
-      Object.assign(f, { posture, action: 'guard', state: posture === 'stand' ? 'idle' : 'crouch' }); inspect(s);
+      Object.assign(f, { posture, action: 'guard', state: posture === 'stand' ? 'idle' : 'crouch' }); check(s);
     }
-    Object.assign(f, { action: 'free', posture: 'crouch', state: 'crouch' }); inspect(s);
-    for (const state of ['walk', 'jump']) for (const age of [0, 4, 20, 44]) {
-      Object.assign(f, { state, age, posture: 'stand', grounded: state !== 'jump', vy: -300 }); inspect(s);
+    Object.assign(f, { action: 'free', posture: 'crouch', state: 'crouch' }); check(s);
+    for (const walkDirection of [-1, 1]) for (let age = 0; age < 48; age++) {
+      Object.assign(f, { state: 'walk', age, walkDirection, posture: 'stand', grounded: true, y: 600, vy: 0 }); check(s);
     }
-    for (const [key, attack] of Object.entries(H1.attacks)) for (const age of [0, attack.startup, attack.startup + attack.active]) {
+    for (const vy of [-800, -100, 0, 100, 800]) {
+      Object.assign(f, { state: 'jump', posture: 'stand', grounded: false, y: 440, vy }); check(s);
+    }
+    for (const [key, attack] of Object.entries(H1.attacks)) for (let age = 0; age < attack.startup + attack.active + attack.recovery; age++) {
       Object.assign(f, { action: 'attack', posture: key.startsWith('crouch') ? 'crouch' : 'stand', grounded: true,
-        attack: { key, age, serial: 1, hitTargets: [] } }); inspect(s);
+        y: 600, vy: 0, attack: { key, age, serial: 1, hitTargets: [] } });
+      const v = check(s)[0];
+      assert.deepEqual(combatCamera(s), camera, 'pose/age cannot move the camera');
+      assert.deepEqual(worldToScreen(camera, v.x, v.y), root, 'every grounded pose uses the same screen root');
     }
   }
+  for (const phases of Object.values(H1_ATTACK_FRAMES)) for (const frames of Object.values(phases)) for (const pose of frames) assert.ok(seen.has(pose), `${pose} must reach the PNG oracle`);
+  for (const pose of ['jump-rise', 'jump-apex', 'jump-fall', ...Array.from({ length: 12 }, (_, i) => `walk-${String(i).padStart(2, '0')}`)]) assert.ok(seen.has(pose));
 });
 
-test('Every live success frame fits both exact alpha bodies with a common offset until independent recovery', () => {
-  assert.equal(typeof display.combatVisuals, 'function', 'renderers need the pair-aware API');
-  for (const edge of ['left', 'right', 'center']) for (const dir of [-1, 1]) for (const d of [72, 84, 96]) for (const posture of ['stand', 'crouch']) {
-    let { s } = capture({ edge, dir, d, posture });
+test('Every live success frame fits both exact alpha bodies through the same camera before and after independent recovery', () => {
+  assert.equal(typeof display.combatVisuals, 'function', 'renderers need both raw presentations');
+  for (const edge of ['left', 'right', 'center']) for (const dir of [-1, 1]) for (const d of [72, 84, 96]) for (const posture of ['stand', 'crouch']) for (const owner of [0, 1]) {
+    let { s } = capture({ edge, dir, d, posture, owner });
     for (let age = 0; age <= 72; age++) {
-      const v = inspect(s, age < 54);
+      const v = inspect(s);
       if (edge === 'center') for (let i = 0; i < 2; i++) close(v[i].x, base(s.fighters[i]).x, 'central throw arc is unchanged');
       if (age === 53) assert.ok(s.fighters.every(f => f.grab?.kind === 'success'));
-      if (age === 54) { assert.equal(s.fighters[0].grab, null); assert.equal(s.fighters[1].grab?.age, 54); assert.ok(s.grabPair); }
+      if (age === 54) { assert.equal(s.fighters[owner].grab, null); assert.equal(s.fighters[1 - owner].grab?.age, 54); assert.ok(s.grabPair); }
       if (age === 72) { assert.ok(s.fighters.every(f => f.grab === null)); assert.equal(s.grabPair, null); }
       s = stepCombat(s, [N, N]);
     }
   }
 });
 
-test('Fresh H0/H12 escape and simultaneous grabs share their separation; H13 remains a throw and whiffs remain individual', () => {
+test('Fresh H0/H12 escape and simultaneous grabs preserve separation through the camera; H13 and whiffs keep their actions', () => {
   for (const edge of ['left', 'right']) for (const dir of [-1, 1]) for (const posture of ['stand', 'crouch']) for (const techAge of [0, 12, 13, 'simultaneous']) {
     if (techAge === 'simultaneous' && posture === 'crouch') continue; // A crouched attacker cannot start the standing grab.
     let { s, targetInput } = initial({ edge, dir, posture });
@@ -157,10 +165,10 @@ test('Fresh H0/H12 escape and simultaneous grabs share their separation; H13 rem
       const escapeTick = techAge === 'simultaneous' ? 0 : 6 + techAge;
       s = stepCombat(s, [tick === 0 ? chord : N, tick === escapeTick ? { ...chord, crouch: posture === 'crouch' } : targetInput]);
       const g = s.fighters[0].grab;
-      inspect(s, g?.kind === 'success' || g?.kind === 'escape');
+      inspect(s);
       if (g?.kind === 'escape') {
         assert.equal(s.grabPair, null); assert.equal(s.fighters[0].hp, 100); assert.equal(s.fighters[1].hp, 100);
-        assert.deepEqual(render(clearGrabs(s)), render(s), 'escaped end snapshots keep the same pair correction');
+        assert.deepEqual(render(clearGrabs(s)), render(s), 'escaped end snapshots keep the same raw presentation');
       }
     }
     if (techAge === 13) assert.equal(s.fighters[0].grab?.kind, 'success');
@@ -173,8 +181,8 @@ test('Fresh H0/H12 escape and simultaneous grabs share their separation; H13 rem
   }
 });
 
-test('Pair identity rejects mixed snapshots, mismatched kinds/owners/serials/ages and expired locks', () => {
-  const { s } = capture({ edge: 'left', dir: -1, owner: 1 }); inspect(s, true);
+test('Camera placement is independent of grab ownership, IDs, ages, kinds and snapshot roles', () => {
+  const { s } = capture({ edge: 'left', dir: -1, owner: 1 }); inspect(s);
   const variants = [
     copy => { copy.fighters[0].grab.serial++; },
     copy => { copy.fighters[0].grab.role = copy.fighters[1].grab.role; },
@@ -183,11 +191,11 @@ test('Pair identity rejects mixed snapshots, mismatched kinds/owners/serials/age
     copy => { copy.fighters[0].grab.releaseAt = copy.fighters[0].grab.age; },
     copy => { copy.fighters[0].grabSnapshot = { ...copy.fighters[0].grab }; copy.fighters[0].grab = null; copy.fighters[0].action = 'free'; },
   ];
-  for (const change of variants) { const copy = structuredClone(s); change(copy); inspect(copy); }
-  inspect(clearGrabs(s), true);
+  for (const change of variants) { const copy = structuredClone(s); change(copy); inspect(copy); assert.deepEqual(combatCamera(copy), combatCamera(s)); }
+  inspect(clearGrabs(s));
   const otherOwner = capture({ edge: 'left', dir: -1, owner: 0 }).s;
   assert.equal(s.fighters[0].grab.serial, otherOwner.fighters[0].grab.serial);
-  inspect(otherOwner, true); inspect(s, true); // No shared cache may confuse serial 1 owned by the opposite fighter.
+  inspect(otherOwner); inspect(s); // No shared cache may confuse serial 1 owned by the opposite fighter.
 });
 
 test('H54 attacker actions and a later new grab never attach to the target old lock', () => {
@@ -203,18 +211,19 @@ test('H54 attacker actions and a later new grab never attach to the target old l
   assert.equal(s.fighters[1].grab, null);
   s = stepCombat(s, [chord, N]);
   for (let i = 0; i < 6; i++) s = stepCombat(s, [N, N]);
-  assert.equal(s.fighters[0].grab.kind, 'success'); assert.equal(s.fighters[0].grab.serial, 2); inspect(s, true);
+  assert.equal(s.fighters[0].grab.kind, 'success'); assert.equal(s.fighters[0].grab.serial, 2); inspect(s);
 });
 
-test('Pause, timeout and impact KO freeze pair presentation while result age continues independently', () => {
+test('Pause, timeout and impact KO freeze raw presentation and camera while result age continues independently', () => {
   for (const age of [0, 12, 20, 35, 36, 53, 54, 71]) {
     let { s } = capture({ edge: 'left', dir: -1, posture: 'crouch' });
     for (let n = 0; n < age; n++) s = stepCombat(s, [N, N]);
-    const live = inspect(s, age < 54), stopped = clearGrabs(s);
-    for (const koAge of [0, 6, 12, 18, 100]) assert.deepEqual(inspect(stopped, age < 54, koAge), live);
+    const live = inspect(s), stopped = clearGrabs(s), camera = combatCamera(s);
+    for (const koAge of [0, 6, 12, 18, 100]) { assert.deepEqual(inspect(stopped, koAge), live); assert.deepEqual(combatCamera(stopped), camera); }
     let m = pauseMatch({ ...startMatch(createMatch()), combat: s }, true);
     for (let n = 0; n < 3; n++) m = stepMatch(m, [chord, chord]);
     assert.deepEqual(render(m.combat), live);
+    assert.deepEqual(combatCamera(m.combat), camera);
   }
   for (const ko of [false, true]) {
     let { s } = capture({ edge: 'right', dir: 1, hp: ko ? 18 : 100 });
@@ -222,8 +231,8 @@ test('Pause, timeout and impact KO freeze pair presentation while result age con
     let m = { ...startMatch(createMatch()), combat: s, remainingFrames: ko ? 100 : 1 };
     m = stepMatch(m, [N, N]); assert.equal(m.result.reason, ko ? 'ko' : 'timeout');
     assert.ok(m.combat.fighters.every(f => f.grabSnapshot?.kind === 'success'));
-    const v = inspect(m.combat, true, m.resultAge);
-    for (let n = 0; n < 30; n++) { m = stepMatch(m, [chord, chord]); assert.deepEqual(inspect(m.combat, true, m.resultAge), v); }
+    const v = inspect(m.combat, m.resultAge);
+    for (let n = 0; n < 30; n++) { m = stepMatch(m, [chord, chord]); assert.deepEqual(inspect(m.combat, m.resultAge), v); }
   }
 });
 

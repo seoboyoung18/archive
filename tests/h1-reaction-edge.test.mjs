@@ -7,6 +7,7 @@ import { createMatch, startMatch, stepMatch } from '../src/combat/match.ts';
 import { H1 } from '../src/characters/h1.ts';
 import { H1_POSES, combatPose } from '../src/characters/h1-poses.ts';
 import { combatVisual } from '../src/characters/h1-visual.ts';
+import { combatCamera, worldToScreen } from '../src/characters/h1-camera.ts';
 
 const reactions = ['stand-hit', 'crouch-hit', 'ko-0', 'ko-1', 'ko-2'];
 const koAges = [0, 5, 6, 11, 12, 18];
@@ -66,13 +67,14 @@ function contact({ edge = 'left', posture = 'stand', ko = false, targetX, airbor
   return m;
 }
 
-function inspect(f, age = 0) {
+function inspect(s, age = 0) {
+  const f = s.fighters[1], camera = combatCamera(s);
   const pose = combatPose(f, H1, age), b = bounds[pose][1], v = combatVisual(f, H1, age);
   const offsets = [(b.left - 256) * .625 * f.facing, (b.right + 1 - 256) * .625 * f.facing];
-  const left = v.x + Math.min(...offsets), right = v.x + Math.max(...offsets);
+  const left = worldToScreen(camera, v.x + Math.min(...offsets), v.y).x;
+  const right = worldToScreen(camera, v.x + Math.max(...offsets), v.y).x;
   assert.ok(left >= -1e-8 && right <= 1280 + 1e-8, `${pose} x=${f.x} facing=${f.facing} age=${age}: alpha>0 clips at [${left},${right}]`);
-  const expectedX = Math.max(-Math.min(...offsets), Math.min(1280 - Math.max(...offsets), f.x));
-  close(v.x, expectedX, `${pose} must move only the overflowing distance`);
+  close(v.x, f.x, `${pose} must keep the logical world root`);
   assert.equal(v.y, f.action === 'ko' ? 600 : f.y);
   assert.equal(v.angle, 0); assert.equal(v.originY, .875); assert.equal(v.depth, f.id);
   assert.ok(v.y + (b.top - 448) * .625 >= 0);
@@ -87,25 +89,26 @@ test('Reaction asset oracle matches manifest alignment pixels and detects the om
   for (const pose of ['stand-hit', 'crouch-hit', 'ko-0', 'ko-1']) assert.ok(bounds[pose][1].left < bounds[pose][8].left, `${pose} fringe must participate in boundary checks`);
 });
 
-for (const posture of ['stand', 'crouch']) test(`Common ${posture} hit keeps all nontransparent pixels inside both corners with minimum translation`, () => {
+for (const posture of ['stand', 'crouch']) test(`Common ${posture} hit keeps all nontransparent pixels inside both corners through the shared camera`, () => {
   for (const edge of ['left', 'right']) {
     const m = contact({ edge, posture }), f = m.combat.fighters[1];
     assert.equal(f.posture, posture); assert.equal(f.x, edge === 'left' ? 80 : 1200);
-    const v = inspect(f); assert.notEqual(v.x, f.x, 'corner reaction requires a display-only correction');
+    const v = inspect(m.combat); assert.equal(v.x, f.x, 'corner reaction needs no local root correction');
   }
 });
 
 test('Common KO uses the displayed pose bounds at ages 0/5/6/11/12/18 and while the result waits', () => {
   for (const edge of ['left', 'right']) {
     let m = contact({ edge, ko: true });
+    const camera = combatCamera(m.combat);
     for (let age = 0; age <= 18; age++) {
       if (koAges.includes(age)) {
         assert.equal(m.resultAge, age); assert.equal(combatPose(m.combat.fighters[1], H1, age), `ko-${Math.min(2, Math.floor(age / 6))}`);
-        inspect(m.combat.fighters[1], m.resultAge);
+        inspect(m.combat, m.resultAge); assert.deepEqual(combatCamera(m.combat), camera);
       }
       m = stepMatch(m, [N, N]);
     }
-    const before = structuredClone(m), visual = inspect(m.combat.fighters[1], m.resultAge);
+    const before = structuredClone(m), visual = inspect(m.combat, m.resultAge);
     for (let i = 0; i < 30; i++) m = stepMatch(m, [N, N]);
     assert.deepEqual(m, before); assert.deepEqual(combatVisual(m.combat.fighters[1], H1, m.resultAge), visual);
   }
@@ -114,14 +117,14 @@ test('Common KO uses the displayed pose bounds at ages 0/5/6/11/12/18 and while 
 test('Central reactions keep their original positions and both reflected orientations use the actual alpha extent', () => {
   for (const edge of ['left', 'right']) for (const posture of ['stand', 'crouch']) {
     const m = contact({ edge, posture, targetX: 640 }), f = m.combat.fighters[1];
-    assert.equal(inspect(f).x, f.x);
+    assert.equal(inspect(m.combat).x, f.x);
     // Reflection-only display fixture covers both facing signs even when that direction cannot occur at a grounded corner.
-    for (const x of [80, 1200]) for (const facing of [-1, 1]) inspect({ ...f, x, facing });
+    for (const x of [80, 1200]) for (const facing of [-1, 1]) inspect({ ...m.combat, fighters: [m.combat.fighters[0], { ...f, x, facing }] });
   }
-  const f = contact({ ko: true, targetX: 640 }).combat.fighters[1];
+  const s = contact({ ko: true, targetX: 640 }).combat, f = s.fighters[1];
   for (const age of koAges) {
-    assert.equal(inspect(f, age).x, f.x);
-    for (const x of [80, 1200]) for (const facing of [-1, 1]) inspect({ ...f, x, facing }, age);
+    assert.equal(inspect(s, age).x, f.x);
+    for (const x of [80, 1200]) for (const facing of [-1, 1]) inspect({ ...s, fighters: [s.fighters[0], { ...f, x, facing }] }, age);
   }
 });
 
@@ -130,22 +133,18 @@ test('Reaction display cannot mutate logical roots/hurtboxes, delay hit recovery
     let s = contact({ edge, posture }).combat, baseline = structuredClone(s), ticks = 0;
     while (s.fighters[1].action === 'hit') {
       const before = structuredClone(s), f = s.fighters[1], hurt = worldRect(H1.hurt[f.posture], f);
-      inspect(f); assert.deepEqual(s, before); assert.deepEqual(worldRect(H1.hurt[f.posture], f), hurt);
+      inspect(s); assert.deepEqual(s, before); assert.deepEqual(worldRect(H1.hurt[f.posture], f), hurt);
       s = stepCombat(s, [N, N]); baseline = stepCombat(baseline, [N, N]); ticks++;
       assert.deepEqual(s, baseline); assert.ok(ticks <= H1.attacks['stand-lp'].hitstun + 1);
     }
     assert.equal(ticks, H1.attacks['stand-lp'].hitstun + 1);
-    const f = s.fighters[1], pose = combatPose(f, H1);
-    const resting = (pose.startsWith('idle-') ? ['idle-0', 'idle-1'] : [pose]).map(p => decodeAlphaBounds(p)[1]);
-    const offsets = [(Math.min(...resting.map(b => b.left)) - 256) * .625 * f.facing,
-      (Math.max(...resting.map(b => b.right)) + 1 - 256) * .625 * f.facing];
+    const f = s.fighters[1];
     assert.equal(f.action, 'free', 'hit recovery has no extra tween or lock');
-    close(combatVisual(f, H1).x, Math.max(-Math.min(...offsets), Math.min(1280 - Math.max(...offsets), f.x)),
-      'recovery uses the resting pose correction, without retaining the hit correction');
+    close(combatVisual(f, H1).x, f.x, 'reaction and recovered pose share their original world root');
   }
   const m = contact({ ko: true, airborne: true }), before = structuredClone(m);
   assert.notEqual(m.combat.fighters[1].y, 600);
-  for (const age of koAges) inspect(m.combat.fighters[1], age);
+  for (const age of koAges) inspect(m.combat, age);
   assert.deepEqual(m, before, 'KO display grounds only the image, never the logical airborne victim');
 });
 
@@ -160,7 +159,10 @@ test('Successful throw and thrown-KO snapshots use their own alpha bounds indepe
       if ([36, 47, 48].includes(age)) {
         const f = s.fighters[1], b = decodeAlphaBounds(combatPose(f, H1))[1];
         const offsets = [(b.left - 256) * .625 * f.facing, (b.right + 1 - 256) * .625 * f.facing];
-        close(combatVisual(f, H1).x, Math.max(-Math.min(...offsets), Math.min(1280 - Math.max(...offsets), f.x)), `current throw alpha H${age}`);
+        const v = combatVisual(f, H1), camera = combatCamera(s);
+        close(v.x, f.x, `grounded throw keeps its world root at H${age}`);
+        assert.ok(worldToScreen(camera, v.x + Math.min(...offsets), v.y).x >= -1e-8);
+        assert.ok(worldToScreen(camera, v.x + Math.max(...offsets), v.y).x <= 1280 + 1e-8);
       }
       s = stepCombat(s, [N, N]);
     }
@@ -173,7 +175,10 @@ test('Successful throw and thrown-KO snapshots use their own alpha bounds indepe
       assert.equal(combatPose(m.combat.fighters[0], H1, age), 'throw-slam');
       const f = m.combat.fighters[1], b = decodeAlphaBounds('thrown-down')[1];
       const offsets = [(b.left - 256) * .625 * f.facing, (b.right + 1 - 256) * .625 * f.facing];
-      close(combatVisual(f, H1, age).x, Math.max(-Math.min(...offsets), Math.min(1280 - Math.max(...offsets), f.x)), 'thrown KO keeps its own alpha correction');
+      const v = combatVisual(f, H1, age), camera = combatCamera(m.combat);
+      close(v.x, f.x, 'thrown KO keeps its world root');
+      assert.ok(worldToScreen(camera, v.x + Math.min(...offsets), v.y).x >= -1e-8);
+      assert.ok(worldToScreen(camera, v.x + Math.max(...offsets), v.y).x <= 1280 + 1e-8);
       assert.deepEqual(combatVisual(m.combat.fighters[1], H1, age), combatVisual(m.combat.fighters[1], H1));
     }
     assert.deepEqual(m, before);

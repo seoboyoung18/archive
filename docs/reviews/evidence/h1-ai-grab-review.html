@@ -13,7 +13,7 @@
   .viewport{aspect-ratio:1280/720;position:relative;overflow:hidden;background:#192634;border:1px solid #405268}
   .world{position:absolute;width:1280px;height:720px;transform-origin:0 0}
   .floor{position:absolute;left:0;top:600px;width:100%;height:120px;border-top:2px solid #8497ac;background:#233446}
-  .sprite{position:absolute;width:320px;height:320px}.name,.root{position:absolute;z-index:10}
+  .camera-layer{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:640px 600px;z-index:0}.sprite{position:absolute;width:320px;height:320px}.name,.root{position:absolute;z-index:10}
   .name{font:17px monospace;transform:translate(-50%,-100%);text-shadow:0 2px 2px #111}
   .root{width:16px;height:2px;background:#78dccb;transform:translateX(-50%)}
   .hud{position:absolute;z-index:10;left:70px;right:70px;top:42px;display:flex;align-items:center;justify-content:space-between;font:22px monospace}
@@ -52,7 +52,7 @@
   </div>
   <div class="controls" id="milestones" aria-label="실제 잡기 사건으로 이동"></div>
   <output id="state"></output>
-  <small>60F = 1초. 재생은 저장된 첫 라운드 상태를 표시합니다. 초록 선은 논리 발 기준점입니다. 위치·체력·CPU 판단 상태를 주입하지 않으며 결과 뒤에는 기존 KO 연출 18F만 보존합니다.</small>
+  <small>60F = 1초. 재생은 저장된 첫 라운드 상태를 표시합니다. 초록 선은 논리 발 기준점입니다. 그림·이름표·발 기준점은 제품과 같은 A 공통 카메라를 사용하며 HUD는 고정입니다. 위치·체력·CPU 판단 상태를 주입하지 않으며 결과 뒤에는 기존 KO 연출 18F만 보존합니다.</small>
   <details><summary>자동 입력과 현재 상태의 검수 정보</summary><pre id="debug"></pre>
     <p><a href="./h1-ai-grab-after.mjs">네 정책 재현 스크립트</a> · <a href="./h1-ai-grab-after.json">AI-G 적용 후 기록</a> · <a href="./h1-ai-baseline.json">변경 전 기준 기록</a></p>
   </details>
@@ -64,6 +64,7 @@ import { stepH1AiMatch } from '../../../src/combat/h1-ai-match.ts';
 import { COMBAT_NEUTRAL as N } from '../../../src/combat/combat.ts';
 import { H1_POSES, combatPose } from '../../../src/characters/h1-poses.ts';
 import { combatVisuals } from '../../../src/characters/h1-visual.ts';
+import { combatCamera } from '../../../src/characters/h1-camera.ts';
 
 const policyNotes = {
   'crouch-guard': 'PLAYER는 상대 반대 방향과 아래를 계속 유지합니다. CPU가 스스로 접근해 붙잡고 메치는 첫 라운드입니다.',
@@ -117,10 +118,11 @@ function runScenario(policy) {
 }
 
 const $ = id => document.getElementById(id), world = $('world');
+const layer = document.createElement('div'); layer.className = 'camera-layer'; world.append(layer);
 const names = ['PLAYER', 'CPU'], cache = new Map();
-const images = names.map(name => { const image = new Image(); image.className = 'sprite'; image.alt = name; world.append(image); return image; });
-const labels = names.map(() => { const el = document.createElement('span'); el.className = 'name'; world.append(el); return el; });
-const roots = names.map(() => { const el = document.createElement('i'); el.className = 'root'; world.append(el); return el; });
+const images = names.map(name => { const image = new Image(); image.className = 'sprite'; image.alt = name; layer.append(image); return image; });
+const labels = names.map(() => { const el = document.createElement('span'); el.className = 'name'; layer.append(el); return el; });
+const roots = names.map(() => { const el = document.createElement('i'); el.className = 'root'; layer.append(el); return el; });
 let recording, playing = false, last = 0, acc = 0;
 
 function stop() { playing = false; $('play').textContent = '재생'; }
@@ -150,7 +152,8 @@ function rebuild() {
 }
 function draw() {
   const index = Number($('frame').value), { match: m, ai, input } = recording.frames[index], s = m.combat;
-  const visuals = combatVisuals(s, m.resultAge);
+  const visuals = combatVisuals(s, m.resultAge), camera = combatCamera(s);
+  layer.style.transform = `translateX(${camera.offsetX}px) scale(${camera.zoom})`;
   for (let i = 0; i < 2; i++) {
     const f = s.fighters[i], def = s.definitions[i], pose = combatPose(f, def, m.resultAge), v = visuals[i];
     images[i].src = '../../../assets/characters/h1/derived/' + H1_POSES[pose];
@@ -167,7 +170,7 @@ function draw() {
   $('result').textContent = m.result ? (m.result.winner === null ? '시간 종료 · 동률' : `${names[m.result.winner]} 라운드 승리`) : '';
   $('position').textContent = `${index} / ${recording.frames.length - 1} F`;
   const events = m.resultAge === 0 ? s.grabEvents : [];
-  $('state').textContent = `전투 F${s.frame} · ${(s.frame / 60).toFixed(2)}초 · 거리 ${Math.abs(s.fighters[1].x - s.fighters[0].x).toFixed(1)}\n`
+  $('state').textContent = `전투 F${s.frame} · ${(s.frame / 60).toFixed(2)}초 · 거리 ${Math.abs(s.fighters[1].x - s.fighters[0].x).toFixed(1)} · 공통 줌 ${(camera.zoom * 100).toFixed(3)}%\n`
     + (events.length ? events.map(e => `${eventLabel(e)}${e.damage ? ` · 피해 ${e.damage}` : ''}`).join(' / ') : '이 프레임의 새 잡기 사건 없음')
     + (m.resultAge ? ` · KO 결과 연출 ${m.resultAge}/18F` : '');
   $('debug').textContent = s.fighters.map((f, i) => `${names[i]}: ${f.action} · ${f.grab ? `${f.grab.kind}/${f.grab.role} ${f.grab.age}F` : '잡기 없음'} · ${combatPose(f, s.definitions[i], m.resultAge)}`).join('\n')
