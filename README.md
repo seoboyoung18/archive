@@ -9,6 +9,7 @@
 - 개발 방식: [SDD](docs/SDD.md)
 - Git 운영: [1인 개발 컨벤션](docs/git-convention.md) — `main`에서 작업하고 검증 후 커밋·push합니다.
 - [확정 기획](docs/game-concept.md) · [결정 기록](docs/decisions.md)
+- 다음 검토: [CPU 잡기·풀기 보완안](docs/specs/h1-ai-grab.md). 지속 방어·반복 잡기의 [기준 재현](docs/reviews/h1-ai-grab-baseline.md)을 마쳤으며 새 AI 정책은 구현 승인 전입니다.
 - [캐릭터 기준](docs/design/characters.md) · [H1 전투 명세 v0.3](docs/specs/h1-combat-draft.md)
 - [작업 계획](docs/plan.md)
 
