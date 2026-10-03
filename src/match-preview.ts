@@ -151,7 +151,8 @@ class MatchScene extends Phaser.Scene {
       `${names[i]} x=${f.x.toFixed(1)} ${f.action}/${f.posture} ${f.attack ? `${f.attack.key} ${f.attack.age}F` : ''}`
       + (f.combo ? ` [연계 단계 ${f.combo.step + 1} · 명중 ${f.combo.confirmed ? '확인' : '대기'} · 다음 입력 ${f.combo.queued ? '예약' : '없음'}]` : '')
       + (f.hands.pending ? ` [손 ${f.hands.pending.slot} 조합 대기]` : '')
-      + (grabPoseState(f) ? ` [잡기 ${grabPoseState(f)!.kind}/${grabPoseState(f)!.role} ${grabPoseState(f)!.age}F · 대상 ${grabPoseState(f)!.targetPosture}]` : '')).join(' · '));
+      + (grabPoseState(f) ? ` [잡기 ${grabPoseState(f)!.kind}/${grabPoseState(f)!.role} ${grabPoseState(f)!.age}F · 대상 ${grabPoseState(f)!.targetPosture}]` : '')).join(' · ')
+      + ` · CPU 다음 잡기까지 ${this.ai.grabCooldown}F · 잡힘 관찰 ${this.ai.captureCount}회 · 다음 잡힘 ${this.ai.captureCount % 2 === 0 ? '메치기 허용' : '풀기 시도'}`);
   }
   update(_time: number, delta: number) {
     if (!this.ready || this.match.paused || this.match.phase === 'ready') return;
