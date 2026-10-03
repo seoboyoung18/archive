@@ -146,7 +146,7 @@ class CombatScene extends Phaser.Scene {
     this.combat.fighters.forEach((f, i) => {
       const def = this.combat.definitions[i];
       const pose = combatPose(f, def, this.koFrame);
-      const visual = combatVisual(f, def);
+      const visual = combatVisual(f, def, this.koFrame);
       this.sprites[i]!.setTexture(pose).setOrigin(0.5, visual.originY).setPosition(visual.x, visual.y)
         .setFlipX(f.facing === -1).setAngle(visual.angle).setDepth(visual.depth);
       this.labels[i]!.setPosition(visual.x, visual.y - visual.labelHeight);

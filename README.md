@@ -12,6 +12,7 @@
 - 최근 완료: 사용자가 승인한 [CPU 잡기·풀기 AI-G](docs/specs/h1-ai-grab.md)를 구현하고281개 자동 검사·타입/빌드를 통과했습니다. 접근 잡기·시도부터120F 대기·첫 잡힘 허용/짝수 잡힘의 일회 풀기를 추가하며 기존12F 판단과 전투 수치는 유지합니다. [구현 검수](docs/reviews/h1-ai-grab.md)에 변경 전 기준과 새 자동 결과·실제 확인 범위를 구분했습니다. 인간 난이도·풀기 체감 검수는 남습니다.
 - [캐릭터 기준](docs/design/characters.md) · [H1 전투 명세 v0.3](docs/specs/h1-combat-draft.md)
 - [작업 계획](docs/plan.md)
+- 최근 화면 보완: [코너 피격·일반 KO 잘림](docs/specs/h1-reaction-edge.md)을 수정하고288개 검사·타입/빌드·브라우저 비교를 통과했습니다. 이미지가 벗어난 만큼 표시x만 보정하며 전투 위치·판정과 기존 메치기는 유지합니다. [검수 기록](docs/reviews/h1-reaction-edge.md)에 변경 전/후와 남은 범위를 구분합니다.
 
 ## 초기 캐릭터
 

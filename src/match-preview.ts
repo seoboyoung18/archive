@@ -117,7 +117,7 @@ class MatchScene extends Phaser.Scene {
   private renderMatch() {
     const s = this.match, ended = s.result !== null, available = resultReady(s);
     this.match.combat.fighters.forEach((f, i) => {
-      const def = s.combat.definitions[i], visual = combatVisual(f, def);
+      const def = s.combat.definitions[i], visual = combatVisual(f, def, s.resultAge);
       this.sprites[i]!.setTexture(combatPose(f, def, s.resultAge)).setOrigin(0.5, visual.originY)
         .setPosition(visual.x, visual.y).setFlipX(f.facing === -1).setAngle(visual.angle).setDepth(visual.depth);
       this.labels[i]!.setPosition(visual.x, visual.y - visual.labelHeight);

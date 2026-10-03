@@ -1,13 +1,31 @@
 import { grabPoseState, type CombatFighter } from '../combat/combat.ts';
 import type { CharacterDefinition } from '../combat/definition.ts';
 import { STAGE } from '../combat/movement.ts';
+import { combatPose } from './h1-poses.ts';
 
-/** Display-only throw arc. Logical roots, facing and collision positions never move here. */
-export function combatVisual(f: CombatFighter, def: CharacterDefinition) {
+// Alpha > 0 pixel-cell edges in the 512px source PNGs; right is exclusive.
+// Tests compare the displayed extent with the actual PNG alpha after every asset change.
+const reactionBounds: Record<string, readonly [number, number]> = {
+  'stand-hit': [53, 416], 'crouch-hit': [113, 379],
+  'ko-0': [74, 422], 'ko-1': [47, 466], 'ko-2': [49, 466],
+};
+
+/** Display-only transforms. Logical roots, facing and collision positions never move here. */
+export function combatVisual(f: CombatFighter, def: CharacterDefinition, koFrame = 0) {
   const g = grabPoseState(f);
   const result = { x: f.x, y: f.action === 'ko' ? STAGE.floor : f.y, angle: 0,
     originY: 0.875, depth: f.id as number, labelHeight: f.action === 'ko' ? 125 : f.posture === 'crouch' ? 162 : 255 };
-  if (g?.kind !== 'success') return result;
+  if (g?.kind !== 'success') {
+    if (f.action === 'hit' || f.action === 'ko') {
+      const bounds = reactionBounds[combatPose(f, def, koFrame)];
+      if (bounds) {
+        const a = (bounds[0] - 256) * 0.625 * f.facing;
+        const b = (bounds[1] - 256) * 0.625 * f.facing;
+        result.x = Math.max(-Math.min(a, b), Math.min(1280 - Math.max(a, b), result.x));
+      }
+    }
+    return result;
+  }
   const impact = g.impactAt ?? def.grab!.impact, turn = (g.techUntil ?? def.grab!.techWindow) + 1;
   const lift = Math.min(impact, turn + Math.max(1, Math.floor((impact - turn) / 3)));
   if (g.role === 'attacker') {
