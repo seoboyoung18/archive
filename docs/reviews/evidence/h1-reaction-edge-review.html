@@ -30,7 +30,7 @@ body{margin:0;background:#111923;color:#e9eff6;font:15px system-ui}main{max-widt
 import { createMatch, startMatch, stepMatch } from '../../../src/combat/match.ts';
 import { COMBAT_NEUTRAL as N } from '../../../src/combat/combat.ts';
 import { H1_POSES, combatPose } from '../../../src/characters/h1-poses.ts';
-import { combatVisual } from '../../../src/characters/h1-visual.ts';
+import { combatVisuals } from '../../../src/characters/h1-visual.ts';
 
 // Only the initial fixture has assigned positions/HP. Reactions and result ages come from common ticks.
 function runScenario(location, scenario, slot) {
@@ -99,10 +99,11 @@ async function rebuild() {
 function draw() {
   if (!recording) return;
   const age = Number($('frame').value), m = recording.frames[age], before = $('before').checked;
+  const visuals = combatVisuals(m.combat, m.resultAge);
   let targetBounds, targetPose, targetVisual;
   for (let i = 0; i < 2; i++) {
     const f = m.combat.fighters[i], def = m.combat.definitions[i], pose = combatPose(f, def, m.resultAge);
-    const v = { ...combatVisual(f, def, m.resultAge) }, asset = recording.assets.get(pose);
+    const v = { ...visuals[i] }, asset = recording.assets.get(pose);
     if (before) v.x = f.x;
     images[i].src = asset.url;
     Object.assign(images[i].style, { left: `${v.x - 160}px`, top: `${v.y - 320 * v.originY}px`, transformOrigin: `50% ${v.originY * 100}%`, transform: `rotate(${v.angle}deg) scaleX(${f.facing})`, zIndex: v.depth });

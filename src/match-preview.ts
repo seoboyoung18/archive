@@ -9,7 +9,7 @@ import { MatchInputBuffer } from './input/match-input.ts';
 import { combatPose } from './characters/h1-poses.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
 import { grabPoseState } from './combat/combat.ts';
-import { combatVisual } from './characters/h1-visual.ts';
+import { combatVisuals } from './characters/h1-visual.ts';
 import { createCombatAudioControls } from './audio/combat-audio-controls.ts';
 
 const get = <T extends HTMLElement>(id: string) => document.querySelector<T>(`#${id}`)!;
@@ -116,8 +116,9 @@ class MatchScene extends Phaser.Scene {
   }
   private renderMatch() {
     const s = this.match, ended = s.result !== null, available = resultReady(s);
+    const visuals = combatVisuals(s.combat, s.resultAge);
     this.match.combat.fighters.forEach((f, i) => {
-      const def = s.combat.definitions[i], visual = combatVisual(f, def, s.resultAge);
+      const def = s.combat.definitions[i], visual = visuals[i]!;
       this.sprites[i]!.setTexture(combatPose(f, def, s.resultAge)).setOrigin(0.5, visual.originY)
         .setPosition(visual.x, visual.y).setFlipX(f.facing === -1).setAngle(visual.angle).setDepth(visual.depth);
       this.labels[i]!.setPosition(visual.x, visual.y - visual.labelHeight);

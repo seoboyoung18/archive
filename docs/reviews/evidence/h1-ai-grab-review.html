@@ -63,7 +63,7 @@ import { createH1Ai } from '../../../src/combat/h1-ai.ts';
 import { stepH1AiMatch } from '../../../src/combat/h1-ai-match.ts';
 import { COMBAT_NEUTRAL as N } from '../../../src/combat/combat.ts';
 import { H1_POSES, combatPose } from '../../../src/characters/h1-poses.ts';
-import { combatVisual } from '../../../src/characters/h1-visual.ts';
+import { combatVisuals } from '../../../src/characters/h1-visual.ts';
 
 const policyNotes = {
   'crouch-guard': 'PLAYER는 상대 반대 방향과 아래를 계속 유지합니다. CPU가 스스로 접근해 붙잡고 메치는 첫 라운드입니다.',
@@ -150,8 +150,9 @@ function rebuild() {
 }
 function draw() {
   const index = Number($('frame').value), { match: m, ai, input } = recording.frames[index], s = m.combat;
+  const visuals = combatVisuals(s, m.resultAge);
   for (let i = 0; i < 2; i++) {
-    const f = s.fighters[i], def = s.definitions[i], pose = combatPose(f, def, m.resultAge), v = combatVisual(f, def, m.resultAge);
+    const f = s.fighters[i], def = s.definitions[i], pose = combatPose(f, def, m.resultAge), v = visuals[i];
     images[i].src = '../../../assets/characters/h1/derived/' + H1_POSES[pose];
     Object.assign(images[i].style, { left: (v.x - 160) + 'px', top: (v.y - 320 * v.originY) + 'px',
       transformOrigin: `50% ${v.originY * 100}%`, transform: `rotate(${v.angle}deg) scaleX(${f.facing})`, zIndex: v.depth });

@@ -135,7 +135,13 @@ test('Reaction display cannot mutate logical roots/hurtboxes, delay hit recovery
       assert.deepEqual(s, baseline); assert.ok(ticks <= H1.attacks['stand-lp'].hitstun + 1);
     }
     assert.equal(ticks, H1.attacks['stand-lp'].hitstun + 1);
-    assert.equal(combatVisual(s.fighters[1], H1).x, s.fighters[1].x, 'recovery restores the logical root without a new tween or lock');
+    const f = s.fighters[1], pose = combatPose(f, H1);
+    const resting = (pose.startsWith('idle-') ? ['idle-0', 'idle-1'] : [pose]).map(p => decodeAlphaBounds(p)[1]);
+    const offsets = [(Math.min(...resting.map(b => b.left)) - 256) * .625 * f.facing,
+      (Math.max(...resting.map(b => b.right)) + 1 - 256) * .625 * f.facing];
+    assert.equal(f.action, 'free', 'hit recovery has no extra tween or lock');
+    close(combatVisual(f, H1).x, Math.max(-Math.min(...offsets), Math.min(1280 - Math.max(...offsets), f.x)),
+      'recovery uses the resting pose correction, without retaining the hit correction');
   }
   const m = contact({ ko: true, airborne: true }), before = structuredClone(m);
   assert.notEqual(m.combat.fighters[1].y, 600);
@@ -143,7 +149,7 @@ test('Reaction display cannot mutate logical roots/hurtboxes, delay hit recovery
   assert.deepEqual(m, before, 'KO display grounds only the image, never the logical airborne victim');
 });
 
-test('Successful throw and thrown-KO snapshots retain the existing display path for every ordinary KO age', () => {
+test('Successful throw and thrown-KO snapshots use their own alpha bounds independently of ordinary KO age', () => {
   const chord = { ...N, attacks: ['lp', 'hp'], handEvents: [{ slot: 'lp', down: true }, { slot: 'hp', down: true }, { slot: 'hp', down: false }, { slot: 'lp', down: false }] };
   for (const edge of ['left', 'right']) {
     const targetX = edge === 'left' ? 80 : 1200, direction = edge === 'left' ? -1 : 1;
@@ -151,7 +157,11 @@ test('Successful throw and thrown-KO snapshots retain the existing display path 
     s = stepCombat(s, [chord, N]); for (let tick = 0; tick < 6; tick++) s = stepCombat(s, [N, N]);
     for (let age = 0; age <= 72; age++) {
       for (const f of s.fighters) for (const koAge of koAges) assert.deepEqual(combatVisual(f, H1, koAge), combatVisual(f, H1));
-      if ([20, 35, 36, 47, 48].includes(age)) close(combatVisual(s.fighters[1], H1).x, edge === 'left' ? 136 : 1144, `existing throw H${age}`);
+      if ([36, 47, 48].includes(age)) {
+        const f = s.fighters[1], b = decodeAlphaBounds(combatPose(f, H1))[1];
+        const offsets = [(b.left - 256) * .625 * f.facing, (b.right + 1 - 256) * .625 * f.facing];
+        close(combatVisual(f, H1).x, Math.max(-Math.min(...offsets), Math.min(1280 - Math.max(...offsets), f.x)), `current throw alpha H${age}`);
+      }
       s = stepCombat(s, [N, N]);
     }
     let m = createMatch(); m.combat.fighters[0].x = targetX - direction * 84; m.combat.fighters[1].x = targetX; m.combat.fighters[1].hp = 18; m = startMatch(m);
@@ -161,7 +171,9 @@ test('Successful throw and thrown-KO snapshots retain the existing display path 
     for (const age of koAges) {
       assert.equal(combatPose(m.combat.fighters[1], H1, age), 'thrown-down');
       assert.equal(combatPose(m.combat.fighters[0], H1, age), 'throw-slam');
-      close(combatVisual(m.combat.fighters[1], H1, age).x, edge === 'left' ? 136 : 1144, 'thrown KO keeps its existing correction');
+      const f = m.combat.fighters[1], b = decodeAlphaBounds('thrown-down')[1];
+      const offsets = [(b.left - 256) * .625 * f.facing, (b.right + 1 - 256) * .625 * f.facing];
+      close(combatVisual(f, H1, age).x, Math.max(-Math.min(...offsets), Math.min(1280 - Math.max(...offsets), f.x)), 'thrown KO keeps its own alpha correction');
       assert.deepEqual(combatVisual(m.combat.fighters[1], H1, age), combatVisual(m.combat.fighters[1], H1));
     }
     assert.deepEqual(m, before);

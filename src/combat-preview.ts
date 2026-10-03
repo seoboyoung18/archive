@@ -6,7 +6,7 @@ import { FixedStep } from './combat/fixed-step.ts';
 import { CombatInputBuffer } from './input/combat-input.ts';
 import { combatPose, H1_POSES } from './characters/h1-poses.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
-import { combatVisual } from './characters/h1-visual.ts';
+import { combatVisuals } from './characters/h1-visual.ts';
 import { createCombatAudioControls } from './audio/combat-audio-controls.ts';
 
 const get = <T extends Element>(id: string) => document.querySelector<T>(`#${id}`)!;
@@ -143,10 +143,11 @@ class CombatScene extends Phaser.Scene {
   private renderCombat() {
     this.guides.clear();
     this.koBanner.setVisible(this.combat.ended && this.combat.fighters.some(f => f.hp === 0));
+    const visuals = combatVisuals(this.combat, this.koFrame);
     this.combat.fighters.forEach((f, i) => {
       const def = this.combat.definitions[i];
       const pose = combatPose(f, def, this.koFrame);
-      const visual = combatVisual(f, def, this.koFrame);
+      const visual = visuals[i]!;
       this.sprites[i]!.setTexture(pose).setOrigin(0.5, visual.originY).setPosition(visual.x, visual.y)
         .setFlipX(f.facing === -1).setAngle(visual.angle).setDepth(visual.depth);
       this.labels[i]!.setPosition(visual.x, visual.y - visual.labelHeight);

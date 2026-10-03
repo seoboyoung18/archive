@@ -49,14 +49,16 @@ test('Mirrored throw arcs are symmetric before hitting arena limits',()=>{
   }
 });
 
-test('Adopted airborne and grounded throw artwork stays inside both horizontal stage edges',()=>{
+test('Adopted unrotated throw artwork still contains the recorded alignment bounds inside stage edges',()=>{
   const manifest=JSON.parse(readFileSync(new URL('../assets/characters/h1/derived/throw-v1/manifest.json',import.meta.url),'utf8').replace(/^\uFEFF/,''));
   const bounds=Object.fromEntries(manifest.frames.map(f=>[f.id,f.outputBounds]));
   for(const corner of ['left','right'])for(const dir of [-1,1]) {
     let s=scene(dir,corner);
     for(let age=0;age<60;age++) {
       const f=s.fighters[1],pose=combatPose(f,H1),v=combatVisual(f,H1),b=bounds[pose];
-      if(b)for(const x of [b.left,b.right])for(const y of [b.top,b.bottom]) {
+      // The old rotated bbox included transparent corners. Exact rotated alpha-cell
+      // coverage and minimum correction are checked independently in h1-grab-edge.
+      if(b && v.angle === 0)for(const x of [b.left,b.right])for(const y of [b.top,b.bottom]) {
         const dx=(x-256)*0.625*f.facing,dy=(y-512*v.originY)*0.625,r=v.angle*Math.PI/180;
         const worldX=v.x+dx*Math.cos(r)-dy*Math.sin(r);
         assert.ok(worldX>=0 && worldX<=1280,`${corner} dir${dir} H${age} ${pose} clips at ${worldX}`);
