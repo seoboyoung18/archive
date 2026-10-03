@@ -27,10 +27,11 @@ export interface CombatFighter extends Fighter {
   hands: HandState; grab: GrabPoseState | null; grabSnapshot: GrabPoseState | null;
 }
 export interface HitEvent { attacker: 0 | 1; target: 0 | 1; attackId: number; key: AttackKey; blocked: boolean; damage: number }
+export interface WhiffEvent { attacker: 0 | 1; attackId: number; key: AttackKey }
 export interface CombatState {
   definitions: readonly [CharacterDefinition, CharacterDefinition];
   fighters: [CombatFighter, CombatFighter]; frame: number; ended: boolean; events: HitEvent[];
-  grabPair: GrabPair | null; grabEvents: GrabEvent[];
+  grabPair: GrabPair | null; grabEvents: GrabEvent[]; whiffEvents: WhiffEvent[];
 }
 export function createCombat(definitions: readonly [CharacterDefinition, CharacterDefinition] = [H1, H1]): CombatState {
   definitions.forEach(validateCharacter);
@@ -38,7 +39,7 @@ export function createCombat(definitions: readonly [CharacterDefinition, Charact
   const fighter = (id: 0 | 1): CombatFighter => ({ ...base[id], id, hp: definitions[id].maxHp,
     posture: 'stand', action: 'free', attack: null, stun: 0, nextAttackId: 1, combo: null,
     hands: createHandState(), grab: null, grabSnapshot: null });
-  return { definitions, fighters: [fighter(0), fighter(1)], frame: 0, ended: false, events: [], grabPair: null, grabEvents: [] };
+  return { definitions, fighters: [fighter(0), fighter(1)], frame: 0, ended: false, events: [], grabPair: null, grabEvents: [], whiffEvents: [] };
 }
 export function attackPhase(f: CombatFighter, def: CharacterDefinition): 'startup' | 'active' | 'recovery' | null {
   if (!f.attack) return null;
@@ -253,9 +254,17 @@ export function stepCombat(previous: CombatState, inputs: readonly [CombatInput,
       grabEvents.push({ kind: 'hold', attacker, target, grabId: serial, damage: 0 });
     }
   }
+  // Resolve hits and grabs first: cancellation on the first recovery tick is silent.
+  const whiffEvents: WhiffEvent[] = [];
+  for (const f of fighters) {
+    const a = f.attack;
+    if (!a || previous.fighters[f.id].attack?.serial !== a.serial || a.hitTargets.length) continue;
+    const rules = previous.definitions[f.id].attacks[a.key];
+    if (a.age === rules.startup + rules.active) whiffEvents.push({ attacker: f.id, attackId: a.serial, key: a.key });
+  }
   const ended = fighters.some(f => f.hp === 0);
   for (const f of fighters) if (f.hp === 0) { f.action = 'ko'; f.attack = null; f.stun = 0; }
   if (ended) for (const f of fighters) f.combo = null;
-  const next = { ...previous, fighters, events, grabPair, grabEvents, frame: previous.frame + 1, ended };
+  const next = { ...previous, fighters, events, grabPair, grabEvents, whiffEvents, frame: previous.frame + 1, ended };
   return ended ? clearGrabs(next) : next;
 }

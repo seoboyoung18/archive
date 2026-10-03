@@ -7,6 +7,7 @@ import { CombatInputBuffer } from './input/combat-input.ts';
 import { combatPose, H1_POSES } from './characters/h1-poses.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
 import { combatVisual } from './characters/h1-visual.ts';
+import { createCombatAudioControls } from './audio/combat-audio-controls.ts';
 
 const get = <T extends Element>(id: string) => document.querySelector<T>(`#${id}`)!;
 const surface = get<HTMLDivElement>('game'), start = get<HTMLButtonElement>('start');
@@ -38,6 +39,7 @@ class CombatScene extends Phaser.Scene {
   private koBanner!: Phaser.GameObjects.Image;
   private targetGrabQueued = false;
   private targetTechUsed = false;
+  private audio = createCombatAudioControls(() => this.pause(), listeners.signal);
 
   private failLoad() {
     this.loadFailed = true; error.hidden = false; retry.hidden = false;
@@ -45,6 +47,7 @@ class CombatScene extends Phaser.Scene {
     status.value = '로딩 실패 · 시작할 수 없음';
   }
   preload() {
+    this.events.once('destroy', () => this.audio.dispose());
     this.load.on('loaderror', () => this.failLoad());
     this.load.image('ko-banner', koArt);
     for (const { key, url } of H1_ASSETS) {
@@ -70,12 +73,12 @@ class CombatScene extends Phaser.Scene {
     start.addEventListener('click', () => this.resume(), options);
     pauseButton.addEventListener('click', () => this.pause(), options);
     resetButton.addEventListener('click', () => {
-      this.pause(); this.combat = createCombat(); this.koFrame = 0;
+      this.pause(); this.combat = createCombat(); this.koFrame = 0; this.audio.beginSession();
       this.targetGrabQueued = false; this.targetTechUsed = false;
       lastHit.textContent = '타격 기록 없음'; status.value = '초기화 완료 · 계속하기로 시작'; this.renderCombat();
     }, options);
     closePracticeButton.addEventListener('click', () => {
-      this.pause(); this.combat = createCombat(); this.koFrame = 0;
+      this.pause(); this.combat = createCombat(); this.koFrame = 0; this.audio.beginSession();
       this.combat.fighters[0].x = 500; this.combat.fighters[1].x = 584;
       this.targetGrabQueued = false; this.targetTechUsed = false;
       lastHit.textContent = '타격 기록 없음'; status.value = '근접 검수 거리84 · 계속하기로 시작'; this.renderCombat();
@@ -107,6 +110,7 @@ class CombatScene extends Phaser.Scene {
     status.value = '준비 완료 · 전투 시작을 눌러주세요'; this.renderCombat();
   }
   private pause() {
+    this.audio.pause();
     if (!this.ready) return;
     this.paused = true; input.reset(); this.clock.reset();
     this.targetGrabQueued = false;
@@ -117,6 +121,7 @@ class CombatScene extends Phaser.Scene {
   private resume() {
     if (!this.ready) return;
     this.paused = false; input.reset(); this.clock.reset();
+    this.audio.resume();
     start.textContent = '계속하기'; start.disabled = true; pauseButton.disabled = false;
     status.value = this.combat.ended ? 'K O!! · 검수 초기화로 다시 시작' : '전투 검수 중'; surface.focus();
   }
@@ -169,6 +174,7 @@ class CombatScene extends Phaser.Scene {
     this.clock.advance(delta, () => {
       if (this.combat.ended) { this.koFrame = Math.min(18, this.koFrame + 1); return; }
       this.combat = stepCombat(this.combat, [input.sample(), this.targetInput()]);
+      this.audio.consume(this.combat);
       const events = [
         ...this.combat.events.map(e => `${names[e.attacker]} ${e.key} → ${e.blocked ? '방어 · 피해 0' : `피해 ${e.damage}`}`),
         ...this.combat.grabEvents.map(e => `${names[e.attacker]} → ${names[e.target]} ${e.kind === 'hold' ? '잡기 성공' : e.kind === 'impact' ? '잡기 충격' : '잡기 해제'} · 피해 ${e.damage}`),

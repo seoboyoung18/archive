@@ -10,6 +10,7 @@ import { combatPose } from './characters/h1-poses.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
 import { grabPoseState } from './combat/combat.ts';
 import { combatVisual } from './characters/h1-visual.ts';
+import { createCombatAudioControls } from './audio/combat-audio-controls.ts';
 
 const get = <T extends HTMLElement>(id: string) => document.querySelector<T>(`#${id}`)!;
 const surface = get('game'), status = get('status'), error = get('error');
@@ -33,6 +34,10 @@ class MatchScene extends Phaser.Scene {
   private labels: Phaser.GameObjects.Text[] = [];
   private koBanner!: Phaser.GameObjects.Image;
   private resultBanner!: Phaser.GameObjects.Text;
+  private audio = createCombatAudioControls(() => {
+    this.audio.pause();
+    if (this.match.phase === 'playing' || (this.match.result && !resultReady(this.match))) this.transition(pauseMatch(this.match, true));
+  }, listeners.signal);
 
   private failLoad() {
     this.loadFailed = true; error.hidden = false; retry.hidden = false;
@@ -40,6 +45,7 @@ class MatchScene extends Phaser.Scene {
     text(status, '로딩 실패 · 다시 불러오기를 눌러주세요');
   }
   preload() {
+    this.events.once('destroy', () => this.audio.dispose());
     this.load.on('loaderror', () => this.failLoad());
     this.load.image('ko-banner', koArt);
     for (const { key, url } of H1_ASSETS) {
@@ -73,11 +79,12 @@ class MatchScene extends Phaser.Scene {
     button(restart, () => this.transition(restartMatch(this.match)));
     surface.addEventListener('pointerdown', () => surface.focus(), options);
     surface.addEventListener('blur', () => {
+      this.audio.pause();
       // Finished results remain navigable by Tab without demanding another resume.
       if (this.match.phase === 'playing' || (this.match.result && !resultReady(this.match))) this.transition(pauseMatch(this.match, true));
     }, options);
-    window.addEventListener('blur', () => this.transition(pauseMatch(this.match, true)), options);
-    document.addEventListener('visibilitychange', () => { if (document.hidden) this.transition(pauseMatch(this.match, true)); }, options);
+    window.addEventListener('blur', () => { this.audio.pause(); this.transition(pauseMatch(this.match, true)); }, options);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) { this.audio.pause(); this.transition(pauseMatch(this.match, true)); } }, options);
     window.addEventListener('keydown', event => {
       const focused = document.activeElement === surface;
       const playing = this.match.phase === 'playing' && !this.match.paused;
@@ -101,7 +108,9 @@ class MatchScene extends Phaser.Scene {
     const previous = this.match;
     this.ai = transitionH1Ai(this.ai, previous, nextState);
     this.match = nextState; input.reset(); this.clock.reset();
-    if (nextState.combat !== previous.combat && nextState.combat.frame === 0) text(lastHit, '타격 기록 없음');
+    if (nextState.combat !== previous.combat && nextState.combat.frame === 0) { text(lastHit, '타격 기록 없음'); this.audio.beginSession(); }
+    if (nextState.paused || nextState.phase === 'ready') this.audio.pause();
+    else this.audio.resume();
     this.renderMatch();
     if (!nextState.paused) surface.focus();
   }
@@ -151,6 +160,7 @@ class MatchScene extends Phaser.Scene {
       const next = stepH1AiMatch(previous, this.ai, input.sample());
       this.match = next.match; this.ai = next.ai;
       if (this.match.combat.frame !== previous.combat.frame) {
+        this.audio.consume(this.match.combat);
         const events = [
           ...this.match.combat.events.map(e => `${names[e.attacker]} ${e.key} → ${e.blocked ? '방어 · ' : ''}피해 ${e.damage}`),
           ...this.match.combat.grabEvents.map(e => `${names[e.attacker]} → ${names[e.target]} ${e.kind === 'hold' ? '잡기 성공' : e.kind === 'impact' ? '잡기 충격' : '잡기 해제'} · 피해 ${e.damage}`),
