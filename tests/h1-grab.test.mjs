@@ -144,7 +144,7 @@ test('G07: target basic startup/recovery can be caught and its old attack never 
   s = advance(s, 6);
   assert.equal(s.grabPair?.attacker, 0);
   assert.equal(s.fighters[1].attack, null);
-  s = advance(s, 40);
+  s = advance(s, 80);
   assert.equal(s.fighters[1].attack, null);
   assert.equal(s.fighters[0].hp, 100);
 
@@ -156,7 +156,7 @@ test('G07: target basic startup/recovery can be caught and its old attack never 
   assert.equal(s.fighters[1].attack?.age, 16);
   s = hold(s);
   assert.equal(s.fighters[1].attack, null);
-  s = advance(s, 40);
+  s = advance(s, 80);
   assert.equal(s.fighters[1].attack, null);
   assert.equal(s.fighters[0].hp, 100);
 });
@@ -200,11 +200,11 @@ test('G10: a one-tick earlier grab catches the later attempt independent of figh
   }
 });
 
-test('G11: impact occurs exactly H+18 once, with fixed-direction 48 push and no early damage', () => {
+test('G11: impact occurs exactly H+36 once, with fixed-direction 48 push and no early damage', () => {
   for (const reversed of [false, true]) for (const side of [0, 1]) {
     let s = hold(close(84, reversed), side);
     const target = 1 - side, before = s.fighters.map(f => f.x), dir = s.fighters[side].facing;
-    for (let age = 1; age <= 17; age++) {
+    for (let age = 1; age <= 35; age++) {
       s = tick(s);
       assert.equal(s.fighters[target].hp, 100);
       assert.deepEqual(s.fighters.map(f => f.x), before);
@@ -223,25 +223,17 @@ test('G11: impact occurs exactly H+18 once, with fixed-direction 48 push and no 
   }
 });
 
-test('G12: grabbed posture stays fixed through H+29, each fighter frees at its own boundary', () => {
-  for (const crouch of [false, true]) {
-    let s = hold(close(), 0, input({ crouch }));
-    for (let age = 1; age <= 29; age++) {
-      s = tick(s, input({ crouch: true }), input({ crouch: !crouch }));
-      assert.equal(s.fighters[0].action, 'grab');
-      assert.equal(s.fighters[0].posture, 'stand');
-      assert.equal(s.fighters[1].action, 'grab');
-      assert.equal(s.fighters[1].posture, crouch ? 'crouch' : 'stand');
+test('G12: attacker frees at H54, target posture stays locked through H71, and the pair clears at H72', () => {
+  for (const side of [0, 1]) for (const crouch of [false, true]) {
+    let s = hold(close(), side, input({ crouch }));
+    for (let age = 1; age <= 72; age++) {
+      s = tickSide(s, side, input({ crouch: true }), input({ crouch: !crouch }));
+      assert.equal(s.fighters[side].action, age < 54 ? 'grab' : 'free');
+      assert.equal(s.fighters[side].posture, age < 54 ? 'stand' : 'crouch');
+      assert.equal(s.fighters[1 - side].action, age < 72 ? 'grab' : 'free');
+      assert.equal(s.fighters[1 - side].posture, (age < 72 ? crouch : !crouch) ? 'crouch' : 'stand');
+      assert.equal(s.grabPair?.age ?? null, age < 72 ? age : null);
     }
-    s = tick(s, input({ crouch: true }), input({ crouch: !crouch }));
-    assert.equal(s.fighters[1].action, 'free');
-    assert.equal(s.fighters[1].posture, crouch ? 'stand' : 'crouch');
-    assert.equal(s.fighters[0].action, 'grab');
-    s = advance(s, 5, input({ crouch: true }));
-    assert.equal(s.fighters[0].action, 'grab');
-    s = tick(s, input({ crouch: true }));
-    assert.equal(s.fighters[0].action, 'free');
-    assert.equal(s.fighters[0].posture, 'crouch');
   }
 });
 
@@ -253,11 +245,11 @@ test('G13: new escape chords at H+1/H+12 succeed; H+13 cannot avoid impact', () 
     if (age <= 12) {
       assert.equal(s.grabPair, null);
       assert.equal(s.grabEvents[0].kind, 'escape');
-      s = advance(s, 30);
+      s = advance(s, 80);
       assert.deepEqual(s.fighters.map(f => f.hp), [100, 100]);
     } else {
       assert.equal(s.grabPair?.attacker, side);
-      s = advance(s, 18 - age);
+      s = advance(s, 36 - age);
       assert.equal(s.fighters[1 - side].hp, 82);
     }
   }
@@ -274,15 +266,110 @@ test('G14: escape requires two fresh held hands with a gap at most 3 ticks', () 
   }
 });
 
-test('G15: the grab-success tick hand press cannot seed next-tick escape', () => {
-  let s = advance(begin(), 5);
-  s = tick(s, N, oneHand('lp'));
-  assert.equal(s.grabPair?.age, 0);
-  s = tick(s, N, oneHand('hp'));
-  assert.notEqual(s.grabPair, null);
-  s = advance(s, 17);
-  assert.equal(s.fighters[1].hp, 82);
-  assert.equal(s.fighters[1].attack, null);
+test('G15: a fresh H0 hand seeds escape through H3, but H4 is outside the hand window', () => {
+  for (const side of [0, 1]) for (const crouch of [false, true])
+    for (const first of ['lp', 'hp']) for (const gap of [1, 3, 4]) {
+      let s = advance(begin(close(), side), 5);
+      s = tickSide(s, side, N, { ...oneHand(first), crouch });
+      assert.equal(s.grabPair?.age, 0);
+      s = advance(s, gap - 1);
+      s = tickSide(s, side, N, oneHand(first === 'lp' ? 'hp' : 'lp'));
+      assert.deepEqual(s.grabEvents.map(e => e.kind), gap <= 3 ? ['escape'] : []);
+      assert.equal(s.grabPair === null, gap <= 3);
+      s = advance(s, H1.grab.impact);
+      assert.equal(s.fighters[1 - side].hp, gap <= 3 ? 100 : 82);
+      assert.ok(s.fighters.every(f => f.attack === null));
+    }
+});
+
+test('G29/H0: a new overlapping chord escapes immediately in either role, posture and attack phase', () => {
+  for (const side of [0, 1]) for (const reversed of [false, true])
+    for (const condition of ['stand', 'crouch', 'startup', 'recovery'])
+      for (const first of ['lp', 'hp']) for (const release of [false, true]) {
+        let s = close(84, reversed);
+        if (condition === 'recovery') {
+          s = tickSide(s, side, input({ crouch: true }), kick());
+          for (let i = 0; i < 16; i++) s = tickSide(s, side, input({ crouch: true }));
+        }
+        s = begin(s, side, condition === 'startup' ? input({ attacks: ['hp'] }) : N);
+        s = advance(s, 5);
+        const second = first === 'lp' ? 'hp' : 'lp';
+        const edges = [hand(first, true), hand(second, true)];
+        if (release) edges.push(hand(second, false), hand(first, false));
+        const before = s.fighters.map(f => f.x);
+        s = tickSide(s, side, N, chord({ crouch: condition === 'crouch', handEvents: edges }));
+        assert.equal(s.grabPair, null);
+        assert.deepEqual(s.grabEvents.map(e => [e.kind, e.attacker, e.target, e.damage]), [['escape', side, 1 - side, 0]]);
+        assert.deepEqual(s.fighters.map(f => f.grab?.kind), ['escape', 'escape']);
+        assert.deepEqual(s.fighters.map(f => f.x), [before[0] + (reversed ? 16 : -16), before[1] + (reversed ? -16 : 16)]);
+        for (let age = 1; age <= H1.grab.impact + 1; age++) {
+          s = tick(s);
+          assert.deepEqual(s.fighters.map(f => f.hp), [100, 100]);
+          assert.equal(s.grabEvents.length, 0);
+          assert.ok(s.fighters.every(f => f.attack === null));
+        }
+      }
+});
+
+test('G30/H0: pre-capture hands, repeats, non-overlap and legacy multi-hand pulses cannot prebuffer escape', () => {
+  for (const side of [0, 1]) for (const condition of ['old-hand', 'repeat', 'old-tap', 'non-overlap', 'legacy']) {
+    let s = advance(begin(close(), side), 4);
+    const prior = condition === 'old-hand' ? oneHand('lp')
+      : condition === 'repeat' ? chord({ handEvents: [hand('lp', true), hand('hp', true)] })
+      : condition === 'old-tap' ? chord() : N;
+    s = tickSide(s, side, N, prior);
+    const current = condition === 'old-hand' ? oneHand('hp')
+      : condition === 'repeat' ? chord({ handEvents: [hand('lp', true), hand('hp', true)] })
+      : condition === 'non-overlap' ? chord({ handEvents: [hand('lp', true), hand('lp', false), hand('hp', true), hand('hp', false)] })
+      : condition === 'legacy' ? input({ attacks: ['lp', 'hp'] }) : N;
+    s = tickSide(s, side, N, current);
+    assert.equal(s.grabPair?.age, 0, condition);
+    assert.deepEqual(s.grabEvents.map(e => e.kind), ['hold']);
+    s = advance(s, H1.grab.impact);
+    assert.equal(s.fighters[1 - side].hp, 82);
+  }
+});
+
+test('G31/H0: ordinary contact still wins when its attacker presses a capture-frame escape chord', () => {
+  for (const side of [0, 1]) {
+    let s = begin(close(), side, input({ attacks: ['lp'] }));
+    s = advance(s, 5);
+    s = tickSide(s, side, N, chord());
+    assert.equal(s.grabPair, null);
+    assert.equal(s.grabEvents.length, 0);
+    assert.equal(s.events.length, 1);
+    assert.equal(s.events[0].attacker, 1 - side);
+    assert.equal(s.fighters[side].hp, 92);
+    assert.equal(s.fighters[side].action, 'hit');
+  }
+});
+
+test('G32/H0: capture-frame escape survives the final match tick once without hold or future impact', () => {
+  for (const side of [0, 1]) {
+    let m = matchWith(advance(begin(close(), side), 5), 1);
+    m = matchTick(m, side === 0 ? N : chord(), side === 0 ? chord() : N);
+    assert.deepEqual(m.result, { reason: 'timeout-tie', winner: null });
+    assert.deepEqual(m.combat.grabEvents.map(e => e.kind), ['escape']);
+    noExecutableGrab(m.combat);
+    assert.ok(m.combat.fighters.every(f => f.grabSnapshot?.kind === 'escape'));
+    const ended = structuredClone(m.combat);
+    for (let i = 0; i < 40; i++) m = matchTick(m, chord(), chord());
+    assert.deepEqual(m.combat, ended);
+  }
+});
+
+test('G33/H0: pause discards the new capture-frame first hand without moving the throw clock', () => {
+  let m = matchWith(advance(begin(), 5));
+  m = matchTick(m, N, oneHand('lp'));
+  assert.equal(m.combat.grabPair.age, 0);
+  assert.notEqual(m.combat.fighters[1].hands.downAt.lp, null);
+  m = pauseMatch(m, true);
+  assert.equal(m.combat.grabPair.age, 0);
+  assert.equal(m.combat.fighters[1].hands.downAt.lp, null);
+  m = pauseMatch(m, false);
+  m = matchTick(m, N, oneHand('hp'));
+  assert.equal(m.combat.grabPair.age, 1);
+  assert.equal(m.combat.grabEvents.length, 0);
 });
 
 test('G16: unrelated kick presses do not block a valid escape and never become buffered attacks', () => {
@@ -312,7 +399,7 @@ test('G18: impact and escape clip against either corner without swapping roots',
       s.fighters[0].x = s.fighters[1].x + (targetOnRight ? -84 : 84);
       return s;
     };
-    let s = advance(hold(make()), 18);
+    let s = advance(hold(make()), 36);
     assert.equal(s.fighters[1].x, targetOnRight ? 1200 : 80);
     assert.equal(s.fighters[1].hp, 82);
     const before = make().fighters.map(f => f.x);
@@ -323,15 +410,22 @@ test('G18: impact and escape clip against either corner without swapping roots',
   }
 });
 
-test('G19: H+36 relation cleanup preserves a target attack started at H+30', () => {
-  let s = advance(hold(), 29);
-  s = tick(s, N, kick());
-  assert.equal(s.fighters[1].attack?.key, 'stand-hk');
-  const id = s.fighters[1].attack.serial;
-  s = advance(s, 6);
-  assert.equal(s.fighters[0].action, 'free');
-  assert.equal(s.fighters[1].attack?.serial, id);
-  assert.equal(s.fighters[1].attack.age, 6);
+test('G19: H72 relation cleanup preserves the attacker basic started at H54 without hitting the downed target', () => {
+  for (const side of [0, 1]) {
+    let s = advance(hold(close(), side), 53);
+    s = tickSide(s, side, kick());
+    assert.equal(s.fighters[side].attack?.key, 'stand-hk');
+    const id = s.fighters[side].attack.serial;
+    for (let age = 55; age <= 72; age++) {
+      s = tick(s);
+      assert.equal(s.fighters[1 - side].hp, 82);
+      assert.equal(s.events.length, 0);
+      assert.equal(s.fighters[side].attack?.serial, id);
+      assert.equal(s.fighters[side].attack.age, age - 54);
+    }
+    assert.equal(s.grabPair, null);
+    assert.equal(s.fighters[1 - side].action, 'free');
+  }
 });
 
 test('G20: pending escape is discarded by pause without advancing either lock', () => {
@@ -362,13 +456,13 @@ test('G21: pausing a grab attempt preserves age and pose; pending hands cannot l
   assert.equal(s.grabPair?.age, 0);
 });
 
-test('G22: final match tick applies H+18 impact, but H+17 timeout never applies future damage', () => {
-  for (const endAge of [17, 18]) {
+test('G22: final match tick applies H36 impact, but H35 timeout never applies future damage', () => {
+  for (const endAge of [35, 36, 54, 71]) {
     let m = matchWith(hold(), endAge);
     for (let age = 1; age <= endAge; age++) m = matchTick(m);
-    assert.equal(m.combat.fighters[1].hp, endAge === 17 ? 100 : 82);
-    assert.equal(m.result.reason, endAge === 17 ? 'timeout-tie' : 'timeout');
-    assert.equal(m.result.winner, endAge === 17 ? null : 0);
+    assert.equal(m.combat.fighters[1].hp, endAge === 35 ? 100 : 82);
+    assert.equal(m.result.reason, endAge === 35 ? 'timeout-tie' : 'timeout');
+    assert.equal(m.result.winner, endAge === 35 ? null : 0);
     noExecutableGrab(m.combat);
     assert.ok(m.combat.fighters.some(f => f.grabSnapshot), 'last visual survives lock cleanup');
     const combat = structuredClone(m.combat);
@@ -384,8 +478,8 @@ test('G22: final match tick applies H+18 impact, but H+17 timeout never applies 
 test('G23: impact KO clamps health, beats timeout, and uses the existing 18F result wait', () => {
   const fixture = close();
   fixture.fighters[1].hp = 9;
-  let m = matchWith(hold(fixture), 18);
-  for (let i = 0; i < 18; i++) m = matchTick(m);
+  let m = matchWith(hold(fixture), 36);
+  for (let i = 0; i < 36; i++) m = matchTick(m);
   assert.deepEqual(m.result, { reason: 'ko', winner: 0 });
   assert.equal(m.combat.fighters[1].hp, 0);
   assert.equal(m.combat.fighters[1].action, 'ko');
@@ -400,9 +494,9 @@ test('G23: impact KO clamps health, beats timeout, and uses the existing 18F res
 });
 
 test('G24: full match restart removes final grab snapshots and every lock/input reservation', () => {
-  let m = matchWith(hold(), 18);
+  let m = matchWith(hold(), 36);
   m.wins = [1, 0];
-  for (let i = 0; i < 18; i++) m = matchTick(m);
+  for (let i = 0; i < 36; i++) m = matchTick(m);
   assert.equal(m.phase, 'match-result');
   m = restartMatch(m);
   assert.equal(m.phase, 'ready');
@@ -414,7 +508,7 @@ test('G24: full match restart removes final grab snapshots and every lock/input 
 
 test('G25: combat ticks and pause cleanup do not mutate earlier hands, pairs, events or fighters', () => {
   let s = begin();
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 80; i++) {
     const before = structuredClone(s);
     const next = tick(s, N, i === 9 ? oneHand('lp') : N);
     assert.deepEqual(s, before);
@@ -446,17 +540,25 @@ test('G27: commands during success are discarded; target can counter-grab when r
   fixture.fighters[1].x = 1200;
   let s = hold(fixture);
   // Start after the escape window: these inputs must neither escape nor queue
-  // an action for H+30/H+36.
+  // an action for H54/H72.
   s = advance(s, 13);
-  for (let age = 14; age <= 29; age++) {
+  for (let age = 14; age <= 53; age++) {
     s = tick(s, chord(), chord());
     assert.equal(s.fighters[0].grab?.kind, 'success');
     assert.equal(s.fighters[1].grab?.kind, 'success');
   }
   s = tick(s);
+  assert.equal(s.fighters[0].action, 'free');
+  assert.equal(s.fighters[0].grab, null);
+  for (let age = 55; age <= 71; age++) {
+    s = tick(s, N, chord());
+    assert.equal(s.fighters[1].grab?.kind, 'success');
+  }
+  s = tick(s);
   assert.equal(s.fighters[1].action, 'free');
   assert.equal(s.fighters[1].grab, null);
-  s = tick(s, N, chord()); // A genuinely new counter-grab starts at H+31.
+  assert.equal(s.grabPair, null);
+  s = tick(s, N, chord()); // A genuinely new counter-grab starts at H73.
   assert.equal(s.fighters[1].grab?.kind, 'attempt');
   s = advance(s, 5);
   assert.equal(s.fighters[0].action, 'free');
@@ -477,6 +579,10 @@ test('G28 regression: a fighter without its own grab definition can escape and f
     let s = createCombat(definitions);
     s.fighters[0].x = 500; s.fighters[1].x = 584;
     s = hold(s, side);
+    for (const f of s.fighters) {
+      assert.equal(f.grab.impactAt, owner.grab.impact);
+      assert.equal(f.grab.techUntil, owner.grab.techWindow);
+    }
     s = tickSide(s, side, N, chord());
     assert.deepEqual(s.grabEvents.map(e => e.kind), ['escape']);
     assert.equal(s.grabPair, null);
@@ -490,5 +596,74 @@ test('G28 regression: a fighter without its own grab definition can escape and f
     s = tickSide(s, side, N, input({ attacks: ['lp'] }));
     assert.equal(s.fighters[1 - side].attack?.key, 'stand-lp');
     assert.equal(s.fighters[1 - side].attack.age, 0);
+  }
+});
+
+test('G34: a basic active across H70 to H72 ignores down/get-up and hits on the first free tick', () => {
+  for (const side of [0, 1]) for (const reversed of [false, true]) {
+    let s = advance(hold(close(84, reversed), side), 59);
+    s = tickSide(s, side, input({ attacks: ['hp'] })); // H60: active at H70..72.
+    const serial = s.fighters[side].attack.serial;
+    for (let age = 61; age <= 71; age++) {
+      s = tick(s);
+      assert.equal(s.fighters[1 - side].hp, 82);
+      assert.equal(s.events.length, 0);
+      assert.equal(s.fighters[1 - side].grab?.kind, 'success');
+    }
+    s = tick(s);
+    assert.equal(s.grabPair, null);
+    assert.equal(s.fighters[1 - side].grab, null);
+    assert.equal(s.fighters[1 - side].hp, 70);
+    assert.equal(s.fighters[1 - side].action, 'hit');
+    assert.deepEqual(s.events.map(e => [e.attacker, e.attackId, e.damage]), [[side, serial, 12]]);
+  }
+});
+
+test('G35: early regrabs cannot hit a downed target; a grab active on H72 creates a new pair once', () => {
+  for (const side of [0, 1]) for (const reversed of [false, true]) for (const start of [54, 66]) {
+    const fixture = close(84, reversed), target = 1 - side;
+    const direction = fixture.fighters[target].x > fixture.fighters[side].x ? 1 : -1;
+    fixture.fighters[target].x = direction === 1 ? 1200 : 80;
+    fixture.fighters[side].x = fixture.fighters[target].x - direction * 84;
+    let s = advance(hold(fixture, side), start - 1);
+    const oldSerial = s.grabPair.serial;
+    s = tickSide(s, side, chord());
+    const newSerial = s.fighters[side].grab.serial;
+    assert.notEqual(newSerial, oldSerial);
+    for (let age = start + 1; age <= 71; age++) {
+      s = tick(s);
+      assert.equal(s.grabPair.serial, oldSerial);
+      assert.equal(s.grabEvents.length, 0);
+      assert.equal(s.fighters[target].hp, 82);
+      assert.equal(s.fighters[target].grab.kind, 'success');
+    }
+    s = tick(s);
+    assert.equal(s.fighters[target].hp, 82);
+    if (start === 66) {
+      assert.equal(s.grabPair?.serial, newSerial);
+      assert.equal(s.grabPair.age, 0);
+      assert.deepEqual(s.grabEvents.map(e => e.kind), ['hold']);
+    } else {
+      assert.equal(s.grabPair, null);
+      assert.equal(s.fighters[target].action, 'free');
+      assert.equal(s.grabEvents.length, 0);
+    }
+  }
+});
+
+test('G36: pause freezes pre-impact, down and get-up; resume advances exactly one tick', () => {
+  for (const age of [35, 36, 53, 54, 71]) {
+    let m = matchWith(advance(hold(), age));
+    const before = structuredClone(m.combat);
+    m = pauseMatch(m, true);
+    for (let i = 0; i < 30; i++) assert.equal(matchTick(m, chord(), chord()), m);
+    assert.deepEqual(m.combat, before);
+    m = pauseMatch(m, false);
+    m = matchTick(m);
+    assert.equal(m.combat.frame, before.frame + 1);
+    assert.equal(m.combat.grabPair?.age ?? null, age === 71 ? null : age + 1);
+    assert.deepEqual(m.combat.grabEvents.map(e => e.kind), age === 35 ? ['impact'] : []);
+    assert.equal(m.combat.fighters[1].hp, 82);
+    assert.equal(m.combat.fighters[1].action, age === 71 ? 'free' : 'grab');
   }
 });

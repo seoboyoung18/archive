@@ -11,6 +11,7 @@ export interface GrabPoseState {
   kind: 'attempt' | 'success' | 'escape'; role: 'attacker' | 'target';
   age: number; serial: number; targetPosture: Posture;
   releaseAt: number; // Local-age deadline, copied from the action's owner definition.
+  impactAt?: number; techUntil?: number; pushDistance?: number; // Throw display data belongs to its owner, including in final artwork.
 }
 export interface GrabPair {
   attacker: 0 | 1; target: 0 | 1; serial: number; age: number; targetPosture: Posture;
@@ -154,7 +155,10 @@ export function stepCombat(previous: CombatState, inputs: readonly [CombatInput,
     movement[i] = f.action === 'free' ? { ...input, jump: input.jump && !hand.consumeJump }
       : { axis: 0, jump: false, crouch: f.posture === 'crouch' };
   }
-  if (grabPair && grabPair.age >= previous.definitions[grabPair.attacker].grab!.attackerRecovery) grabPair = null;
+  if (grabPair) {
+    const rules = previous.definitions[grabPair.attacker].grab!;
+    if (grabPair.age >= Math.max(rules.attackerRecovery, rules.targetRecovery)) grabPair = null;
+  }
   const moved = stepMovement(fighters, movement, [previous.definitions[0].movement, previous.definitions[1].movement]);
   for (const i of [0, 1] as const) {
     const f = fighters[i], facing = f.facing;
@@ -174,6 +178,9 @@ export function stepCombat(previous: CombatState, inputs: readonly [CombatInput,
         || (target.action === 'grab' && target.grab?.kind === 'attempt'))
       && (target.x - f.x) * f.facing > 0 && Math.abs(target.x - f.x) <= rules.range) grabCandidates.push(i);
     if (!a || attackPhase(f, previous.definitions[i]) !== 'active' || a.hitTargets.includes(target.id)) continue;
+    // A thrown target cannot be struck during its down/get-up lock after impact.
+    if (grabPair?.target === j && target.grab?.kind === 'success' && target.grab.role === 'target'
+      && grabPair.age >= previous.definitions[grabPair.attacker].grab!.impact) continue;
     const def = previous.definitions[i].attacks[a.key];
     const hurt = previous.definitions[j].hurt[target.grounded ? target.posture : 'stand'];
     if (!overlaps(worldRect(def.box, f), worldRect(hurt, target))) continue;
@@ -227,15 +234,24 @@ export function stepCombat(previous: CombatState, inputs: readonly [CombatInput,
   } else if (!events.length && grabCandidates.length === 1) {
     const attacker = grabCandidates[0]!, target: 0 | 1 = attacker === 0 ? 1 : 0;
     const serial = fighters[attacker].grab!.serial, targetPosture = fighters[target].posture;
-    grabPair = { attacker, target, serial, age: 0, targetPosture };
-    for (const i of [attacker, target]) {
-      const f = fighters[i];
-      const rules = previous.definitions[attacker].grab!;
-      f.grab = { kind: 'success', role: i === attacker ? 'attacker' : 'target', age: 0, serial, targetPosture,
-        releaseAt: i === attacker ? rules.attackerRecovery : rules.targetRecovery };
-      f.action = 'grab'; f.attack = null; f.combo = null; f.stun = 0; f.hands = clearHandIntent(f.hands);
+    const rules = previous.definitions[attacker].grab!;
+    // Only this capture tick's fresh edges may start an escape; earlier held hands cannot seed it.
+    const captureHands = readHands(clearHandIntent(previous.fighters[target].hands), inputs[target],
+      previous.frame, rules.inputWindow, 'tech');
+    if (captureHands.tech) {
+      escape(attacker, target, serial, targetPosture);
+    } else {
+      grabPair = { attacker, target, serial, age: 0, targetPosture };
+      for (const i of [attacker, target]) {
+        const f = fighters[i];
+        f.grab = { kind: 'success', role: i === attacker ? 'attacker' : 'target', age: 0, serial, targetPosture,
+          releaseAt: i === attacker ? rules.attackerRecovery : rules.targetRecovery,
+          impactAt: rules.impact, techUntil: rules.techWindow, pushDistance: rules.push };
+        f.action = 'grab'; f.attack = null; f.combo = null; f.stun = 0;
+        f.hands = i === target ? captureHands.state : clearHandIntent(f.hands);
+      }
+      grabEvents.push({ kind: 'hold', attacker, target, grabId: serial, damage: 0 });
     }
-    grabEvents.push({ kind: 'hold', attacker, target, grabId: serial, damage: 0 });
   }
   const ended = fighters.some(f => f.hp === 0);
   for (const f of fighters) if (f.hp === 0) { f.action = 'ko'; f.attack = null; f.stun = 0; }

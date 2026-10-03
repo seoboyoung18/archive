@@ -6,7 +6,7 @@ export const H1: CharacterDefinition = {
   id: 'h1', maxHp: 100, movement: H1_MOVEMENT,
   grab: {
     inputWindow: 3, startup: 6, active: 2, recovery: 24, range: 96, damage: 18, push: 48,
-    techWindow: 12, impact: 18, targetRecovery: 30, attackerRecovery: 36,
+    techWindow: 12, impact: 36, targetRecovery: 72, attackerRecovery: 54,
     escapeRecovery: 12, escapePush: 16,
   },
   combo: {

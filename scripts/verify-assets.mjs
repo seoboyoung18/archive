@@ -6,7 +6,7 @@ import { inflateSync } from 'node:zlib';
 const root = new URL('../assets/characters/h1/', import.meta.url);
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const decoded = new Map();
-for (const version of ['v1', 'v2', 'movement-v1', 'combat-v1', 'motion-v1', 'walk-v2', 'attack-motion-v1', 'opposite-limbs-v1', 'grab-v1']) {
+for (const version of ['v1', 'v2', 'movement-v1', 'combat-v1', 'motion-v1', 'walk-v2', 'attack-motion-v1', 'opposite-limbs-v1', 'grab-v1', 'throw-v1']) {
 const manifest = JSON.parse(readFileSync(new URL(`derived/${version}/manifest.json`, root), 'utf8').replace(/^\uFEFF/, ''));
 assert.equal(hash(readFileSync(new URL('reference.png', root))), manifest.referenceSha256, 'Reference changed');
 assert.deepEqual(manifest.root, [256, 448]);
@@ -22,6 +22,7 @@ if (version === 'attack-motion-v1') ids.push('stand-lk-startup','stand-lk-recove
 if (version === 'combat-v1') ids = ['stand-hp','stand-lk','stand-hk','crouch-lp','crouch-hp','crouch-hk'].flatMap(a => ['startup','active','recovery'].map(p => `${a}-${p}`)).concat(['stand-guard','crouch-guard','stand-hit','crouch-hit','ko-0','ko-1','ko-2']);
 if (version === 'opposite-limbs-v1') ids = ['stand-hp','stand-hk','crouch-hp','crouch-hk'].flatMap(a => (a === 'stand-hk' ? ['startup','lift','apex','descend','active','retract','recovery','settle'] : ['startup','extend','active','retract','recovery','settle']).map(p => `${a}-${p}`));
 if (version === 'grab-v1') ids = ["grab-ready","grab-reach","grab-retract","grab-settle","grab-stand-hold","grab-stand-brace","grab-stand-push","grab-crouch-hold","grab-crouch-brace","grab-crouch-push","grabbed-stand-hold","grabbed-stand-impact","grabbed-stand-recover","grabbed-crouch-hold","grabbed-crouch-impact","grabbed-crouch-recover","grab-release","grabbed-stand-escape","grabbed-crouch-escape"];
+if (version === 'throw-v1') ids = ['throw-turn','throw-lift','throw-slam','thrown-air','thrown-down','thrown-rise'];
 assert.deepEqual(manifest.frames.map(frame => frame.id), ids);
 
 function decode(bytes) {
@@ -77,11 +78,11 @@ for (const frame of manifest.frames) {
   }
   assert.ok(transparent > width * height / 2, 'Expected transparent background');
   assert.deepEqual(bounds, frame.outputBounds);
-  if (frame.id.startsWith('jump-')) {
+  if (frame.id.startsWith('jump-') || frame.id === 'thrown-air') {
     assert.equal(frame.rootMode, 'idle-virtual-ground');
     assert.equal(frame.sourceRoot[1], 1194, 'Jump root must not follow curled feet');
   } else assert.ok(Math.abs(bounds.bottom + 1 - 448) <= 1, 'Soles must meet baseline');
-  if (version === 'combat-v1' || version === 'attack-motion-v1' || version === 'opposite-limbs-v1' || version === 'grab-v1') {
+  if (version === 'combat-v1' || version === 'attack-motion-v1' || version === 'opposite-limbs-v1' || version === 'grab-v1' || version === 'throw-v1') {
     // Attacks and knockdowns change posture; do not stretch every silhouette to idle height.
     assert.deepEqual(frame.sourceSize, [1254,1254], 'Review common scale for new source dimensions');
     assert.equal(frame.scale, 384/1120, 'Preserve the calibrated anatomical scale');
@@ -89,7 +90,7 @@ for (const frame of manifest.frames) {
     assert.ok(b.left > 0 && b.top > 0 && b.right < 1253 && b.bottom < 1253, 'Source sprite clipped');
     if (frame.id.startsWith('crouch')) assert.ok(bounds.top > 160 && bounds.top < 448, 'Crouch should stay low');
     if (frame.id.startsWith('grabbed-crouch')) assert.ok(bounds.top > 160 && bounds.top < 448, 'Grabbed crouch should stay low');
-    if (frame.id.startsWith('ko-')) assert.equal(frame.rootMode, 'body-bottom');
+    if (frame.id.startsWith('ko-') || frame.id === 'thrown-down') assert.equal(frame.rootMode, 'body-bottom');
   }
   else if (!frame.id.startsWith('crouch')) assert.ok(Math.abs(bounds.top - 64) <= (['movement-v1','motion-v1','walk-v2'].includes(version) ? 5 : 1), `${version}/${frame.id}: body height drift (top=${bounds.top})`);
   else assert.ok(bounds.top > 160 && bounds.top < 448, 'Crouch should be lower, never scaled to standing height');
@@ -120,4 +121,4 @@ for (const [attack, phase] of [['stand-lk','startup'],['stand-lk','recovery'],['
   const active = decoded.get(`combat-v1/${attack}-active`);
   for (const version of ['combat-v1','attack-motion-v1']) console.log(`${version}/${attack}-${phase} support foot overlap with impact (x100..199,y400..447): ${overlap(active, decoded.get(`${version}/${attack}-${phase}`), 100, 200, 400, 448)}`);
 }
-console.log('PASS: all source/output hashes, 512x512 RGBA, roots and margins. 94 runtime poses; previous versions preserved. Visual consistency requires separate review.');
+console.log('PASS: all source/output hashes, 512x512 RGBA, roots and margins. 100 runtime poses; previous versions preserved. Visual consistency requires separate review.');

@@ -68,7 +68,7 @@ export function validateCharacter(def: CharacterDefinition): void {
     if (![g.inputWindow, g.startup, g.active, g.recovery, g.techWindow, g.impact,
       g.targetRecovery, g.attackerRecovery, g.escapeRecovery].every(n => Number.isInteger(n) && n > 0)
       || ![g.range, g.damage].every(positive) || ![g.push, g.escapePush].every(n => Number.isFinite(n) && n >= 0)
-      || g.impact <= g.techWindow || g.targetRecovery <= g.impact || g.attackerRecovery < g.targetRecovery) {
+      || g.impact <= g.techWindow || g.targetRecovery <= g.impact || g.attackerRecovery <= g.impact) {
       throw new Error('Invalid grab definition');
     }
   }

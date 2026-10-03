@@ -5,13 +5,14 @@ import { createCombat, stepCombat, clearComboInputs, attackPhase, worldRect, gra
 import { FixedStep } from './combat/fixed-step.ts';
 import { CombatInputBuffer } from './input/combat-input.ts';
 import { combatPose, H1_POSES } from './characters/h1-poses.ts';
-import { STAGE } from './combat/movement.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
+import { combatVisual } from './characters/h1-visual.ts';
 
 const get = <T extends Element>(id: string) => document.querySelector<T>(`#${id}`)!;
 const surface = get<HTMLDivElement>('game'), start = get<HTMLButtonElement>('start');
 const pauseButton = get<HTMLButtonElement>('pause'), resetButton = get<HTMLButtonElement>('reset');
 const targetGrabButton = get<HTMLButtonElement>('target-grab');
+const closePracticeButton = get<HTMLButtonElement>('close-practice');
 const target = get<HTMLSelectElement>('target'), boxes = get<HTMLInputElement>('boxes');
 const status = get<HTMLOutputElement>('status'), error = get<HTMLParagraphElement>('error'), retry = get<HTMLButtonElement>('retry');
 const telemetry = get<HTMLParagraphElement>('telemetry'), lastHit = get<HTMLParagraphElement>('last-hit');
@@ -73,6 +74,12 @@ class CombatScene extends Phaser.Scene {
       this.targetGrabQueued = false; this.targetTechUsed = false;
       lastHit.textContent = '타격 기록 없음'; status.value = '초기화 완료 · 계속하기로 시작'; this.renderCombat();
     }, options);
+    closePracticeButton.addEventListener('click', () => {
+      this.pause(); this.combat = createCombat(); this.koFrame = 0;
+      this.combat.fighters[0].x = 500; this.combat.fighters[1].x = 584;
+      this.targetGrabQueued = false; this.targetTechUsed = false;
+      lastHit.textContent = '타격 기록 없음'; status.value = '근접 검수 거리84 · 계속하기로 시작'; this.renderCombat();
+    }, options);
     target.addEventListener('change', () => {
       this.pause(); this.targetGrabQueued = false; this.targetTechUsed = false;
       status.value = '표적 입력 변경 · 계속하기로 시작'; this.renderCombat();
@@ -96,7 +103,7 @@ class CombatScene extends Phaser.Scene {
       input.keyDown(event.code, event.repeat, active);
     }, options);
     window.addEventListener('keyup', event => input.keyUp(event.code), options);
-    this.ready = true; start.disabled = false; resetButton.disabled = false; target.disabled = false;
+    this.ready = true; start.disabled = false; resetButton.disabled = false; closePracticeButton.disabled = false; target.disabled = false;
     status.value = '준비 완료 · 전투 시작을 눌러주세요'; this.renderCombat();
   }
   private pause() {
@@ -133,12 +140,11 @@ class CombatScene extends Phaser.Scene {
     this.koBanner.setVisible(this.combat.ended && this.combat.fighters.some(f => f.hp === 0));
     this.combat.fighters.forEach((f, i) => {
       const def = this.combat.definitions[i];
-      const y = f.action === 'ko' ? STAGE.floor : f.y;
       const pose = combatPose(f, def, this.koFrame);
-      const grab = grabPoseState(f);
-      const depth = grab?.kind === 'success' && grab.role === 'attacker' && grab.age < 18 ? 3 : i;
-      this.sprites[i]!.setTexture(pose).setPosition(f.x, y).setFlipX(f.facing === -1).setDepth(depth);
-      this.labels[i]!.setPosition(f.x, y - (f.action === 'ko' ? 125 : f.posture === 'crouch' ? 162 : 255));
+      const visual = combatVisual(f, def);
+      this.sprites[i]!.setTexture(pose).setOrigin(0.5, visual.originY).setPosition(visual.x, visual.y)
+        .setFlipX(f.facing === -1).setAngle(visual.angle).setDepth(visual.depth);
+      this.labels[i]!.setPosition(visual.x, visual.y - visual.labelHeight);
       hp[i]!.value = f.hp; hpText[i]!.value = `${f.hp} / ${def.maxHp}`;
       if (boxes.checked && !this.combat.ended) {
         const color = i === 0 ? 0x70ddc3 : 0xffbf85;

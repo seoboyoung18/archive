@@ -51,6 +51,9 @@ for (const pose of ['stand-lk-startup','stand-lk-recovery','stand-hk-recovery'])
 export const H1_GRAB_POSES = ["grab-ready","grab-reach","grab-retract","grab-settle","grab-stand-hold","grab-stand-brace","grab-stand-push","grab-crouch-hold","grab-crouch-brace","grab-crouch-push","grabbed-stand-hold","grabbed-stand-impact","grabbed-stand-recover","grabbed-crouch-hold","grabbed-crouch-impact","grabbed-crouch-recover","grab-release","grabbed-stand-escape","grabbed-crouch-escape"] as const;
 for (const pose of H1_GRAB_POSES) H1_POSES[pose] = `grab-v1/${pose}.png`;
 
+export const H1_THROW_POSES = ['throw-turn', 'throw-lift', 'throw-slam', 'thrown-air', 'thrown-down', 'thrown-rise'] as const;
+for (const pose of H1_THROW_POSES) H1_POSES[pose] = `throw-v1/${pose}.png`;
+
 /** Retained only for the visual before/after review; combat always uses H1_POSES. */
 export const H1_PREVIOUS_HEAVY_POSES: Record<string, string> = {};
 for (const attack of ['stand-hp','stand-hk','crouch-hp','crouch-hk']) {
@@ -61,17 +64,31 @@ for (const attack of ['stand-hp','stand-hk','crouch-hp','crouch-hk']) {
 }
 
 export function combatPose(f: CombatFighter, definition: CharacterDefinition, koFrame = 0): string {
-  if (f.action === 'ko') return `ko-${Math.min(2, Math.floor(Math.max(0, koFrame) / 6))}`;
   const grab = grabPoseState(f);
+  if (f.action === 'ko') {
+    if (grab?.kind === 'success' && grab.role === 'target') return 'thrown-down';
+    return `ko-${Math.min(2, Math.floor(Math.max(0, koFrame) / 6))}`;
+  }
   if (grab) {
     const { kind, role, age, targetPosture } = grab;
     if (kind === 'attempt') return age < 3 ? 'grab-ready' : age < 8 ? 'grab-reach' : age < 20 ? 'grab-retract' : 'grab-settle';
     if (kind === 'escape') return role === 'target'
       ? `grabbed-${targetPosture}-${age < 4 ? 'escape' : 'recover'}`
       : age < 4 ? 'grab-release' : age < 8 ? 'grab-retract' : 'grab-settle';
-    if (role === 'target') return `grabbed-${targetPosture}-${age < 18 ? 'hold' : age < 24 ? 'impact' : 'recover'}`;
-    return age < 18 ? `grab-${targetPosture}-${age < 13 ? 'hold' : 'brace'}`
-      : age === 18 ? `grab-${targetPosture}-push` : age < 28 ? 'grab-retract' : 'grab-settle';
+    const impact = grab.impactAt ?? definition.grab!.impact, turn = (grab.techUntil ?? definition.grab!.techWindow) + 1;
+    const lift = Math.min(impact, turn + Math.max(1, Math.floor((impact - turn) / 3)));
+    if (role === 'target') {
+      if (age < lift) return `grabbed-${targetPosture}-hold`;
+      if (age < impact) return 'thrown-air';
+      const recovery = Math.max(1, grab.releaseAt - impact);
+      if (age < impact + recovery / 3) return 'thrown-down';
+      if (age < impact + recovery * 2 / 3) return 'thrown-rise';
+      return `grabbed-${targetPosture}-recover`;
+    }
+    if (age < turn) return `grab-${targetPosture}-hold`;
+    if (age < lift) return 'throw-turn';
+    if (age < impact) return age < lift + (impact - lift) / 2 ? 'throw-lift' : 'throw-slam';
+    return age < impact + (grab.releaseAt - impact) / 2 ? 'throw-slam' : 'grab-settle';
   }
   if (f.action === 'attack' && f.attack) {
     const phase = attackPhase(f, definition);

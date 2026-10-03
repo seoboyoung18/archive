@@ -1,0 +1,171 @@
+{
+  "created": "2026-10-03",
+  "purpose": "H1 throw victim raw poses",
+  "method": "built-in image_gen only; one distinct generation call per requested pose, plus one authorized thrown-down pose correction",
+  "notes": [
+    "Exact built-in output paths are mapped by the corresponding tool invocation, not completion order.",
+    "All original generated files remain in place; rejected down candidate is preserved in this folder.",
+    "Raw sprites only. No resize, alpha cleaning, placement adjustment, runtime integration or commit performed.",
+    "At alpha>=8, down lowest content y=1162 (32px above requested approximate1194); rise y=1199. Pixel-perfect baseline alignment remains for root."
+  ],
+  "records": [
+    {
+      "asset": "thrown-air",
+      "tool": "built-in image_gen.imagegen",
+      "use_case": "identity-preserve",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/ko-2.png"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: a single production-ready 2D fighting-game character sprite, a new pose of the SAME adult female H1 fighter. Input image 1 is the primary identity, anatomy, outfit, line-art, cel-shading and EXACT PIXEL-SCALE reference. Input image 2 is supporting reference for that same body's horizontal anatomy and clothing only, NOT a death expression. Preserve the short black bob haircut, face, open red cropped track jacket with white shoulder/sleeve stripes, white cropped tank top, charcoal loose pants with red side stripes, white fingerless hand wraps and red-and-white sneakers. Match the original crisp black anime outline and restrained cel shading. Canvas exactly 1254 by 1254 pixels, RGBA with genuine transparent alpha, no backdrop. Use the SAME anatomical scale as the standing reference: a fully standing body would have hair top around y=74 and soles around y=1194, with a logical sprite root x=627. Do not enlarge the head, hands, shoes or body to fill empty space; do not miniaturize. The whole character must remain inside the canvas with transparent margin. Exactly one character, two arms, two legs, no duplicated anatomy, no attacker or extra person. No text, panels, floor line, scenery, cast shadow, effects, motion trails, logos or watermark. This is a living fighter recovering from a nonlethal throw, with no blood or death symbols.\nPrimary request: draw ONLY the thrown victim in the middle of a shoulder-throw somersault. The entire body is AIRBORNE and clearly UPSIDE DOWN: head is BELOW the hips, bent knees and sneakers ABOVE the hips. Curve the torso and tuck the knees over the body into a compact backward-over-shoulder tumble; both wrapped arms reach outward for balance. This must unmistakably read as a person being flipped through the air, never a standing or jumping upright fighter. Keep the same side-view/three-quarter game camera and make the readable silhouette usable when horizontally mirrored. Center the compact airborne body in the canvas with ample transparent margin on all four sides and no body part touching an edge. Maintain real limb lengths from input 1 rather than a small chibi figure. The face is alert or strained with open eyes, not unconscious.",
+      "source_path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-89c209e6-6a63-49d4-9764-15c9cc526f37.png",
+      "workspace_path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/throw-v1/thrown-air.png",
+      "status": "selected-raw-candidate",
+      "visual_notes": "Generated pose visually matches requested action; exact geometry and runtime alignment left to root.",
+      "inspection": {
+        "viewed": true,
+        "canvas": {
+          "width": 1254,
+          "height": 1254,
+          "pixel_format": "Format32bppArgb"
+        },
+        "sha256": "DF1300A41AFFC2F644C955EB118CB7F383134F52101D05FF7212E3D96D8F9B36",
+        "alpha_nonzero_bounds": [
+          49,
+          21,
+          1198,
+          1229
+        ],
+        "alpha8_bounds": [
+          224,
+          145,
+          1027,
+          1059
+        ],
+        "alpha128_bounds": [
+          225,
+          146,
+          1026,
+          1057
+        ]
+      }
+    },
+    {
+      "asset": "thrown-down",
+      "tool": "built-in image_gen.imagegen",
+      "use_case": "identity-preserve",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/ko-2.png"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: a single production-ready 2D fighting-game character sprite, a new pose of the SAME adult female H1 fighter. Input image 1 is the primary identity, anatomy, outfit, line-art, cel-shading and EXACT PIXEL-SCALE reference. Input image 2 is supporting reference for that same body's horizontal anatomy and clothing only, NOT a death expression. Preserve the short black bob haircut, face, open red cropped track jacket with white shoulder/sleeve stripes, white cropped tank top, charcoal loose pants with red side stripes, white fingerless hand wraps and red-and-white sneakers. Match the original crisp black anime outline and restrained cel shading. Canvas exactly 1254 by 1254 pixels, RGBA with genuine transparent alpha, no backdrop. Use the SAME anatomical scale as the standing reference: a fully standing body would have hair top around y=74 and soles around y=1194, with a logical sprite root x=627. Do not enlarge the head, hands, shoes or body to fill empty space; do not miniaturize. The whole character must remain inside the canvas with transparent margin. Exactly one character, two arms, two legs, no duplicated anatomy, no attacker or extra person. No text, panels, floor line, scenery, cast shadow, effects, motion trails, logos or watermark. This is a living fighter recovering from a nonlethal throw, with no blood or death symbols.\nPrimary request: draw ONLY the thrown victim just after landing on her BACK AND SHOULDER, low on the invisible ground. Horizontal silhouette: HEAD at the RIGHT, LEGS and sneakers extending toward the LEFT. Knees are slightly bent to absorb the landing, not raised into a sitting posture. Back and shoulder visibly rest at ground contact, with one wrapped forearm near the torso and the other starting to brace. Show an alert, strained face with OPEN EYES, ready to recover, not sleeping, unconscious or dead. The lowest body contact lies near y=1194 without drawing the ground. Keep every hair, hand and shoe fully inside the canvas with transparent edge margins; use natural knee bend and body arrangement to fit while preserving the SAME anatomical body/head/shoe scale. Do not shrink the person. Keep the original clean 2D side-view sprite angle.",
+      "source_path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-4857542c-43a8-4cd8-ad08-5fb692b298b0.png",
+      "workspace_path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/throw-v1/thrown-down-rejected-propped.png",
+      "status": "rejected-preserved",
+      "visual_notes": "Face direction and identity preserved; upper body props on elbow rather than fully landing on back/shoulder.",
+      "rejection_reason": "Upper body is propped on the elbow, unlike requested back/shoulder impact.",
+      "inspection": {
+        "viewed": true,
+        "canvas": {
+          "width": 1254,
+          "height": 1254,
+          "pixel_format": "Format32bppArgb"
+        },
+        "sha256": "C3BF9F66255FF1DBE305BB2BAA5A0365306EEFEE56335ABD27B74E854E429A9D",
+        "alpha_nonzero_bounds": [
+          21,
+          51,
+          1237,
+          1253
+        ]
+      }
+    },
+    {
+      "asset": "thrown-rise",
+      "tool": "built-in image_gen.imagegen",
+      "use_case": "identity-preserve",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/ko-2.png"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: a single production-ready 2D fighting-game character sprite, a new pose of the SAME adult female H1 fighter. Input image 1 is the primary identity, anatomy, outfit, line-art, cel-shading and EXACT PIXEL-SCALE reference. Input image 2 is supporting reference for that same body's horizontal anatomy and clothing only, NOT a death expression. Preserve the short black bob haircut, face, open red cropped track jacket with white shoulder/sleeve stripes, white cropped tank top, charcoal loose pants with red side stripes, white fingerless hand wraps and red-and-white sneakers. Match the original crisp black anime outline and restrained cel shading. Canvas exactly 1254 by 1254 pixels, RGBA with genuine transparent alpha, no backdrop. Use the SAME anatomical scale as the standing reference: a fully standing body would have hair top around y=74 and soles around y=1194, with a logical sprite root x=627. Do not enlarge the head, hands, shoes or body to fill empty space; do not miniaturize. The whole character must remain inside the canvas with transparent margin. Exactly one character, two arms, two legs, no duplicated anatomy, no attacker or extra person. No text, panels, floor line, scenery, cast shadow, effects, motion trails, logos or watermark. This is a living fighter recovering from a nonlethal throw, with no blood or death symbols.\nPrimary request: draw ONLY the living fighter rising from the ground after a throw, facing RIGHT. A transitional get-up pose supported by ONE wrapped HAND flat on the invisible ground and ONE KNEE down; the other foot is planted to push upward, torso lifting but still low. The free arm is bent defensively. Head and chest face right with an alert, determined expression, eyes open. The pose should be a little LOWER than her normal crouching stance and clearly be a ground-recovery motion, not a normal squat, idle fighting stance, kneeling salute, or prone unconscious pose. Lowest supporting hand/knee/shoe contact near y=1194, logical support centered around x=627. Preserve the SAME head size and anatomical limb lengths as reference 1, leave substantial empty transparent space above, and do not zoom in or enlarge the crouched figure. All hands, hair and shoes fully inside the canvas with transparent margins.",
+      "source_path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-d30a8cb1-2091-4e7e-9963-5bcddab9aa39.png",
+      "workspace_path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/throw-v1/thrown-rise.png",
+      "status": "selected-raw-candidate",
+      "visual_notes": "Generated pose visually matches requested action; exact geometry and runtime alignment left to root.",
+      "inspection": {
+        "viewed": true,
+        "canvas": {
+          "width": 1254,
+          "height": 1254,
+          "pixel_format": "Format32bppArgb"
+        },
+        "sha256": "27A774DB84877B2C4A5DB21D3C1DA651A89D0DCD0D043B4FF09AB754A119E64E",
+        "alpha_nonzero_bounds": [
+          65,
+          49,
+          1126,
+          1206
+        ],
+        "alpha8_bounds": [
+          208,
+          456,
+          1114,
+          1199
+        ],
+        "alpha128_bounds": [
+          208,
+          457,
+          1113,
+          1197
+        ]
+      }
+    },
+    {
+      "asset": "thrown-down",
+      "attempt": 2,
+      "tool": "built-in image_gen.imagegen",
+      "use_case": "identity-preserve",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/ko-2.png"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: a single production-ready 2D fighting-game character sprite, a new pose of the SAME adult female H1 fighter. Input image 1 is the primary identity, anatomy, outfit, line-art, cel-shading and EXACT PIXEL-SCALE reference. Input image 2 is supporting reference for that same body's horizontal anatomy and clothing only, NOT a death expression. Preserve the short black bob haircut, face, open red cropped track jacket with white shoulder/sleeve stripes, white cropped tank top, charcoal loose pants with red side stripes, white fingerless hand wraps and red-and-white sneakers. Match the original crisp black anime outline and restrained cel shading. Canvas exactly 1254 by 1254 pixels, RGBA with genuine transparent alpha, no backdrop. Use the SAME anatomical scale as the standing reference: a fully standing body would have hair top around y=74 and soles around y=1194, with a logical sprite root x=627. Do not enlarge the head, hands, shoes or body to fill empty space; do not miniaturize. The whole character must remain inside the canvas with transparent margin. Exactly one character, two arms, two legs, no duplicated anatomy, no attacker or extra person. No text, panels, floor line, scenery, cast shadow, effects, motion trails, logos or watermark. This is a living fighter recovering from a nonlethal throw, with no blood or death symbols.\nPrimary request: draw ONLY the thrown victim just after landing on her BACK AND SHOULDER, low on the invisible ground. Horizontal silhouette: HEAD at the RIGHT, LEGS and sneakers extending toward the LEFT. Knees are slightly bent to absorb the landing, not raised into a sitting posture. Back and shoulder visibly rest at ground contact, with one wrapped forearm near the torso and the other starting to brace. Show an alert, strained face with OPEN EYES, ready to recover, not sleeping, unconscious or dead. The lowest body contact lies near y=1194 without drawing the ground. Keep every hair, hand and shoe fully inside the canvas with transparent edge margins; use natural knee bend and body arrangement to fit while preserving the SAME anatomical body/head/shoe scale. Do not shrink the person. Keep the original clean 2D side-view sprite angle.\nCRITICAL POSE CORRECTION FOR THIS VARIANT: Use the second input's SUPINE BACK-ON-GROUND body posture as the pose guide, horizontally reversed so the HEAD IS RIGHT and FEET LEFT. BOTH SHOULDER BLADES, the UPPER BACK, HIP and the back of the HEAD are DOWN at the invisible floor; the chest faces UPWARD. Her head is low near the same horizontal baseline as the torso, not raised. She has JUST been slammed onto her back and has not started sitting up. Neither elbow nor hand is allowed to prop up or support her torso. One arm may lie out sideways in a safe breakfall and the other is bent close above her chest. Open eyes and a brief impact grimace establish she is conscious and alive. Do not draw a side-reclining lounging pose. Do not draw an elevated head/upper body. Fit the same full-size anatomy with gently bent knees and margins; floor-contact bottom remains near y=1194. No impact effect or ground line.",
+      "source_path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-84e297eb-8ad3-4ad3-a657-3fe8bb63a71d.png",
+      "workspace_path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/throw-v1/thrown-down.png",
+      "status": "selected-raw-candidate",
+      "visual_notes": "Supine landing: head right, legs left, open eyes, both back and shoulder lowered; previous propped candidate preserved.",
+      "inspection": {
+        "viewed": true,
+        "canvas": {
+          "width": 1254,
+          "height": 1254,
+          "pixel_format": "Format32bppArgb"
+        },
+        "sha256": "55815D4323DD79F2BADF3F47F7712171E78A67B5D7F7AD55CB006BF6076BA793",
+        "alpha_nonzero_bounds": [
+          13,
+          21,
+          1245,
+          1215
+        ],
+        "alpha8_bounds": [
+          16,
+          711,
+          1241,
+          1162
+        ],
+        "alpha128_bounds": [
+          17,
+          712,
+          1241,
+          1162
+        ]
+      }
+    }
+  ]
+}

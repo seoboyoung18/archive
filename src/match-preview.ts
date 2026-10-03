@@ -5,11 +5,11 @@ import { createMatch, startMatch, pauseMatch, nextRound, restartMatch, resultRea
 import { createH1Ai } from './combat/h1-ai.ts';
 import { stepH1AiMatch, transitionH1Ai } from './combat/h1-ai-match.ts';
 import { FixedStep } from './combat/fixed-step.ts';
-import { STAGE } from './combat/movement.ts';
 import { MatchInputBuffer } from './input/match-input.ts';
 import { combatPose } from './characters/h1-poses.ts';
 import { H1_ASSETS } from './characters/h1-assets.ts';
 import { grabPoseState } from './combat/combat.ts';
+import { combatVisual } from './characters/h1-visual.ts';
 
 const get = <T extends HTMLElement>(id: string) => document.querySelector<T>(`#${id}`)!;
 const surface = get('game'), status = get('status'), error = get('error');
@@ -108,11 +108,10 @@ class MatchScene extends Phaser.Scene {
   private renderMatch() {
     const s = this.match, ended = s.result !== null, available = resultReady(s);
     this.match.combat.fighters.forEach((f, i) => {
-      const def = s.combat.definitions[i], y = f.action === 'ko' ? STAGE.floor : f.y;
-      const grab = grabPoseState(f);
-      const depth = grab?.kind === 'success' && grab.role === 'attacker' && grab.age < 18 ? 3 : i;
-      this.sprites[i]!.setTexture(combatPose(f, def, s.resultAge)).setPosition(f.x, y).setFlipX(f.facing === -1).setDepth(depth);
-      this.labels[i]!.setPosition(f.x, y - (f.action === 'ko' ? 125 : f.posture === 'crouch' ? 162 : 255));
+      const def = s.combat.definitions[i], visual = combatVisual(f, def);
+      this.sprites[i]!.setTexture(combatPose(f, def, s.resultAge)).setOrigin(0.5, visual.originY)
+        .setPosition(visual.x, visual.y).setFlipX(f.facing === -1).setAngle(visual.angle).setDepth(visual.depth);
+      this.labels[i]!.setPosition(visual.x, visual.y - visual.labelHeight);
       health[i]!.value = f.hp; text(hp[i]!, `${f.hp} / ${def.maxHp}`);
     });
     text(round, `ROUND ${s.round}`); text(timer, String(secondsRemaining(s))); text(score, `${s.wins[0]} : ${s.wins[1]}`);

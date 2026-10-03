@@ -235,17 +235,19 @@ test('A16/G: actual CPU capture clears held input immediately and keeps its 12F 
     assert.equal(s.match.combat.fighters[1].grab.role,'target');
     assert.equal(s.match.combat.fighters[1].posture,crouch?'crouch':'stand');
     assert.deepEqual(s.ai,{cursor:5,untilDecision:7,axis:0,crouch:false});
-    for(let age=1;age<=30;age++) {
+    for(let age=1;age<=72;age++) {
       s=tick(s);const cpu=s.match.combat.fighters[1];
       assert.equal(s.ai.untilDecision,((7-age)%12+12)%12);
       assert.equal(s.ai.cursor,5);
       assert.equal(s.ai.axis,0);assert.equal(s.ai.crouch,false);
       assert.equal(cpu.attack,null);assert.equal(cpu.nextAttackId,1);
-      assert.equal(cpu.action,age<30?'grab':'free');
-      assert.equal(cpu.hp,age<18?100:82);
+      assert.equal(cpu.action,age<72?'grab':'free');
+      assert.equal(cpu.hp,age<36?100:82);
+      assert.equal(s.match.combat.fighters[0].action,age<54?'grab':'free');
     }
-    assert.equal(s.match.combat.fighters[0].action,'grab','the attacker remains locked when the CPU is released');
-    s=tick(s);assert.equal(s.ai.untilDecision,0);assert.equal(s.match.combat.fighters[1].attack,null);
+    for(let age=73;age<=79;age++) {
+      s=tick(s);assert.equal(s.ai.untilDecision,79-age);assert.equal(s.match.combat.fighters[1].attack,null);
+    }
     s=tick(s);
     assert.equal(s.match.combat.fighters[1].attack.key,'crouch-hp');
     assert.equal(s.match.combat.fighters[1].attack.age,0);
@@ -253,26 +255,28 @@ test('A16/G: actual CPU capture clears held input immediately and keeps its 12F 
   }
 });
 
-test('A17/G: a scheduled decision on H29 to H30 observes the prior lock and resumes at the following scheduled tick',()=>{
-  let s=tick(cpuGrabBeforeContact(6));
-  assert.equal(s.ai.untilDecision,5);
-  for(let age=1;age<=29;age++)s=tick(s);
-  assert.equal(s.match.combat.fighters[1].grab.age,29);
+test('A17/G: a scheduled decision on H71 to H72 observes the prior lock and resumes at H84',()=>{
+  // With H72 on the 12F clock, H0 is also a decision: the ordinary attack starts then is captured.
+  let s=tick(cpuGrabBeforeContact(0));
+  assert.equal(s.ai.untilDecision,11);assert.equal(s.ai.cursor,6);
+  assert.equal(s.match.combat.fighters[1].nextAttackId,2);
+  for(let age=1;age<=71;age++)s=tick(s);
+  assert.equal(s.match.combat.fighters[1].grab.age,71);
   assert.equal(s.ai.untilDecision,0);
   s=tick(s);
   assert.equal(s.match.combat.fighters[1].action,'free');
   assert.equal(s.match.combat.fighters[1].grab,null);
-  assert.deepEqual(s.ai,{cursor:5,untilDecision:11,axis:0,crouch:false});
+  assert.deepEqual(s.ai,{cursor:6,untilDecision:11,axis:0,crouch:false});
   const releasedX=s.match.combat.fighters[1].x;
-  for(let age=31;age<=41;age++) {
+  for(let age=73;age<=83;age++) {
     s=tick(s);const cpu=s.match.combat.fighters[1];
-    assert.equal(s.ai.untilDecision,41-age);
-    assert.equal(s.ai.cursor,5);
+    assert.equal(s.ai.untilDecision,83-age);
+    assert.equal(s.ai.cursor,6);
     assert.equal(cpu.x,releasedX);assert.equal(cpu.attack,null);
-    assert.equal(cpu.action,'free');assert.equal(cpu.nextAttackId,1);
+    assert.equal(cpu.action,'free');assert.equal(cpu.nextAttackId,2);
   }
   s=tick(s);
-  assert.equal(s.match.combat.fighters[1].attack.key,'crouch-hp');
+  assert.equal(s.match.combat.fighters[1].attack.key,'crouch-lk');
   assert.equal(s.match.combat.fighters[1].attack.age,0);
-  assert.equal(s.ai.cursor,6);assert.equal(s.ai.untilDecision,11);
+  assert.equal(s.ai.cursor,7);assert.equal(s.ai.untilDecision,11);
 });

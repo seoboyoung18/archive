@@ -1,4 +1,4 @@
-param([ValidateSet('v1','v2','movement-v1','combat-v1','motion-v1','walk-v2','attack-motion-v1','opposite-limbs-v1','grab-v1')][string]$Version = 'v2')
+param([ValidateSet('v1','v2','movement-v1','combat-v1','motion-v1','walk-v2','attack-motion-v1','opposite-limbs-v1','grab-v1','throw-v1')][string]$Version = 'v2')
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 $projectRoot = Split-Path $PSScriptRoot -Parent
@@ -52,6 +52,7 @@ if ($Version -eq 'combat-v1') {
     $names += @('stand-guard','crouch-guard','stand-hit','crouch-hit','ko-0','ko-1','ko-2')
 }
 $idle = [System.Drawing.Bitmap]::new((Join-Path $assetRoot 'generated/v1/idle.png'))
+if ($Version -eq 'throw-v1') { $names = @('throw-turn','throw-lift','throw-slam','thrown-air','thrown-down','thrown-rise') }
 if ($Version -eq 'grab-v1') { $names = @('grab-ready','grab-reach','grab-retract','grab-settle','grab-stand-hold','grab-stand-brace','grab-stand-push','grab-crouch-hold','grab-crouch-brace','grab-crouch-push','grabbed-stand-hold','grabbed-stand-impact','grabbed-stand-recover','grabbed-crouch-hold','grabbed-crouch-impact','grabbed-crouch-recover','grab-release','grabbed-stand-escape','grabbed-crouch-escape') }
 try { $idleBounds = Get-AlphaBounds $idle; $scale = 384.0 / ($idleBounds.bottom + 1 - $idleBounds.top); $sourceWidth = $idle.Width } finally { $idle.Dispose() }
 $outputDir = Join-Path $assetRoot "derived/$Version"
@@ -78,6 +79,8 @@ $frames = foreach ($name in $names) {
         $rootMode = 'sole-bottom'
         if ($name.StartsWith('ko-')) { $rootMode = 'body-bottom' }
         if ($name.StartsWith('jump-')) { $rootY = $idleBounds.bottom + 1; $rootMode = 'idle-virtual-ground' }
+        if ($Version -eq 'throw-v1' -and $name -eq 'thrown-air') { $rootY = $idleBounds.bottom + 1; $rootMode = 'idle-virtual-ground' }
+        if ($Version -eq 'throw-v1' -and $name -eq 'thrown-down') { $rootMode = 'body-bottom' }
         $offsetX = 256 - $rootX * $scale; $offsetY = 448 - $rootY * $scale
         $graphics.Clear([System.Drawing.Color]::Transparent)
         $graphics.CompositingMode = [System.Drawing.Drawing2D.CompositingMode]::SourceCopy

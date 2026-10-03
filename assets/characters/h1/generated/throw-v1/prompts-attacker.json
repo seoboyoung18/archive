@@ -1,0 +1,45 @@
+{
+  "version": "throw-v1",
+  "role": "attacker",
+  "records": [
+    {
+      "id": "throw-turn",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: identity-preserve game sprite pose edit. Create exactly ONE new full-body sprite of the SAME H1 woman in the two references. Image 1 is identity, anatomical scale and style reference; image 2 is costume and hand-wrap reference only, DO NOT copy its forward-pushing pose. Output exactly 1254 x 1254 pixels, genuine transparent RGBA background. Preserve black bob haircut, red cropped zip jacket with white stripes and rolled sleeves, white tank top, wrapped hands, loose black pants with red side stripes, red/white sneakers, crisp dark anime outlines and restrained cel shading. Preserve the reference's anatomical dimensions and camera distance: the upright standing body would span approximately y74 to y1194, feet ground line y1194, source root centered x627. Bending/turning may lower the head naturally; NEVER zoom or stretch the body to fill the canvas. Both shoes must be fully visible and touch the same y1194 ground line. Generous transparent margins, no environment, no floor/shadow, no effects, text or extra objects. Pose: the TURN phase of a forceful shoulder/hip THROW toward screen RIGHT. The fighter pivots on her planted feet and rotates hips, waist and shoulders together; show a clear three-quarter BACK view of the jacket and torso, with the head glancing toward screen right. Her two wrapped hands grip an IMAGINARY opponent's arm coming from the right and pull it diagonally inward/up over her shoulder, elbows bent and hands close to the upper shoulder, preparing to load the opponent onto her turned back. Weight grounded, knees flexed, feet visibly pivoted. This must read as a whole-body turn into a martial-arts throw, NOT a forward shove or straight-arm push. Draw only the attacker: absolutely NO opponent, disembodied opponent arm, dummy, silhouette or prop. The pose is a single animation frame, not a sheet or multiple figures.",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/grab-v1/grab-stand-hold.png"
+      ],
+      "tool_output_path": "C:/Users/PC/.codex/generated_images/01a0fd21-2b1e-7543-a69d-367f147366b5/exec-51b1a5f0-03b6-4443-9a77-3b158c9e2a72.png",
+      "workspace_output_path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/throw-v1/throw-turn.png",
+      "status": "generated; individual visual inspection complete; normalization and contact-sheet review pending"
+    },
+    {
+      "id": "throw-lift",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: identity-preserve game sprite pose edit. Produce ONE single full-body H1 attacker animation sprite on a genuine transparent RGBA background, exactly 1254 x 1254 pixels. Reference image 1 fixes face, anatomy, body size and drawing style; reference image 2 fixes costume/hand wraps only. Preserve the black bob-haired athletic woman, red cropped jacket with white sleeve stripes, white tank top, hand wraps, loose black/red pants, red-white sneakers and precise anime ink outlines/cel shading. Same camera distance and anatomical scale as references: when upright her body would run y74..1194, soles on y1194, virtual source root x627. Do NOT enlarge a crouched body to fill the canvas; bending must visibly reduce occupied height. Both shoes fully visible, feet grounded on y1194, transparent margins all around. Required pose is the LIFT/APEX phase of a shoulder/hip THROW toward screen RIGHT, not a shove. She has already pivoted so the jacket BACK and back of hips are visible in three-quarter view; her head turns to the right. Deeply flexed knees, planted wide support, hips back, waist folded strongly forward. BOTH wrapped hands are pulled up and back just above one shoulder, elbows bent, as if tipping an imaginary opponent over her shoulder. Her back/hip form a strong fulcrum and the movement must clearly show lifting/turning a body over her shoulder through leg and torso power. Her torso is pitched forward roughly halfway to horizontal, much more compressed and lower than the upright reference. No straight-arm forward pushing, no boxing punch. Draw ONLY this one attacker; no opponent, opponent limbs, dummy, silhouette, props, cast shadow, floor, speed lines, lettering, UI, border or additional figures. Keep exactly the reference limb lengths, head size, jacket details and anatomical proportions.",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/grab-v1/grab-stand-hold.png"
+      ],
+      "tool_output_path": "C:/Users/PC/.codex/generated_images/01a0fd21-2b1e-7543-a69d-367f147366b5/exec-cd8d0c69-e75e-41cd-92de-1e789bac9dd9.png",
+      "workspace_output_path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/throw-v1/throw-lift.png",
+      "status": "generated; individual visual inspection complete; normalization and contact-sheet review pending"
+    },
+    {
+      "id": "throw-slam",
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "Use case: identity-preserve fighting game sprite pose edit. Make exactly ONE full-body H1 attacker, exactly 1254 x 1254 pixels with genuine transparent RGBA background. Input 1 is the fixed character identity, anatomy, scale and cel-shaded ink style; input 2 fixes the outfit but its arm pose MUST NOT be reused. Same black-bob-haired athletic woman, red cropped jacket with white sleeve stripes and rolled cuffs, white tank top, wrapped hands, loose black pants with red side stripes and red/white sneakers. Keep the reference head size and limb lengths, do not zoom in on the bent pose, no stretching. At this camera distance her upright body would span y74..1194; her shoe-ground line stays at y1194 and source root is x627. Keep ALL body parts, especially shoes and fingers, inside transparent margins. Required animation pose: the SLAM/FOLLOW-THROUGH at the end of a powerful shoulder/hip throw toward screen RIGHT and DOWN onto the ground. She has pivoted her feet and hips, jacket back in three-quarter view, knees bent with strong planted support. Her torso is now folded DEEPLY FORWARD and DOWN to the RIGHT from the hips, almost horizontal or slightly descending, so the head and shoulders are much lower than the reference. Her BOTH wrapped hands pull DOWN past the chest toward the ground on screen right, arms reaching diagonally down-right and finishing low near knee/shin level, showing that an invisible opponent has just been thrown over her shoulder onto the floor. This is a decisive downward body-throw follow-through with complete spinal/hip/shoulder rotation, NOT an upright shove, NOT palms pushing forward, NOT a boxing punch and NOT an overhead hammer fist. Empty hands are shaped as a loosening two-hand arm grip, not open pushing palms. Preserve anatomical scale while making this low pose visibly shorter on the canvas than the upright figure. Show only the attacker, absolutely NO opponent or opponent limb, no dummy, prop, impact burst, ground plane, shadow, text, border or second figure. Match reference outline weight, colors and cel shading.",
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png",
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/grab-v1/grab-stand-hold.png"
+      ],
+      "tool_output_path": "C:/Users/PC/.codex/generated_images/01a0fd21-2b1e-7543-a69d-367f147366b5/exec-75120f14-a217-49b2-8a3a-698c99d62d14.png",
+      "workspace_output_path": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/throw-v1/throw-slam.png",
+      "status": "generated; individual visual inspection complete; normalization and contact-sheet review pending"
+    }
+  ]
+}
