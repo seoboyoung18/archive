@@ -1,6 +1,6 @@
 # H1 전투 설계 초안 v0.3
 
-상태: [전투 명세](../specs/h1-combat-draft.md)와 [애니메이션 명세](../specs/h1-animation-draft.md)가 초기 기준으로 승인됐다. 2026-10-03에는 [전투 확장 C](../specs/h1-combat-expansion.md)에 이어 [G1~G4 잡기·풀기](../specs/h1-grab.md)가 승인·구현됐다. 아래 책임 분리와 마지막 G 설계를 적용하며 검증 결과은 [G 검수 기록](../reviews/h1-grab.md)에 기록한다. S 효과음과 CPU 새 기술 선택은 대기한다. 기술은 Phaser 4 + TypeScript + Vite다. 초기 실행 환경·이미지 시안 작업은 [별도 작업 명세](../specs/h1-asset-preview.md)를 따른다.
+상태: [전투 명세](../specs/h1-combat-draft.md)와 [애니메이션 명세](../specs/h1-animation-draft.md)가 초기 기준으로 승인됐다. 2026-10-03에는 [전투 확장 C](../specs/h1-combat-expansion.md)에 이어 [G1~G4 잡기·풀기](../specs/h1-grab.md)가 승인·구현됐다. 아래 책임 분리와 마지막 G 설계를 적용하며 검증 결과는 [G 검수 기록](../reviews/h1-grab.md)에 기록한다. [S 효과음 설계안](../specs/h1-sound.md)의 논리틱 사건 소비·화면측 재생/정리와 CPU 새 기술 선택은 확인 대기다. 기술은 Phaser 4 + TypeScript + Vite다. 초기 실행 환경·이미지 시안 작업은 [별도 작업 명세](../specs/h1-asset-preview.md)를 따른다.
 
 ## 책임 분리
 | 역할 | 책임 | 하지 않는 일 |
