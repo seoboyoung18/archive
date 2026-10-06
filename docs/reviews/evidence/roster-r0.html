@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>차원격투 · 첫 3명 크기와 발 기준점 비교</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #0e1622; color: #edf3fa; }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: clamp(16px, 3vw, 36px); }
+    main { max-width: 1280px; margin: auto; }
+    header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
+    h1 { margin: 0 0 6px; font-size: clamp(25px, 3vw, 38px); letter-spacing: -.035em; }
+    p { margin: 0; color: #b8c6d8; line-height: 1.5; }
+    .tag { padding: 7px 12px; border: 1px solid #59738e; border-radius: 999px; color: #ffd79a; font-size: 13px; white-space: nowrap; }
+    .arena { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid #415268; border-radius: 16px; background: linear-gradient(#1b2b3b, #283e54 83.33%, #24313e 83.34%); }
+    .arena::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 6.2%, #fff1 6.25% 6.3%); pointer-events: none; }
+    .arena::after { content: ''; position: absolute; top: 83.333%; left: 0; right: 0; border-top: 2px solid #c5d1dd; }
+    .guide { position: absolute; top: 50%; left: 0; right: 0; border-top: 1px dashed #ffffff55; }
+    .fighter { position: absolute; top: 83.333%; width: 25%; aspect-ratio: 1; transform: translate(-50%, -87.5%); object-fit: contain; image-rendering: auto; }
+    .h1 { left: 20%; } .b1 { left: 50%; } .r3 { left: 80%; }
+    .root { position: absolute; top: 83.333%; width: 7px; height: 7px; border-radius: 50%; background: #f7f8fb; transform: translate(-50%, -50%); z-index: 3; box-shadow: 0 0 0 2px #26394d; }
+    .root.h1 { left: 20%; } .root.b1 { left: 50%; } .root.r3 { left: 80%; }
+    .label { position: absolute; top: 87%; transform: translateX(-50%); font-size: clamp(12px, 1.7vw, 22px); font-weight: 800; text-shadow: 0 2px 4px #08111a; white-space: nowrap; }
+    .label.h1 { left: 20%; } .label.b1 { left: 50%; } .label.r3 { left: 80%; }
+    .legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+    .card { border: 1px solid #33475b; background: #182638; border-radius: 12px; padding: 16px; }
+    .card strong { display: block; margin-bottom: 7px; font-size: 17px; }
+    .card p { font-size: 14px; }
+    a { color: #91d9fb; }
+    .note { margin-top: 18px; font-size: 14px; }
+    @media (max-width: 640px) { .legend { grid-template-columns: 1fr; } .label { top: 89%; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>첫 3명 크기·발 위치 비교</h1>
+        <p>1280×720 논리 무대 · 그림 표시 배율 0.625 · 발 기준점 (256,448) · 지면 y600</p>
+      </div>
+      <span class="tag">R0 외형 시안 · 전투 미연결</span>
+    </header>
+    <div class="arena" role="img" aria-label="H1 인간, B1 호랑이, R3 로봇이 같은 무대의 지면에 나란히 선 크기 비교">
+      <div class="guide"></div>
+      <img class="fighter h1" src="../../../assets/characters/h1/derived/v2/idle.png" alt="H1 현행 대기 포즈">
+      <img class="fighter b1" src="../../../assets/characters/b1/derived/r0/reference-stand.png" alt="B1 원본을 비율 유지 축소한 기준 자세 시안">
+      <img class="fighter r3" src="../../../assets/characters/r3/derived/r0/reference-stand.png" alt="R3 원본을 비율 유지 축소한 기준 자세 시안">
+      <span class="root h1" aria-hidden="true"></span><span class="root b1" aria-hidden="true"></span><span class="root r3" aria-hidden="true"></span>
+      <span class="label h1">H1 · 현재 플레이 가능</span>
+      <span class="label b1">B1 · 기준 시안</span>
+      <span class="label r3">R3 · 기준 시안</span>
+    </div>
+    <section class="legend" aria-label="그림 비교 기준">
+      <div class="card"><strong>H1 인간</strong><p>현재 게임 대기 그림. 보이는 머리~발 높이 384px(512 캔버스 기준).</p></div>
+      <div class="card"><strong>B1 호랑이</strong><p>주황 줄무늬·남색 바지·꼬리와 손발 붕대. <a href="../../../assets/characters/b1/reference.png">원본 보기</a></p></div>
+      <div class="card"><strong>R3 로봇</strong><p>보라 장갑·민트 바이저·어두운 관절. <a href="../../../assets/characters/r3/reference.png">원본 보기</a></p></div>
+    </section>
+    <p class="note">흰 점은 발 기준점입니다. B1·R3는 정지 자세 한 장뿐이며, 이 화면은 선택 가능 상태나 판정·모션 품질의 승인이 아닙니다. 꼬리·장갑의 보이는 폭을 피격 범위로 자동 적용하지 않습니다.</p>
+  </main>
+</body>
+</html>
