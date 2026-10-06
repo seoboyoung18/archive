@@ -1,0 +1,109 @@
+{
+  "note": "Exact prompts captured for the 16 in-between and idle candidates generated on 2026-10-06. Earlier 12 walk-key prompt texts were not persisted; their source PNG hashes are in derived/r1-v1/manifest.json.",
+  "revisions": [
+    {
+      "id": "walk-mid-11",
+      "generatedFile": "exec-1ec511de-0090-43cb-862d-96133561b7cc.png",
+      "replaces": "rejected/walk-mid-11-v1.png",
+      "prompt": "Use case: identity-preserve. Create one B1 walk-mid-11 replacement as the loop bridge between walk-11 and walk-00. Keep same right-facing anime tiger, face, stripes, white chest, navy pants, white wraps, striped tail, size, full body transparent. Critical change: FRONT/RIGHTMOST FOOT has just touched down on the ground in front (flat toe and heel at same baseline), BACK/LEFTMOST FOOT remains behind with heel lifting and only toes brushing the ground. This double-support transfer makes the next walk-00, with rear foot airborne, physically possible. Arms in intermediate opposite swing. Do not simply copy walk-11; no floating front foot, no support-foot teleport, no extra limbs, no background or shadow."
+    }
+  ],
+  "entries": [
+    {
+      "id": "walk-mid-00",
+      "generatedFile": "exec-b46d230a-f907-4e85-bb18-f2637429791c.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-00, halfway between the provided selected walk-00 and walk-01. Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-01",
+      "generatedFile": "exec-6f678123-2b6b-4d32-bfb5-5ed5f3690109.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-01, halfway between the provided selected walk-01 and walk-02. Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-02",
+      "generatedFile": "exec-38edbf7f-4cd7-4285-bf31-fc1b49983249.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-02, halfway between the provided selected walk-02 and walk-03. Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-03",
+      "generatedFile": "exec-5d107f17-b1a4-4ce6-a720-39b2d2477e4e.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-03, halfway between the provided selected walk-03 and walk-04. Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-04",
+      "generatedFile": "exec-20fbb362-1c49-4a87-9df8-6d74376fbabd.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-04, halfway between the provided selected walk-04 and walk-05. Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-05",
+      "generatedFile": "exec-337c51c6-06bf-4213-b491-5c354b86cea0.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-05, halfway between the provided selected walk-05 and walk-06. Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-06",
+      "generatedFile": "exec-30425c0d-7541-43c6-8cf9-d7ac818abbde.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-06, halfway between the provided selected walk-06 and walk-07. Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-07",
+      "generatedFile": "exec-d9f1b8e9-685e-4fd7-af9f-b18d80d60965.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-07, halfway between the provided selected walk-07 and walk-08. Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-08",
+      "generatedFile": "exec-343e3fde-23d8-49a5-909f-d5840f3183a8.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-08, halfway between the provided selected walk-08 and walk-09. Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-09",
+      "generatedFile": "exec-474cfdc3-9395-4eb3-9f81-170dd6e919d1.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-09, halfway between the provided selected walk-09 and walk-10 (cyclic loop). Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-10",
+      "generatedFile": "exec-fb1f2f4c-6f9e-4647-80bd-0e7309f798ac.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-10, halfway between the provided selected walk-10 and walk-11 (cyclic loop). Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "walk-mid-11",
+      "generatedFile": "exec-1771d12c-6709-434c-80ac-89175d2c4184.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 walk-mid-11, halfway between the provided selected walk-11 and walk-00 (cyclic loop). Input 1 is B1 appearance reference, inputs 2 and 3 are adjacent animation keyframes. Preserve the same tiger face, orange-and-black stripe pattern, white muzzle/chest, navy gi pants, white hand and ankle wraps, long striped tail, right-facing side view, body proportions, same ground baseline. Draw a genuinely new physically plausible in-between pose: each knee, ankle, foot, opposite arm and tail halfway through the motion from input 2 to input 3. Keep the current support foot planted while the other foot passes or swings. No foot sliding, teleporting or extra legs; full body within square transparent canvas. No scene, text, shadows or other characters."
+    },
+    {
+      "id": "idle-0",
+      "generatedFile": "exec-6a209b77-1ad0-4c3a-b41d-5968ad77eded.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 idle-0. Input 1 is canonical B1 tiger-beast design; input 2 is approved R0 standing-size pose. Preserve the same right-facing orange-and-black striped tiger face, white muzzle/chest, muscular body, navy gi pants, white hand and ankle wraps, and long striped tail. This is one frame of a four-frame idle breathing loop. Pose: neutral breath, chest relaxed, tail gently curved left, both feet flat and planted. Feet and ankles must remain planted at exactly the approved R0 stance, toes at same coordinates, same 512-square composition and same anatomical scale. Arms in relaxed guard; no walking step or foot lift, no extra limbs. Actual transparent background, no scene, ground shadow, text or other characters."
+    },
+    {
+      "id": "idle-in",
+      "generatedFile": "exec-ca486225-1efa-4f92-aabc-deb281b7ac59.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 idle-in. Input 1 is canonical B1 tiger-beast design; input 2 is approved R0 standing-size pose. Preserve the same right-facing orange-and-black striped tiger face, white muzzle/chest, muscular body, navy gi pants, white hand and ankle wraps, and long striped tail. This is one frame of a four-frame idle breathing loop. Pose: inhale transition, chest and shoulders rise very slightly, tail tip lifts slightly, both feet unchanged. Feet and ankles must remain planted at exactly the approved R0 stance, toes at same coordinates, same 512-square composition and same anatomical scale. Arms in relaxed guard; no walking step or foot lift, no extra limbs. Actual transparent background, no scene, ground shadow, text or other characters."
+    },
+    {
+      "id": "idle-1",
+      "generatedFile": "exec-da9d2db7-c9d6-469c-93f9-ad847c4a28d8.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 idle-1. Input 1 is canonical B1 tiger-beast design; input 2 is approved R0 standing-size pose. Preserve the same right-facing orange-and-black striped tiger face, white muzzle/chest, muscular body, navy gi pants, white hand and ankle wraps, and long striped tail. This is one frame of a four-frame idle breathing loop. Pose: gentle peak inhale, chest subtly expanded, tail tip fractionally higher, both feet unchanged. Feet and ankles must remain planted at exactly the approved R0 stance, toes at same coordinates, same 512-square composition and same anatomical scale. Arms in relaxed guard; no walking step or foot lift, no extra limbs. Actual transparent background, no scene, ground shadow, text or other characters."
+    },
+    {
+      "id": "idle-out",
+      "generatedFile": "exec-d25eef7a-ddfc-48b7-ab7a-cfb2e3046403.png",
+      "model": "built-in ImageGen",
+      "prompt": "Use case: identity-preserve. Asset: exactly one transparent full-body anime cel-shaded 2D fighting-game sprite, B1 idle-out. Input 1 is canonical B1 tiger-beast design; input 2 is approved R0 standing-size pose. Preserve the same right-facing orange-and-black striped tiger face, white muzzle/chest, muscular body, navy gi pants, white hand and ankle wraps, and long striped tail. This is one frame of a four-frame idle breathing loop. Pose: exhale transition, chest settles toward neutral, tail tip settles halfway, both feet unchanged. Feet and ankles must remain planted at exactly the approved R0 stance, toes at same coordinates, same 512-square composition and same anatomical scale. Arms in relaxed guard; no walking step or foot lift, no extra limbs. Actual transparent background, no scene, ground shadow, text or other characters."
+    }
+  ]
+}
