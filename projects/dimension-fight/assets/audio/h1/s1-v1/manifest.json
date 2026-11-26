@@ -1,0 +1,1016 @@
+{
+  "version": "s1-v1",
+  "status": "audition draft; subjective listening and game settings are not approved",
+  "format": {
+    "container": "WAV",
+    "encoding": "PCM",
+    "bitsPerSample": 16,
+    "channels": 1,
+    "sampleRate": 48000
+  },
+  "generator": {
+    "script": "scripts/generate-h1-sounds.mjs",
+    "algorithm": "h1-dry-impact-v1",
+    "source": "original procedural synthesis; no external recordings, music, or voices",
+    "noise": "xorshift32 (13,17,5); layer seed = sound seed XOR imul(layerIndex+1,0x9e3779b9); uniform [-1,1)",
+    "band": "parallel one-pole lowpasses at highHz and lowHz; output = high-band lowpass minus low-band lowpass",
+    "envelope": "sum of min(1,age/attackMs) * exp(-age/decayMs), each burst after atMs",
+    "dcBlockHz": 25,
+    "quantization": "round(sample * 32767); reject non-finite or abs(sample)>=1",
+    "edgeInspection": "maximum adjacent-sample step within first/last 48 samples (1ms); not a listening-quality result"
+  },
+  "headroomRevision": {
+    "reason": "Initial in-memory same-file strong-punch pair exceeded unity at 100% linear mixing.",
+    "initialStrongPunchPeak": 0.5699768066,
+    "initialDoubleStrongPunchPeak": 1.1399536132,
+    "renderedAssetGain": 0.8,
+    "scope": "All nine rendered WAVs scaled equally; relative levels preserved; no hidden UI gain or limiter."
+  },
+  "edgeRevision": {
+    "reason": "Initial first-1ms adjacent-sample steps exceeded the draft 0.1 bound in three files.",
+    "initialSteps": {
+      "hit-lp": 0.2222595215,
+      "hit-hp": 0.1560058594,
+      "guard": 0.2164001465
+    },
+    "revisedFadeInMs": {
+      "hit-lp": 3,
+      "hit-hp": 3,
+      "guard": 3
+    },
+    "limitation": "A numerical onset bound and zero endpoints do not establish absence of audible clicks."
+  },
+  "audition": {
+    "framesPerSecond": 60,
+    "gain": 1,
+    "mixing": "linear sum without limiter",
+    "sequences": [
+      {
+        "id": "combo",
+        "label": "U → I → J",
+        "events": [
+          {
+            "id": "hit-lp",
+            "atFrame": 0
+          },
+          {
+            "id": "hit-hp",
+            "atFrame": 13
+          },
+          {
+            "id": "hit-lk",
+            "atFrame": 24
+          }
+        ]
+      },
+      {
+        "id": "double-hit",
+        "label": "강손 동시 타격",
+        "events": [
+          {
+            "id": "hit-hp",
+            "atFrame": 0
+          },
+          {
+            "id": "hit-hp",
+            "atFrame": 0
+          }
+        ]
+      },
+      {
+        "id": "throw",
+        "label": "붙잡음 → 바닥 충격",
+        "events": [
+          {
+            "id": "grab-hold",
+            "atFrame": 0
+          },
+          {
+            "id": "grab-impact",
+            "atFrame": 36
+          }
+        ]
+      },
+      {
+        "id": "escape",
+        "label": "붙잡음 → 풀기",
+        "events": [
+          {
+            "id": "grab-hold",
+            "atFrame": 0
+          },
+          {
+            "id": "grab-escape",
+            "atFrame": 12
+          }
+        ]
+      },
+      {
+        "id": "instant-escape",
+        "label": "H0 즉시 풀기",
+        "events": [
+          {
+            "id": "grab-escape",
+            "atFrame": 0
+          }
+        ]
+      }
+    ],
+    "note": "Audition event spacing, not game integration or a gameplay success test. Final game loudness remains undecided."
+  },
+  "sounds": [
+    {
+      "id": "hit-lp",
+      "label": "약손 명중",
+      "file": "hit-lp.wav",
+      "description": "짧은 마찰성 타격과 가벼운 몸통 울림",
+      "sampleCount": 5040,
+      "durationMs": 105,
+      "peak": 0.3759765625,
+      "rms": 0.0541972814,
+      "dcMean": -0.0012313601,
+      "firstSample": 0,
+      "lastSample": 0,
+      "clippedSamples": 0,
+      "nonzeroSamples": 4953,
+      "edgeMaxStep": 0.0401916504,
+      "bytes": 10124,
+      "sha256": "b5c8d5bd50c456d7f52cbc6bcbaad7cadc90e92a6f5d1994df795143e939903b",
+      "seed": 104729,
+      "settings": {
+        "id": "hit-lp",
+        "label": "약손 명중",
+        "seed": 104729,
+        "durationMs": 105,
+        "targetPeak": 0.47,
+        "description": "짧은 마찰성 타격과 가벼운 몸통 울림",
+        "fadeInMs": 3,
+        "fadeOutMs": 14,
+        "layers": [
+          {
+            "kind": "noise",
+            "gain": 0.9,
+            "lowHz": 700,
+            "highHz": 7000,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 0.5,
+                "decayMs": 11
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "noise",
+            "gain": 0.55,
+            "lowHz": 140,
+            "highHz": 1900,
+            "bursts": [
+              {
+                "atMs": 1,
+                "attackMs": 1,
+                "decayMs": 22
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "body",
+            "gain": 0.42,
+            "hz": 158,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.1,
+                "decayMs": 20
+              }
+            ],
+            "phaseRadians": 0
+          }
+        ]
+      },
+      "fade": {
+        "curve": "sine-squared",
+        "inMs": 3,
+        "outMs": 14,
+        "inSamples": 144,
+        "outSamples": 672
+      },
+      "normalization": {
+        "method": "one scalar peak gain times rendered asset gain; no limiter or clipping",
+        "targetPeakBeforeAssetGain": 0.47,
+        "renderedAssetGain": 0.8,
+        "rawPeak": 0.7592094653,
+        "gain": 0.4952519919
+      }
+    },
+    {
+      "id": "hit-hp",
+      "label": "강손 명중",
+      "file": "hit-hp.wav",
+      "description": "약손보다 낮고 두꺼운 짧은 충격",
+      "sampleCount": 7920,
+      "durationMs": 165,
+      "peak": 0.4559936523,
+      "rms": 0.060140144,
+      "dcMean": -0.0011102079,
+      "firstSample": 0,
+      "lastSample": 0,
+      "clippedSamples": 0,
+      "nonzeroSamples": 7813,
+      "edgeMaxStep": 0.0344543457,
+      "bytes": 15884,
+      "sha256": "ece7fe4c682d1522ecd363dc37ed05d2adcd9d24e9d29c81574dfec941437e71",
+      "seed": 130363,
+      "settings": {
+        "id": "hit-hp",
+        "label": "강손 명중",
+        "seed": 130363,
+        "durationMs": 165,
+        "targetPeak": 0.57,
+        "description": "약손보다 낮고 두꺼운 짧은 충격",
+        "fadeInMs": 3,
+        "fadeOutMs": 22,
+        "layers": [
+          {
+            "kind": "noise",
+            "gain": 0.76,
+            "lowHz": 600,
+            "highHz": 5700,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 0.7,
+                "decayMs": 15
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "noise",
+            "gain": 0.82,
+            "lowHz": 75,
+            "highHz": 1600,
+            "bursts": [
+              {
+                "atMs": 1,
+                "attackMs": 1.8,
+                "decayMs": 37
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "body",
+            "gain": 0.6,
+            "hz": 96,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.1,
+                "decayMs": 32
+              }
+            ],
+            "phaseRadians": 0
+          },
+          {
+            "kind": "body",
+            "gain": 0.19,
+            "hz": 147,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.1,
+                "decayMs": 21
+              }
+            ],
+            "phaseRadians": 0
+          }
+        ]
+      },
+      "fade": {
+        "curve": "sine-squared",
+        "inMs": 3,
+        "outMs": 22,
+        "inSamples": 144,
+        "outSamples": 1056
+      },
+      "normalization": {
+        "method": "one scalar peak gain times rendered asset gain; no limiter or clipping",
+        "targetPeakBeforeAssetGain": 0.57,
+        "renderedAssetGain": 0.8,
+        "rawPeak": 1.0552054559,
+        "gain": 0.4321433304
+      }
+    },
+    {
+      "id": "hit-lk",
+      "label": "약발 명중",
+      "file": "hit-lk.wav",
+      "description": "손보다 넓게 퍼지는 중저음 타격",
+      "sampleCount": 6960,
+      "durationMs": 145,
+      "peak": 0.3999938965,
+      "rms": 0.0508775898,
+      "dcMean": -0.0000504066,
+      "firstSample": 0,
+      "lastSample": 0,
+      "clippedSamples": 0,
+      "nonzeroSamples": 6842,
+      "edgeMaxStep": 0.069152832,
+      "bytes": 13964,
+      "sha256": "e12da32e538b3fb58e18cba1f8d2249b5ecc0618abe9fab620365c5daaece175",
+      "seed": 155921,
+      "settings": {
+        "id": "hit-lk",
+        "label": "약발 명중",
+        "seed": 155921,
+        "durationMs": 145,
+        "targetPeak": 0.5,
+        "description": "손보다 넓게 퍼지는 중저음 타격",
+        "fadeInMs": 1,
+        "fadeOutMs": 20,
+        "layers": [
+          {
+            "kind": "noise",
+            "gain": 0.9,
+            "lowHz": 160,
+            "highHz": 4100,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.7,
+                "decayMs": 30
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "noise",
+            "gain": 0.38,
+            "lowHz": 1100,
+            "highHz": 6800,
+            "bursts": [
+              {
+                "atMs": 2,
+                "attackMs": 0.9,
+                "decayMs": 15
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "body",
+            "gain": 0.38,
+            "hz": 126,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.1,
+                "decayMs": 29
+              }
+            ],
+            "phaseRadians": 0
+          }
+        ]
+      },
+      "fade": {
+        "curve": "sine-squared",
+        "inMs": 1,
+        "outMs": 20,
+        "inSamples": 48,
+        "outSamples": 960
+      },
+      "normalization": {
+        "method": "one scalar peak gain times rendered asset gain; no limiter or clipping",
+        "targetPeakBeforeAssetGain": 0.5,
+        "renderedAssetGain": 0.8,
+        "rawPeak": 0.895628406,
+        "gain": 0.4466137936
+      }
+    },
+    {
+      "id": "hit-hk",
+      "label": "강발 명중",
+      "file": "hit-hk.wav",
+      "description": "넓은 질감과 낮은 울림이 남는 무거운 발 타격",
+      "sampleCount": 10320,
+      "durationMs": 215,
+      "peak": 0.4959716797,
+      "rms": 0.0659380962,
+      "dcMean": -0.0000412963,
+      "firstSample": 0,
+      "lastSample": 0,
+      "clippedSamples": 0,
+      "nonzeroSamples": 10200,
+      "edgeMaxStep": 0.0702514648,
+      "bytes": 20684,
+      "sha256": "8537dfa5c0de064b4465f20da23e4cf78f06e10a4d0be3ff22b8cad56a2047ca",
+      "seed": 181081,
+      "settings": {
+        "id": "hit-hk",
+        "label": "강발 명중",
+        "seed": 181081,
+        "durationMs": 215,
+        "targetPeak": 0.62,
+        "description": "넓은 질감과 낮은 울림이 남는 무거운 발 타격",
+        "fadeInMs": 1,
+        "fadeOutMs": 30,
+        "layers": [
+          {
+            "kind": "noise",
+            "gain": 1,
+            "lowHz": 70,
+            "highHz": 2900,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.4,
+                "decayMs": 43
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "noise",
+            "gain": 0.38,
+            "lowHz": 900,
+            "highHz": 6100,
+            "bursts": [
+              {
+                "atMs": 1,
+                "attackMs": 0.8,
+                "decayMs": 19
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "body",
+            "gain": 0.58,
+            "hz": 74,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.1,
+                "decayMs": 45
+              }
+            ],
+            "phaseRadians": 0
+          },
+          {
+            "kind": "body",
+            "gain": 0.2,
+            "hz": 117,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.1,
+                "decayMs": 27
+              }
+            ],
+            "phaseRadians": 0
+          }
+        ]
+      },
+      "fade": {
+        "curve": "sine-squared",
+        "inMs": 1,
+        "outMs": 30,
+        "inSamples": 48,
+        "outSamples": 1440
+      },
+      "normalization": {
+        "method": "one scalar peak gain times rendered asset gain; no limiter or clipping",
+        "targetPeakBeforeAssetGain": 0.62,
+        "renderedAssetGain": 0.8,
+        "rawPeak": 1.1202617214,
+        "gain": 0.4427536803
+      }
+    },
+    {
+      "id": "guard",
+      "label": "방어",
+      "file": "guard.wav",
+      "description": "잔향을 줄인 단단하고 짧은 막힘",
+      "sampleCount": 4560,
+      "durationMs": 95,
+      "peak": 0.3519897461,
+      "rms": 0.0425604619,
+      "dcMean": -0.0006505197,
+      "firstSample": 0,
+      "lastSample": 0,
+      "clippedSamples": 0,
+      "nonzeroSamples": 4335,
+      "edgeMaxStep": 0.0419921875,
+      "bytes": 9164,
+      "sha256": "7a857018c750fdc01170656e8fbf33a74e027a25c0aab736e195545c1aa2a281",
+      "seed": 205759,
+      "settings": {
+        "id": "guard",
+        "label": "방어",
+        "seed": 205759,
+        "durationMs": 95,
+        "targetPeak": 0.44,
+        "description": "잔향을 줄인 단단하고 짧은 막힘",
+        "fadeInMs": 3,
+        "fadeOutMs": 13,
+        "layers": [
+          {
+            "kind": "noise",
+            "gain": 1,
+            "lowHz": 550,
+            "highHz": 5900,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 0.5,
+                "decayMs": 12
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "noise",
+            "gain": 0.42,
+            "lowHz": 180,
+            "highHz": 1600,
+            "bursts": [
+              {
+                "atMs": 1,
+                "attackMs": 0.8,
+                "decayMs": 16
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "body",
+            "gain": 0.23,
+            "hz": 285,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.1,
+                "decayMs": 11
+              }
+            ],
+            "phaseRadians": 0
+          }
+        ]
+      },
+      "fade": {
+        "curve": "sine-squared",
+        "inMs": 3,
+        "outMs": 13,
+        "inSamples": 144,
+        "outSamples": 624
+      },
+      "normalization": {
+        "method": "one scalar peak gain times rendered asset gain; no limiter or clipping",
+        "targetPeakBeforeAssetGain": 0.44,
+        "renderedAssetGain": 0.8,
+        "rawPeak": 0.6476508625,
+        "gain": 0.5435027117
+      }
+    },
+    {
+      "id": "whiff",
+      "label": "헛침",
+      "file": "whiff.wav",
+      "description": "충돌음 없이 공기가 짧게 지나가는 질감",
+      "sampleCount": 7200,
+      "durationMs": 150,
+      "peak": 0.216003418,
+      "rms": 0.0423471553,
+      "dcMean": -0.0000013224,
+      "firstSample": 0,
+      "lastSample": 0,
+      "clippedSamples": 0,
+      "nonzeroSamples": 7082,
+      "edgeMaxStep": 0.0009155273,
+      "bytes": 14444,
+      "sha256": "c64eb4ed95cf003db2f222b6bbbde05158693324d480c4c623d3d6804ce5039e",
+      "seed": 230003,
+      "settings": {
+        "id": "whiff",
+        "label": "헛침",
+        "seed": 230003,
+        "durationMs": 150,
+        "targetPeak": 0.27,
+        "description": "충돌음 없이 공기가 짧게 지나가는 질감",
+        "fadeInMs": 4,
+        "fadeOutMs": 28,
+        "layers": [
+          {
+            "kind": "noise",
+            "gain": 1,
+            "lowHz": 420,
+            "highHz": 4200,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 31,
+                "decayMs": 38
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "noise",
+            "gain": 0.22,
+            "lowHz": 1800,
+            "highHz": 7500,
+            "bursts": [
+              {
+                "atMs": 13,
+                "attackMs": 20,
+                "decayMs": 23
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          }
+        ]
+      },
+      "fade": {
+        "curve": "sine-squared",
+        "inMs": 4,
+        "outMs": 28,
+        "inSamples": 192,
+        "outSamples": 1344
+      },
+      "normalization": {
+        "method": "one scalar peak gain times rendered asset gain; no limiter or clipping",
+        "targetPeakBeforeAssetGain": 0.27,
+        "renderedAssetGain": 0.8,
+        "rawPeak": 0.2791183856,
+        "gain": 0.7738651811
+      }
+    },
+    {
+      "id": "grab-hold",
+      "label": "붙잡음",
+      "file": "grab-hold.wav",
+      "description": "옷깃을 모아 쥐는 짧고 건조한 천 마찰",
+      "sampleCount": 6720,
+      "durationMs": 140,
+      "peak": 0.2559814453,
+      "rms": 0.0340516537,
+      "dcMean": -0.0000064895,
+      "firstSample": 0,
+      "lastSample": 0,
+      "clippedSamples": 0,
+      "nonzeroSamples": 6484,
+      "edgeMaxStep": 0.0061340332,
+      "bytes": 13484,
+      "sha256": "e67d3f3b701cd7b08544dfbc73b760bbcd1ba926a474176e12313f82cb1816c1",
+      "seed": 254959,
+      "settings": {
+        "id": "grab-hold",
+        "label": "붙잡음",
+        "seed": 254959,
+        "durationMs": 140,
+        "targetPeak": 0.32,
+        "description": "옷깃을 모아 쥐는 짧고 건조한 천 마찰",
+        "fadeInMs": 2,
+        "fadeOutMs": 22,
+        "layers": [
+          {
+            "kind": "noise",
+            "gain": 1,
+            "lowHz": 380,
+            "highHz": 3500,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 6,
+                "decayMs": 16
+              },
+              {
+                "atMs": 23,
+                "attackMs": 4,
+                "decayMs": 18
+              },
+              {
+                "atMs": 51,
+                "attackMs": 3,
+                "decayMs": 12
+              }
+            ],
+            "flutterHz": 83,
+            "flutterDepth": 0.5
+          },
+          {
+            "kind": "noise",
+            "gain": 0.26,
+            "lowHz": 130,
+            "highHz": 900,
+            "bursts": [
+              {
+                "atMs": 10,
+                "attackMs": 9,
+                "decayMs": 28
+              }
+            ],
+            "flutterHz": 47,
+            "flutterDepth": 0.35
+          }
+        ]
+      },
+      "fade": {
+        "curve": "sine-squared",
+        "inMs": 2,
+        "outMs": 22,
+        "inSamples": 96,
+        "outSamples": 1056
+      },
+      "normalization": {
+        "method": "one scalar peak gain times rendered asset gain; no limiter or clipping",
+        "targetPeakBeforeAssetGain": 0.32,
+        "renderedAssetGain": 0.8,
+        "rawPeak": 0.5326446006,
+        "gain": 0.480620661
+      }
+    },
+    {
+      "id": "grab-impact",
+      "label": "메치기 바닥 충격",
+      "file": "grab-impact.wav",
+      "description": "몸이 바닥에 닿는 둔한 충격과 짧은 옷 마찰",
+      "sampleCount": 13680,
+      "durationMs": 285,
+      "peak": 0.5119934082,
+      "rms": 0.0645804161,
+      "dcMean": -0.0000600804,
+      "firstSample": 0,
+      "lastSample": 0,
+      "clippedSamples": 0,
+      "nonzeroSamples": 13479,
+      "edgeMaxStep": 0.0321960449,
+      "bytes": 27404,
+      "sha256": "42e424424c1f5dff00f949d21b5405c6b3efc352307cb3883d064d22a1edebc0",
+      "seed": 280001,
+      "settings": {
+        "id": "grab-impact",
+        "label": "메치기 바닥 충격",
+        "seed": 280001,
+        "durationMs": 285,
+        "targetPeak": 0.64,
+        "description": "몸이 바닥에 닿는 둔한 충격과 짧은 옷 마찰",
+        "fadeInMs": 1.2,
+        "fadeOutMs": 42,
+        "layers": [
+          {
+            "kind": "noise",
+            "gain": 1,
+            "lowHz": 55,
+            "highHz": 1550,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 2.2,
+                "decayMs": 51
+              },
+              {
+                "atMs": 22,
+                "attackMs": 1.7,
+                "decayMs": 25
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "noise",
+            "gain": 0.38,
+            "lowHz": 700,
+            "highHz": 5200,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.4,
+                "decayMs": 22
+              }
+            ],
+            "flutterHz": 0,
+            "flutterDepth": 0
+          },
+          {
+            "kind": "body",
+            "gain": 0.61,
+            "hz": 61,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.1,
+                "decayMs": 54
+              }
+            ],
+            "phaseRadians": 0
+          },
+          {
+            "kind": "body",
+            "gain": 0.24,
+            "hz": 103,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 1.1,
+                "decayMs": 32
+              }
+            ],
+            "phaseRadians": 0
+          },
+          {
+            "kind": "body",
+            "gain": 0.11,
+            "hz": 157,
+            "bursts": [
+              {
+                "atMs": 9,
+                "attackMs": 1.1,
+                "decayMs": 19
+              }
+            ],
+            "phaseRadians": 0
+          }
+        ]
+      },
+      "fade": {
+        "curve": "sine-squared",
+        "inMs": 1.2,
+        "outMs": 42,
+        "inSamples": 58,
+        "outSamples": 2016
+      },
+      "normalization": {
+        "method": "one scalar peak gain times rendered asset gain; no limiter or clipping",
+        "targetPeakBeforeAssetGain": 0.64,
+        "renderedAssetGain": 0.8,
+        "rawPeak": 1.2218943393,
+        "gain": 0.4190215009
+      }
+    },
+    {
+      "id": "grab-escape",
+      "label": "잡기 풀기",
+      "file": "grab-escape.wav",
+      "description": "손과 옷이 빠르게 떨어지는 두 번의 짧은 마찰",
+      "sampleCount": 7440,
+      "durationMs": 155,
+      "peak": 0.2879943848,
+      "rms": 0.0408358344,
+      "dcMean": 0.0000042249,
+      "firstSample": 0,
+      "lastSample": 0,
+      "clippedSamples": 0,
+      "nonzeroSamples": 7298,
+      "edgeMaxStep": 0.0227050781,
+      "bytes": 14924,
+      "sha256": "98de3e9b5f30ed06902a5931fa9d74af5e2c98cdad348ee00874cb48054f5616",
+      "seed": 305093,
+      "settings": {
+        "id": "grab-escape",
+        "label": "잡기 풀기",
+        "seed": 305093,
+        "durationMs": 155,
+        "targetPeak": 0.36,
+        "description": "손과 옷이 빠르게 떨어지는 두 번의 짧은 마찰",
+        "fadeInMs": 2,
+        "fadeOutMs": 24,
+        "layers": [
+          {
+            "kind": "noise",
+            "gain": 1,
+            "lowHz": 550,
+            "highHz": 4600,
+            "bursts": [
+              {
+                "atMs": 0,
+                "attackMs": 5,
+                "decayMs": 17
+              },
+              {
+                "atMs": 36,
+                "attackMs": 9,
+                "decayMs": 24
+              }
+            ],
+            "flutterHz": 67,
+            "flutterDepth": 0.42
+          },
+          {
+            "kind": "noise",
+            "gain": 0.3,
+            "lowHz": 1100,
+            "highHz": 6700,
+            "bursts": [
+              {
+                "atMs": 32,
+                "attackMs": 12,
+                "decayMs": 20
+              }
+            ],
+            "flutterHz": 113,
+            "flutterDepth": 0.25
+          }
+        ]
+      },
+      "fade": {
+        "curve": "sine-squared",
+        "inMs": 2,
+        "outMs": 24,
+        "inSamples": 96,
+        "outSamples": 1152
+      },
+      "normalization": {
+        "method": "one scalar peak gain times rendered asset gain; no limiter or clipping",
+        "targetPeakBeforeAssetGain": 0.36,
+        "renderedAssetGain": 0.8,
+        "rawPeak": 0.4665428797,
+        "gain": 0.6173066026
+      }
+    }
+  ],
+  "reel": {
+    "id": "reel",
+    "label": "9종 순서 비교",
+    "file": "reel.wav",
+    "sampleCount": 254160,
+    "durationMs": 5295,
+    "peak": 0.5119934082,
+    "rms": 0.0283836823,
+    "dcMean": -0.0000770612,
+    "firstSample": 0,
+    "lastSample": 0,
+    "clippedSamples": 0,
+    "nonzeroSamples": 68486,
+    "edgeMaxStep": 0,
+    "bytes": 508364,
+    "sha256": "e7373ce4ed0c6cbe91f6ae9e59a1cb0b45c8e878d1d951dd02fb2fa62a8800ec",
+    "leadingMs": 240,
+    "gapMs": 420,
+    "trailingMs": 240,
+    "sequence": [
+      {
+        "id": "hit-lp",
+        "startMs": 240,
+        "durationMs": 105
+      },
+      {
+        "id": "hit-hp",
+        "startMs": 765,
+        "durationMs": 165
+      },
+      {
+        "id": "hit-lk",
+        "startMs": 1350,
+        "durationMs": 145
+      },
+      {
+        "id": "hit-hk",
+        "startMs": 1915,
+        "durationMs": 215
+      },
+      {
+        "id": "guard",
+        "startMs": 2550,
+        "durationMs": 95
+      },
+      {
+        "id": "whiff",
+        "startMs": 3065,
+        "durationMs": 150
+      },
+      {
+        "id": "grab-hold",
+        "startMs": 3635,
+        "durationMs": 140
+      },
+      {
+        "id": "grab-impact",
+        "startMs": 4195,
+        "durationMs": 285
+      },
+      {
+        "id": "grab-escape",
+        "startMs": 4900,
+        "durationMs": 155
+      }
+    ],
+    "note": "Sequential audition at original file levels; no overlapping mix or game event timing."
+  }
+}

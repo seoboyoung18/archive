@@ -1,0 +1,91 @@
+[
+  {
+    "id": "flip-tuck",
+    "tool": "built-in image_gen",
+    "references": [
+      "derived/v2/idle.png",
+      "derived/movement-v1/jump-apex.png"
+    ],
+    "prompt": "Use case: stylized-concept. Asset type: one transparent 2D fighting game animation sprite, not a sheet. Reference image 1 is the game's established H1 idle sprite, reference image 2 is the existing jump pose. Generate one NEW in-between pose for this SAME adult female fighter. Preserve her black bob haircut, face, cropped red jacket with white stripes, white sports top, black loose pants with red side stripe, hand wraps, red sneakers, exact anime cel-shaded linework and body proportions. Full body, facing right in the same three-quarter side-view, no extra people. Pose: compact forward-somersault TUCK, both knees drawn firmly toward the chest, spine curled forward slightly, hands brought close to shins without grabbing, shoulders rounded, eyes right/down. Torso/head still upright (the game rotates the body continuously around its center). Legs visibly folded, anatomically clean and natural. Output square 1024x1024 RGBA with genuine transparent background, no shadow, no floor, no text, no border. Composition must follow the references at exactly 2x canvas coordinates: a standing reference would occupy head y128 to ground y896, virtual root(512,896), body center near(512,512). Keep same anatomical scale, do NOT enlarge the tucked pose to fill the canvas. Tucked body must stay around the same hip/torso location, total visible height shrinks naturally. No motion blur, no ghosting, no duplicate limbs.",
+    "source": "exec-b8a756de-7598-4703-9fd9-8d18365bae3f.png",
+    "output": "flip-tuck.png",
+    "sha256": "b09c514ed8f3cb5ab3436a96b0bdee8e079649a8cc64ee21dc0e03b0273a3fb4",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "flip-fold",
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-de1e3acd-121c-417f-ba6f-9801bf1a446c.png",
+    "prompt": "Use case: stylized-concept. One individual transparent fighting-game animation sprite, not a sheet. Input1 is established H1 idle reference, input2 existing jump reference. Preserve EXACT same adult woman, face, black bob, red cropped track jacket/white stripes, white crop sports top, loose black trousers with red side stripe, white hand wraps and red sneakers, body proportions, anime cel shading and clean outlines. Full body facing RIGHT three-quarter sideview. Genuine RGBA transparency, no floor/shadow/text/effects/blur/duplicate limbs. Square canvas requested1024; match references scaled 2x: standing head y128, virtual ground y896, virtual root(512,896), body center near(512,512). Keep anatomical scale identical across frames; do NOT fit tucked body to fill canvas. Torso/head remain generally upright because game separately rotates the whole sprite for one somersault. A forward flip's early folding pose: both thighs lifting toward waist, knees bent about90deg, shins point downward/back, torso starts to lean forward20deg, elbows pulled in, hands just ahead of knees. Halfway between reference jump and compact tuck. Keep hip location consistent.",
+    "tool": "built-in image_gen",
+    "references": [
+      "derived/v2/idle.png",
+      "derived/movement-v1/jump-apex.png"
+    ],
+    "output": "flip-fold.png",
+    "sha256": "54f347d47114ba46afcc91532dfb7a50fcf38bfd360b716188c69e8abc95883f",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "flip-coil",
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-18159dee-ff2c-445a-b149-b3a1c9ad03cf.png",
+    "prompt": "Use case: stylized-concept. One individual transparent fighting-game animation sprite, not a sheet. Input1 is established H1 idle reference, input2 existing jump reference. Preserve EXACT same adult woman, face, black bob, red cropped track jacket/white stripes, white crop sports top, loose black trousers with red side stripe, white hand wraps and red sneakers, body proportions, anime cel shading and clean outlines. Full body facing RIGHT three-quarter sideview. Genuine RGBA transparency, no floor/shadow/text/effects/blur/duplicate limbs. Square canvas requested1024; match references scaled 2x: standing head y128, virtual ground y896, virtual root(512,896), body center near(512,512). Keep anatomical scale identical across frames; do NOT fit tucked body to fill canvas. Torso/head remain generally upright because game separately rotates the whole sprite for one somersault. A forward flip's tightest curled ball: both knees pulled against lower chest, ankles close, chin lowered toward knees, back smoothly rounded, fists next to shins. Compact muscular motion, asymmetrical but aligned feet. Face partially tucked yet recognizable, clean single arms/legs. Keep hip/torso location consistent.",
+    "tool": "built-in image_gen",
+    "references": [
+      "derived/v2/idle.png",
+      "derived/movement-v1/jump-apex.png"
+    ],
+    "output": "flip-coil.png",
+    "sha256": "4ef26ca217f80ee9d20da9165306ea004810581d78a8004a7230d38346e44c42",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "flip-release",
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-0fa879f0-f09e-488d-b807-b37af4234a48.png",
+    "prompt": "Use case: stylized-concept. One individual transparent fighting-game animation sprite, not a sheet. Input1 is established H1 idle reference, input2 existing jump reference. Preserve EXACT same adult woman, face, black bob, red cropped track jacket/white stripes, white crop sports top, loose black trousers with red side stripe, white hand wraps and red sneakers, body proportions, anime cel shading and clean outlines. Full body facing RIGHT three-quarter sideview. Genuine RGBA transparency, no floor/shadow/text/effects/blur/duplicate limbs. Square canvas requested1024; match references scaled 2x: standing head y128, virtual ground y896, virtual root(512,896), body center near(512,512). Keep anatomical scale identical across frames; do NOT fit tucked body to fill canvas. Torso/head remain generally upright because game separately rotates the whole sprite for one somersault. A forward flip opening from tuck: torso starts straightening, one knee still at waist, other knee descending, both shins unfolding down, fists lift gradually toward chest-level fighting guard. A clear distinct in-between from tucked ball toward open jump. Preserve same body scale.",
+    "tool": "built-in image_gen",
+    "references": [
+      "derived/v2/idle.png",
+      "derived/movement-v1/jump-apex.png"
+    ],
+    "output": "flip-release.png",
+    "sha256": "b21d6590021aa37d4dbab0835f8f6cca37a3efb6d85a544de2dd369ba4cad685",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "flip-landing",
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-af65c16b-65f3-4498-80bc-25512001e840.png",
+    "prompt": "Use case: stylized-concept. One individual transparent fighting-game animation sprite, not a sheet. Input1 is established H1 idle reference, input2 existing jump reference. Preserve EXACT same adult woman, face, black bob, red cropped track jacket/white stripes, white crop sports top, loose black trousers with red side stripe, white hand wraps and red sneakers, body proportions, anime cel shading and clean outlines. Full body facing RIGHT three-quarter sideview. Genuine RGBA transparency, no floor/shadow/text/effects/blur/duplicate limbs. Square canvas requested1024; match references scaled 2x: standing head y128, virtual ground y896, virtual root(512,896), body center near(512,512). Keep anatomical scale identical across frames; do NOT fit tucked body to fill canvas. Torso/head remain generally upright because game separately rotates the whole sprite for one somersault. End of a forward flip immediately before landing: upright torso, both legs extend down but knees remain softly bent, feet apart in normal fighting stance spacing and almost at virtual ground line, forefeet downward ready to absorb landing, both fists return to normal reference guard. Same head height as idle, not crouched, keep reference proportions.",
+    "tool": "built-in image_gen",
+    "references": [
+      "derived/v2/idle.png",
+      "derived/movement-v1/jump-apex.png"
+    ],
+    "output": "flip-landing.png",
+    "sha256": "5427723bbbbc69db1dad597d2335040fd710d01ab07d2b58916e7f44c99c09ed",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "flip-lift",
+    "prompt": "Use case: stylized-concept. One individual transparent fighting-game animation sprite, not a sheet. Input1 is established H1 idle reference, input2 existing jump reference. Preserve EXACT same adult woman, face, black bob, red cropped track jacket/white stripes, white crop sports top, loose black trousers with red side stripe, white hand wraps and red sneakers, body proportions, anime cel shading and clean outlines. Full body facing RIGHT three-quarter sideview. Genuine RGBA transparency, no floor/shadow/text/effects/blur/duplicate limbs. Square canvas requested1024; match references scaled 2x: standing head y128, virtual ground y896, virtual root(512,896), body center near(512,512). Keep anatomical scale identical across frames; do NOT fit tucked body to fill canvas. Torso/head remain generally upright because game separately rotates the whole sprite for one somersault. Early takeoff connection: torso upright in guard, both knees slightly bending upward, heels drawn upward behind thighs but thighs still point mostly down. Arms start drawing inward toward chest, toes down. Pose must be visibly between upright airborne stance and the folded jump reference. Hip and head heights retained, total visible silhouette naturally slightly shorter than idle.",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/v2/idle.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/movement-v1/jump-apex.png"
+    ],
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-7bc28d3b-4cf9-4d1b-b1c3-e105f9109a1b.png",
+    "output": "flip-lift.png",
+    "sha256": "33ad125b45e3f387606d91d21c51aed29c3966ecdbaa77dae9fb8ca3e67259bf",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "flip-open",
+    "prompt": "Use case: stylized-concept. One individual transparent fighting-game animation sprite, not a sheet. Input1 is established H1 idle reference, input2 existing jump reference. Preserve EXACT same adult woman, face, black bob, red cropped track jacket/white stripes, white crop sports top, loose black trousers with red side stripe, white hand wraps and red sneakers, body proportions, anime cel shading and clean outlines. Full body facing RIGHT three-quarter sideview. Genuine RGBA transparency, no floor/shadow/text/effects/blur/duplicate limbs. Square canvas requested1024; match references scaled 2x: standing head y128, virtual ground y896, virtual root(512,896), body center near(512,512). Keep anatomical scale identical across frames; do NOT fit tucked body to fill canvas. Torso/head remain generally upright because game separately rotates the whole sprite for one somersault. Late opening from forward flip: both thighs lowering from tuck with knees still gently bent, two sneakers below hips and separating into fighting stance, hands moving up into guard. Both lower legs visible downwards, torso upright. Body is between asymmetric one-leg release and almost straight pre-landing, about85percent standing height. Keep same anatomical size, not compact tuck.",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/v2/idle.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/movement-v1/jump-apex.png"
+    ],
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-53a31d59-9b0a-4d85-b8ba-1a9a0e2c8c5d.png",
+    "output": "flip-open.png",
+    "sha256": "2b7d61d4b1f77718f6854151c5474bb2f56b9409b8fd1e97c6135d6da665bf3c",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "reason": "Visual support-foot continuity and downward kick trajectory corrections",
+  "frames": [
+    {
+      "id": "stand-lk-startup",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-lk-active.png"
+      ],
+      "prompt": "Use case: precise-object-edit. H1 anime sprite same face, black bob, red jacket, white top, black trousers, wrapped fists, red shoes. Transparent1254square. RIGHT facing. No zoom or recenter, no effects/text/ground. Keep head size, canvas scale. Use supplied ACTIVE kick as EDIT TARGET. ONLY fold the raised RIGHT kicking leg: knee at waist height, foot tucked directly under knee close to hip, shin almost vertical. Keep the entire LEFT support leg and shoe EXACTLY at current coordinates (shoe near x275 sole1210). Keep torso and guard unchanged. This is early kick chamber, NOT fully extended."
+    },
+    {
+      "id": "stand-lk-recovery",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-lk-active.png"
+      ],
+      "prompt": "Use case: precise-object-edit. H1 anime sprite same face, black bob, red jacket, white top, black trousers, wrapped fists, red shoes. Transparent1254square. RIGHT facing. No zoom or recenter, no effects/text/ground. Keep head size, canvas scale. Use supplied ACTIVE kick as EDIT TARGET. ONLY fold raised RIGHT kicking leg back and lower knee halfway: thigh slopes down-right45degrees, shin folds downward, shoe around x800 y930. Keep entire LEFT support leg/shoe EXACTLY at current coordinates (shoe near x275 sole1210), torso/guard/camera identical. Mid recovery after striking, before foot returns to neutral front ground position. No movement of planted foot."
+    },
+    {
+      "id": "stand-hk-recovery",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-hk-active.png"
+      ],
+      "prompt": "Use case: precise-object-edit. H1 anime sprite same face, black bob, red jacket, white top, black trousers, wrapped fists, red shoes. Transparent1254square. RIGHT facing. No zoom or recenter, no effects/text/ground. Keep head size, canvas scale. Use supplied ACTIVE heavy kick as EDIT TARGET. Keep LEFT support shoe exactly x250 sole1205 and support leg. Lower attacking RIGHT knee to waist height, thigh nearly horizontal, shin hangs down-right, shoe at x800 y960. Torso less inclined and guard hands return to chest; head size unchanged. Mid recovery transitioning from raised knee to landing, not another high kick."
+    },
+    {
+      "id": "stand-lk-settle-v2",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "prompt": "Use case: precise-object-edit. H1 anime sprite same face, black bob, red jacket, white top, black trousers, wrapped fists, red shoes. Transparent1254square. RIGHT facing. No zoom or recenter, no effects/text/ground. Keep head size, canvas scale. Use supplied NEUTRAL guard as EDIT TARGET. Preserve LEFT planted shoe/leg and upper body EXACTLY, especially left shoe x245 sole1193. Change ONLY RIGHT front leg: slightly lift its shoe 60pixels above its current ground location x985, bend right knee slightly more. Same wide neutral stance, not narrow walking. Late kick landing transition, both fists identical. Do not move LEFT support shoe toward center."
+    },
+    {
+      "id": "stand-hk-settle-v2",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "prompt": "Use case: precise-object-edit. H1 anime sprite same face, black bob, red jacket, white top, black trousers, wrapped fists, red shoes. Transparent1254square. RIGHT facing. No zoom or recenter, no effects/text/ground. Keep head size, canvas scale. Use supplied NEUTRAL guard as EDIT TARGET. Preserve LEFT planted shoe/leg and upper body EXACTLY, left shoe x245 sole1193. Change ONLY RIGHT front leg: lower from kick with shoe 100pixels above neutral right ground location x985, knee gently bent. Same wide neutral stance. Small forward body recoil, fists guard. No moving the LEFT support foot toward middle. Nearly complete recovery after heavy kick."
+    },
+    {
+      "id": "stand-hk-descend-v2",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/attack-motion-v1/stand-hk-apex.png"
+      ],
+      "prompt": "Use case: precise-object-edit. H1 anime sprite same face, black bob, red jacket, white top, black trousers, wrapped fists, red shoes. Transparent1254square. RIGHT facing. No zoom or recenter, no effects/text/ground. Keep head size, canvas scale. Use supplied high kick APEX as EDIT TARGET. Keep all upper body and planted LEFT support leg/shoe EXACTLY. Rotate raised attacking RIGHT leg DOWN about20degrees from apex, so thigh now slopes gently up-right and the attacking shoe center ends at x1120 y390. Keep knee almost straight but soft. Shoe MUST be at shoulder height(y390), NOT down at waist or below. This is halfway on downward arc from shoe y180 to impact shoe y650. No raising or moving planted foot."
+    }
+  ]
+}

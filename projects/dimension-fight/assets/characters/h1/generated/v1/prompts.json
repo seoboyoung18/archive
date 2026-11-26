@@ -1,0 +1,38 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-09-30",
+  "transparent_background": true,
+  "frames": [
+    {
+      "id": "idle",
+      "prompt": "Use case: identity-preserve. Asset type: Dimension Fight H1 game animation draft, idle frame. Input image 1 is the exact character appearance reference. Generate ONE full-body 2D anime cel-shaded fighting sprite on a genuinely transparent background. Preserve her exact face, short black bob hairstyle, red jacket with white sleeve stripes, white athletic cropped shirt, black pants with red trim, white hand wraps and red sneakers. Preserve adult proportions and clean outlines. She faces RIGHT in the same three-quarter fighting stance, both wrapped fists guarding. Single character, no text, no effects, no shadow, no background. Output a square 512x512 PNG if supported. Composition: head top at y=64 and soles at y=448 (normalized 12.5% and 87.5% of canvas height); virtual foot anchor at x=256,y=448. Body baseline root horizontally centered; retain generous transparent margins. All limbs inside canvas. This is an animation asset, not a character redesign.",
+      "references": [
+        "../../reference.png"
+      ]
+    },
+    {
+      "id": "startup",
+      "prompt": "Use case: identity-preserve. Asset type: Dimension Fight H1 standing light-punch STARTUP frame. Input image 1 is the exact character appearance reference. Generate ONE full-body 2D anime cel-shaded fighting sprite on genuinely transparent background. Preserve exact face, short black bob, red jacket with white stripes, white cropped athletic top, black pants red trim, white wraps, red sneakers, adult proportions and line style. Faces RIGHT. Feet planted in reference fighting stance. Pull the lead fist only slightly back near chest to prepare a fast straight jab, other fist guards cheek; tiny shoulder wind-up. Not the extended punch yet. Same head size, body scale and foot positions as reference stance. No text, effects, shadows or background. Square 512x512 PNG if supported, head top y=64, soles y=448, virtual foot anchor x=256,y=448 (12.5% head top,87.5% floor;root x50%). Full character with transparent margins, no cropping.\nInput image 2 is the generated idle frame: match its body proportions, stance and foot placement exactly while changing only the jab startup arm pose.",
+      "references": [
+        "../../reference.png",
+        "idle.png"
+      ]
+    },
+    {
+      "id": "active",
+      "prompt": "Use case: identity-preserve. Asset type: Dimension Fight H1 standing light-punch ACTIVE frame. Input image 1 is the exact character appearance reference. Generate ONE full-body 2D anime cel-shaded fighting sprite on genuinely transparent background. Preserve exact face, short black bob, red jacket white stripes, white cropped athletic top, black pants red trim, white wraps, red sneakers and adult proportions. Faces RIGHT, feet planted in same reference stance. Lead arm performs a fully extended straight jab to the RIGHT at upper-chest height, horizontally extended wrapped fist clearly beyond torso; rear fist stays near cheek. Small forward shoulder rotation, no lunge or step, no stretched anatomy. Preserve head and foot scale. No text, impact effects, trails, shadows or background. Square 512x512 PNG if supported; head top y=64, soles y=448, root anchor x=256,y=448. Extended fist should lie near x=422,y=216 without touching border; full body all inside canvas.\nInput image 2 is the generated idle frame. Match its camera, body scale and planted foot positions. Change the lead arm to the extended straight jab, keep the exact character identity.",
+      "references": [
+        "../../reference.png",
+        "idle.png"
+      ]
+    },
+    {
+      "id": "recovery",
+      "prompt": "Use case: identity-preserve. Asset type: Dimension Fight H1 standing light-punch RECOVERY frame. Input image 1 is the exact character appearance reference. Generate ONE full-body 2D anime cel-shaded fighting sprite on genuinely transparent background. Preserve exact face, short black bob, red jacket white stripes, white cropped athletic top, black pants red trim, white wraps, red sneakers and adult proportions. Faces RIGHT with same planted feet and head size as reference. Lead fist is retracting from a straight jab, elbow bent about ninety degrees, wrapped fist halfway between extended contact and guarding chest; rear fist near cheek. Shoulders returning to neutral, not a second strike. No effects, text, shadows or background. Square 512x512 PNG if supported. Head top y=64, soles y=448; virtual foot anchor x=256,y=448. Same framing as idle and punch sequence, generous transparent margins, no cropping.\nInput image 2 is the generated active punch frame. Keep precisely the same feet, body, head, clothes and screen placement. Only bend the extended punching arm to retract it halfway; do not switch arms. Other fist remains guarding.",
+      "references": [
+        "../../reference.png",
+        "active.png"
+      ]
+    }
+  ]
+}

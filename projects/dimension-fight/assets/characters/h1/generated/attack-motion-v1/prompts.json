@@ -1,0 +1,259 @@
+{
+  "date": "2026-10-01",
+  "tool": "image_gen.imagegen",
+  "frames": [
+    {
+      "id": "stand-hp-extend",
+      "attack": "stand-hp",
+      "phase": "extend",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. STANDING HEAVY STRAIGHT PUNCH LATE STARTUP. Preserve image1 lower body and BOTH shoes EXACTLY. Striking RIGHTWARD arm only60percent extended, elbow still bent120degrees, fist between shoulder and full image1 fist endpoint. Other hand guards face. Torso rotates toward strike. Preserve head size and height.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-hp-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "stand-hp-retract",
+      "attack": "stand-hp",
+      "phase": "retract",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. STANDING punch EARLY RECOVERY. Preserve image1 lower body and BOTH shoes EXACTLY. Striking fist pulls inward about20percent from full image1 extension, elbow flexing mildly150degrees. Other fist guards face, shoulders beginning to unwind. Distinct from fully extended impact and90degree recovery. ",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-hp-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "stand-hp-settle",
+      "attack": "stand-hp",
+      "phase": "settle",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. STANDING punch LATE RECOVERY. Use image2 almost-neutral guard with striking fist still slightly forward of its neutral position, elbow folded, shoulders99percent unwound. Preserve image2 BOTH shoes, lower body and head position EXACTLY. Headtop74 and sole1194. Make one clear nearly-neutral transitional pose.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-hp-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "stand-lk-extend",
+      "attack": "stand-lk",
+      "phase": "extend",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. STANDING LIGHT FRONT KICK LATE STARTUP halfway extension. Keep image1 support LEFT shoe position and upper body size and guard. Attacking RIGHT knee still clearly bent120degrees, foot halfway between hip and fully extended image1 position, around waist height. Distinct from impact, no straight fully extended knee yet.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-lk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "stand-lk-retract",
+      "attack": "stand-lk",
+      "phase": "retract",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. STANDING kick EARLY RECOVERY. Keep image1 support LEFT shoe, head/hip and guard. Pull attacking right foot INWARD about one quarter from full extension and flex knee. Foot still waist high, leg about75percent extended. Keep direction of movement inward rather than another full kick. Same character anatomical size.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-lk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "stand-lk-settle",
+      "attack": "stand-lk",
+      "phase": "settle",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. STANDING kick LATE RECOVERY toward image2 neutral. Use image2 entire body scale, head and hip position. Keep rear/left support shoe planted in its reference position. Attacking right leg almost back to neutral front position, knee bent and shoe just above its image2 location. Both hands near neutral guard. Return torso upright.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-lk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "stand-hk-lift",
+      "attack": "stand-hk",
+      "phase": "lift",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. Heavy downward kick EARLY LIFT. Keep planted rear/left shoe precisely at image1 position. Body slightly leans back, both hands guard. Lift the attacking right knee upward chest height, shin folded down, shoe below knee. Not extended and not impact.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-hk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "stand-hk-apex",
+      "attack": "stand-hk",
+      "phase": "apex",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. Heavy downward kick APEX before descending. Keep image1 rear/left support shoe fixed. Lift attacking right foot HIGH at head/shoulder height toward upper-right, knee gently bent. Heel ready to descend, sole faces down-forward. Exactly one support leg planted and one raised attack leg. Whole shoe visible, no high canvas clipping.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-hk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "stand-hk-descend",
+      "attack": "stand-hk",
+      "phase": "descend",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. Heavy downward kick DESCENDING intermediate before image1 impact. Keep image1 left support shoe and body scale. Attacking thigh raised and shin extends diagonally down-right, shoe around lower chest height, clearly LOWER than head-high apex but HIGHER than image1 impact shoe. Torso/guard transitions toward image1. Show downward heel arc, no motion effects.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-hk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "stand-hk-retract",
+      "attack": "stand-hk",
+      "phase": "retract",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. Heavy kick EARLY RECOVERY immediately after image1 impact. Preserve support left shoe exactly. Bend attacking right knee back toward torso, right foot halfway pulled inward from image1, now under raised knee. Upper body starts returning upright, hands return toward guard. Do not plant attacking foot yet.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-hk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "stand-hk-settle",
+      "attack": "stand-hk",
+      "phase": "settle",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. Heavy kick LATE RECOVERY nearly neutral image2. Keep support left shoe planted, lower attacking right leg toward its neutral front shoe position in image2, heel just above floor, knee relaxed. Torso and hands almost image2 guard, face/head size unchanged. This bridges existing knee-bent recovery into neutral, not another kick.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/stand-hk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/idle.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-lp-extend",
+      "attack": "crouch-lp",
+      "phase": "extend",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. CROUCHING LIGHT PUNCH LATE STARTUP. Preserve image1 lower body and BOTH shoes EXACTLY. Striking RIGHTWARD arm only60percent extended, elbow still bent120degrees, fist between shoulder and full image1 fist endpoint. Other hand guards face. Torso rotates toward strike. Head stays low around490, hips crouched, keep large empty upper canvas.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/crouch-lp-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-lp-retract",
+      "attack": "crouch-lp",
+      "phase": "retract",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. CROUCHING punch EARLY RECOVERY. Preserve image1 lower body and BOTH shoes EXACTLY. Striking fist pulls inward about20percent from full image1 extension, elbow flexing mildly150degrees. Other fist guards face, shoulders beginning to unwind. Distinct from fully extended impact and90degree recovery. Keep low crouched head/hip position and empty upper canvas.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/crouch-lp-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-lp-settle",
+      "attack": "crouch-lp",
+      "phase": "settle",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. CROUCHING punch LATE RECOVERY. Use image2 almost-neutral guard with striking fist still slightly forward of its neutral position, elbow folded, shoulders99percent unwound. Preserve image2 BOTH shoes, lower body and head position EXACTLY. Headtop490, low crouch and empty upper half canvas, no enlargement. Make one clear nearly-neutral transitional pose.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/crouch-lp-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-hp-extend",
+      "attack": "crouch-hp",
+      "phase": "extend",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. CROUCHING HEAVY STRAIGHT PUNCH LATE STARTUP. Preserve image1 lower body and BOTH shoes EXACTLY. Striking RIGHTWARD arm only60percent extended, elbow still bent120degrees, fist between shoulder and full image1 fist endpoint. Other hand guards face. Torso rotates toward strike. Head stays low around490, hips crouched, keep large empty upper canvas.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/crouch-hp-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-hp-retract",
+      "attack": "crouch-hp",
+      "phase": "retract",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. CROUCHING punch EARLY RECOVERY. Preserve image1 lower body and BOTH shoes EXACTLY. Striking fist pulls inward about20percent from full image1 extension, elbow flexing mildly150degrees. Other fist guards face, shoulders beginning to unwind. Distinct from fully extended impact and90degree recovery. Keep low crouched head/hip position and empty upper canvas.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/crouch-hp-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-hp-settle",
+      "attack": "crouch-hp",
+      "phase": "settle",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. CROUCHING punch LATE RECOVERY. Use image2 almost-neutral guard with striking fist still slightly forward of its neutral position, elbow folded, shoulders99percent unwound. Preserve image2 BOTH shoes, lower body and head position EXACTLY. Headtop490, low crouch and empty upper half canvas, no enlargement. Make one clear nearly-neutral transitional pose.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/crouch-hp-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-lk-extend",
+      "attack": "crouch-lk",
+      "phase": "extend",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. LOW CROUCHING LIGHT FRONT KICK LATE STARTUP halfway extension. Keep image1 support LEFT shoe position and low head top around490, crouched hip, large empty upper canvas. Attacking RIGHT knee still clearly bent120degrees, foot halfway between hip and fully extended image1 position, just above floor ankle height. Distinct from impact, no straight fully extended knee yet.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-lk-retract",
+      "attack": "crouch-lk",
+      "phase": "retract",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. LOW CROUCHING kick EARLY RECOVERY. Keep image1 support LEFT shoe, head/hip and guard. Pull attacking right foot INWARD about one quarter from full extension and flex knee. Foot remains low over ground, leg about75percent extended. Keep direction of movement inward rather than another full kick. Same character anatomical size.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-lk-settle",
+      "attack": "crouch-lk",
+      "phase": "settle",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. LOW CROUCHING kick LATE RECOVERY toward image2 neutral. Use image2 entire body scale, head and hip position. Keep rear/left support shoe planted in its reference position. Attacking right leg almost back to neutral front position, knee bent and shoe just above its image2 location. Both hands near neutral guard. Stay deeply crouched with headtop490, never stand up or enlarge.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-hk-extend",
+      "attack": "crouch-hk",
+      "phase": "extend",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. LOW CROUCHING HEAVY SWEEP LATE STARTUP halfway extension. Keep image1 support LEFT shoe position and low head top around490, crouched hip, large empty upper canvas. Attacking RIGHT knee still clearly bent120degrees, foot halfway between hip and fully extended image1 position, just above floor ankle height. Distinct from impact, no straight fully extended knee yet.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/crouch-hk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-hk-retract",
+      "attack": "crouch-hk",
+      "phase": "retract",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. LOW CROUCHING kick EARLY RECOVERY. Keep image1 support LEFT shoe, head/hip and guard. Pull attacking right foot INWARD about one quarter from full extension and flex knee. Foot remains low over ground, leg about75percent extended. Keep direction of movement inward rather than another full kick. Same character anatomical size.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/crouch-hk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    },
+    {
+      "id": "crouch-hk-settle",
+      "attack": "crouch-hk",
+      "phase": "settle",
+      "prompt": "Use case: identity-preserve. ONE individual transparent 2D anime fighting game sprite. Image1 is edit target/action anatomy reference; Image2 is neutral posture reference. H1 black bob woman, red cropped jacket white stripes, white top, black loose trousers red stripe, wrapped hands, red shoes. Preserve face, head size, anatomy, exact canvas1254square and drawing scale, camera and RIGHT facing. Transparent alpha, no text, floor, shadow, impact effects, blur, extra limbs. Keep extremities within canvas with margins. No zoom/recenter. Ground sole y1194; horizontal root627. LOW CROUCHING kick LATE RECOVERY toward image2 neutral. Use image2 entire body scale, head and hip position. Keep rear/left support shoe planted in its reference position. Attacking right leg almost back to neutral front position, knee bent and shoe just above its image2 location. Both hands near neutral guard. Stay deeply crouched with headtop490, never stand up or enlarge.",
+      "refs": [
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/combat-v1/crouch-hk-active.png",
+        "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+      ],
+      "selected": true
+    }
+  ]
+}

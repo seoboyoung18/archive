@@ -1,0 +1,31 @@
+[
+  {
+    "id": "walk-06-v2",
+    "phase": "contact-far",
+    "prompt": "Use case: precise-object-edit. Edit target: the supplied H1 walk-contact pose. Keep head, face, hair, red jacket, white top, guard arms, body size, camera, RIGHT-facing direction and transparent canvas exactly. Change ONLY the legs to the OPPOSITE step. CRITICAL VISUAL RULE: the pants leg with the long RED STRIPE goes diagonally DOWN-LEFT from the near hip to the REAR shoe at x403. The plain DARK pants leg goes diagonally DOWN-RIGHT to the FRONT shoe at x851. The screen-LEFT leg must have the red stripe all the way to the cuff. The screen-RIGHT leg must be PLAIN dark, no red stripe. The rear striped thigh is drawn in front at crotch overlap; front plain thigh emerges from behind. Rear shoe heel raised, toes planted; front plain-leg shoe heel lands with toes slightly raised. Natural walking contact stance. Exactly two legs, do not mirror the whole character, do not reproduce the input's red stripe on the forward/right leg.1254square, headtop74, bodycenter627, front heel/ground1194. Real transparent background, no shadow/floor/labels. This is opposite-phase walk frame06, not same frame00.",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-00.png"
+    ]
+  },
+  {
+    "id": "walk-03-v2",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-03.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Edit ONLY the legs of supplied H1 sprite. Keep head, face, hair, jacket, torso, arms, guard hands, upper body position and dimensions EXACTLY unchanged. Right-facing female. 1254x1254 transparent canvas, head top74 ground1194. Exactly two legs. No shadow or floor. WALK PASSING POSE: the RED-STRIPED near leg is the straight weight-bearing leg directly below hip at x627, shoe planted at floor1194. Move the PLAIN far leg from far left to immediately BEHIND the striped calf. Its knee swings slightly forward/right, its lifted ankle x627 y1030 and shoe peeks on the RIGHT SIDE of the planted calf. The two legs overlap very closely in silhouette. NO SHOE far to the left of the body. The lifted PLAIN leg passes BEHIND the striped support leg. Both ankles same horizontal x627, different heights."
+  },
+  {
+    "id": "walk-07-v2",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-06-v2.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Edit ONLY the legs of supplied H1 sprite. Keep head, face, hair, jacket, torso, arms, guard hands, upper body position and dimensions EXACTLY unchanged. Right-facing female. 1254x1254 transparent canvas, head top74 ground1194. Exactly two legs. No shadow or floor. Next walking pose after input. Preserve WHICH leg is on WHICH side. The RED-STRIPED near pants leg goes DOWN-LEFT to the REAR shoe at x475, heel lifted and toe about to leave ground. The PLAIN dark far pants leg goes DOWN-RIGHT to FRONT planted shoe x776 y1194. Slightly soften the FRONT PLAIN knee and transfer weight onto it. Screen-LEFT rear leg must have red stripe all way to cuff. Screen-RIGHT front leg MUST BE PLAIN black. No stripe on right leg. Slightly narrower stride than input."
+  },
+  {
+    "id": "walk-08-v2",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-06-v2.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Edit ONLY the legs of supplied H1 sprite. Keep head, face, hair, jacket, torso, arms, guard hands, upper body position and dimensions EXACTLY unchanged. Right-facing female. 1254x1254 transparent canvas, head top74 ground1194. Exactly two legs. No shadow or floor. WALK BACK FOOT RECOVERY. RED-STRIPED near leg is the lifted REAR leg on screen LEFT, knee bent, shoe lifted behind body at ankle x552 y1030. Red stripe continues from left hip down LEFT thigh and LEFT calf to LEFT lifted shoe. PLAIN dark FAR leg is straight planted support on screen RIGHT ankle x701 y1135 sole1194. Screen RIGHT support pants leg has NO red stripe. Both feet face right. Preserve near red-striped leg on left and plain leg on right as input, narrow stance and raise ONLY striped left rear foot."
+  }
+]

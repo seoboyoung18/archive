@@ -1,0 +1,875 @@
+{
+  "root": [
+    256,
+    448
+  ],
+  "status": "draft",
+  "frames": [
+    {
+      "offset": [
+        41.02857142857144,
+        41.37142857142857
+      ],
+      "sourceRoot": [
+        627.0,
+        1186
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hp-startup.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 72,
+        "right": 424,
+        "left": 104,
+        "bottom": 447
+      },
+      "outputSha256": "a40d41b7aecabc9ca32fc4bcaae32171b9215bb51fbf62eac519e383aff83bf5",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hp-startup.png",
+      "sourceSha256": "dee68aa6a32854a9583f4782ee4ba5dc5d5d663a38e9cb3d9ba372104c147cc2",
+      "id": "stand-hp-startup",
+      "sourceBounds": {
+        "top": 89,
+        "right": 1119,
+        "left": 186,
+        "bottom": 1185
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hp-extend.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 68,
+        "right": 427,
+        "left": 98,
+        "bottom": 447
+      },
+      "outputSha256": "e7e9bc4e464169eb16377910ec5187aeda6a824412ed2b753aa733c58259aa91",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hp-extend.png",
+      "sourceSha256": "11b46891eb647ed3af7c8c07ef68c687c4d01899878493d807ab45599f483a26",
+      "id": "stand-hp-extend",
+      "sourceBounds": {
+        "top": 81,
+        "right": 1127,
+        "left": 166,
+        "bottom": 1187
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        42.39999999999998
+      ],
+      "sourceRoot": [
+        627.0,
+        1183
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hp-active.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 74,
+        "right": 432,
+        "left": 104,
+        "bottom": 447
+      },
+      "outputSha256": "bcd74b728dea1e9c703c24c67966bdd4c6f444e76c032f3970f12859d9a77eb4",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hp-active.png",
+      "sourceSha256": "6bea63827698f9c0036ed5bef928c8fa752b66479ee8b559a83d91dc20c90219",
+      "id": "stand-hp-active",
+      "sourceBounds": {
+        "top": 94,
+        "right": 1141,
+        "left": 184,
+        "bottom": 1182
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        42.05714285714288
+      ],
+      "sourceRoot": [
+        627.0,
+        1184
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hp-retract.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 73,
+        "right": 425,
+        "left": 104,
+        "bottom": 447
+      },
+      "outputSha256": "114d948cef641c6cbe707b2682e41c2347e16b1dfa140b916a543adea0d1f2ae",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hp-retract.png",
+      "sourceSha256": "0c1d21c612b84d6b81ca8550c2510ebc1d4951fa33c8d1cefb686549a70658be",
+      "id": "stand-hp-retract",
+      "sourceBounds": {
+        "top": 90,
+        "right": 1120,
+        "left": 185,
+        "bottom": 1183
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        41.71428571428572
+      ],
+      "sourceRoot": [
+        627.0,
+        1185
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hp-recovery.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 71,
+        "right": 423,
+        "left": 107,
+        "bottom": 447
+      },
+      "outputSha256": "b6f7dfb354fa79c0552f9db097b5a1274c202dd4870d31c58e5b6c526005cce1",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hp-recovery.png",
+      "sourceSha256": "983b7ec8c81af2f4e593664ce552ed8091b0262f3eb2476d21829035e17d9549",
+      "id": "stand-hp-recovery",
+      "sourceBounds": {
+        "top": 85,
+        "right": 1114,
+        "left": 195,
+        "bottom": 1184
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        39.31428571428569
+      ],
+      "sourceRoot": [
+        627.0,
+        1192
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hp-settle.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 67,
+        "right": 405,
+        "left": 120,
+        "bottom": 447
+      },
+      "outputSha256": "489a7a2e08e29c3d7386c1fb603681002b61afa18c3890f5396afa43c74a35a0",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hp-settle.png",
+      "sourceSha256": "c01be05c69ada6ecc5032561e601ea9b07da75a5d5f535dfe27f025cc08621f2",
+      "id": "stand-hp-settle",
+      "sourceBounds": {
+        "top": 83,
+        "right": 1062,
+        "left": 232,
+        "bottom": 1191
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        34.514285714285734
+      ],
+      "sourceRoot": [
+        627.0,
+        1206
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hk-startup.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 62,
+        "right": 382,
+        "left": 148,
+        "bottom": 447
+      },
+      "outputSha256": "e0b2c51957782c0616f2df7ff815c9798d44a771ee383074e6147c326c9c4b07",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hk-startup.png",
+      "sourceSha256": "46e8ba697e5c8e6d009147722437284065a9f9866af7d50ab9e41a323d82460b",
+      "id": "stand-hk-startup",
+      "sourceBounds": {
+        "top": 82,
+        "right": 996,
+        "left": 315,
+        "bottom": 1205
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        35.19999999999999
+      ],
+      "sourceRoot": [
+        627.0,
+        1204
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hk-lift.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 48,
+        "right": 352,
+        "left": 173,
+        "bottom": 447
+      },
+      "outputSha256": "c9ace20272fd20d2c125e8b27467d4d21233f9afbda2e9d8f6fcb2b10f089270",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hk-lift.png",
+      "sourceSha256": "e0620b28c9388f0740841178412d07ec4107efdaae360d5ad5749d7eb0260523",
+      "id": "stand-hk-lift",
+      "sourceBounds": {
+        "top": 36,
+        "right": 907,
+        "left": 386,
+        "bottom": 1203
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hk-apex.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 69,
+        "right": 455,
+        "left": 159,
+        "bottom": 447
+      },
+      "outputSha256": "055991f84fb2a1f26b56c2873bed060e8dfcb34ff3ab2c767726261dbb812e26",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hk-apex-v3.png",
+      "sourceSha256": "7d6a588b10141776025fd5970c19a664d1cbee6478a227018806120b048f9dc2",
+      "id": "stand-hk-apex",
+      "sourceBounds": {
+        "top": 84,
+        "right": 1207,
+        "left": 346,
+        "bottom": 1187
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        39.31428571428569
+      ],
+      "sourceRoot": [
+        627.0,
+        1192
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hk-descend.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 65,
+        "right": 427,
+        "left": 167,
+        "bottom": 447
+      },
+      "outputSha256": "32a42654c838f5db3563d2f57d9445df4eaf02159b70c33da41f866839dd26e6",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hk-descend-v2.png",
+      "sourceSha256": "5b10b7d819a434a335c511faa48f52fecd2dfaf005c270e10e82126091042abe",
+      "id": "stand-hk-descend",
+      "sourceBounds": {
+        "top": 76,
+        "right": 1126,
+        "left": 369,
+        "bottom": 1191
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        40.342857142857156
+      ],
+      "sourceRoot": [
+        627.0,
+        1189
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hk-active.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 66,
+        "right": 454,
+        "left": 167,
+        "bottom": 447
+      },
+      "outputSha256": "49512c75f562639d5dc6488d9527cfc49d29da7361e19cb4f375d0e8e529317e",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hk-active-v3.png",
+      "sourceSha256": "846e0c0a1d0b088691fbe87d2f16b99889507c1df760ab2beeab507eba7ee0e4",
+      "id": "stand-hk-active",
+      "sourceBounds": {
+        "top": 76,
+        "right": 1207,
+        "left": 369,
+        "bottom": 1188
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        37.25714285714287
+      ],
+      "sourceRoot": [
+        627.0,
+        1198
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hk-retract.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 62,
+        "right": 352,
+        "left": 158,
+        "bottom": 447
+      },
+      "outputSha256": "aea38710086e9bc099c29eb95e70e2200c75851f97a4b875f0cc3140e0d112c3",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hk-retract.png",
+      "sourceSha256": "22cd3ba4bc25635e14a74d428eb7a0821a1b4256caec533371fb7875acdef1a9",
+      "id": "stand-hk-retract",
+      "sourceBounds": {
+        "top": 72,
+        "right": 908,
+        "left": 342,
+        "bottom": 1197
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        36.571428571428555
+      ],
+      "sourceRoot": [
+        627.0,
+        1200
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hk-recovery.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 61,
+        "right": 409,
+        "left": 134,
+        "bottom": 447
+      },
+      "outputSha256": "9238ca8e93f7fb56ce3eaf4d79970d16977ad33d62e2042f8decfd26d529f221",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hk-recovery.png",
+      "sourceSha256": "9ea9ff6302a6e07b01a8ffd7fb951438e364580ffc5c44b0a2167183fe11c3c3",
+      "id": "stand-hk-recovery",
+      "sourceBounds": {
+        "top": 73,
+        "right": 1075,
+        "left": 273,
+        "bottom": 1199
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        35.8857142857143
+      ],
+      "sourceRoot": [
+        627.0,
+        1202
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/stand-hk-settle.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 48,
+        "right": 404,
+        "left": 117,
+        "bottom": 447
+      },
+      "outputSha256": "3bf169b54fc1efa5ad16f9cbe08edd93bd86d5065a0bc170e2f229b713e7bad1",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/stand-hk-settle.png",
+      "sourceSha256": "251d10d906d3d3a9922ab21a5ec8109fc4f154e31ffb7acfd325d060b7121709",
+      "id": "stand-hk-settle",
+      "sourceBounds": {
+        "top": 35,
+        "right": 1060,
+        "left": 224,
+        "bottom": 1201
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        38.97142857142859
+      ],
+      "sourceRoot": [
+        627.0,
+        1193
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hp-startup.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 205,
+        "right": 372,
+        "left": 131,
+        "bottom": 447
+      },
+      "outputSha256": "1d40071a5610fb21cf625c7b955ab72baa47c79db0faed155cc4199df7ca3f49",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hp-startup.png",
+      "sourceSha256": "43c3283917a2367506feacb1857b96b18a98c8d1eaa19826db60a8e98e1ccd83",
+      "id": "crouch-hp-startup",
+      "sourceBounds": {
+        "top": 484,
+        "right": 967,
+        "left": 263,
+        "bottom": 1192
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hp-extend.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 191,
+        "right": 405,
+        "left": 142,
+        "bottom": 447
+      },
+      "outputSha256": "d088fadf2fb2af274e6dda766774cd66c570638243fb08c55b1e8b291c55219e",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hp-extend.png",
+      "sourceSha256": "148be855ee5e9a1e7ab0aabbd3ea19a62d79edfe56486909b54d5939645ba103",
+      "id": "crouch-hp-extend",
+      "sourceBounds": {
+        "top": 445,
+        "right": 1062,
+        "left": 295,
+        "bottom": 1193
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hp-active.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 192,
+        "right": 458,
+        "left": 140,
+        "bottom": 447
+      },
+      "outputSha256": "b694220ca69cec90748d7bd248b9cabe2ddb2b77c16929a14bc7e54a1baf9f63",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hp-active.png",
+      "sourceSha256": "afef2b437ff03c747a8c0bb8c8780fcb0ee99a6b899bb250fa32049d31d45afd",
+      "id": "crouch-hp-active",
+      "sourceBounds": {
+        "top": 449,
+        "right": 1218,
+        "left": 289,
+        "bottom": 1193
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        39.31428571428569
+      ],
+      "sourceRoot": [
+        627.0,
+        1192
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hp-retract.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 202,
+        "right": 437,
+        "left": 139,
+        "bottom": 447
+      },
+      "outputSha256": "ce67ef2d465cd7f73f02ded023261d19c05acaad569d2f17bdcc9cc93877d9e8",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hp-retract.png",
+      "sourceSha256": "fe00329e740cedd6ea4dc599d33626cf86fc3568a007cf746e4462cc1ff4be27",
+      "id": "crouch-hp-retract",
+      "sourceBounds": {
+        "top": 477,
+        "right": 1155,
+        "left": 288,
+        "bottom": 1191
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        38.28571428571428
+      ],
+      "sourceRoot": [
+        627.0,
+        1195
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hp-recovery.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 193,
+        "right": 385,
+        "left": 144,
+        "bottom": 447
+      },
+      "outputSha256": "adee17f482304b52f755718289ed146919acf7e6f38ecf067a1cec935aa0563e",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hp-recovery.png",
+      "sourceSha256": "61c564b37524ae8a397173b860e148a4930377d34971ca1cf8a9f964228b0b18",
+      "id": "crouch-hp-recovery",
+      "sourceBounds": {
+        "top": 454,
+        "right": 1003,
+        "left": 299,
+        "bottom": 1194
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        39.31428571428569
+      ],
+      "sourceRoot": [
+        627.0,
+        1192
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hp-settle.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 207,
+        "right": 369,
+        "left": 152,
+        "bottom": 447
+      },
+      "outputSha256": "12d0451ed5e3af2150587b6b6a7d94fe85c26b5e8035c1abee5cb2b1fd599606",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hp-settle-v2.png",
+      "sourceSha256": "cf965d61e6a56f55acabd71da22a6d39341e0e4429f60df07fb1decffcd80a1e",
+      "id": "crouch-hp-settle",
+      "sourceBounds": {
+        "top": 489,
+        "right": 958,
+        "left": 325,
+        "bottom": 1191
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        42.74285714285713
+      ],
+      "sourceRoot": [
+        627.0,
+        1182
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hk-startup.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 195,
+        "right": 383,
+        "left": 162,
+        "bottom": 447
+      },
+      "outputSha256": "b7d705f8edaec27a4272aff7c997390b9cc37f2a238fce2d26c0b9311513f4c0",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hk-startup.png",
+      "sourceSha256": "45cb6d30cabc091b3be45fdc3db7fc0c052bd3da44cbb8da38381816ab3735c1",
+      "id": "crouch-hk-startup",
+      "sourceBounds": {
+        "top": 444,
+        "right": 999,
+        "left": 354,
+        "bottom": 1181
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        52.0
+      ],
+      "sourceRoot": [
+        627.0,
+        1155
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hk-extend.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 221,
+        "right": 359,
+        "left": 183,
+        "bottom": 447
+      },
+      "outputSha256": "153a6b51d0ebe9b74d36279a480a2a0f17ebfeb630a149fa17271ee5e9c01d1c",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hk-extend-v2.png",
+      "sourceSha256": "63dc8519aa5187c5a99541e03c9b91ba3da16f65397a92c6c349d0ea042b25d7",
+      "id": "crouch-hk-extend",
+      "sourceBounds": {
+        "top": 494,
+        "right": 928,
+        "left": 416,
+        "bottom": 1154
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        52.0
+      ],
+      "sourceRoot": [
+        627.0,
+        1155
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hk-active.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 221,
+        "right": 466,
+        "left": 184,
+        "bottom": 447
+      },
+      "outputSha256": "bf3445ace8313c8d75487f8030b5d80da24cac48f44179268feed0783b6a62ed",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hk-active-v3.png",
+      "sourceSha256": "f89b213e2fd94f205960ae3c86cfa9496e11630bda8b2f93a55623b91d20c1e7",
+      "id": "crouch-hk-active",
+      "sourceBounds": {
+        "top": 494,
+        "right": 1242,
+        "left": 417,
+        "bottom": 1154
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        51.657142857142844
+      ],
+      "sourceRoot": [
+        627.0,
+        1156
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hk-retract.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 221,
+        "right": 390,
+        "left": 183,
+        "bottom": 447
+      },
+      "outputSha256": "67355d77aa094752822be3db4d763e6bc13f805731f9e8c5bc1e2b9ea7b3b84f",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hk-retract-v2.png",
+      "sourceSha256": "33e021cb3de26783f8ec306a3729f11e0f0abd0c4477588e77c9e3967cc509ab",
+      "id": "crouch-hk-retract",
+      "sourceBounds": {
+        "top": 494,
+        "right": 1018,
+        "left": 416,
+        "bottom": 1155
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        42.05714285714288
+      ],
+      "sourceRoot": [
+        627.0,
+        1184
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hk-recovery.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 211,
+        "right": 390,
+        "left": 130,
+        "bottom": 447
+      },
+      "outputSha256": "c2c36e61c07369f31fe1460b79c43d69c3a29222fee78eda14c1360b158a8349",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hk-recovery.png",
+      "sourceSha256": "bf7bdbea541f7fab7469adeedeb9a6ab3da3e5ad2e923bdd48860201f32bf31e",
+      "id": "crouch-hk-recovery",
+      "sourceBounds": {
+        "top": 495,
+        "right": 1019,
+        "left": 259,
+        "bottom": 1183
+      }
+    },
+    {
+      "offset": [
+        41.02857142857144,
+        42.74285714285713
+      ],
+      "sourceRoot": [
+        627.0,
+        1182
+      ],
+      "rootMode": "sole-bottom",
+      "output": "derived/opposite-limbs-v1/crouch-hk-settle.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 215,
+        "right": 360,
+        "left": 179,
+        "bottom": 447
+      },
+      "outputSha256": "613b7de80b37623d3313ec5c24bfa64890595027f9de329ec18e3a46b3595bea",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "generated/opposite-limbs-v1/crouch-hk-settle-v2.png",
+      "sourceSha256": "bbe5eba46e6968d86a8246bbe2343950abc2452c1d1c7a157688199b0cc364c2",
+      "id": "crouch-hk-settle",
+      "sourceBounds": {
+        "top": 502,
+        "right": 930,
+        "left": 402,
+        "bottom": 1181
+      }
+    }
+  ],
+  "method": "Shared scale from idle alpha height (384px); source canvas midpoint X; sole bottom Y except jumping uses idle virtual ground. No repainting.",
+  "displayScale": 0.625,
+  "alphaThreshold": 8,
+  "canvas": [
+    512,
+    512
+  ],
+  "referenceSha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed"
+}

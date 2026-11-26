@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>H1 공통 카메라 · 적용한 A와 이전 표시 비교</title>
+<style>
+body{margin:0;background:#111923;color:#e9eff6;font:15px system-ui}main{max-width:1120px;margin:auto;padding:18px}h1{font-size:25px;margin:0 0 7px}p{line-height:1.55;color:#c0cede;margin:8px 0}a{color:#7be0ca}strong{color:#ffd18e}button,select,input{font:inherit}button,select{padding:7px;border:1px solid #536b82;border-radius:5px;background:#293b50;color:#edf4fd}button:disabled,select:disabled{opacity:.45}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #7be0ca;outline-offset:2px}label{display:inline-flex;align-items:center;gap:7px}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:12px 0}canvas{display:block;width:100%;height:auto;background:#192634;border:1px solid #52657b;box-sizing:border-box}#frame{flex:1;min-width:160px}#position{min-width:90px;font-variant-numeric:tabular-nums}#markers button{font-size:13px;padding:6px}output{display:block;padding:12px;background:#203044;font:13px monospace;line-height:1.65;white-space:pre-wrap}small{display:block;color:#a9b9cc;line-height:1.6;margin:9px 0}#loading{min-height:23px}.error{color:#ffb6ac}
+</style>
+<main>
+<h1>공통 카메라 · 코너와 동작 전환 비교</h1>
+<p><strong>A 거리 대응 공통 카메라 적용.</strong> 초기 위치와 검수 입력으로 같은 전투 상태를 재현합니다. 적용 전 표시와 미채택 B안을 함께 비교합니다. <a href="/combat.html">현재 전투 화면 →</a></p>
+<div class="controls">
+  <label>표시<select id="mode"><option value="distance">적용한 A · 거리 대응</option><option value="current">적용 전 · 3fe3f23</option><option value="fixed">미채택 비교안 B · 고정 전체 보기</option></select></label>
+  <label>상황<select id="scenario"><option value="transition">벽 후진 → 대기 → 점프 → 선 K</option><option value="far-travel">양끝 → 접근 → 후퇴 · 줌/팬 비교</option><option value="grab">거리84 · 잡기 성공과 복귀</option><option value="grab-tech">거리84 · H12 잡기 풀기</option><option value="far-idle">양끝80/1200 · 대기</option><option value="far-attacks">양끝80/1200 · 양쪽 공격</option></select></label>
+  <label>PLAYER 시작<select id="side"><option value="left">왼쪽</option><option value="right">오른쪽</option></select></label>
+  <label>양끝 공격<select id="attack"><option value="stand-hk">선 K 강발</option><option value="stand-lp">선 U 약손</option><option value="stand-hp">선 I 강손</option><option value="stand-lk">선 J 약발</option><option value="crouch-lp">앉은 U 약손</option><option value="crouch-hp">앉은 I 강손</option><option value="crouch-lk">앉은 J 약발</option><option value="crouch-hk">앉은 K 강발</option></select></label>
+  <label><input id="boxes" type="checkbox" checked>실제 판정·논리 루트</label>
+</div>
+<p id="loading" role="status">전체 원화를 불러오는 중입니다.</p>
+<canvas id="view" width="1280" height="720" aria-label="적용한 A와 적용 전 표시 및 미채택 B 비교"></canvas>
+<div class="controls"><button id="play" disabled>재생</button><button id="prev" disabled>이전 1F</button><button id="next" disabled>다음 1F</button><input id="frame" type="range" min="0" max="1" value="0" step="1" aria-label="검수 프레임" disabled><span id="position"></span></div>
+<div class="controls" id="markers"></div>
+<output id="state"></output>
+<small>적용 전은3fe3f23의 개별/잡기 쌍 보정을 동결한 표시입니다. 적용한 A와 미채택 B는 원래 메치기 궤적에서 모든 그림·이름표·경기장 눈금·실제 판정·논리 루트에 같은 카메라 변환을 적용합니다. HUD는 고정입니다. 좌우 여백 M은 원화 전체와 메치기 궤적의 측정값이며, 포즈 나이에 따라 줌을 바꾸지 않습니다. A는 선수 거리 변화에 즉시 대응하고 B는 항상 같은 크기입니다. 완화 시간·새 전투 수치·원화 수정·오디오는 없습니다. 브라우저 폭에 따른 페이지 축소는 두 안 모두 같은 조건입니다.</small>
+</main>
+<script type="module">
+import { H1_POSES, combatPose } from '../../../src/characters/h1-poses.ts';
+import { attackPhase, worldRect } from '../../../src/combat/combat.ts';
+import { buildScenario, proposalVisuals, cameraFor, transformPoint, H1_CAMERA_MARGIN } from './h1-camera-proposal.mjs';
+const $ = id => document.getElementById(id), canvas = $('view'), ctx = canvas.getContext('2d');
+const names = ['PLAYER', 'TARGET'], modeNames = {current:'적용 전 · 3fe3f23',distance:'적용한 A · 거리 대응',fixed:'미채택 비교안 B · 고정 전체 보기'};
+const images = new Map();
+let data, ready = false, playing = false, lastTime = 0, accumulated = 0;
+const controls = ['play','prev','next','frame'];
+const stop = () => { playing = false; accumulated = 0; $('play').textContent = '재생'; };
+const fmt = x => x.toFixed(3);
+function rebuild() {
+  stop(); const old = Number($('frame').value);
+  data = buildScenario($('scenario').value, $('side').value, $('attack').value);
+  $('frame').max = String(data.frames.length - 1); $('frame').value = String(Math.min(old, data.frames.length - 1));
+  $('side').disabled = ['far-idle','far-attacks'].includes($('scenario').value); $('attack').disabled = $('scenario').value !== 'far-attacks';
+  $('markers').replaceChildren();
+  for (const marker of data.markers) {
+    const b = document.createElement('button'); b.textContent = marker.label; b.disabled = !ready;
+    b.addEventListener('click', () => { stop(); $('frame').value = String(marker.frame); draw(); }); $('markers').append(b);
+  }
+  draw();
+}
+function draw() {
+  if (!data) return;
+  const index = Number($('frame').value), item = data.frames[index], s = item.combat;
+  const mode = $('mode').value, {camera,visuals} = proposalVisuals(s, mode, item.koFrame);
+  ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,1280,720); ctx.fillStyle='#192634'; ctx.fillRect(0,0,1280,720);
+  if (!ready) { ctx.fillStyle='#c0cede'; ctx.font='22px system-ui'; ctx.fillText('원화 로딩 중',45,90); return; }
+  ctx.save(); ctx.setTransform(camera.zoom,0,0,camera.zoom,640*(1-camera.zoom)+camera.offsetX,600*(1-camera.zoom));
+  ctx.fillStyle='#233446'; ctx.fillRect(-1000,600,3280,800); ctx.strokeStyle='#354a5f'; ctx.lineWidth=1;
+  for(let x=80;x<=1200;x+=80){ctx.beginPath();ctx.moveTo(x,150);ctx.lineTo(x,600);ctx.stroke();}
+  ctx.strokeStyle='#8497ac';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(-1000,600);ctx.lineTo(2280,600);ctx.stroke();
+  for (const i of [0,1].sort((a,b)=>visuals[a].depth-visuals[b].depth)) {
+    const f=s.fighters[i],v=visuals[i],pose=combatPose(f,s.definitions[i],item.koFrame);
+    ctx.save();ctx.translate(v.x,v.y);ctx.rotate(v.angle*Math.PI/180);ctx.scale(f.facing,1);
+    ctx.drawImage(images.get(pose),-160,-320*v.originY,320,320);ctx.restore();
+  }
+  if($('boxes').checked)for(let i=0;i<2;i++){
+    const f=s.fighters[i],def=s.definitions[i];ctx.strokeStyle=i?'#ffbf85':'#70ddc3';ctx.lineWidth=1.5;
+    const h=worldRect(def.hurt[f.grounded?f.posture:'stand'],f);ctx.strokeRect(h.left,h.top,h.right-h.left,h.bottom-h.top);
+    ctx.beginPath();ctx.moveTo(f.x-8,f.y);ctx.lineTo(f.x+8,f.y);ctx.moveTo(f.x,f.y-8);ctx.lineTo(f.x,f.y+8);ctx.stroke();
+    if(f.attack&&attackPhase(f,def)==='active'){
+      const h=worldRect(def.attacks[f.attack.key].box,f);ctx.fillStyle='#f86b6b60';ctx.fillRect(h.left,h.top,h.right-h.left,h.bottom-h.top);
+      ctx.strokeStyle='#ff8f8f';ctx.strokeRect(h.left,h.top,h.right-h.left,h.bottom-h.top);
+    }
+  }
+  ctx.textAlign='center';ctx.font='16px monospace';ctx.fillStyle='#eaf3ff';
+  for(let i=0;i<2;i++){const v=visuals[i];ctx.fillText(`${names[i]} ${s.fighters[i].hp} HP`,v.x,v.y-v.labelHeight);}
+  ctx.restore();
+  const a=cameraFor(s,'distance'),b=cameraFor(s,'fixed');
+  ctx.fillStyle='#101a28dc';ctx.fillRect(24,20,1232,105);ctx.textAlign='left';ctx.fillStyle='#ffd18e';ctx.font='bold 21px system-ui';
+  ctx.fillText('적용한 A · 적용 전 및 미채택 B 비교',43,50);ctx.fillStyle='#eaf3ff';ctx.font='17px monospace';
+  ctx.fillText(`${modeNames[mode]} · F ${index} · ${item.label}`,43,78);
+  ctx.fillText(`A 줌 ${(a.zoom*100).toFixed(2)}% / 기본 키 ${(240*a.zoom).toFixed(2)}px   B 줌 ${(b.zoom*100).toFixed(2)}% / 기본 키 ${(240*b.zoom).toFixed(2)}px`,43,104);
+  $('position').textContent=`${index} / ${data.frames.length-1}F`;
+  $('state').textContent=`초기 위치 지정 후 공통 입력 · 전투 F${s.frame} · ${modeNames[mode]} · M ${H1_CAMERA_MARGIN}px\n`
+    +`현재 줌 ${fmt(camera.zoom)} / 공통 이동 ${fmt(camera.offsetX)} / 논리 루트 간격 ${fmt(Math.abs(s.fighters[1].x-s.fighters[0].x))}\n`
+    +s.fighters.map((f,i)=>{const v=visuals[i],p=transformPoint(camera,v.x,v.y),r=transformPoint(camera,f.x,f.y);return `${names[i]} ${combatPose(f,s.definitions[i],item.koFrame)} · 논리x ${fmt(f.x)} / 화면 루트x ${fmt(r.x)} / 그림x ${fmt(p.x)} · HP ${f.hp}`;}).join('\n')
+    +`\n실제 사건: ${[...s.events.map(e=>`${e.key} ${e.blocked?'방어':`피해${e.damage}`}`),...s.grabEvents.map(e=>`${e.kind} 피해${e.damage}`)].join(' / ')||'없음'}`;
+}
+function step(amount){stop();$('frame').value=String(Math.max(0,Math.min(data.frames.length-1,Number($('frame').value)+amount)));draw();}
+for(const id of ['scenario','side','attack'])$(id).addEventListener('change',rebuild);
+for(const id of ['mode','boxes'])$(id).addEventListener('change',()=>{stop();draw();});
+$('frame').addEventListener('input',()=>step(0));$('prev').addEventListener('click',()=>step(-1));$('next').addEventListener('click',()=>step(1));
+$('play').addEventListener('click',()=>{if(!ready)return;if(playing){stop();return;}if(Number($('frame').value)===data.frames.length-1)$('frame').value='0';playing=true;lastTime=performance.now();accumulated=0;$('play').textContent='정지';draw();});
+addEventListener('blur',stop);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+function animate(now){if(playing){accumulated+=Math.min(100,now-lastTime);while(accumulated>=1000/60){accumulated-=1000/60;const index=Number($('frame').value)+1;$('frame').value=String(Math.min(data.frames.length-1,index));if(index>=data.frames.length-1){stop();break;}}draw();}lastTime=now;requestAnimationFrame(animate);}
+rebuild();requestAnimationFrame(animate);
+let loaded=0;
+Promise.all(Object.entries(H1_POSES).map(async([pose,path])=>{
+  const image=new Image();await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error(`원화 로딩 실패: ${pose}`));image.src='../../../assets/characters/h1/derived/'+path;});
+  if(image.naturalWidth!==512||image.naturalHeight!==512)throw new Error(`원화 규격 불일치: ${pose}`);
+  await image.decode();images.set(pose,image);loaded++;$('loading').textContent=`전체 원화 ${loaded}/${Object.keys(H1_POSES).length} 준비 중`;
+})).then(()=>{ready=true;controls.forEach(id=>$(id).disabled=false);for(const b of $('markers').children)b.disabled=false;$('loading').textContent=`원화 ${loaded}/${loaded} 준비 완료 · 자동 재생 없음 · 적용한 A 비교`;draw();}).catch(error=>{stop();$('loading').className='error';$('loading').textContent=error.message;});
+</script>
+</html>

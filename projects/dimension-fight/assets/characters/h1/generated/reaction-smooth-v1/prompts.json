@@ -1,0 +1,322 @@
+{
+  "version": "reaction-smooth-v1",
+  "generator": "builtin image_gen",
+  "created": "2026-10-03",
+  "normalization": "Preserve full square source scale; root normalizer owns derived files. No bounding-box enlargement.",
+  "frames": [
+    {
+      "id": "stand-hit-settle",
+      "groundMode": "ground",
+      "references": [
+        "combat-v1/stand-hit.png",
+        "v2/idle.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: exactly ONE transparent RGBA animation sprite for the same H1 fighting-game character. The two input images are the preceding and following key poses, in that order; they are reference images, not a request to combine two figures. Draw one genuinely new anatomical in-between pose, halfway along the motion described below. Same young adult woman, black bob haircut, cropped red track jacket with white sleeve stripes, white crop top, black loose pants with red outer stripes, white hand wraps, red sneakers; identical face, body proportions, cel shading and crisp dark outlines. Preserve the 512x512 reference coordinate layout proportionally in the square output: virtual body root at (256,448), existing full-body scale, same camera and transparent margins. Do not enlarge the figure to fill the canvas or fit its bounding box; preserve reference body scale even when crouched or lying down. Entire body, all fingers, both feet and hair fully inside the frame. Transparent background, no ground shadow, no floor, no text, no impact effects, no weapon, no opponent, no duplicate limbs, no ghosted interpolation. Recover halfway from the backward standing hit recoil into the ready guard. Both feet remain exactly planted at the reference positions on virtual y448. Torso still leans slightly backward, shoulders turn back toward screen right, chin and gaze return right, elbows begin bending and wrapped hands rise halfway toward guard. Knees regain balance. This is a recovering hit reaction, not the finished idle pose.",
+      "status": "selected",
+      "sourcePath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcee-2e6b-76a2-8f70-216f232b5003\\exec-9679c7e7-fb84-42fa-b983-1d8a4dcbbce0.png",
+      "sourceCopy": "stand-hit-settle.png",
+      "sourceSha256": "49c87ea164f3adb654bf80e66dc7b11e7edb384068db25a5cf741ec9bbf7f5ed",
+      "referenceSha256": [
+        "10f7a1b053013e4ca0616e7ad591672da96e504bb45aae4a92abe44709d2a611",
+        "b3b038036d688306eb49f45a6960ded9132974b0c51c189da29b35cb5a14c647"
+      ],
+      "visualReview": "Reviewed generated image: same character and cel style, intact limbs, planted feet, recovery expression with hands returning close to guard. No cropping.",
+      "sourceImage": {
+        "width": 1254,
+        "height": 1254,
+        "colorType": "RGBA",
+        "alphaBounds": {
+          "1": {
+            "left": 97,
+            "right": 1197,
+            "top": 162,
+            "bottom": 1253
+          },
+          "8": {
+            "left": 271,
+            "right": 1019,
+            "top": 164,
+            "bottom": 1098
+          }
+        },
+        "transparentPixels": 1315391
+      }
+    },
+    {
+      "id": "crouch-hit-settle",
+      "groundMode": "ground",
+      "references": [
+        "combat-v1/crouch-hit.png",
+        "v2/crouch.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: exactly ONE transparent RGBA animation sprite for the same H1 fighting-game character. The two input images are the preceding and following key poses, in that order; they are reference images, not a request to combine two figures. Draw one genuinely new anatomical in-between pose, halfway along the motion described below. Same young adult woman, black bob haircut, cropped red track jacket with white sleeve stripes, white crop top, black loose pants with red outer stripes, white hand wraps, red sneakers; identical face, body proportions, cel shading and crisp dark outlines. Preserve the 512x512 reference coordinate layout proportionally in the square output: virtual body root at (256,448), existing full-body scale, same camera and transparent margins. Do not enlarge the figure to fill the canvas or fit its bounding box; preserve reference body scale even when crouched or lying down. Entire body, all fingers, both feet and hair fully inside the frame. Transparent background, no ground shadow, no floor, no text, no impact effects, no weapon, no opponent, no duplicate limbs, no ghosted interpolation. Recover halfway from the crouched hit reaction to the crouched guard. Remain low with the identical deep squat height and exactly planted shoes at virtual y448. Head is midway lifted, torso regains a little balance, open or loosely curled wrapped hands rise halfway from the knees toward the final guard. Face still shows mild strain. Do not stand up or enlarge the crouched body.",
+      "status": "selected",
+      "sourcePath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcee-2e6b-76a2-8f70-216f232b5003\\exec-df8318b5-0868-471a-9fff-9a5bcfb01561.png",
+      "sourceCopy": "crouch-hit-settle.png",
+      "sourceSha256": "28355c4aff47704b5c48fa8d748c3c4a9607e580f656b02d48eaed95448592e0",
+      "referenceSha256": [
+        "a2ec353bde8d8fb00a2d2e669f47a6a7161242137a90a65d8e0c5af45e642965",
+        "a105dae18e1469f8767df6aaeb794ddfeae9370eadda38b35c743259a65dac66"
+      ],
+      "visualReview": "Reviewed generated image: low squat retained, open left hand and partly curled right hand rise toward guard, strained expression retained, intact shoes and silhouette.",
+      "sourceImage": {
+        "width": 1254,
+        "height": 1254,
+        "colorType": "RGBA",
+        "alphaBounds": {
+          "1": {
+            "left": 130,
+            "right": 968,
+            "top": 53,
+            "bottom": 1211
+          },
+          "8": {
+            "left": 379,
+            "right": 905,
+            "top": 507,
+            "bottom": 1098
+          }
+        },
+        "transparentPixels": 1383397
+      }
+    },
+    {
+      "id": "ko-mid-01",
+      "groundMode": "ground",
+      "references": [
+        "combat-v1/ko-0.png",
+        "combat-v1/ko-1.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: exactly ONE transparent RGBA animation sprite for the same H1 fighting-game character. The two input images are the preceding and following key poses, in that order; they are reference images, not a request to combine two figures. Draw one genuinely new anatomical in-between pose, halfway along the motion described below. Same young adult woman, black bob haircut, cropped red track jacket with white sleeve stripes, white crop top, black loose pants with red outer stripes, white hand wraps, red sneakers; identical face, body proportions, cel shading and crisp dark outlines. Preserve the 512x512 reference coordinate layout proportionally in the square output: virtual body root at (256,448), existing full-body scale, same camera and transparent margins. Do not enlarge the figure to fill the canvas or fit its bounding box; preserve reference body scale even when crouched or lying down. Entire body, all fingers, both feet and hair fully inside the frame. Transparent background, no ground shadow, no floor, no text, no impact effects, no weapon, no opponent, no duplicate limbs, no ghosted interpolation. One falling in-between: the fighter is collapsing backward from the standing off-balance pose toward the low seated pose. Hips have descended halfway, knees buckle much more deeply than image1 but not yet seated as in image2, torso leans backward, left wrapped hand reaches down close to the ground and the right arm lifts for balance. One supporting red shoe remains on virtual ground y448. Head stays on the screen-left side of the body. It is a defeated falling pose, not a guard. Correction for the new in-between: keep the pelvis distinctly suspended at reference y=290, the head top about reference y=140 (between y102 and y195 of the endpoints). Neither the hips nor either hand touches the floor yet. Both knees are deeply bent but the fighter is still supported by BOTH shoes, not kneeling on a shin. The left hand is reaching at y380, visibly above floor y448. The entire figure is midway descending, NOT the final seated or one-knee pose.",
+      "status": "selected",
+      "attempts": [
+        {
+          "sourcePath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcee-2e6b-76a2-8f70-216f232b5003\\exec-5884cfc7-9b86-47ed-bc47-f8b40955f7b3.png",
+          "sourceCopy": "ko-mid-01-rejected1.png",
+          "sourceSha256": "bbe22a0c323cbb86479a102199ceabe166f7d1a90c24ad88d609938ce40ea763",
+          "prompt": "Use case: stylized-concept. Asset type: exactly ONE transparent RGBA animation sprite for the same H1 fighting-game character. The two input images are the preceding and following key poses, in that order; they are reference images, not a request to combine two figures. Draw one genuinely new anatomical in-between pose, halfway along the motion described below. Same young adult woman, black bob haircut, cropped red track jacket with white sleeve stripes, white crop top, black loose pants with red outer stripes, white hand wraps, red sneakers; identical face, body proportions, cel shading and crisp dark outlines. Preserve the 512x512 reference coordinate layout proportionally in the square output: virtual body root at (256,448), existing full-body scale, same camera and transparent margins. Do not enlarge the figure to fill the canvas or fit its bounding box; preserve reference body scale even when crouched or lying down. Entire body, all fingers, both feet and hair fully inside the frame. Transparent background, no ground shadow, no floor, no text, no impact effects, no weapon, no opponent, no duplicate limbs, no ghosted interpolation. One falling in-between: the fighter is collapsing backward from the standing off-balance pose toward the low seated pose. Hips have descended halfway, knees buckle much more deeply than image1 but not yet seated as in image2, torso leans backward, left wrapped hand reaches down close to the ground and the right arm lifts for balance. One supporting red shoe remains on virtual ground y448. Head stays on the screen-left side of the body. It is a defeated falling pose, not a guard.",
+          "status": "rejected",
+          "reason": "Pose was too close to seated endpoint: hand and folded knee already on the floor."
+        }
+      ],
+      "sourcePath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcee-2e6b-76a2-8f70-216f232b5003\\exec-d47af4d5-fbc3-4811-a4a2-dcdaa3f24b7c.png",
+      "sourceCopy": "ko-mid-01.png",
+      "sourceSha256": "0cedee17696b208f88e7d75c5d46b75dc72475660de00c0ea859141b7eb78738",
+      "referenceSha256": [
+        "b0b95d2f8d13f1fec7ceca6f092e8a8d52d9468c8ca4d056ebff5d04cf2241a8",
+        "230a2b17feba2b38ace374bbf51bedcad2173aa924e5f30f8d799b1447c7864d"
+      ],
+      "visualReview": "Second candidate selected: both shoes support the buckling body; hand and hips still suspended, distinct intermediate collapse before the seated endpoint. First candidate preserved as rejected.",
+      "sourceImage": {
+        "width": 1254,
+        "height": 1254,
+        "colorType": "RGBA",
+        "alphaBounds": {
+          "1": {
+            "left": 97,
+            "right": 1155,
+            "top": 21,
+            "bottom": 1253
+          },
+          "8": {
+            "left": 213,
+            "right": 1142,
+            "top": 274,
+            "bottom": 1097
+          }
+        },
+        "transparentPixels": 1250730
+      }
+    },
+    {
+      "id": "ko-mid-12",
+      "groundMode": "ground",
+      "references": [
+        "combat-v1/ko-1.png",
+        "combat-v1/ko-2.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: exactly ONE transparent RGBA animation sprite for the same H1 fighting-game character. The two input images are the preceding and following key poses, in that order; they are reference images, not a request to combine two figures. Draw one genuinely new anatomical in-between pose, halfway along the motion described below. Same young adult woman, black bob haircut, cropped red track jacket with white sleeve stripes, white crop top, black loose pants with red outer stripes, white hand wraps, red sneakers; identical face, body proportions, cel shading and crisp dark outlines. Preserve the 512x512 reference coordinate layout proportionally in the square output: virtual body root at (256,448), existing full-body scale, same camera and transparent margins. Do not enlarge the figure to fill the canvas or fit its bounding box; preserve reference body scale even when crouched or lying down. Entire body, all fingers, both feet and hair fully inside the frame. Transparent background, no ground shadow, no floor, no text, no impact effects, no weapon, no opponent, no duplicate limbs, no ghosted interpolation. One falling in-between between seated and fully lying down: head and shoulders lower toward screen left, upper back reclining at about a shallow 25-degree incline above the floor, left elbow and forearm now support the body instead of the straight arm, legs extend toward screen right halfway toward the final lying pose, one knee remains bent. Eyes closed, slack exhausted hands. Body/soles rest on virtual ground y448. Preserve the same horizontal orientation and scale, not an upright kneeling pose.",
+      "status": "selected",
+      "sourcePath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcee-2e6b-76a2-8f70-216f232b5003\\exec-dd3cd2ac-6592-4477-ac95-253e4a438471.png",
+      "sourceCopy": "ko-mid-12.png",
+      "sourceSha256": "857ffe8f5da035dcdf8718c681a824b8d1423f7742232990ccf1fa4fe48da34d",
+      "referenceSha256": [
+        "230a2b17feba2b38ace374bbf51bedcad2173aa924e5f30f8d799b1447c7864d",
+        "540399ab0b57bc1ded818931e105377b865ea1029c6db3cc62fcfff3b80e935d"
+      ],
+      "visualReview": "Reviewed: reclining torso supported by bent elbow between seated and prone endpoints; one knee bent, intact feet and hands, same screen-left head orientation.",
+      "sourceImage": {
+        "width": 1254,
+        "height": 1254,
+        "colorType": "RGBA",
+        "alphaBounds": {
+          "1": {
+            "left": 25,
+            "right": 1191,
+            "top": 52,
+            "bottom": 1219
+          },
+          "8": {
+            "left": 105,
+            "right": 1188,
+            "top": 642,
+            "bottom": 1105
+          }
+        },
+        "transparentPixels": 1307155
+      }
+    },
+    {
+      "id": "throw-turn-mid",
+      "groundMode": "ground",
+      "references": [
+        "throw-v1/throw-turn.png",
+        "throw-v1/throw-lift.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: exactly ONE transparent RGBA animation sprite for the same H1 fighting-game character. The two input images are the preceding and following key poses, in that order; they are reference images, not a request to combine two figures. Draw one genuinely new anatomical in-between pose, halfway along the motion described below. Same young adult woman, black bob haircut, cropped red track jacket with white sleeve stripes, white crop top, black loose pants with red outer stripes, white hand wraps, red sneakers; identical face, body proportions, cel shading and crisp dark outlines. Preserve the 512x512 reference coordinate layout proportionally in the square output: virtual body root at (256,448), existing full-body scale, same camera and transparent margins. Do not enlarge the figure to fill the canvas or fit its bounding box; preserve reference body scale even when crouched or lying down. Entire body, all fingers, both feet and hair fully inside the frame. Transparent background, no ground shadow, no floor, no text, no impact effects, no weapon, no opponent, no duplicate limbs, no ghosted interpolation. Interpolate the thrower's body turn into the overhead lift: torso and hips turn from the first pose slightly farther, knees bend halfway toward the second pose; both wrapped hands move upward together from beside the rear shoulder toward overhead but have not reached the fully raised second pose. Back three-quarter view, face looks toward screen right over the near shoulder. Feet stay planted at the reference spacing, front shoe at virtual y448; rear heel may pivot slightly as in the references. There is no opponent in this individual sprite.",
+      "status": "selected",
+      "sourcePath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcee-2e6b-76a2-8f70-216f232b5003\\exec-c1e1b46d-6bd1-4fae-9d5b-567bbf757b8d.png",
+      "sourceCopy": "throw-turn-mid.png",
+      "sourceSha256": "a05451f321d4fb65707af6e9a261fb13f742007ba641bada02313810a56e5932",
+      "referenceSha256": [
+        "76e45f6cf0cc8752ef153bdcd864267f2ad8ce5381ab205a66ca4af495641886",
+        "0460e52f4a36bf7436825edf5a306856f53706569196d5753193beec0de30d6b"
+      ],
+      "visualReview": "Reviewed: three-quarter back view, knees flexing and both wrapped hands rising between turn and lift; planted pivot stance, same character, no opponent or extra limbs.",
+      "sourceImage": {
+        "width": 1254,
+        "height": 1254,
+        "colorType": "RGBA",
+        "alphaBounds": {
+          "1": {
+            "left": 97,
+            "right": 1137,
+            "top": 21,
+            "bottom": 1253
+          },
+          "8": {
+            "left": 273,
+            "right": 1077,
+            "top": 173,
+            "bottom": 1110
+          }
+        },
+        "transparentPixels": 1309101
+      }
+    },
+    {
+      "id": "throw-drop-mid",
+      "groundMode": "ground",
+      "references": [
+        "throw-v1/throw-lift.png",
+        "throw-v1/throw-slam.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: exactly ONE transparent RGBA animation sprite for the same H1 fighting-game character. The two input images are the preceding and following key poses, in that order; they are reference images, not a request to combine two figures. Draw one genuinely new anatomical in-between pose, halfway along the motion described below. Same young adult woman, black bob haircut, cropped red track jacket with white sleeve stripes, white crop top, black loose pants with red outer stripes, white hand wraps, red sneakers; identical face, body proportions, cel shading and crisp dark outlines. Preserve the 512x512 reference coordinate layout proportionally in the square output: virtual body root at (256,448), existing full-body scale, same camera and transparent margins. Do not enlarge the figure to fill the canvas or fit its bounding box; preserve reference body scale even when crouched or lying down. Entire body, all fingers, both feet and hair fully inside the frame. Transparent background, no ground shadow, no floor, no text, no impact effects, no weapon, no opponent, no duplicate limbs, no ghosted interpolation. A clear new halfway follow-through between overhead throw lift and low slam: arms sweep together from above the head toward screen right, currently extending forward and diagonally down at roughly chest height, torso pitches forward halfway, hips rotate into the slam, front knee bends and rear leg braces. Hands stay close together as though releasing a held opponent, but DO NOT draw an opponent. Both feet retain the reference grounded stance; soles virtual y448. Not a repeated overhead lift or completed low slam.",
+      "status": "selected",
+      "sourcePath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcee-2e6b-76a2-8f70-216f232b5003\\exec-979b00f5-fdd5-4dc7-b169-e1d87d9b6ba0.png",
+      "sourceCopy": "throw-drop-mid.png",
+      "sourceSha256": "12f3372252ca66413a6f026750af7853f5bc7f879d0edcabe23caf1db96cc046",
+      "referenceSha256": [
+        "0460e52f4a36bf7436825edf5a306856f53706569196d5753193beec0de30d6b",
+        "aebe9cb1da56ecdb31196dfa85bd498a1f8ea8071897fca427e12316666b13cd"
+      ],
+      "visualReview": "Reviewed: joined wrapped hands sweep forward above final slam hand height, torso starts forward follow-through, grounded wide stance and intact anatomy.",
+      "sourceImage": {
+        "width": 1254,
+        "height": 1254,
+        "colorType": "RGBA",
+        "alphaBounds": {
+          "1": {
+            "left": 43,
+            "right": 1209,
+            "top": 50,
+            "bottom": 1149
+          },
+          "8": {
+            "left": 203,
+            "right": 1103,
+            "top": 312,
+            "bottom": 1097
+          }
+        },
+        "transparentPixels": 1315038
+      }
+    },
+    {
+      "id": "thrown-rise-mid",
+      "groundMode": "ground",
+      "references": [
+        "throw-v1/thrown-down.png",
+        "throw-v1/thrown-rise.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: exactly ONE transparent RGBA animation sprite for the same H1 fighting-game character. The two input images are the preceding and following key poses, in that order; they are reference images, not a request to combine two figures. Draw one genuinely new anatomical in-between pose, halfway along the motion described below. Same young adult woman, black bob haircut, cropped red track jacket with white sleeve stripes, white crop top, black loose pants with red outer stripes, white hand wraps, red sneakers; identical face, body proportions, cel shading and crisp dark outlines. Preserve the 512x512 reference coordinate layout proportionally in the square output: virtual body root at (256,448), existing full-body scale, same camera and transparent margins. Do not enlarge the figure to fill the canvas or fit its bounding box; preserve reference body scale even when crouched or lying down. Entire body, all fingers, both feet and hair fully inside the frame. Transparent background, no ground shadow, no floor, no text, no impact effects, no weapon, no opponent, no duplicate limbs, no ghosted interpolation. One getting-up in-between: move from lying with head screen right and feet screen left into the one-knee rise. The fighter has rolled onto her side and pushed the upper torso about halfway up with a wrapped hand/forearm planted toward screen right. Head is raised but still lower than the final kneeling pose. One knee folds underneath the hips while the other leg is still partly extended left; the free wrapped hand is near the chest. Grounded body and supporting hand/sole at virtual y448, same scale. Preserve red outfit and avoid a second body or a floating pose.",
+      "status": "selected",
+      "sourcePath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcee-2e6b-76a2-8f70-216f232b5003\\exec-ac6a7475-987c-4637-8e39-51248b60b1b4.png",
+      "sourceCopy": "thrown-rise-mid.png",
+      "sourceSha256": "7d0b852c7604bc69af9823b9cdcca9f1ad0fc7f600ea2a2df93a95c5fe5adb6c",
+      "referenceSha256": [
+        "739362ca6e07cd2c337e1dc34c3447962b5ba84ecc2d66e41920e7af7e701ac6",
+        "e6aefde6fff3d880d570ec22b7aa02cac07a66c0fa584163ba450cd481e20c6e"
+      ],
+      "visualReview": "Reviewed: grounded supporting hand, one knee folded under the body and one leg partly extended left; head raised between prone and final kneeling height, intact anatomy and margins.",
+      "sourceImage": {
+        "width": 1254,
+        "height": 1254,
+        "colorType": "RGBA",
+        "alphaBounds": {
+          "1": {
+            "left": 19,
+            "right": 1175,
+            "top": 53,
+            "bottom": 1204
+          },
+          "8": {
+            "left": 119,
+            "right": 1172,
+            "top": 544,
+            "bottom": 1102
+          }
+        },
+        "transparentPixels": 1339594
+      }
+    },
+    {
+      "id": "grab-release-mid",
+      "groundMode": "ground",
+      "references": [
+        "grab-v1/grab-release.png",
+        "grab-v1/grab-retract.png"
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: exactly ONE transparent RGBA animation sprite for the same H1 fighting-game character. The two input images are the preceding and following key poses, in that order; they are reference images, not a request to combine two figures. Draw one genuinely new anatomical in-between pose, halfway along the motion described below. Same young adult woman, black bob haircut, cropped red track jacket with white sleeve stripes, white crop top, black loose pants with red outer stripes, white hand wraps, red sneakers; identical face, body proportions, cel shading and crisp dark outlines. Preserve the 512x512 reference coordinate layout proportionally in the square output: virtual body root at (256,448), existing full-body scale, same camera and transparent margins. Do not enlarge the figure to fill the canvas or fit its bounding box; preserve reference body scale even when crouched or lying down. Entire body, all fingers, both feet and hair fully inside the frame. Transparent background, no ground shadow, no floor, no text, no impact effects, no weapon, no opponent, no duplicate limbs, no ghosted interpolation. Intermediate recovery after a grab is broken: same planted wide stance and torso/head as both reference poses, facing screen right. Both open wrapped hands draw inward halfway from the splayed release toward the compact retracted hands, fingers partly curl, elbows lower slightly. This is clearly halfway between the two arm poses while body root, feet, head size and red jacket stay fixed. Soles remain at virtual y448.",
+      "status": "selected",
+      "sourcePath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcee-2e6b-76a2-8f70-216f232b5003\\exec-96ea937c-d965-4302-978b-866036b8ef10.png",
+      "sourceCopy": "grab-release-mid.png",
+      "sourceSha256": "e1f8b4812bf761ab52e677abe75172339de439a1004c7b25609ef4dd9dfea39b",
+      "referenceSha256": [
+        "7d1e68f005bd7e534067ce9112bdde246e6f801628b39814804160aa37be7623",
+        "4c267d38aa7b331dc08bd5e4c418c6d8cd3d86d62f2aae5c19aff18cb7ce24f9"
+      ],
+      "visualReview": "Reviewed: partly curled fingers and inward hand recovery between open release and retracted guard, planted wide stance, same head and outfit, no visible cropping.",
+      "sourceImage": {
+        "width": 1254,
+        "height": 1254,
+        "colorType": "RGBA",
+        "alphaBounds": {
+          "1": {
+            "left": 97,
+            "right": 1197,
+            "top": 21,
+            "bottom": 1213
+          },
+          "8": {
+            "left": 257,
+            "right": 1018,
+            "top": 158,
+            "bottom": 1097
+          }
+        },
+        "transparentPixels": 1317102
+      }
+    }
+  ]
+}

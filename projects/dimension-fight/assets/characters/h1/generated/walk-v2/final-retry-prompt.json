@@ -1,0 +1,7 @@
+{
+  "id": "walk-08-v4",
+  "refs": [
+    "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/walk-v2/walk-07-v2.png"
+  ],
+  "prompt": "Use case: precise-object-edit. Input is H1 walking frame07. Keep entire character EXACTLY as supplied EXCEPT bend the REAR LEFT RED-STRIPED leg at its knee to lift its shoe off the floor. Keep the PLAIN RIGHT SUPPORT LEG AND SHOE COMPLETELY UNCHANGED, the right sole remains y1193. Keep face, torso, head top75, dimensions and all upper body unchanged. The left near thigh red stripe stays on LEFT and its bent lower leg slopes down-left, red-striped LEFT shoe rises about100pixels, toe points down-right. Natural walk recovery pose. Do not shorten or lengthen the planted plain RIGHT leg. Exactly two legs. Transparent1254square. No background, no shadow, no floor."
+}

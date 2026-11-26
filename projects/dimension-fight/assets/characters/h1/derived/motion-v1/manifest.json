@@ -1,0 +1,248 @@
+{
+  "canvas": [
+    512,
+    512
+  ],
+  "displayScale": 0.625,
+  "method": "Shared scale from idle alpha height (384px); source canvas midpoint X; sole bottom Y except jumping uses idle virtual ground. No repainting.",
+  "alphaThreshold": 8,
+  "status": "draft",
+  "referenceSha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+  "root": [
+    256,
+    448
+  ],
+  "frames": [
+    {
+      "output": "derived/motion-v1/lp-extend.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 63,
+        "left": 105,
+        "bottom": 447,
+        "right": 413
+      },
+      "id": "lp-extend",
+      "offset": [
+        41.02857142857144,
+        37.60000000000002
+      ],
+      "source": "generated/motion-v1/lp-extend.png",
+      "rootMode": "sole-bottom",
+      "sourceSha256": "ef6709b1169bca6366c0944f2749446dc68cac93427f65c5f5ae90feb706047e",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceRoot": [
+        627.0,
+        1197
+      ],
+      "sourceBounds": {
+        "top": 75,
+        "left": 188,
+        "bottom": 1196,
+        "right": 1085
+      },
+      "outputSha256": "b213a61d4bc0d43de4db362224d895decc882df65786cc588839d435b9f3e2f4"
+    },
+    {
+      "output": "derived/motion-v1/lp-retract.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 63,
+        "left": 105,
+        "bottom": 447,
+        "right": 413
+      },
+      "id": "lp-retract",
+      "offset": [
+        41.02857142857144,
+        37.94285714285712
+      ],
+      "source": "generated/motion-v1/lp-retract.png",
+      "rootMode": "sole-bottom",
+      "sourceSha256": "6041039cd9af5c831364ee4e5ac633abb606248b0211480fa4ccf5b4b99c4018",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceRoot": [
+        627.0,
+        1196
+      ],
+      "sourceBounds": {
+        "top": 75,
+        "left": 188,
+        "bottom": 1195,
+        "right": 1085
+      },
+      "outputSha256": "d5f16629cd0db5f5b7b45501527592776a1e8a4107211ce6f5ad87a63d85804e"
+    },
+    {
+      "output": "derived/motion-v1/lp-settle.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 63,
+        "left": 105,
+        "bottom": 447,
+        "right": 413
+      },
+      "id": "lp-settle",
+      "offset": [
+        41.02857142857144,
+        37.94285714285712
+      ],
+      "source": "generated/motion-v1/lp-settle.png",
+      "rootMode": "sole-bottom",
+      "sourceSha256": "cb0613a64ca1a579ca7875766877e0be5581f91a10c09113fc727ff7f1b97857",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceRoot": [
+        627.0,
+        1196
+      ],
+      "sourceBounds": {
+        "top": 75,
+        "left": 187,
+        "bottom": 1195,
+        "right": 1085
+      },
+      "outputSha256": "d06e584affc241161418f4e3f838429bebce51b6ace5f6e830783ce0106a9eb1"
+    },
+    {
+      "output": "derived/motion-v1/walk-mid-0.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 64,
+        "left": 167,
+        "bottom": 447,
+        "right": 355
+      },
+      "id": "walk-mid-0",
+      "offset": [
+        41.02857142857144,
+        38.28571428571428
+      ],
+      "source": "generated/motion-v1/walk-mid-0.png",
+      "rootMode": "sole-bottom",
+      "sourceSha256": "8b81bed43e688cf0df22bdcb9933de27a970bf3fef8852817343da6b7ae71ba0",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceRoot": [
+        627.0,
+        1195
+      ],
+      "sourceBounds": {
+        "top": 77,
+        "left": 369,
+        "bottom": 1194,
+        "right": 916
+      },
+      "outputSha256": "6b89910ee81825f27a6a4f3ec158e2a39feb32e398bb6938ea5ddd641bf0e428"
+    },
+    {
+      "output": "derived/motion-v1/walk-mid-1.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 67,
+        "left": 175,
+        "bottom": 447,
+        "right": 385
+      },
+      "id": "walk-mid-1",
+      "offset": [
+        41.02857142857144,
+        41.37142857142857
+      ],
+      "source": "generated/motion-v1/walk-mid-1.png",
+      "rootMode": "sole-bottom",
+      "sourceSha256": "39617221d796845528158c7a30442f5842431e5116cc2ed5f87042d2d8bdb202",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceRoot": [
+        627.0,
+        1186
+      ],
+      "sourceBounds": {
+        "top": 74,
+        "left": 391,
+        "bottom": 1185,
+        "right": 1004
+      },
+      "outputSha256": "b9a09d7da507ecb1b6bc055ffc52b144ff278d2122a96f31dd49b4dfcefb8bdc"
+    },
+    {
+      "output": "derived/motion-v1/walk-mid-2.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 64,
+        "left": 153,
+        "bottom": 447,
+        "right": 440
+      },
+      "id": "walk-mid-2",
+      "offset": [
+        41.02857142857144,
+        39.657142857142844
+      ],
+      "source": "generated/motion-v1/walk-mid-2.png",
+      "rootMode": "sole-bottom",
+      "sourceSha256": "da44c723b84ae9dba8548a219c61f0d98224779364e319a8054c279c6c92e0b5",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceRoot": [
+        627.0,
+        1191
+      ],
+      "sourceBounds": {
+        "top": 73,
+        "left": 327,
+        "bottom": 1190,
+        "right": 1164
+      },
+      "outputSha256": "64341903f9f0dfee1b430bed7822cac25941d5cc535d13e7bc9c0f770ecf19d9"
+    },
+    {
+      "output": "derived/motion-v1/walk-mid-3.png",
+      "scale": 0.34285714285714286,
+      "outputBounds": {
+        "top": 65,
+        "left": 125,
+        "bottom": 447,
+        "right": 412
+      },
+      "id": "walk-mid-3",
+      "offset": [
+        41.02857142857144,
+        38.97142857142859
+      ],
+      "source": "generated/motion-v1/walk-mid-3.png",
+      "rootMode": "sole-bottom",
+      "sourceSha256": "9013246b8de86fde6e8987d130c2c7675209ae641d78021c2c182fc7f7f570b5",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceRoot": [
+        627.0,
+        1193
+      ],
+      "sourceBounds": {
+        "top": 78,
+        "left": 245,
+        "bottom": 1192,
+        "right": 1084
+      },
+      "outputSha256": "89f773f894fd1f7e922d474ece8fd29f3b8ea7599fdeae3e1e1f50f9ca3a2a1e"
+    }
+  ]
+}

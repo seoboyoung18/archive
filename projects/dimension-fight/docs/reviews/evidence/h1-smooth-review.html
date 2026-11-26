@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>H1 회전 점프 · 모션 비교</title>
+<style>
+body{margin:0;background:#101923;color:#eaf3fa;font:15px system-ui}main{max-width:1120px;padding:20px;margin:auto}h1{font-size:27px;margin:0 0 8px}p{color:#bacada;line-height:1.6}a{color:#81e2ce}.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0}button,select{padding:8px;background:#26394e;color:inherit;border:1px solid #5b7286;border-radius:5px;font:inherit}label{display:flex;gap:7px;align-items:center}#game{aspect-ratio:1280/720;width:100%;border:1px solid #496078}canvas{display:block}output{display:block;white-space:pre-wrap;padding:12px;background:#203044;font:13px monospace}#frame{flex:1;min-width:150px}.strip{display:grid;grid-template-columns:repeat(9,1fr);gap:3px;margin:14px 0}.tile{background:#1a2838;text-align:center;overflow:hidden}.stage{height:136px;position:relative}.stage img{position:absolute;width:120px;height:120px;left:calc(50% - 60px);top:0}.tile small{display:block;padding:6px;font:11px monospace}#loading{color:#87e5c8}
+</style><main>
+<h1>한 바퀴 회전하며 상대 넘어가기</h1>
+<p>W는 제자리 · W+A/D는 방향 점프. 기존 높이·체공 시간으로 상대 위를 통과하고 착지하면 돌아봅니다.<br>새 중간 그림과 프레임 사이 위치·회전 보간을 게임과 같은 함수로 재생합니다. <a href="/match.html">대전하기 →</a></p>
+<div class="controls"><label>동작<select id="action"><option value="jump">방향 점프 · 상대 넘기</option><option value="neutral">제자리 점프</option><option value="walk">걷기</option><option value="idle">대기</option><option value="stand-lp">선 약손</option><option value="stand-hp">선 강손</option><option value="stand-lk">선 약발</option><option value="stand-hk">선 강발</option><option value="crouch-lp">앉은 약손</option><option value="crouch-hp">앉은 강손</option><option value="crouch-lk">앉은 약발</option><option value="crouch-hk">앉은 강발</option></select></label><label>시작<select id="side"><option value="1">왼쪽</option><option value="-1">오른쪽</option></select></label><label><input type="checkbox" id="old">이전 그림 간격 비교</label><button id="play" disabled>재생</button><button id="restart" disabled>처음</button></div>
+<p id="loading" role="status">그림을 준비합니다.</p><div id="game"></div>
+<div class="controls"><button id="prev">이전 1F</button><button id="next">다음 1F</button><input id="frame" type="range" min="0" max="60" value="24" aria-label="모션 프레임"><span id="position"></span></div>
+<div class="controls" id="markers"></div><output id="checks">렌더 준비 중</output>
+<div id="strip" class="strip"></div><p>비교의 이동·판정은 현재 규칙을 공유합니다. 이전 그림 보기는 보행12장·대기2장·공격 기존 그림 간격·회전 없는 점프3장만 재현합니다. 아래 연속 그림은 현재 모션의 대표 순간입니다. 자동 입력 재생과 사람의 대전 체감 평가는 구분합니다.</p>
+</main><script type="module">
+import Phaser from 'phaser';
+import { H1_ASSETS } from '../../../src/characters/h1-assets.ts';
+import { H1_ATTACK_FRAMES, combatPose } from '../../../src/characters/h1-poses.ts';
+import { combatVisual } from '../../../src/characters/h1-visual.ts';
+import { sampleCombatRender } from '../../../src/characters/h1-render.ts';
+import { configureCombatCameras, applyCombatCamera } from '../../../src/characters/h1-camera.ts';
+import { createCombat, stepCombat, COMBAT_NEUTRAL as N, attackPhase } from '../../../src/combat/combat.ts';
+const $=id=>document.getElementById(id),urls=Object.fromEntries(H1_ASSETS.map(a=>[a.key,a.url]));
+let states=[], scene=null, playing=false, cursor=24;
+function build(){
+ const dir=Number($('side').value),action=$('action').value;let s=createCombat();s.fighters[0].x=640-dir*50;s.fighters[1].x=640+dir*50;s.fighters[0].facing=dir;s.fighters[1].facing=-dir;
+ if(action==='walk'||action==='idle'||action.includes('-')){s.fighters[0].x=640-dir*190;s.fighters[1].x=640+dir*190;}
+ states=[s];for(let i=0;i<60;i++){const input={...N};if(action==='jump'||action==='neutral'){input.jump=i===0;input.axis=action==='jump'&&i<48?dir:0;}else if(action==='walk')input.axis=dir;else if(action.includes('-')){input.crouch=action.startsWith('crouch');if(i===0)input.attacks=[action.split('-')[1]];}s=stepCombat(s,[input,N]);states.push(s);}
+ cursor=Math.min(60,cursor);$('frame').value=String(Math.floor(cursor));drawStrip();scene?.draw();
+}
+function oldPose(f,def){
+ if(f.attack){const phase=attackPhase(f,def),a=def.attacks[f.attack.key],frames=H1_ATTACK_FRAMES[f.attack.key][phase].filter(p=>!p.endsWith('-mid'));const age=f.attack.age-(phase==='startup'?0:phase==='active'?a.startup:a.startup+a.active);return frames[Math.floor(age*frames.length/a[phase])];}
+ if(!f.grounded)return f.vy < -100-1e-9?'jump-rise':f.vy<=100+1e-9?'jump-apex':'jump-fall';
+ if(f.state==='walk'){const n=Math.floor(f.age/4)%12;return `walk-${String(f.walkDirection===f.facing?n:(12-n)%12).padStart(2,'0')}`;}
+ if(f.state==='idle')return `idle-${Math.floor(f.age/15)%2}`;return combatPose(f,def);
+}
+function drawStrip(){
+ $('strip').replaceChildren();for(const tick of [2,4,8,14,24,34,38,43,46]){const s=states[tick],f=s.fighters[0],v=combatVisual(f,s.definitions[0]),pose=combatPose(f,s.definitions[0]);const tile=document.createElement('div');tile.className='tile';const stage=document.createElement('div');stage.className='stage';const img=document.createElement('img');img.src=urls[pose];img.alt=`F${tick} ${pose}`;img.style.transformOrigin=`50% ${v.originY*100}%`;img.style.top='0px';img.style.transform=`rotate(${v.angle}deg) scaleX(${f.facing})`;stage.append(img);const text=document.createElement('small');text.textContent=`F${tick} · ${Math.round(v.angle)}°`;tile.append(stage,text);$('strip').append(tile);}
+}
+class SmoothReview extends Phaser.Scene{
+ preload(){for(const {key,url}of H1_ASSETS)this.load.image(key,url);this.load.on('loaderror',f=>{$('loading').textContent=`로딩 실패 ${f.key}`;});}
+ create(){if(H1_ASSETS.some(a=>!this.textures.exists(a.key)))return;const floor=this.add.graphics().fillStyle(0x1e2938).fillRect(-192,600,1664,720).lineStyle(2,0x71849a).lineBetween(-192,600,1472,600);this.sprites=[0,1].map(()=>this.add.image(0,0,'idle-0').setScale(.625));this.labels=[0,1].map((_,i)=>this.add.text(0,0,i?'TARGET':'PLAYER',{fontSize:'16px',fontFamily:'monospace',color:i?'#ffcb90':'#79e3cb'}).setOrigin(.5,1));this.guides=this.add.graphics();const title=this.add.text(48,40,'H1 / FLIP + IN-BETWEENS',{fontSize:'22px',color:'#a7bfd2'});configureCombatCameras(this,[floor,...this.sprites,...this.labels,this.guides],[title]);scene=this;$('loading').textContent=`그림 ${H1_ASSETS.length}/${H1_ASSETS.length} 준비 · 실제 Phaser 렌더`;$('play').disabled=$('restart').disabled=false;this.draw();}
+ draw(){const index=Math.floor(cursor),s=states[index],old=$('old').checked,r=sampleCombatRender(index>0&&!old?states[index-1]:null,s,playing?cursor-index:1);applyCombatCamera(this.cameras.main,r.camera);this.guides.clear();s.fighters.forEach((f,i)=>{let v=r.visuals[i],pose=r.poses[i];if(old){pose=oldPose(f,s.definitions[i]);v={...v,x:f.x,y:f.y,angle:0,originY:.875};}this.sprites[i].setTexture(pose).setOrigin(.5,v.originY).setPosition(v.x,v.y).setAngle(v.angle).setFlipX(f.facing===-1);this.labels[i].setPosition(v.x,v.y-(v.originY===.5?145:255));const root=r.fighters[i];this.guides.lineStyle(2,i?0xffbf85:0x70ddc3).lineBetween(root.x-8,root.y,root.x+8,root.y);});$('position').textContent=`F${index}/60`;$('frame').value=String(index);const f=s.fighters[0];$('checks').textContent=`${old?'이전 그림 간격':'새 그림 + 표시 보간'} · F${index} · ${old?oldPose(f,s.definitions[0]):r.poses[0]}\nPLAYER x${f.x.toFixed(1)} y${f.y.toFixed(1)} · ${f.grounded?'지상':'공중'} · ${f.facing===1?'오른쪽':'왼쪽'} 보기 · 회전 ${old?'0':r.visuals[0].angle.toFixed(1)}°\nTARGET x${s.fighters[1].x.toFixed(1)} · HP ${s.fighters.map(f=>f.hp).join(':')} · ${f.grounded&&index>=48&&$('action').value==='jump'?'상대 통과·착지·방향 전환 완료':''}`;}
+ update(_t,dt){if(!playing||!scene)return;cursor+=Math.min(dt,50)*.06;if(cursor>=60){cursor=0;}this.draw();}
+}
+function stop(){playing=false;$('play').textContent='재생';}
+for(const id of ['action','side'])$(id).addEventListener('change',()=>{stop();cursor=24;build();});$('old').addEventListener('change',()=>scene?.draw());$('play').addEventListener('click',()=>{playing=!playing;$('play').textContent=playing?'정지':'재생';});$('restart').addEventListener('click',()=>{stop();cursor=0;scene?.draw();});$('frame').addEventListener('input',()=>{stop();cursor=Number($('frame').value);scene?.draw();});for(const [id,d]of[['prev',-1],['next',1]])$(id).addEventListener('click',()=>{stop();cursor=Math.max(0,Math.min(60,Math.floor(cursor)+d));scene?.draw();});for(const tick of [0,12,24,36,48]){const b=document.createElement('button');b.textContent=`F${tick}`;b.addEventListener('click',()=>{stop();cursor=tick;scene?.draw();});$('markers').append(b);}window.addEventListener('blur',stop);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});build();const game=new Phaser.Game({type:Phaser.AUTO,parent:'game',width:1280,height:720,backgroundColor:'#141e2b',scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH},scene:SmoothReview});if(import.meta.hot)import.meta.hot.dispose(()=>game.destroy(true));
+</script></html>

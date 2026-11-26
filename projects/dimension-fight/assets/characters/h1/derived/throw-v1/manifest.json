@@ -1,0 +1,215 @@
+{
+  "root": [
+    256,
+    448
+  ],
+  "frames": [
+    {
+      "scale": 0.34285714285714286,
+      "source": "generated/throw-v1/throw-turn.png",
+      "outputSha256": "76e45f6cf0cc8752ef153bdcd864267f2ad8ce5381ab205a66ca4af495641886",
+      "id": "throw-turn",
+      "output": "derived/throw-v1/throw-turn.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "top": 64,
+        "left": 118,
+        "right": 421
+      },
+      "sourceRoot": [
+        627.0,
+        1199
+      ],
+      "rootMode": "sole-bottom",
+      "sourceBounds": {
+        "bottom": 1198,
+        "top": 79,
+        "left": 227,
+        "right": 1110
+      },
+      "offset": [
+        41.02857142857144,
+        36.91428571428571
+      ],
+      "sourceSha256": "4e7bcb50474b212f5e20da96f11c51bbb1199bb0a8665172336da9c28ee2a322"
+    },
+    {
+      "scale": 0.34285714285714286,
+      "source": "generated/throw-v1/throw-lift.png",
+      "outputSha256": "0460e52f4a36bf7436825edf5a306856f53706569196d5753193beec0de30d6b",
+      "id": "throw-lift",
+      "output": "derived/throw-v1/throw-lift.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "top": 89,
+        "left": 110,
+        "right": 441
+      },
+      "sourceRoot": [
+        627.0,
+        1190
+      ],
+      "rootMode": "sole-bottom",
+      "sourceBounds": {
+        "bottom": 1189,
+        "top": 144,
+        "left": 203,
+        "right": 1168
+      },
+      "offset": [
+        41.02857142857144,
+        40.0
+      ],
+      "sourceSha256": "32c15cd6cf6c2f13d8a18540a12edc7d7077867ed9e6e421e7043250f6fccda0"
+    },
+    {
+      "scale": 0.34285714285714286,
+      "source": "generated/throw-v1/throw-slam.png",
+      "outputSha256": "aebe9cb1da56ecdb31196dfa85bd498a1f8ea8071897fca427e12316666b13cd",
+      "id": "throw-slam",
+      "output": "derived/throw-v1/throw-slam.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "top": 125,
+        "left": 82,
+        "right": 450
+      },
+      "sourceRoot": [
+        627.0,
+        1178
+      ],
+      "rootMode": "sole-bottom",
+      "sourceBounds": {
+        "bottom": 1177,
+        "top": 236,
+        "left": 121,
+        "right": 1196
+      },
+      "offset": [
+        41.02857142857144,
+        44.1142857142857
+      ],
+      "sourceSha256": "cb8942901af11e33c9939434637b59acd038d2f8dbc46dd7f983fcae0d8fb657"
+    },
+    {
+      "scale": 0.34285714285714286,
+      "source": "generated/throw-v1/thrown-air.png",
+      "outputSha256": "c45b82e57cebb1a80a9d052184b37528bd018f24fbd360575a7ed7eb9dbbe09f",
+      "id": "thrown-air",
+      "output": "derived/throw-v1/thrown-air.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputBounds": {
+        "bottom": 401,
+        "top": 88,
+        "left": 118,
+        "right": 393
+      },
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "rootMode": "idle-virtual-ground",
+      "sourceBounds": {
+        "bottom": 1059,
+        "top": 145,
+        "left": 224,
+        "right": 1027
+      },
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "sourceSha256": "df1300a41affc2f644c955eb118cb7f383134f52101d05ff7212e3d96d8f9b36"
+    },
+    {
+      "scale": 0.34285714285714286,
+      "source": "generated/throw-v1/thrown-down.png",
+      "outputSha256": "739362ca6e07cd2c337e1dc34c3447962b5ba84ecc2d66e41920e7af7e701ac6",
+      "id": "thrown-down",
+      "output": "derived/throw-v1/thrown-down.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "top": 293,
+        "left": 46,
+        "right": 466
+      },
+      "sourceRoot": [
+        627.0,
+        1163
+      ],
+      "rootMode": "body-bottom",
+      "sourceBounds": {
+        "bottom": 1162,
+        "top": 711,
+        "left": 16,
+        "right": 1241
+      },
+      "offset": [
+        41.02857142857144,
+        49.25714285714287
+      ],
+      "sourceSha256": "55815d4323dd79f2badf3f47f7712171e78a67b5d7f7ad55cb006bf6076ba793"
+    },
+    {
+      "scale": 0.34285714285714286,
+      "source": "generated/throw-v1/thrown-rise.png",
+      "outputSha256": "e6aefde6fff3d880d570ec22b7aa02cac07a66c0fa584163ba450cd481e20c6e",
+      "id": "thrown-rise",
+      "output": "derived/throw-v1/thrown-rise.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "top": 192,
+        "left": 112,
+        "right": 423
+      },
+      "sourceRoot": [
+        627.0,
+        1200
+      ],
+      "rootMode": "sole-bottom",
+      "sourceBounds": {
+        "bottom": 1199,
+        "top": 456,
+        "left": 208,
+        "right": 1114
+      },
+      "offset": [
+        41.02857142857144,
+        36.571428571428555
+      ],
+      "sourceSha256": "27a774db84877b2c4a5db21d3c1da651a89d0dcd0d043b4ff09ab754a119e64e"
+    }
+  ],
+  "alphaThreshold": 8,
+  "method": "Shared scale from idle alpha height (384px); source canvas midpoint X; sole bottom Y except jumping uses idle virtual ground. No repainting.",
+  "referenceSha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+  "displayScale": 0.625,
+  "status": "draft",
+  "canvas": [
+    512,
+    512
+  ]
+}

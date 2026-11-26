@@ -1,0 +1,31 @@
+[
+  {
+    "id": "stand-hk-apex-v3",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v3.png"
+    ],
+    "prompt": "Use case identity-preserve. Edit target: supplied square sprite. Output MUST be square1254x1254 transparent, not portrait. Same framing and anatomical size. Keep the plain supporting leg and LEFT pointing shoe exactly at original position. Keep torso/head/hands as reference. Alter near RED STRIPED attacking leg only: knee rises and leg extends diagonal UP RIGHT to ankle~1050,250, preparing a high-to-low heavy kick. Preserve hip twist, near hip projects in foreground. Do not move support foot leftward. Head, torso, ankle sizes identical. Full body with margins. Exactly2arms2legs."
+  },
+  {
+    "id": "stand-hk-descend-v2",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v3.png"
+    ],
+    "prompt": "Use case identity-preserve. Edit supplied1254x1254 SQUARE transparent sprite. Preserve head/torso/guard and whole plain support leg/shoe EXACTLY. Support shoe toes MUST remain LEFT, heel on RIGHT exactly like reference. Only raise red-striped attacking shin to mid-descent: knee~830,480 and sneaker~1130,500. This is midway from a high apex to impact. Shoe visibly ABOVE reference impact shoe. Keep hip/waist rotation, do not translate camera/body/support foot. Both arms guard, no extras. Square1254x1254, no background, margin30."
+  },
+  {
+    "id": "crouch-hk-retract-v2",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-active-v3.png"
+    ],
+    "prompt": "Use case identity-preserve. Edit supplied SQUARE1254x1254 transparent LOW kicking sprite. Keep head top exactly~495, head/body size and all upperbody pixels and plain supporting leg/shoe SAME, support shoe toes left. Change ONLY red-striped leg to slightly retract: bend knee so attacking sneaker moves LEFT150 pixels from original, shorten reach modestly. Keep LOW height, do not enlarge/stand up or raise head. Exactly2arms, two legs, same frame/canvas1254square. No text/effects."
+  },
+  {
+    "id": "crouch-hk-settle-v2",
+    "refs": [
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-active-v3.png",
+      "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+    ],
+    "prompt": "Use case identity-preserve. Frame between first low kick and second neutral squat. SQUARE1254x1254transparent. Preserve tiny low character scale and head TOP around490, feet baseline1180. Upper450pixels completelyEMPTY. Bend near red-striped kicking knee fully and draw it back in toward rear-left; near foot now hovering low aroundx450,y1110 before landing. PLAIN supporting leg stays deeply folded, shoe underhips, pivots to face threequarter forward. Hips and waist halfway untwist to neutral. Two fists close in guard. Match head width~270 and torso length~350 from reference, DO NOT fillcanvas or standup. Exactly2arms2legs, clothingidentitysame."
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-09-30",
+  "transparent_background": true,
+  "reference": "generated/v1/idle.png",
+  "frames": [
+    {
+      "id": "idle-1",
+      "prompt": "Use case: identity-preserve. Input1 exact H1 appearance, size and camera reference. One full-body anime cel-shaded game sprite facing RIGHT. Preserve exact face, black bob, red jacket white sleeve stripes, white crop athletic top, black pants red trim, wraps and red sneakers. Same head size/anatomical proportions as input. Square canvas same1254 framing, head near y74, virtual ground y1194, root x627. No zoom/recenter. Real alpha transparency, no shadows/text/effects/background. Make the second IDLE breathing pose. Both feet and all leg outlines must stay in exactly the same positions as input. Very subtle relaxed exhale: shoulders lower by about8 source pixels, elbows slightly softer, both fists remain guarding. Do not change whole body height or enlarge head. Keep head position stable; no blink, no step."
+    },
+    {
+      "id": "walk-0",
+      "prompt": "Use case: identity-preserve. Input1 exact H1 appearance, size and camera reference. One full-body anime cel-shaded game sprite facing RIGHT. Preserve exact face, black bob, red jacket white sleeve stripes, white crop athletic top, black pants red trim, wraps and red sneakers. Same head size/anatomical proportions as input. Square canvas same1254 framing, head near y74, virtual ground y1194, root x627. No zoom/recenter. Real alpha transparency, no shadows/text/effects/background. Make WALK cycle pose1, cautious fighting step toward right. Guarding upper body stable, front/screen-right shoe steps ahead slightly, heel contacts ground while rear/screen-left foot stays planted. Stance moderate width, feet do not cross, no running. Keep hip center around x627,y600; same overall framing and head height. Only small fighting shuffle."
+    },
+    {
+      "id": "walk-1",
+      "prompt": "Use case: identity-preserve. Input1 exact H1 appearance, size and camera reference. One full-body anime cel-shaded game sprite facing RIGHT. Preserve exact face, black bob, red jacket white sleeve stripes, white crop athletic top, black pants red trim, wraps and red sneakers. Same head size/anatomical proportions as input. Square canvas same1254 framing, head near y74, virtual ground y1194, root x627. No zoom/recenter. Real alpha transparency, no shadows/text/effects/background. Make WALK cycle pose2, passing stance in cautious rightward fighting shuffle. Guarding upper body same scale and height, front right foot planted, rear left foot lifting and moving inward toward the front foot, knees slightly flexed. Feet closer together than reference, no crossing or running. Hip center stays x627,y600, floor y1194. Same canvas and camera."
+    },
+    {
+      "id": "walk-2",
+      "prompt": "Use case: identity-preserve. Input1 exact H1 appearance/scale reference. One full-body right-facing anime cel-shaded game sprite. Keep exact black bob face, red white-striped jacket, white crop top, black red-trim pants, wraps, red shoes. Preserve head size/anatomy and square1254 camera framing, head near y74, pelvis near x627,y600, virtual ground y1194. Do not zoom/recenter. Genuine transparent alpha, no text/effects/shadow/background. WALK cycle pose3: rightward cautious fighting shuffle, feet apart again; the screen-left rear foot has stepped inward and is now planted near x480, screen-right leading foot advances to x950 with toe lightly contacting floor. Both knees flexed modestly, fists guard exactly as reference. Not running, not a kick. Keep upper body steady."
+    },
+    {
+      "id": "walk-3",
+      "prompt": "Use case: identity-preserve. Input1 exact H1 appearance/scale reference. One full-body right-facing anime cel-shaded game sprite. Keep exact black bob face, red white-striped jacket, white crop top, black red-trim pants, wraps, red shoes. Preserve head size/anatomy and square1254 camera framing, head near y74, pelvis near x627,y600, virtual ground y1194. Do not zoom/recenter. Genuine transparent alpha, no text/effects/shadow/background. WALK cycle pose4: rightward fighting shuffle returning to wide guard stance. Screen-left rear foot stays at x320 planted, screen-right front foot slightly lifted near x890 in a short controlled step, toe pointing right and sole just above ground. Fists guard, upper body steady; not a high knee, run or kick. Keep head/hips location consistent with reference."
+    },
+    {
+      "id": "jump-rise",
+      "prompt": "Use case: identity-preserve. Input1 exact H1 appearance/scale reference. One full-body right-facing anime cel-shaded game sprite. Keep exact black bob face, red white-striped jacket, white crop top, black red-trim pants, wraps, red shoes. Preserve head size/anatomy and square1254 camera framing, head near y74, pelvis near x627,y600, virtual ground y1194. Do not zoom/recenter. Genuine transparent alpha, no text/effects/shadow/background. JUMP ASCENT pose: guard fists retained, left/rear knee lightly bent backward and front knee slightly lifted. Preserve head and pelvis positions in canvas exactly; only bend legs so shoes lift within the existing canvas. NO whole-character upward shift, jump HEIGHT is supplied by game coordinates. Virtual foot root remains x627,y1194 even though curled feet are above it. Full body, keep enough margins."
+    },
+    {
+      "id": "jump-apex",
+      "prompt": "Use case: identity-preserve. Input1 exact H1 scale/appearance/camera reference. One full-body right-facing anime cel-shaded transparent sprite. Preserve exact face, short black bob, red white-striped jacket, white athletic crop shirt, black pants red trim, white wraps, red shoes. Same head size and proportions, square1254canvas, head near y74 and pelvis near x627,y600. Keep those head and pelvis screen positions; jump HEIGHT comes from game coordinates, NEVER move entire character up in canvas or zoom. Virtual root remains x627,y1194 even with bent legs. Real alpha, no shadows/effects/text/background. JUMP APEX: both knees pulled up moderately, hips in same location, shoes underneath folded knees, thighs angled slightly out, fists guarding. Balanced airborne fighting posture, not attacking or flying. Full body uncut with generous margins."
+    },
+    {
+      "id": "jump-fall",
+      "prompt": "Use case: identity-preserve. Input1 exact H1 scale/appearance/camera reference. One full-body right-facing anime cel-shaded transparent sprite. Preserve exact face, short black bob, red white-striped jacket, white athletic crop shirt, black pants red trim, white wraps, red shoes. Same head size and proportions, square1254canvas, head near y74 and pelvis near x627,y600. Keep those head and pelvis screen positions; jump HEIGHT comes from game coordinates, NEVER move entire character up in canvas or zoom. Virtual root remains x627,y1194 even with bent legs. Real alpha, no shadows/effects/text/background. JUMP DESCENT: legs extend downward to prepare landing, knees softly bent, red shoes pointed slightly down just above virtual ground y1194. Narrower than grounded stance, both fists continue guarding. Head and hip position/size unchanged. Full body inside same frame, no whole-character vertical offset."
+    }
+  ]
+}

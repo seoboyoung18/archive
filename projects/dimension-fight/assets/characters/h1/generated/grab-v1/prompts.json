@@ -1,0 +1,77 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-03",
+  "transparent_background": true,
+  "frames": [
+    {
+      "id": "grab-stand-hold",
+      "ref": "generated/v2/idle.png",
+      "detail": "STANDING ATTACKER HOLD pose. Keep her head, legs, wide planted shoe locations unchanged. Both wrapped hands reach forward to the right at chest height and gently grip an invisible opponent's upper sleeves: bent elbows, open grasping fingers, one hand centered near x940 y410 and the other near x1000 y545. Hands extend farther right than idle guard. Slight shoulder lean right, fully visible feet. Only this woman is drawn, no opponent, no floating garment.",
+      "prompt": "Use case: identity-preserve animation sprite edit. Input image1 is the exact H1 fighter EDIT TARGET. STANDING ATTACKER HOLD pose. Keep her head, legs, wide planted shoe locations unchanged. Both wrapped hands reach forward to the right at chest height and gently grip an invisible opponent's upper sleeves: bent elbows, open grasping fingers, one hand centered near x940 y410 and the other near x1000 y545. Hands extend farther right than idle guard. Slight shoulder lean right, fully visible feet. Only this woman is drawn, no opponent, no floating garment. Preserve exact black bob, face, red cropped jacket with white stripes, white sports top, black pants with red stripe, hand wraps and red sneakers. Maintain the SAME square 1254x1254 transparent canvas and exact anatomical scale as reference: standing head top around y74, soles at y1194, root x627. Never enlarge or crop, preserve large clear margins. Clean anime cel shading and existing linework. Exactly one full-body character, no text/effects/shadows/background. Genuine alpha transparency. Output one sprite only.",
+      "file": "grab-stand-hold.png"
+    },
+    {
+      "id": "grabbed-stand-hold",
+      "ref": "generated/v2/idle.png",
+      "detail": "STANDING GRABBED TARGET HOLD pose. She faces screen right, her upper torso is pulled gently toward screen right, shoulders hunch defensively and the front of her red jacket is slightly gathered as if held by an invisible opponent. Both wrapped hands open defensively near her collar/upper chest rather than fists in attack. Keep standing leg posture and both soles planted at the same pixel locations. Alert strained face, alive and conscious. Only this woman is drawn, no opponent hands or floating limbs.",
+      "prompt": "Use case: identity-preserve animation sprite edit. Input image1 is the exact H1 fighter EDIT TARGET. STANDING GRABBED TARGET HOLD pose. She faces screen right, her upper torso is pulled gently toward screen right, shoulders hunch defensively and the front of her red jacket is slightly gathered as if held by an invisible opponent. Both wrapped hands open defensively near her collar/upper chest rather than fists in attack. Keep standing leg posture and both soles planted at the same pixel locations. Alert strained face, alive and conscious. Only this woman is drawn, no opponent hands or floating limbs. Preserve exact black bob, face, red cropped jacket with white stripes, white sports top, black pants with red stripe, hand wraps and red sneakers. Maintain the SAME square 1254x1254 transparent canvas and exact anatomical scale as reference: standing head top around y74, soles at y1194, root x627. Never enlarge or crop, preserve large clear margins. Clean anime cel shading and existing linework. Exactly one full-body character, no text/effects/shadows/background. Genuine alpha transparency. Output one sprite only.",
+      "file": "grabbed-stand-hold.png"
+    },
+    {
+      "id": "grab-crouch-hold",
+      "ref": "generated/v2/idle.png",
+      "detail": "ATTACKER gripping a CROUCHING opponent who is invisible to screen right. Keep the STANDING wide legs, soles and hips of input1. Bend only at knees a little and hinge torso forward/down right, lowering shoulder line. Extend both wrapped hands down-forward with gently grasping fingers, wrist heights y650 and y795, hands near x900..1000. Head may lower slightly to y200, never become a squat. The invisible target is low, so do not grab at own chest height. Only one woman.",
+      "prompt": "Use case: identity-preserve animation edit. Image1 is H1 exact EDIT TARGET. ATTACKER gripping a CROUCHING opponent who is invisible to screen right. Keep the STANDING wide legs, soles and hips of input1. Bend only at knees a little and hinge torso forward/down right, lowering shoulder line. Extend both wrapped hands down-forward with gently grasping fingers, wrist heights y650 and y795, hands near x900..1000. Head may lower slightly to y200, never become a squat. The invisible target is low, so do not grab at own chest height. Only one woman. Preserve anatomical proportions, black bob/face, red white-striped jacket, white top, black red-trim pants, wraps, red sneakers, clean anime linework/cel shading. Same 1254x1254 square canvas, sole bottoms y1194 and root x627; never recenter, enlarge or crop. Real transparent background with generous margins. No text/shadows/effects/extra limbs. Output one full-body sprite only.",
+      "file": "grab-crouch-hold.png"
+    },
+    {
+      "id": "grabbed-crouch-hold",
+      "ref": "generated/crouch.png",
+      "detail": "CROUCHING GRABBED TARGET. Keep the exact low squat silhouette, both bent legs and soles from input1, head top around y490 with huge transparent margin above. Upper red jacket is gently gathered toward screen right by an invisible opponent; alert strained face looks right. Both wrapped hands open defensively near own collar to try to free the grasp. She remains seated in low squat. One woman only, no opponent limbs.",
+      "prompt": "Use case: identity-preserve animation edit. Image1 is H1 exact EDIT TARGET. CROUCHING GRABBED TARGET. Keep the exact low squat silhouette, both bent legs and soles from input1, head top around y490 with huge transparent margin above. Upper red jacket is gently gathered toward screen right by an invisible opponent; alert strained face looks right. Both wrapped hands open defensively near own collar to try to free the grasp. She remains seated in low squat. One woman only, no opponent limbs. Preserve anatomical proportions, black bob/face, red white-striped jacket, white top, black red-trim pants, wraps, red sneakers, clean anime linework/cel shading. Same 1254x1254 square canvas, sole bottoms y1194 and root x627; never recenter, enlarge or crop. Real transparent background with generous margins. No text/shadows/effects/extra limbs. Output one full-body sprite only.",
+      "file": "grabbed-crouch-hold.png"
+    },
+    {
+      "id": "grab-ready",
+      "ref": "generated/v2/idle.png",
+      "detail": "GRAB ATTEMPT preparation. Same standing legs and feet. Both hands open from fists in front of upper chest, fingers naturally spread into ready-to-grasp shapes, elbows bent. Slight forward weight shift but head and root stable. A clearly distinct open-handed anticipation before reaching forward. No opponent.",
+      "prompt": "Use case: identity-preserve animation edit. Image1 is H1 exact EDIT TARGET. GRAB ATTEMPT preparation. Same standing legs and feet. Both hands open from fists in front of upper chest, fingers naturally spread into ready-to-grasp shapes, elbows bent. Slight forward weight shift but head and root stable. A clearly distinct open-handed anticipation before reaching forward. No opponent. Preserve anatomical proportions, black bob/face, red white-striped jacket, white top, black red-trim pants, wraps, red sneakers, clean anime linework/cel shading. Same 1254x1254 square canvas, sole bottoms y1194 and root x627; never recenter, enlarge or crop. Real transparent background with generous margins. No text/shadows/effects/extra limbs. Output one full-body sprite only.",
+      "file": "grab-ready.png"
+    },
+    {
+      "id": "grab-reach",
+      "ref": "generated/v2/idle.png",
+      "detail": "GRAB ATTEMPT reach pose. Both arms extend toward screen right at chest/upper-arm height, open grasping hands, wrists near x1020 and x930 with one lower. Torso leans a little toward opponent, legs and soles stay planted as input1. Fingers are open, not clenched fists. No opponent.",
+      "prompt": "Use case: identity-preserve animation edit. Image1 is H1 exact EDIT TARGET. GRAB ATTEMPT reach pose. Both arms extend toward screen right at chest/upper-arm height, open grasping hands, wrists near x1020 and x930 with one lower. Torso leans a little toward opponent, legs and soles stay planted as input1. Fingers are open, not clenched fists. No opponent. Preserve anatomical proportions, black bob/face, red white-striped jacket, white top, black red-trim pants, wraps, red sneakers, clean anime linework/cel shading. Same 1254x1254 square canvas, sole bottoms y1194 and root x627; never recenter, enlarge or crop. Real transparent background with generous margins. No text/shadows/effects/extra limbs. Output one full-body sprite only.",
+      "file": "grab-reach.png"
+    },
+    {
+      "id": "grab-stand-brace",
+      "ref": "generated/grab-v1/grab-stand-hold.png",
+      "detail": "Keep the same GRABBING hands' positions to the right but draw elbows back 30 pixels and lean upper torso backward only slightly for a short shove wind-up. She is bracing with two hands holding an invisible standing opponent by upper sleeves, about to push away. Clearly small anticipation, not a punch. Preserve the exact legs and feet.",
+      "prompt": "Use case: identity-preserve fighting animation edit. Image1 exact H1 EDIT TARGET. Keep the same GRABBING hands' positions to the right but draw elbows back 30 pixels and lean upper torso backward only slightly for a short shove wind-up. She is bracing with two hands holding an invisible standing opponent by upper sleeves, about to push away. Clearly small anticipation, not a punch. Preserve the exact legs and feet. Keep exact face, black bob, red cropped jacket/white stripes, white top, black/red pants, hand wraps, red sneakers and existing anime cel linework. One full body character only, no extra limbs. SAME 1254x1254 canvas, sole bottoms y1194, root x627, head top around y74. Anatomical scale unchanged, no recentering/crop, no background/text/shadow/effects. Real transparent alpha.",
+      "file": "grab-stand-brace.png"
+    },
+    {
+      "id": "grab-stand-push",
+      "ref": "generated/grab-v1/grab-stand-hold.png",
+      "detail": "Two-handed SHOVE IMPACT toward screen right. Straighten both arms with open palms pushing right, shoulders and upper torso shift forward, palms near x1090 and x1030 at y390 and y510. Both feet stay planted at the exact input locations, slight weight on front knee. Hands have just released invisible opponent. Two arms only, no opponent.",
+      "prompt": "Use case: identity-preserve fighting animation edit. Image1 exact H1 EDIT TARGET. Two-handed SHOVE IMPACT toward screen right. Straighten both arms with open palms pushing right, shoulders and upper torso shift forward, palms near x1090 and x1030 at y390 and y510. Both feet stay planted at the exact input locations, slight weight on front knee. Hands have just released invisible opponent. Two arms only, no opponent. Keep exact face, black bob, red cropped jacket/white stripes, white top, black/red pants, hand wraps, red sneakers and existing anime cel linework. One full body character only, no extra limbs. SAME 1254x1254 canvas, sole bottoms y1194, root x627, head top around y74. Anatomical scale unchanged, no recentering/crop, no background/text/shadow/effects. Real transparent alpha.",
+      "file": "grab-stand-push.png"
+    },
+    {
+      "id": "grab-retract",
+      "ref": "generated/v2/idle.png",
+      "detail": "RECOVERY after a two-handed grab or shove. Both open wrapped hands retract halfway toward the chest with elbows bent, one at x820 y430 and other near x750 y520. Torso returns from forward lean, legs and feet exactly as input. Fingers are relaxed and naturally open. Distinct recovery from reaching, not a punch.",
+      "prompt": "Use case: identity-preserve fighting animation edit. Image1 exact H1 EDIT TARGET. RECOVERY after a two-handed grab or shove. Both open wrapped hands retract halfway toward the chest with elbows bent, one at x820 y430 and other near x750 y520. Torso returns from forward lean, legs and feet exactly as input. Fingers are relaxed and naturally open. Distinct recovery from reaching, not a punch. Keep exact face, black bob, red cropped jacket/white stripes, white top, black/red pants, hand wraps, red sneakers and existing anime cel linework. One full body character only, no extra limbs. SAME 1254x1254 canvas, sole bottoms y1194, root x627, head top around y74. Anatomical scale unchanged, no recentering/crop, no background/text/shadow/effects. Real transparent alpha.",
+      "file": "grab-retract.png"
+    },
+    {
+      "id": "grab-settle",
+      "ref": "generated/v2/idle.png",
+      "detail": "Final RECOVERY settling from open-handed grab into fighting guard. Both wrapped hands halfway close into loose fists held a little lower than the input guard, elbows relaxed. Preserve head torso and all leg/foot placement exactly. Very small transition, same person, no enlargement.",
+      "prompt": "Use case: identity-preserve fighting animation edit. Image1 exact H1 EDIT TARGET. Final RECOVERY settling from open-handed grab into fighting guard. Both wrapped hands halfway close into loose fists held a little lower than the input guard, elbows relaxed. Preserve head torso and all leg/foot placement exactly. Very small transition, same person, no enlargement. Keep exact face, black bob, red cropped jacket/white stripes, white top, black/red pants, hand wraps, red sneakers and existing anime cel linework. One full body character only, no extra limbs. SAME 1254x1254 canvas, sole bottoms y1194, root x627, head top around y74. Anatomical scale unchanged, no recentering/crop, no background/text/shadow/effects. Real transparent alpha.",
+      "file": "grab-settle.png"
+    }
+  ]
+}

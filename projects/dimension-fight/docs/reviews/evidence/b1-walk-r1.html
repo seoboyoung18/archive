@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B1 R1 · 보행 24장·대기 4장 검수</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background:#101927; color:#f4f7fb; }
+    * { box-sizing:border-box; }
+    body { margin:0; padding:24px; }
+    main { max-width:1280px; margin:auto; }
+    h1 { margin:0 0 8px; font-size:clamp(24px,3vw,36px); }
+    p { color:#b9c8d8; line-height:1.5; }
+    .tag { display:inline-block; border:1px solid #6a829a; border-radius:99px; padding:6px 12px; color:#ffda9d; margin:0 0 16px; }
+    .arena { position:relative; aspect-ratio:16/9; background:linear-gradient(#1b2a3c,#2a4052 83.3%,#27313c 83.4%); border:1px solid #465a70; border-radius:14px; overflow:hidden; }
+    .arena::after { content:''; position:absolute; top:83.333%; left:0; right:0; border-top:2px solid #cfdae8; }
+    .fighter { position:absolute; width:25%; aspect-ratio:1; left:50%; top:83.333%; transform:translate(-50%,-87.5%); object-fit:contain; }
+    .root { position:absolute; left:50%; top:83.333%; width:7px; height:7px; border-radius:50%; transform:translate(-50%,-50%); background:white; z-index:2; }
+    .controls { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:16px 0; }
+    button { background:#20415a; border:1px solid #7593aa; border-radius:7px; color:#fff; padding:9px 15px; cursor:pointer; }
+    button:hover, button:focus-visible { background:#32617e; }
+    output { min-width:130px; font-variant-numeric:tabular-nums; }
+    .sheet { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; }
+    .cell { background:#1d2b3b; border:1px solid #3d5064; border-radius:8px; padding:6px; text-align:center; }
+    .cell.selected { border-color:#ffd07b; }
+    .cell img { width:100%; aspect-ratio:1; object-fit:contain; }
+    .cell small { color:#cad8e6; }
+    @media(max-width:720px) { .sheet { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>B1 보행·대기 모션 검수</h1>
+    <p class="tag">R1 보행 24장·대기 4장 후보 · 경기 미연결</p>
+    <p>보행은 오른쪽으로 걷는 0.8초 한 주기, 대기는 30F 호흡 주기입니다. 앞뒤발 교차·접지, 상체 높이, 팔 교대, 꼬리 흐름을 확인합니다. 대기 그림은 R0 키에 맞춰 정렬했지만 발의 수평 흔들림은 계속 검수 중입니다.</p>
+    <div class="arena" aria-label="B1 보행 포즈 재생 화면">
+      <img id="fighter" class="fighter" alt="B1 보행 현재 포즈">
+      <span class="root" aria-hidden="true"></span>
+    </div>
+    <div class="controls">
+      <button id="walk" type="button">보행 24장</button>
+      <button id="idle" type="button">대기 4장</button>
+      <button id="play" type="button">재생</button>
+      <button id="previous" type="button">이전 포즈</button>
+      <button id="next" type="button">다음 포즈</button>
+      <button id="speed" type="button">속도: 보통</button>
+      <output id="status" aria-live="polite"></output>
+      <span>←/→ 한 장씩, Space 재생·정지</span>
+    </div>
+    <div class="sheet" id="sheet" aria-label="포즈 연락판"></div>
+    <p>원본·생성 원화·정렬본은 별도로 보존합니다. 아직 실제 걷기 입력, 판정, AI나 캐릭터 선택에 연결하지 않았습니다.</p>
+  </main>
+  <script>
+    const walkIds=Array.from({length:12},(_,i)=>['walk-'+String(i).padStart(2,'0'),'walk-mid-'+String(i).padStart(2,'0')]).flat();
+    const idleIds=['idle-0','idle-in','idle-1','idle-out'];
+    let mode='walk', ids=walkIds, slow=false;
+    const url=id=>'../../../assets/characters/b1/derived/r1-v1/'+id+'.png';
+    const fighter=document.getElementById('fighter'), sheet=document.getElementById('sheet');
+    const status=document.getElementById('status'), play=document.getElementById('play');
+    let frame=0,playing=false,last=0;
+    function renderSheet() {
+      sheet.replaceChildren();
+      for(const [i,id] of ids.entries()) {
+        const cell=document.createElement('button'); cell.type='button'; cell.className='cell';
+        const img=document.createElement('img'); img.src=url(id); img.alt=id;
+        const label=document.createElement('small'); label.textContent=id;
+        cell.append(img,label); cell.addEventListener('click',()=>{playing=false;setFrame(i)});
+        sheet.append(cell);
+      }
+      setFrame(0);
+    }
+    function setFrame(i) {
+      frame=(i+ids.length)%ids.length; fighter.src=url(ids[frame]);
+      fighter.alt='B1 '+ids[frame]; status.textContent=ids[frame]+' · '+(mode==='walk'?frame*2:[0,8,15,23][frame])+'F';
+      [...sheet.children].forEach((el,j)=>el.classList.toggle('selected',j===frame));
+      play.textContent=playing?'정지':'재생';
+    }
+    function tick(now) {
+      const frameMs=mode==='walk'?800/24:[8,7,8,7][frame]*1000/60;
+      if(playing && now-last>=frameMs*(slow?2:1)) { last=now; setFrame(frame+1); }
+      requestAnimationFrame(tick);
+    }
+    play.addEventListener('click',()=>{playing=!playing; last=performance.now();setFrame(frame)});
+    document.getElementById('walk').addEventListener('click',()=>{mode='walk';ids=walkIds;playing=false;renderSheet()});
+    document.getElementById('idle').addEventListener('click',()=>{mode='idle';ids=idleIds;playing=false;renderSheet()});
+    document.getElementById('speed').addEventListener('click',e=>{slow=!slow;e.currentTarget.textContent='속도: '+(slow?'느리게':'보통')});
+    document.getElementById('previous').addEventListener('click',()=>{playing=false;setFrame(frame-1)});
+    document.getElementById('next').addEventListener('click',()=>{playing=false;setFrame(frame+1)});
+    document.addEventListener('keydown',e=>{
+      if(e.key==='ArrowLeft'||e.key==='ArrowRight') { e.preventDefault();playing=false;setFrame(frame+(e.key==='ArrowLeft'?-1:1)); }
+      if(e.code==='Space' && e.target.tagName!=='BUTTON') { e.preventDefault();playing=!playing;last=performance.now();setFrame(frame); }
+    });
+    renderSheet();requestAnimationFrame(tick);
+  </script>
+</body>
+</html>

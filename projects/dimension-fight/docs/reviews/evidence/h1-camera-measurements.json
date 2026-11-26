@@ -1,0 +1,2374 @@
+{
+  "status": "Measurement for an unapplied shared-camera comparison; no camera/scale rule or combat change approved by this report.",
+  "inspectedCommit": "3fe3f239039fda9a6fc69e85f1c38b98c4497b05",
+  "units": {
+    "sourceCanvas": [
+      512,
+      512
+    ],
+    "sourceRoot": [
+      256,
+      448
+    ],
+    "spriteScale": 0.625,
+    "logicalViewport": [
+      1280,
+      720
+    ],
+    "logicalRootX": [
+      80,
+      1200
+    ],
+    "alpha": "Every alpha>0 occupied pixel cell; bounds right/bottom exclusive; rotation extrema use exact occupied-cell convex hull."
+  },
+  "selection": {
+    "registered": 100,
+    "currentlySelected": 94,
+    "historicalUnselected": [
+      "grab-stand-brace",
+      "grab-stand-push",
+      "grab-crouch-brace",
+      "grab-crouch-push",
+      "grabbed-stand-impact",
+      "grabbed-crouch-impact"
+    ],
+    "regularDefinition": "70 = idle2+crouch1+walk12+jump3+guard2+basic attack50. Adding hit2 or hit2+KO3 does not expand this union.",
+    "groups": {
+      "idle": [
+        "idle-0",
+        "idle-1"
+      ],
+      "crouch": [
+        "crouch"
+      ],
+      "walk": [
+        "walk-00",
+        "walk-01",
+        "walk-02",
+        "walk-03",
+        "walk-04",
+        "walk-05",
+        "walk-06",
+        "walk-07",
+        "walk-08",
+        "walk-09",
+        "walk-10",
+        "walk-11"
+      ],
+      "jump": [
+        "jump-rise",
+        "jump-apex",
+        "jump-fall"
+      ],
+      "guard": [
+        "stand-guard",
+        "crouch-guard"
+      ],
+      "stand-lp": [
+        "stand-lp-startup",
+        "lp-extend",
+        "stand-lp-active",
+        "lp-retract",
+        "stand-lp-recovery",
+        "lp-settle"
+      ],
+      "stand-hp": [
+        "stand-hp-startup",
+        "stand-hp-extend",
+        "stand-hp-active",
+        "stand-hp-retract",
+        "stand-hp-recovery",
+        "stand-hp-settle"
+      ],
+      "stand-lk": [
+        "stand-lk-startup",
+        "stand-lk-extend",
+        "stand-lk-active",
+        "stand-lk-retract",
+        "stand-lk-recovery",
+        "stand-lk-settle"
+      ],
+      "stand-hk": [
+        "stand-hk-startup",
+        "stand-hk-lift",
+        "stand-hk-apex",
+        "stand-hk-descend",
+        "stand-hk-active",
+        "stand-hk-retract",
+        "stand-hk-recovery",
+        "stand-hk-settle"
+      ],
+      "crouch-lp": [
+        "crouch-lp-startup",
+        "crouch-lp-extend",
+        "crouch-lp-active",
+        "crouch-lp-retract",
+        "crouch-lp-recovery",
+        "crouch-lp-settle"
+      ],
+      "crouch-hp": [
+        "crouch-hp-startup",
+        "crouch-hp-extend",
+        "crouch-hp-active",
+        "crouch-hp-retract",
+        "crouch-hp-recovery",
+        "crouch-hp-settle"
+      ],
+      "crouch-lk": [
+        "crouch-lk-startup",
+        "crouch-lk-extend",
+        "crouch-lk-active",
+        "crouch-lk-retract",
+        "crouch-lk-settle",
+        "crouch-lk-recovery"
+      ],
+      "crouch-hk": [
+        "crouch-hk-startup",
+        "crouch-hk-extend",
+        "crouch-hk-active",
+        "crouch-hk-retract",
+        "crouch-hk-settle",
+        "crouch-hk-recovery"
+      ]
+    }
+  },
+  "sourceSha256": {
+    "src/characters/h1-visual.ts": "b7a4e2647676bdf2f7b7208b623c57146163021935e1b66befc12eb287242c0b",
+    "src/characters/h1-poses.ts": "ecdefe9f35e4706e0117e40e6c377cce7b1378f3f87be97bdbb596331d6546cb",
+    "src/characters/h1.ts": "4238e4270cd773269b82842d18387a825f47bea20b9127db6b1734fcc817bf23",
+    "src/combat/combat.ts": "1d2048fdac67102869d20c1a4dc181e7730fe039afec38da75775c66d4e65720"
+  },
+  "groupUnions": [
+    {
+      "key": "idle",
+      "count": 2,
+      "bounds": [
+        105,
+        414
+      ],
+      "extremeLeftPoses": [
+        "idle-1"
+      ],
+      "extremeRightPoses": [
+        "idle-1"
+      ],
+      "naturalInwardMaxDx": 14.375,
+      "allFacingMaxDx": 18.75,
+      "inwardWorld": [
+        -14.375,
+        1294.375
+      ],
+      "inwardTwoFighterWidth": 1308.75,
+      "bothFacingWorld": [
+        -18.75,
+        1298.75
+      ]
+    },
+    {
+      "key": "crouch",
+      "count": 1,
+      "bounds": [
+        155,
+        368
+      ],
+      "extremeLeftPoses": [
+        "crouch"
+      ],
+      "extremeRightPoses": [
+        "crouch"
+      ],
+      "naturalInwardMaxDx": 0,
+      "allFacingMaxDx": 0,
+      "inwardWorld": [
+        16.875,
+        1263.125
+      ],
+      "inwardTwoFighterWidth": 1246.25,
+      "bothFacingWorld": [
+        10,
+        1270
+      ]
+    },
+    {
+      "key": "walk",
+      "count": 12,
+      "bounds": [
+        71,
+        450
+      ],
+      "extremeLeftPoses": [
+        "walk-11"
+      ],
+      "extremeRightPoses": [
+        "walk-04"
+      ],
+      "naturalInwardMaxDx": 35.625,
+      "allFacingMaxDx": 41.25,
+      "inwardWorld": [
+        -35.625,
+        1315.625
+      ],
+      "inwardTwoFighterWidth": 1351.25,
+      "bothFacingWorld": [
+        -41.25,
+        1321.25
+      ]
+    },
+    {
+      "key": "jump",
+      "count": 3,
+      "bounds": [
+        74,
+        442
+      ],
+      "extremeLeftPoses": [
+        "jump-rise",
+        "jump-apex",
+        "jump-fall"
+      ],
+      "extremeRightPoses": [
+        "jump-rise"
+      ],
+      "naturalInwardMaxDx": 33.75,
+      "allFacingMaxDx": 36.25,
+      "inwardWorld": [
+        -33.75,
+        1313.75
+      ],
+      "inwardTwoFighterWidth": 1347.5,
+      "bothFacingWorld": [
+        -36.25,
+        1316.25
+      ]
+    },
+    {
+      "key": "guard",
+      "count": 2,
+      "bounds": [
+        72,
+        416
+      ],
+      "extremeLeftPoses": [
+        "crouch-guard"
+      ],
+      "extremeRightPoses": [
+        "stand-guard"
+      ],
+      "naturalInwardMaxDx": 35,
+      "allFacingMaxDx": 35,
+      "inwardWorld": [
+        -35,
+        1315
+      ],
+      "inwardTwoFighterWidth": 1350,
+      "bothFacingWorld": [
+        -35,
+        1315
+      ]
+    },
+    {
+      "key": "stand-lp",
+      "count": 6,
+      "bounds": [
+        77,
+        444
+      ],
+      "extremeLeftPoses": [
+        "lp-retract"
+      ],
+      "extremeRightPoses": [
+        "stand-lp-active"
+      ],
+      "naturalInwardMaxDx": 31.875,
+      "allFacingMaxDx": 37.5,
+      "inwardWorld": [
+        -31.875,
+        1311.875
+      ],
+      "inwardTwoFighterWidth": 1343.75,
+      "bothFacingWorld": [
+        -37.5,
+        1317.5
+      ]
+    },
+    {
+      "key": "stand-hp",
+      "count": 6,
+      "bounds": [
+        47,
+        433
+      ],
+      "extremeLeftPoses": [
+        "stand-hp-extend"
+      ],
+      "extremeRightPoses": [
+        "stand-hp-active"
+      ],
+      "naturalInwardMaxDx": 50.625,
+      "allFacingMaxDx": 50.625,
+      "inwardWorld": [
+        -50.625,
+        1330.625
+      ],
+      "inwardTwoFighterWidth": 1381.25,
+      "bothFacingWorld": [
+        -50.625,
+        1330.625
+      ]
+    },
+    {
+      "key": "stand-lk",
+      "count": 6,
+      "bounds": [
+        77,
+        460
+      ],
+      "extremeLeftPoses": [
+        "stand-lk-settle"
+      ],
+      "extremeRightPoses": [
+        "stand-lk-active"
+      ],
+      "naturalInwardMaxDx": 31.875,
+      "allFacingMaxDx": 47.5,
+      "inwardWorld": [
+        -31.875,
+        1311.875
+      ],
+      "inwardTwoFighterWidth": 1343.75,
+      "bothFacingWorld": [
+        -47.5,
+        1327.5
+      ]
+    },
+    {
+      "key": "stand-hk",
+      "count": 8,
+      "bounds": [
+        74,
+        456
+      ],
+      "extremeLeftPoses": [
+        "stand-hk-apex",
+        "stand-hk-descend",
+        "stand-hk-active",
+        "stand-hk-recovery"
+      ],
+      "extremeRightPoses": [
+        "stand-hk-apex",
+        "stand-hk-active"
+      ],
+      "naturalInwardMaxDx": 33.75,
+      "allFacingMaxDx": 45,
+      "inwardWorld": [
+        -33.75,
+        1313.75
+      ],
+      "inwardTwoFighterWidth": 1347.5,
+      "bothFacingWorld": [
+        -45,
+        1325
+      ]
+    },
+    {
+      "key": "crouch-lp",
+      "count": 6,
+      "bounds": [
+        74,
+        455
+      ],
+      "extremeLeftPoses": [
+        "crouch-lp-startup"
+      ],
+      "extremeRightPoses": [
+        "crouch-lp-active"
+      ],
+      "naturalInwardMaxDx": 33.75,
+      "allFacingMaxDx": 44.375,
+      "inwardWorld": [
+        -33.75,
+        1313.75
+      ],
+      "inwardTwoFighterWidth": 1347.5,
+      "bothFacingWorld": [
+        -44.375,
+        1324.375
+      ]
+    },
+    {
+      "key": "crouch-hp",
+      "count": 6,
+      "bounds": [
+        77,
+        459
+      ],
+      "extremeLeftPoses": [
+        "crouch-hp-startup"
+      ],
+      "extremeRightPoses": [
+        "crouch-hp-active"
+      ],
+      "naturalInwardMaxDx": 31.875,
+      "allFacingMaxDx": 46.875,
+      "inwardWorld": [
+        -31.875,
+        1311.875
+      ],
+      "inwardTwoFighterWidth": 1343.75,
+      "bothFacingWorld": [
+        -46.875,
+        1326.875
+      ]
+    },
+    {
+      "key": "crouch-lk",
+      "count": 6,
+      "bounds": [
+        74,
+        463
+      ],
+      "extremeLeftPoses": [
+        "crouch-lk-startup",
+        "crouch-lk-recovery"
+      ],
+      "extremeRightPoses": [
+        "crouch-lk-active"
+      ],
+      "naturalInwardMaxDx": 33.75,
+      "allFacingMaxDx": 49.375,
+      "inwardWorld": [
+        -33.75,
+        1313.75
+      ],
+      "inwardTwoFighterWidth": 1347.5,
+      "bothFacingWorld": [
+        -49.375,
+        1329.375
+      ]
+    },
+    {
+      "key": "crouch-hk",
+      "count": 6,
+      "bounds": [
+        74,
+        468
+      ],
+      "extremeLeftPoses": [
+        "crouch-hk-startup",
+        "crouch-hk-retract",
+        "crouch-hk-settle"
+      ],
+      "extremeRightPoses": [
+        "crouch-hk-active"
+      ],
+      "naturalInwardMaxDx": 33.75,
+      "allFacingMaxDx": 52.5,
+      "inwardWorld": [
+        -33.75,
+        1313.75
+      ],
+      "inwardTwoFighterWidth": 1347.5,
+      "bothFacingWorld": [
+        -52.5,
+        1332.5
+      ]
+    }
+  ],
+  "poseUnions": [
+    {
+      "key": "regular70",
+      "count": 70,
+      "bounds": [
+        47,
+        468
+      ],
+      "extremeLeftPoses": [
+        "stand-hp-extend"
+      ],
+      "extremeRightPoses": [
+        "crouch-hk-active"
+      ],
+      "naturalInwardMaxDx": 50.625,
+      "allFacingMaxDx": 52.5,
+      "inwardWorld": [
+        -50.625,
+        1330.625
+      ],
+      "inwardTwoFighterWidth": 1381.25,
+      "bothFacingWorld": [
+        -52.5,
+        1332.5
+      ]
+    },
+    {
+      "key": "regularWithHit72",
+      "count": 72,
+      "bounds": [
+        47,
+        468
+      ],
+      "extremeLeftPoses": [
+        "stand-hp-extend"
+      ],
+      "extremeRightPoses": [
+        "crouch-hk-active"
+      ],
+      "naturalInwardMaxDx": 50.625,
+      "allFacingMaxDx": 52.5,
+      "inwardWorld": [
+        -50.625,
+        1330.625
+      ],
+      "inwardTwoFighterWidth": 1381.25,
+      "bothFacingWorld": [
+        -52.5,
+        1332.5
+      ]
+    },
+    {
+      "key": "regularWithHitKO75",
+      "count": 75,
+      "bounds": [
+        47,
+        468
+      ],
+      "extremeLeftPoses": [
+        "stand-hp-extend",
+        "ko-1"
+      ],
+      "extremeRightPoses": [
+        "crouch-hk-active"
+      ],
+      "naturalInwardMaxDx": 50.625,
+      "allFacingMaxDx": 52.5,
+      "inwardWorld": [
+        -50.625,
+        1330.625
+      ],
+      "inwardTwoFighterWidth": 1381.25,
+      "bothFacingWorld": [
+        -52.5,
+        1332.5
+      ]
+    },
+    {
+      "key": "allSelected94",
+      "count": 94,
+      "bounds": [
+        46,
+        468
+      ],
+      "extremeLeftPoses": [
+        "thrown-down"
+      ],
+      "extremeRightPoses": [
+        "crouch-hk-active"
+      ],
+      "naturalInwardMaxDx": 51.25,
+      "allFacingMaxDx": 52.5,
+      "inwardWorld": [
+        -51.25,
+        1331.25
+      ],
+      "inwardTwoFighterWidth": 1382.5,
+      "bothFacingWorld": [
+        -52.5,
+        1332.5
+      ]
+    },
+    {
+      "key": "allRegistered100",
+      "count": 100,
+      "bounds": [
+        46,
+        468
+      ],
+      "extremeLeftPoses": [
+        "thrown-down"
+      ],
+      "extremeRightPoses": [
+        "crouch-hk-active"
+      ],
+      "naturalInwardMaxDx": 51.25,
+      "allFacingMaxDx": 52.5,
+      "inwardWorld": [
+        -51.25,
+        1331.25
+      ],
+      "inwardTwoFighterWidth": 1382.5,
+      "bothFacingWorld": [
+        -52.5,
+        1332.5
+      ]
+    }
+  ],
+  "rawThrow": {
+    "samples": 10512,
+    "coverage": "center/left/right x directions-1/+1 x distance72/84/96 x attacker id0/1 x standing/crouching target x H0..72 x both fighters",
+    "maximumRootRelativeX": 191.645576927,
+    "minimumRootRelativeX": -191.645576927,
+    "worstLeft": {
+      "location": "center",
+      "dir": -1,
+      "distance": 72,
+      "owner": 0,
+      "targetPosture": "stand",
+      "age": 35,
+      "side": 1,
+      "role": "target",
+      "pose": "thrown-air",
+      "rootX": 604,
+      "rawX": 564.4405085744826,
+      "rawDx": -39.55949142551742,
+      "angle": 67.5,
+      "relativeLeft": -191.64557692712265,
+      "relativeRight": 75.04789781768989,
+      "world": {
+        "left": 412.35442307287735,
+        "right": 679.0478978176899,
+        "top": 438.4813817628111,
+        "bottom": 635.3433788149711
+      }
+    },
+    "worstRight": {
+      "location": "center",
+      "dir": 1,
+      "distance": 72,
+      "owner": 0,
+      "targetPosture": "stand",
+      "age": 35,
+      "side": 1,
+      "role": "target",
+      "pose": "thrown-air",
+      "rootX": 676,
+      "rawX": 715.5594914255174,
+      "rawDx": 39.55949142551742,
+      "angle": -67.5,
+      "relativeLeft": -75.04789781768989,
+      "relativeRight": 191.64557692712265,
+      "world": {
+        "left": 600.9521021823101,
+        "right": 867.6455769271226,
+        "top": 438.4813817628111,
+        "bottom": 635.3433788149711
+      }
+    },
+    "cornerCrossCheck": {
+      "minimum": -191.645576927,
+      "maximum": 191.645576927
+    },
+    "intermediatePositionReason": "At fixed throw age/orientation, root-relative arc x is affine in landingX-rootX. That displacement is between 0 and the full48px push, and the inspected corner and center cover both endpoints. Intermediate positions cannot exceed the measured horizontal extrema."
+  },
+  "cameraEnvelopeCandidate": {
+    "staticMaxRadius": 132.5,
+    "rawThrowMaxRadius": 191.645576927,
+    "margin": 192,
+    "derivation": "ceil(max(132.5,191.64557692712265)) = 192; [stage.minX-M,stage.maxX+M] = [-112,1392]",
+    "worldX": [
+      -112,
+      1392
+    ],
+    "worldWidth": 1504,
+    "uniformScale": 0.851063829787234,
+    "translateX": 95.31914893617021,
+    "transform": "screenX=(worldX+112)*(1280/1504). This is a candidate fixed whole-world envelope, not a selected camera behavior."
+  },
+  "localRootCorrectionRisk": {
+    "regularUnion": [
+      47,
+      468
+    ],
+    "maxInwardTranslation": 50.625,
+    "maxAnyFacingTranslation": 52.5,
+    "illustrationHitboxExamples": [
+      {
+        "edge": "left",
+        "attackAge": 12,
+        "pose": "stand-hk-apex",
+        "logicalRoot": 80,
+        "candidateVisualRoot": 130.625,
+        "dx": 50.625,
+        "logicalToe": {
+          "left": 180,
+          "right": 205,
+          "top": 370,
+          "bottom": 400
+        },
+        "illustratedToe": {
+          "left": 230.625,
+          "right": 255.625,
+          "top": 370,
+          "bottom": 400
+        },
+        "horizontalOverlap": 0,
+        "approvedToeWidth": 25,
+        "preHitDistance": 160,
+        "hpAfter": [
+          100,
+          84
+        ],
+        "note": "The documented sprite toe ROI maps exactly to the existing hitbox before a display-only translation. No combat values or picture paths were changed."
+      },
+      {
+        "edge": "right",
+        "attackAge": 12,
+        "pose": "stand-hk-apex",
+        "logicalRoot": 1200,
+        "candidateVisualRoot": 1149.375,
+        "dx": -50.625,
+        "logicalToe": {
+          "left": 1075,
+          "right": 1100,
+          "top": 370,
+          "bottom": 400
+        },
+        "illustratedToe": {
+          "left": 1024.375,
+          "right": 1049.375,
+          "top": 370,
+          "bottom": 400
+        },
+        "horizontalOverlap": 0,
+        "approvedToeWidth": 25,
+        "preHitDistance": 160,
+        "hpAfter": [
+          100,
+          84
+        ],
+        "note": "The documented sprite toe ROI maps exactly to the existing hitbox before a display-only translation. No combat values or picture paths were changed."
+      }
+    ],
+    "forwardWalk": {
+      "firstTwelveTicks": [
+        {
+          "frame": 1,
+          "logicalX": 80,
+          "visualX": 130.625
+        },
+        {
+          "frame": 2,
+          "logicalX": 84,
+          "visualX": 130.625
+        },
+        {
+          "frame": 3,
+          "logicalX": 88,
+          "visualX": 130.625
+        },
+        {
+          "frame": 4,
+          "logicalX": 92,
+          "visualX": 130.625
+        },
+        {
+          "frame": 5,
+          "logicalX": 96,
+          "visualX": 130.625
+        },
+        {
+          "frame": 6,
+          "logicalX": 100,
+          "visualX": 130.625
+        },
+        {
+          "frame": 7,
+          "logicalX": 104,
+          "visualX": 130.625
+        },
+        {
+          "frame": 8,
+          "logicalX": 108,
+          "visualX": 130.625
+        },
+        {
+          "frame": 9,
+          "logicalX": 112,
+          "visualX": 130.625
+        },
+        {
+          "frame": 10,
+          "logicalX": 116,
+          "visualX": 130.625
+        },
+        {
+          "frame": 11,
+          "logicalX": 120,
+          "visualX": 130.625
+        },
+        {
+          "frame": 12,
+          "logicalX": 124,
+          "visualX": 130.625
+        },
+        {
+          "frame": 13,
+          "logicalX": 128,
+          "visualX": 130.625
+        }
+      ],
+      "firstVisibleMovementSample": 13,
+      "firstVisibleMovement": {
+        "label": "forward-walk",
+        "frame": 14,
+        "pose": "walk-03",
+        "group": "walk",
+        "x": 132,
+        "y": 600,
+        "facing": 1,
+        "action": "free",
+        "attackAge": null,
+        "attackPhase": null,
+        "dx": {
+          "current": 0,
+          "perPose": 0,
+          "perGroup": 0,
+          "commonRegular": 0
+        },
+        "clipping": {
+          "current": 0,
+          "perPose": 0,
+          "perGroup": 0,
+          "commonRegular": 0
+        }
+      },
+      "note": "The constant union removes animation-dependent dx changes but the picture root remains fixed while the logical root walks across the corner clamped band."
+    },
+    "transitionComparison": [
+      {
+        "name": "left/fighter0/stand-lp",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 14.375,
+            "correctionRange": 14.375,
+            "maxTickCorrectionJump": 14.375,
+            "totalCorrectionVariation": 28.75,
+            "maxClip": 31.875
+          },
+          "perPose": {
+            "minDx": 13.75,
+            "maxDx": 31.875,
+            "correctionRange": 18.125,
+            "maxTickCorrectionJump": 17.5,
+            "totalCorrectionVariation": 35.625,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 14.375,
+            "maxDx": 31.875,
+            "correctionRange": 17.5,
+            "maxTickCorrectionJump": 17.5,
+            "totalCorrectionVariation": 35,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/stand-hp",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 14.375,
+            "correctionRange": 14.375,
+            "maxTickCorrectionJump": 14.375,
+            "totalCorrectionVariation": 28.75,
+            "maxClip": 50.625
+          },
+          "perPose": {
+            "minDx": 5,
+            "maxDx": 50.625,
+            "correctionRange": 45.625,
+            "maxTickCorrectionJump": 35.625,
+            "totalCorrectionVariation": 91.25,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 14.375,
+            "maxDx": 50.625,
+            "correctionRange": 36.25,
+            "maxTickCorrectionJump": 36.25,
+            "totalCorrectionVariation": 72.5,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/stand-lk",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 14.375,
+            "correctionRange": 14.375,
+            "maxTickCorrectionJump": 14.375,
+            "totalCorrectionVariation": 28.75,
+            "maxClip": 31.875
+          },
+          "perPose": {
+            "minDx": 13.75,
+            "maxDx": 31.875,
+            "correctionRange": 18.125,
+            "maxTickCorrectionJump": 18.125,
+            "totalCorrectionVariation": 40,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 14.375,
+            "maxDx": 31.875,
+            "correctionRange": 17.5,
+            "maxTickCorrectionJump": 17.5,
+            "totalCorrectionVariation": 35,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/stand-hk",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 14.375,
+            "correctionRange": 14.375,
+            "maxTickCorrectionJump": 14.375,
+            "totalCorrectionVariation": 28.75,
+            "maxClip": 33.75
+          },
+          "perPose": {
+            "minDx": 0,
+            "maxDx": 33.75,
+            "correctionRange": 33.75,
+            "maxTickCorrectionJump": 33.75,
+            "totalCorrectionVariation": 149.375,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 14.375,
+            "maxDx": 33.75,
+            "correctionRange": 19.375,
+            "maxTickCorrectionJump": 19.375,
+            "totalCorrectionVariation": 38.75,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/crouch-lp",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 0,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 33.75
+          },
+          "perPose": {
+            "minDx": 0,
+            "maxDx": 33.75,
+            "correctionRange": 33.75,
+            "maxTickCorrectionJump": 33.75,
+            "totalCorrectionVariation": 90,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 0,
+            "maxDx": 33.75,
+            "correctionRange": 33.75,
+            "maxTickCorrectionJump": 33.75,
+            "totalCorrectionVariation": 67.5,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/crouch-hp",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 0,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 31.875
+          },
+          "perPose": {
+            "minDx": 0,
+            "maxDx": 31.875,
+            "correctionRange": 31.875,
+            "maxTickCorrectionJump": 31.875,
+            "totalCorrectionVariation": 63.75,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 0,
+            "maxDx": 31.875,
+            "correctionRange": 31.875,
+            "maxTickCorrectionJump": 31.875,
+            "totalCorrectionVariation": 63.75,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/crouch-lk",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 0,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 33.75
+          },
+          "perPose": {
+            "minDx": 0,
+            "maxDx": 33.75,
+            "correctionRange": 33.75,
+            "maxTickCorrectionJump": 33.75,
+            "totalCorrectionVariation": 135,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 0,
+            "maxDx": 33.75,
+            "correctionRange": 33.75,
+            "maxTickCorrectionJump": 33.75,
+            "totalCorrectionVariation": 67.5,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/crouch-hk",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 0,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 33.75
+          },
+          "perPose": {
+            "minDx": 0,
+            "maxDx": 33.75,
+            "correctionRange": 33.75,
+            "maxTickCorrectionJump": 33.75,
+            "totalCorrectionVariation": 135,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 0,
+            "maxDx": 33.75,
+            "correctionRange": 33.75,
+            "maxTickCorrectionJump": 33.75,
+            "totalCorrectionVariation": 67.5,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/idle",
+        "strategies": {
+          "current": {
+            "minDx": 14.375,
+            "maxDx": 14.375,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          },
+          "perPose": {
+            "minDx": 13.75,
+            "maxDx": 14.375,
+            "correctionRange": 0.625,
+            "maxTickCorrectionJump": 0.625,
+            "totalCorrectionVariation": 1.875,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 14.375,
+            "maxDx": 14.375,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/back-walk",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 14.375,
+            "correctionRange": 14.375,
+            "maxTickCorrectionJump": 14.375,
+            "totalCorrectionVariation": 28.75,
+            "maxClip": 35.625
+          },
+          "perPose": {
+            "minDx": 0,
+            "maxDx": 35.625,
+            "correctionRange": 35.625,
+            "maxTickCorrectionJump": 33.75,
+            "totalCorrectionVariation": 126.25,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 14.375,
+            "maxDx": 35.625,
+            "correctionRange": 21.25,
+            "maxTickCorrectionJump": 21.25,
+            "totalCorrectionVariation": 42.5,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/forward-walk",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 14.375,
+            "correctionRange": 14.375,
+            "maxTickCorrectionJump": 14.375,
+            "totalCorrectionVariation": 14.375,
+            "maxClip": 29.75
+          },
+          "perPose": {
+            "minDx": 0,
+            "maxDx": 29.75,
+            "correctionRange": 29.75,
+            "maxTickCorrectionJump": 16,
+            "totalCorrectionVariation": 45.75,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 0,
+            "maxDx": 31.625,
+            "correctionRange": 31.625,
+            "maxTickCorrectionJump": 17.25,
+            "totalCorrectionVariation": 48.875,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 0,
+            "maxDx": 50.625,
+            "correctionRange": 50.625,
+            "maxTickCorrectionJump": 4,
+            "totalCorrectionVariation": 50.625,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/jump",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 14.375,
+            "correctionRange": 14.375,
+            "maxTickCorrectionJump": 14.375,
+            "totalCorrectionVariation": 28.75,
+            "maxClip": 33.75
+          },
+          "perPose": {
+            "minDx": 13.75,
+            "maxDx": 33.75,
+            "correctionRange": 20,
+            "maxTickCorrectionJump": 20,
+            "totalCorrectionVariation": 40,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 14.375,
+            "maxDx": 33.75,
+            "correctionRange": 19.375,
+            "maxTickCorrectionJump": 19.375,
+            "totalCorrectionVariation": 38.75,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      },
+      {
+        "name": "left/fighter0/crouch",
+        "strategies": {
+          "current": {
+            "minDx": 0,
+            "maxDx": 14.375,
+            "correctionRange": 14.375,
+            "maxTickCorrectionJump": 14.375,
+            "totalCorrectionVariation": 28.75,
+            "maxClip": 0
+          },
+          "perPose": {
+            "minDx": 0,
+            "maxDx": 13.75,
+            "correctionRange": 13.75,
+            "maxTickCorrectionJump": 13.75,
+            "totalCorrectionVariation": 27.5,
+            "maxClip": 0
+          },
+          "perGroup": {
+            "minDx": 0,
+            "maxDx": 14.375,
+            "correctionRange": 14.375,
+            "maxTickCorrectionJump": 14.375,
+            "totalCorrectionVariation": 28.75,
+            "maxClip": 0
+          },
+          "commonRegular": {
+            "minDx": 50.625,
+            "maxDx": 50.625,
+            "correctionRange": 0,
+            "maxTickCorrectionJump": 0,
+            "totalCorrectionVariation": 0,
+            "maxClip": 0
+          }
+        }
+      }
+    ]
+  },
+  "reproduction": {
+    "commands": [
+      "node --experimental-strip-types tmp/h1-regular-root-audit.mjs",
+      "node --experimental-strip-types tmp/h1-raw-throw-envelope-audit.mjs"
+    ],
+    "scripts": [
+      {
+        "path": "tmp/h1-regular-root-audit.mjs",
+        "sha256": "cdb4a765da5468e2db12770b7856dac894d8ca4c1e5328e23a241c74385eb1bd"
+      },
+      {
+        "path": "tmp/h1-raw-throw-envelope-audit.mjs",
+        "sha256": "0cd9c19839db045abeffaf9673789067aaef9e49e83b54529035c3b515cc6b30"
+      }
+    ],
+    "rawWorstRecipe": "createCombat(H1,H1), set initial attacker0.x=676,target1.x=604, both100HP. Supply one tick U-down,I-down,I-up,U-up to attacker0 then6 neutral ticks => H0. Advance35 neutral ticks => H35. Compute h1-visual.ts baseVisual only (no correction), select thrown-air, transform its alpha>0 occupied-cell hull with .625 scale, facing+1, originY.5, angle67.5deg. Subtract target logical root604: min=-191.64557692712265. Mirror for maximum.",
+    "note": "The tmp outputs retain all per-frame rows; this compact evidence keeps exact inputs, source/original/output hashes and extrema so the calculation can be reconstructed from the repository."
+  },
+  "sourceAssets": [
+    {
+      "pose": "idle-0",
+      "alphaX": [
+        106,
+        413
+      ],
+      "derived": "assets/characters/h1/derived/v2/idle.png",
+      "derivedSha256": "b3b038036d688306eb49f45a6960ded9132974b0c51c189da29b35cb5a14c647",
+      "original": "assets/characters/h1/generated/v2/idle.png",
+      "originalSha256": "7915499a1578002f858faf54fdf3baffe450b812447fa2bd9367d7c8dbecad9c"
+    },
+    {
+      "pose": "idle-1",
+      "alphaX": [
+        105,
+        414
+      ],
+      "derived": "assets/characters/h1/derived/movement-v1/idle-1.png",
+      "derivedSha256": "2075ab67c091729c562c407ba6ac8a013171f44a1ffc1392bc885cf6617411cb",
+      "original": "assets/characters/h1/generated/movement-v1/idle-1.png",
+      "originalSha256": "e244bcbc78fb8e47e3a1f4f0799833921c9e8fcef3ec84f468f25d9681cb9587"
+    },
+    {
+      "pose": "crouch",
+      "alphaX": [
+        155,
+        368
+      ],
+      "derived": "assets/characters/h1/derived/v2/crouch.png",
+      "derivedSha256": "a105dae18e1469f8767df6aaeb794ddfeae9370eadda38b35c743259a65dac66",
+      "original": "assets/characters/h1/generated/v2/crouch.png",
+      "originalSha256": "3bf4c5f6e7a38f7e503f3bca9537b08239d0678514c7cbbb39a1aaf4302589b5"
+    },
+    {
+      "pose": "stand-lp-startup",
+      "alphaX": [
+        105,
+        431
+      ],
+      "derived": "assets/characters/h1/derived/v2/startup.png",
+      "derivedSha256": "cb14fe28530cc02177afa25ec45ee168121892a60dfed836b3e116b0bc7523b1",
+      "original": "assets/characters/h1/generated/v2/startup.png",
+      "originalSha256": "e72d52aa725eb2d03d4adb739cbc9a3b156a180566b73838cd60238badeb4f6c"
+    },
+    {
+      "pose": "stand-lp-active",
+      "alphaX": [
+        105,
+        444
+      ],
+      "derived": "assets/characters/h1/derived/v2/active.png",
+      "derivedSha256": "d91740617fb50ad2c0016578f7ed320a2a8a3d7470dd2d6ed6004482a8cfbb22",
+      "original": "assets/characters/h1/generated/v2/active.png",
+      "originalSha256": "16c37741e47f4cfa17b9580c22d07cac06763eb0bbeeb50ee2277b352ca6d20b"
+    },
+    {
+      "pose": "stand-lp-recovery",
+      "alphaX": [
+        105,
+        413
+      ],
+      "derived": "assets/characters/h1/derived/v2/recovery.png",
+      "derivedSha256": "b5afc0c5ea273f78dedb174eb1785e6ed80d4c79225fec859323930ffa72784f",
+      "original": "assets/characters/h1/generated/v2/recovery.png",
+      "originalSha256": "de89f94647a9ad91f17a1d6c34f9499ba9b4bfbd81c70370f79cc5d001b71b55"
+    },
+    {
+      "pose": "crouch-lk-startup",
+      "alphaX": [
+        74,
+        397
+      ],
+      "derived": "assets/characters/h1/derived/v2/crouch-startup.png",
+      "derivedSha256": "4f6464a9d3b7f68f9ef87ef394dd986a66d145c6ed81eb358b808ffd60c0b2c2",
+      "original": "assets/characters/h1/generated/v2/crouch-startup.png",
+      "originalSha256": "4a3d1d963a31045f132dd0c13d0375c006e6fb3d4122977c9a8c0fee18ce27f7"
+    },
+    {
+      "pose": "crouch-lk-active",
+      "alphaX": [
+        156,
+        463
+      ],
+      "derived": "assets/characters/h1/derived/v2/crouch-active.png",
+      "derivedSha256": "2498ee3252746096c66ff6aab579336b5042d7ca29111388381b979d28f10e9b",
+      "original": "assets/characters/h1/generated/v2/crouch-active.png",
+      "originalSha256": "c68fd8cce497da03d4696b3947751dba7d11ec49e53b18f4ce0e39d61867f746"
+    },
+    {
+      "pose": "crouch-lk-recovery",
+      "alphaX": [
+        74,
+        354
+      ],
+      "derived": "assets/characters/h1/derived/v2/crouch-recovery.png",
+      "derivedSha256": "ad67e0f247306ca17f8f2d19c2550cdfb9ba8edb7d0affeb4000515915b51877",
+      "original": "assets/characters/h1/generated/v2/crouch-recovery.png",
+      "originalSha256": "cc8e689952f85f573315b44beb325aa516bce68b2fae7228b733b8c6e81ec0ab"
+    },
+    {
+      "pose": "jump-rise",
+      "alphaX": [
+        74,
+        442
+      ],
+      "derived": "assets/characters/h1/derived/movement-v1/jump-rise.png",
+      "derivedSha256": "f3c542cfc531b276997eb9737954f00e109feabc4a4a585f7d4aa87e68d65748",
+      "original": "assets/characters/h1/generated/movement-v1/jump-rise.png",
+      "originalSha256": "8f37e96a012f86c7d3cc11e232e3aa3524ce4be4852de2fc13432a99fdce9818"
+    },
+    {
+      "pose": "jump-apex",
+      "alphaX": [
+        74,
+        381
+      ],
+      "derived": "assets/characters/h1/derived/movement-v1/jump-apex.png",
+      "derivedSha256": "ab21f589ebd6dcff04334bc36d6475d7e32de39b364838c0bfb86dab8d427b07",
+      "original": "assets/characters/h1/generated/movement-v1/jump-apex.png",
+      "originalSha256": "0c7ddc4bb4e3ebb7fe78614d346b54a7a36abbef9797ba97f59c75a0b1957333"
+    },
+    {
+      "pose": "jump-fall",
+      "alphaX": [
+        74,
+        353
+      ],
+      "derived": "assets/characters/h1/derived/movement-v1/jump-fall.png",
+      "derivedSha256": "2d918703edfac393347322eda01e1878b193da684090e9157471969759444f0e",
+      "original": "assets/characters/h1/generated/movement-v1/jump-fall.png",
+      "originalSha256": "0ce8ed37b1be63d34b77800b72e4d37eabd82fa1a22c4ff2e4b667c626801270"
+    },
+    {
+      "pose": "stand-hp-startup",
+      "alphaX": [
+        104,
+        426
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hp-startup.png",
+      "derivedSha256": "a40d41b7aecabc9ca32fc4bcaae32171b9215bb51fbf62eac519e383aff83bf5",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hp-startup.png",
+      "originalSha256": "dee68aa6a32854a9583f4782ee4ba5dc5d5d663a38e9cb3d9ba372104c147cc2"
+    },
+    {
+      "pose": "stand-hp-active",
+      "alphaX": [
+        104,
+        433
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hp-active.png",
+      "derivedSha256": "bcd74b728dea1e9c703c24c67966bdd4c6f444e76c032f3970f12859d9a77eb4",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hp-active.png",
+      "originalSha256": "6bea63827698f9c0036ed5bef928c8fa752b66479ee8b559a83d91dc20c90219"
+    },
+    {
+      "pose": "stand-hp-recovery",
+      "alphaX": [
+        107,
+        424
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hp-recovery.png",
+      "derivedSha256": "b6f7dfb354fa79c0552f9db097b5a1274c202dd4870d31c58e5b6c526005cce1",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hp-recovery.png",
+      "originalSha256": "983b7ec8c81af2f4e593664ce552ed8091b0262f3eb2476d21829035e17d9549"
+    },
+    {
+      "pose": "stand-lk-startup",
+      "alphaX": [
+        93,
+        370
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/stand-lk-startup.png",
+      "derivedSha256": "8c222b22f575d1e3dd57354167cc969a6dce161fa15fe844fab8330c60b6c257",
+      "original": "assets/characters/h1/generated/attack-motion-v1/stand-lk-startup.png",
+      "originalSha256": "c9b99b67156aecd9d965b9b61422d7b4274e3fac88218f40ba3a1b4a4ba6305c"
+    },
+    {
+      "pose": "stand-lk-active",
+      "alphaX": [
+        93,
+        460
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/stand-lk-active.png",
+      "derivedSha256": "0f72aa3d339f26cc30b0153c2954e614081cc2c66b56bdd190fd69ab98d7ee15",
+      "original": "assets/characters/h1/generated/combat-v1/stand-lk-active.png",
+      "originalSha256": "01190035ae69df2481290546b0c7af126eba0b5006e3fb906a103595ff3d0077"
+    },
+    {
+      "pose": "stand-lk-recovery",
+      "alphaX": [
+        93,
+        443
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/stand-lk-recovery.png",
+      "derivedSha256": "bc368021855b1f1e4c9b02e44a991e23ddea8ad61e020d9478df356871c32e67",
+      "original": "assets/characters/h1/generated/attack-motion-v1/stand-lk-recovery.png",
+      "originalSha256": "3709f918c90165606782b6f3b8d1aa8835d842b8cb0b36673e31cbe65c15ad08"
+    },
+    {
+      "pose": "stand-hk-startup",
+      "alphaX": [
+        146,
+        383
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hk-startup.png",
+      "derivedSha256": "e0b2c51957782c0616f2df7ff815c9798d44a771ee383074e6147c326c9c4b07",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hk-startup.png",
+      "originalSha256": "46e8ba697e5c8e6d009147722437284065a9f9866af7d50ab9e41a323d82460b"
+    },
+    {
+      "pose": "stand-hk-active",
+      "alphaX": [
+        74,
+        456
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hk-active.png",
+      "derivedSha256": "49512c75f562639d5dc6488d9527cfc49d29da7361e19cb4f375d0e8e529317e",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hk-active-v3.png",
+      "originalSha256": "846e0c0a1d0b088691fbe87d2f16b99889507c1df760ab2beeab507eba7ee0e4"
+    },
+    {
+      "pose": "stand-hk-recovery",
+      "alphaX": [
+        74,
+        410
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hk-recovery.png",
+      "derivedSha256": "9238ca8e93f7fb56ce3eaf4d79970d16977ad33d62e2042f8decfd26d529f221",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hk-recovery.png",
+      "originalSha256": "9ea9ff6302a6e07b01a8ffd7fb951438e364580ffc5c44b0a2167183fe11c3c3"
+    },
+    {
+      "pose": "crouch-lp-startup",
+      "alphaX": [
+        74,
+        369
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/crouch-lp-startup.png",
+      "derivedSha256": "f3a78193d3fa2ded82141c39f1b5a9cf7759757968ab654ed4736de3fc4c2a6f",
+      "original": "assets/characters/h1/generated/combat-v1/crouch-lp-startup.png",
+      "originalSha256": "80caac21dc6ddd0e656bdd475a611a9fdeae60f4aa97a5d8714829cb089dd154"
+    },
+    {
+      "pose": "crouch-lp-active",
+      "alphaX": [
+        113,
+        455
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/crouch-lp-active.png",
+      "derivedSha256": "467580765783cbd954c473b891e23767ea1a005249c8e6772f8250bddc2a3d6f",
+      "original": "assets/characters/h1/generated/combat-v1/crouch-lp-active.png",
+      "originalSha256": "d50893ce43472222871b4d5852ff8e95db87a54cacb9bf1a4ee585a78fa12f9e"
+    },
+    {
+      "pose": "crouch-lp-recovery",
+      "alphaX": [
+        113,
+        368
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/crouch-lp-recovery.png",
+      "derivedSha256": "dc430dac650cff457615a6f729cbc8baca8c0b4f28cef21715b3cd5c9501aa56",
+      "original": "assets/characters/h1/generated/combat-v1/crouch-lp-recovery-v2.png",
+      "originalSha256": "0eb9c9bdeaf51f594f4f83ee9f0642585144e3d31766647c298f66995d983a61"
+    },
+    {
+      "pose": "crouch-hp-startup",
+      "alphaX": [
+        77,
+        373
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-startup.png",
+      "derivedSha256": "1d40071a5610fb21cf625c7b955ab72baa47c79db0faed155cc4199df7ca3f49",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-startup.png",
+      "originalSha256": "43c3283917a2367506feacb1857b96b18a98c8d1eaa19826db60a8e98e1ccd83"
+    },
+    {
+      "pose": "crouch-hp-active",
+      "alphaX": [
+        113,
+        459
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-active.png",
+      "derivedSha256": "b694220ca69cec90748d7bd248b9cabe2ddb2b77c16929a14bc7e54a1baf9f63",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-active.png",
+      "originalSha256": "afef2b437ff03c747a8c0bb8c8780fcb0ee99a6b899bb250fa32049d31d45afd"
+    },
+    {
+      "pose": "crouch-hp-recovery",
+      "alphaX": [
+        113,
+        386
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-recovery.png",
+      "derivedSha256": "adee17f482304b52f755718289ed146919acf7e6f38ecf067a1cec935aa0563e",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-recovery.png",
+      "originalSha256": "61c564b37524ae8a397173b860e148a4930377d34971ca1cf8a9f964228b0b18"
+    },
+    {
+      "pose": "crouch-hk-startup",
+      "alphaX": [
+        74,
+        384
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hk-startup.png",
+      "derivedSha256": "b7d705f8edaec27a4272aff7c997390b9cc37f2a238fce2d26c0b9311513f4c0",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-startup.png",
+      "originalSha256": "45cb6d30cabc091b3be45fdc3db7fc0c052bd3da44cbb8da38381816ab3735c1"
+    },
+    {
+      "pose": "crouch-hk-active",
+      "alphaX": [
+        77,
+        468
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hk-active.png",
+      "derivedSha256": "bf3445ace8313c8d75487f8030b5d80da24cac48f44179268feed0783b6a62ed",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-active-v3.png",
+      "originalSha256": "f89b213e2fd94f205960ae3c86cfa9496e11630bda8b2f93a55623b91d20c1e7"
+    },
+    {
+      "pose": "crouch-hk-recovery",
+      "alphaX": [
+        113,
+        391
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hk-recovery.png",
+      "derivedSha256": "c2c36e61c07369f31fe1460b79c43d69c3a29222fee78eda14c1360b158a8349",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-recovery.png",
+      "originalSha256": "bf7bdbea541f7fab7469adeedeb9a6ab3da3e5ad2e923bdd48860201f32bf31e"
+    },
+    {
+      "pose": "stand-guard",
+      "alphaX": [
+        77,
+        416
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/stand-guard.png",
+      "derivedSha256": "72f2ffc64cee685228bb3559f48ced93d9978a7c6f68c01e82eab67149b24fd8",
+      "original": "assets/characters/h1/generated/combat-v1/stand-guard.png",
+      "originalSha256": "a13302e61fbe76af9a30907fe35709ecb1044ccbcfda94e6fac84adf167e44cb"
+    },
+    {
+      "pose": "crouch-guard",
+      "alphaX": [
+        72,
+        369
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/crouch-guard.png",
+      "derivedSha256": "32c676f44ca8f865229e563d171967a79e65873dd83ab691030089538f891b1b",
+      "original": "assets/characters/h1/generated/combat-v1/crouch-guard.png",
+      "originalSha256": "b9bbed0f8970ffa616231e25767cde07f194348bfaa32a02202769370cbc14e3"
+    },
+    {
+      "pose": "stand-hit",
+      "alphaX": [
+        53,
+        416
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/stand-hit.png",
+      "derivedSha256": "10f7a1b053013e4ca0616e7ad591672da96e504bb45aae4a92abe44709d2a611",
+      "original": "assets/characters/h1/generated/combat-v1/stand-hit.png",
+      "originalSha256": "e1b5d72b9e32e13dd4ca4128fc8d909aa7682ed0aa8d361e38484a4cd5709430"
+    },
+    {
+      "pose": "crouch-hit",
+      "alphaX": [
+        113,
+        379
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/crouch-hit.png",
+      "derivedSha256": "a2ec353bde8d8fb00a2d2e669f47a6a7161242137a90a65d8e0c5af45e642965",
+      "original": "assets/characters/h1/generated/combat-v1/crouch-hit.png",
+      "originalSha256": "f21b398d370383b9e5ff63f27dff3e4394c999ecf081ff7dafa498be001640e7"
+    },
+    {
+      "pose": "ko-0",
+      "alphaX": [
+        74,
+        422
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/ko-0.png",
+      "derivedSha256": "b0b95d2f8d13f1fec7ceca6f092e8a8d52d9468c8ca4d056ebff5d04cf2241a8",
+      "original": "assets/characters/h1/generated/combat-v1/ko-0.png",
+      "originalSha256": "0c0b639d3a56157bdf00fed5576c7f1a34077517e83818f6936a939e5a59c0c5"
+    },
+    {
+      "pose": "ko-1",
+      "alphaX": [
+        47,
+        466
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/ko-1.png",
+      "derivedSha256": "230a2b17feba2b38ace374bbf51bedcad2173aa924e5f30f8d799b1447c7864d",
+      "original": "assets/characters/h1/generated/combat-v1/ko-1.png",
+      "originalSha256": "e7430d140ed00c657507273d55e799e14f8d444f98421b44d79d4ebc8df1c75f"
+    },
+    {
+      "pose": "ko-2",
+      "alphaX": [
+        49,
+        466
+      ],
+      "derived": "assets/characters/h1/derived/combat-v1/ko-2.png",
+      "derivedSha256": "540399ab0b57bc1ded818931e105377b865ea1029c6db3cc62fcfff3b80e935d",
+      "original": "assets/characters/h1/generated/combat-v1/ko-2.png",
+      "originalSha256": "9257407063503285e66a15c380dba7d1a8523be15ee5417fff57b7dd60be29a0"
+    },
+    {
+      "pose": "lp-extend",
+      "alphaX": [
+        105,
+        414
+      ],
+      "derived": "assets/characters/h1/derived/motion-v1/lp-extend.png",
+      "derivedSha256": "b213a61d4bc0d43de4db362224d895decc882df65786cc588839d435b9f3e2f4",
+      "original": "assets/characters/h1/generated/motion-v1/lp-extend.png",
+      "originalSha256": "ef6709b1169bca6366c0944f2749446dc68cac93427f65c5f5ae90feb706047e"
+    },
+    {
+      "pose": "lp-retract",
+      "alphaX": [
+        77,
+        414
+      ],
+      "derived": "assets/characters/h1/derived/motion-v1/lp-retract.png",
+      "derivedSha256": "d5f16629cd0db5f5b7b45501527592776a1e8a4107211ce6f5ad87a63d85804e",
+      "original": "assets/characters/h1/generated/motion-v1/lp-retract.png",
+      "originalSha256": "6041039cd9af5c831364ee4e5ac633abb606248b0211480fa4ccf5b4b99c4018"
+    },
+    {
+      "pose": "lp-settle",
+      "alphaX": [
+        105,
+        414
+      ],
+      "derived": "assets/characters/h1/derived/motion-v1/lp-settle.png",
+      "derivedSha256": "d06e584affc241161418f4e3f838429bebce51b6ace5f6e830783ce0106a9eb1",
+      "original": "assets/characters/h1/generated/motion-v1/lp-settle.png",
+      "originalSha256": "cb0613a64ca1a579ca7875766877e0be5581f91a10c09113fc727ff7f1b97857"
+    },
+    {
+      "pose": "walk-00",
+      "alphaX": [
+        74,
+        399
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-00.png",
+      "derivedSha256": "88240c16536afd91a3c757fea0de451baf061ff2424741a6d51572c5a583879f",
+      "original": "assets/characters/h1/generated/walk-v2/walk-00.png",
+      "originalSha256": "4808189e9b4239cc0086634d1f1d3ecd00776c57e843328372aa0ad09618a795"
+    },
+    {
+      "pose": "walk-01",
+      "alphaX": [
+        77,
+        392
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-01.png",
+      "derivedSha256": "0f307a3cee4211802faa79cba19c43d434b35a1f4e6a087d26ed3055e9f78648",
+      "original": "assets/characters/h1/generated/walk-v2/walk-01.png",
+      "originalSha256": "3255e383987ed82ead746394f915ce2ddb736421ae1bf03286a7720c67a980e3"
+    },
+    {
+      "pose": "walk-02",
+      "alphaX": [
+        74,
+        371
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-02.png",
+      "derivedSha256": "60aa88464a1f9240f77f66acb21acc1c6e3746fb6e4f72a0d758e411e7011fee",
+      "original": "assets/characters/h1/generated/walk-v2/walk-02.png",
+      "originalSha256": "16bc65c42c8c895c4297294eac906159867d465dd8e0c5f7fba0a6dc281e09a0"
+    },
+    {
+      "pose": "walk-03",
+      "alphaX": [
+        77,
+        370
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-03.png",
+      "derivedSha256": "002de568bc661d549e42ddc6608207d31a1cbc63966990bafda4d83262e58ec4",
+      "original": "assets/characters/h1/generated/walk-v2/walk-03-v2.png",
+      "originalSha256": "ddbc7cfb9293107656f2a98fbca7cb0ae7d5c8bbb433d011b97424aafb141733"
+    },
+    {
+      "pose": "walk-04",
+      "alphaX": [
+        74,
+        450
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-04.png",
+      "derivedSha256": "9cbd9410d2355b28981a12ea9c61846b5bff2fac77852f3771d61783f3ef4e2d",
+      "original": "assets/characters/h1/generated/walk-v2/walk-04.png",
+      "originalSha256": "30285d89b8391f078734f7e4fd70f91f930e90cb7d56229469b1e34efe0081cc"
+    },
+    {
+      "pose": "walk-05",
+      "alphaX": [
+        76,
+        415
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-05.png",
+      "derivedSha256": "5a4b6bd271b5b9fa0c72a144a6164a3857d9a8a9571872ef5d37be67bc02b0f0",
+      "original": "assets/characters/h1/generated/walk-v2/walk-05.png",
+      "originalSha256": "1d22c94129936a64ce9973e38bc8109bd683e0039c96720eafbf2573d2580efa"
+    },
+    {
+      "pose": "walk-06",
+      "alphaX": [
+        77,
+        412
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-06.png",
+      "derivedSha256": "76d2721c68f988bd05275fafcb2813ebd84fa35c3bf81ae4a277cc07460aa2df",
+      "original": "assets/characters/h1/generated/walk-v2/walk-06-v2.png",
+      "originalSha256": "0d2810abe624ea1c851a0499feaa96979276c91eb32976aac5d2e77d334a6299"
+    },
+    {
+      "pose": "walk-07",
+      "alphaX": [
+        74,
+        389
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-07.png",
+      "derivedSha256": "7f059b5a9569d566d64258c74ff5b39aaa60c692510b259d1b95659715e0972f",
+      "original": "assets/characters/h1/generated/walk-v2/walk-07-v2.png",
+      "originalSha256": "6e4b14f9aa939a260c92da6b7b46ac4962eaf8d94bf656c6180fdb7017872406"
+    },
+    {
+      "pose": "walk-08",
+      "alphaX": [
+        74,
+        388
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-08.png",
+      "derivedSha256": "c46e4956b9a40a85e96d3f7205f8faae8ffac9afcb27aff5be40770fb746488a",
+      "original": "assets/characters/h1/generated/walk-v2/walk-08-v4.png",
+      "originalSha256": "d815518625a65166d38a9318ca9d56c2f21e992a59c472ba2e3563eb7dc0f403"
+    },
+    {
+      "pose": "walk-09",
+      "alphaX": [
+        178,
+        387
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-09.png",
+      "derivedSha256": "b9ab022584980b91c5a24009d5da29fbd2af47b598294a7109da43621a0f9992",
+      "original": "assets/characters/h1/generated/walk-v2/walk-09.png",
+      "originalSha256": "6419d0889376b8cdcbac9d3282e0c765eb66844fa37d02bd0346177a87844710"
+    },
+    {
+      "pose": "walk-10",
+      "alphaX": [
+        74,
+        405
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-10.png",
+      "derivedSha256": "c6f92e9359699e201f583b11f7d48a27a1bec78561db3ff0c48b7dbb3e1582b3",
+      "original": "assets/characters/h1/generated/walk-v2/walk-10-v2.png",
+      "originalSha256": "62e986640a161720c93e0b8e97ae1baffd19b9218c2f138f3912dc0b40681e7b"
+    },
+    {
+      "pose": "walk-11",
+      "alphaX": [
+        71,
+        408
+      ],
+      "derived": "assets/characters/h1/derived/walk-v2/walk-11.png",
+      "derivedSha256": "e7e0dafc9c816c77e4ffbcf56a7b197545b4d3b949c391dbff1c304492527f4b",
+      "original": "assets/characters/h1/generated/walk-v2/walk-11.png",
+      "originalSha256": "f01e167c08be495b50c7bfaaa3e7374306fd20e8c27433b05360d8acbe6e5976"
+    },
+    {
+      "pose": "stand-hp-extend",
+      "alphaX": [
+        47,
+        428
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hp-extend.png",
+      "derivedSha256": "e7e9bc4e464169eb16377910ec5187aeda6a824412ed2b753aa733c58259aa91",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hp-extend.png",
+      "originalSha256": "11b46891eb647ed3af7c8c07ef68c687c4d01899878493d807ab45599f483a26"
+    },
+    {
+      "pose": "stand-hp-retract",
+      "alphaX": [
+        104,
+        426
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hp-retract.png",
+      "derivedSha256": "114d948cef641c6cbe707b2682e41c2347e16b1dfa140b916a543adea0d1f2ae",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hp-retract.png",
+      "originalSha256": "0c1d21c612b84d6b81ca8550c2510ebc1d4951fa33c8d1cefb686549a70658be"
+    },
+    {
+      "pose": "stand-hp-settle",
+      "alphaX": [
+        120,
+        406
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hp-settle.png",
+      "derivedSha256": "489a7a2e08e29c3d7386c1fb603681002b61afa18c3890f5396afa43c74a35a0",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hp-settle.png",
+      "originalSha256": "c01be05c69ada6ecc5032561e601ea9b07da75a5d5f535dfe27f025cc08621f2"
+    },
+    {
+      "pose": "stand-lk-extend",
+      "alphaX": [
+        91,
+        392
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/stand-lk-extend.png",
+      "derivedSha256": "31a263bd0d0cc88735fdf26bb267466ae80f4ca4469b1043b09d9e71efc615cd",
+      "original": "assets/characters/h1/generated/attack-motion-v1/stand-lk-extend.png",
+      "originalSha256": "6eea8506431b09bb6f13a4297509afa341625a674230083de1764070f377206e"
+    },
+    {
+      "pose": "stand-lk-retract",
+      "alphaX": [
+        92,
+        402
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/stand-lk-retract.png",
+      "derivedSha256": "94f4bf638dbd0c73ff45efd8151acfaa333404f12fe284aa775c1806bfb6676a",
+      "original": "assets/characters/h1/generated/attack-motion-v1/stand-lk-retract.png",
+      "originalSha256": "41918a2cd9615df085ad85373eb9bf107f3e77cf679bcf39cf2abfbe66e73b81"
+    },
+    {
+      "pose": "stand-lk-settle",
+      "alphaX": [
+        77,
+        414
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/stand-lk-settle.png",
+      "derivedSha256": "d764ebaab42e3632a1846e77d024678f0186d6e0ab06bc2ed6492869ca9f3493",
+      "original": "assets/characters/h1/generated/attack-motion-v1/stand-lk-settle-v2.png",
+      "originalSha256": "5782c28eda087730368563e63f44d8fc49916ee96a4a8410f9f3f7a76b08a203"
+    },
+    {
+      "pose": "stand-hk-lift",
+      "alphaX": [
+        173,
+        370
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hk-lift.png",
+      "derivedSha256": "c9ace20272fd20d2c125e8b27467d4d21233f9afbda2e9d8f6fcb2b10f089270",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hk-lift.png",
+      "originalSha256": "e0620b28c9388f0740841178412d07ec4107efdaae360d5ad5749d7eb0260523"
+    },
+    {
+      "pose": "stand-hk-apex",
+      "alphaX": [
+        74,
+        456
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hk-apex.png",
+      "derivedSha256": "055991f84fb2a1f26b56c2873bed060e8dfcb34ff3ab2c767726261dbb812e26",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hk-apex-v3.png",
+      "originalSha256": "7d6a588b10141776025fd5970c19a664d1cbee6478a227018806120b048f9dc2"
+    },
+    {
+      "pose": "stand-hk-descend",
+      "alphaX": [
+        74,
+        428
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hk-descend.png",
+      "derivedSha256": "32a42654c838f5db3563d2f57d9445df4eaf02159b70c33da41f866839dd26e6",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hk-descend-v2.png",
+      "originalSha256": "5b10b7d819a434a335c511faa48f52fecd2dfaf005c270e10e82126091042abe"
+    },
+    {
+      "pose": "stand-hk-retract",
+      "alphaX": [
+        158,
+        387
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hk-retract.png",
+      "derivedSha256": "aea38710086e9bc099c29eb95e70e2200c75851f97a4b875f0cc3140e0d112c3",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hk-retract.png",
+      "originalSha256": "22cd3ba4bc25635e14a74d428eb7a0821a1b4256caec533371fb7875acdef1a9"
+    },
+    {
+      "pose": "stand-hk-settle",
+      "alphaX": [
+        117,
+        405
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/stand-hk-settle.png",
+      "derivedSha256": "3bf169b54fc1efa5ad16f9cbe08edd93bd86d5065a0bc170e2f229b713e7bad1",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/stand-hk-settle.png",
+      "originalSha256": "251d10d906d3d3a9922ab21a5ec8109fc4f154e31ffb7acfd325d060b7121709"
+    },
+    {
+      "pose": "crouch-lp-extend",
+      "alphaX": [
+        115,
+        416
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/crouch-lp-extend.png",
+      "derivedSha256": "f3e43dbbfa78e380a9f0180dcebcacf7132c392dc0eb9490dae448ed9303f1e3",
+      "original": "assets/characters/h1/generated/attack-motion-v1/crouch-lp-extend.png",
+      "originalSha256": "9d80cea92114525e531ec7bf0717a6b7ab2f3e2f739ce2f6e0cef713a9c0612c"
+    },
+    {
+      "pose": "crouch-lp-retract",
+      "alphaX": [
+        97,
+        391
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/crouch-lp-retract.png",
+      "derivedSha256": "09fdce3203065236b70c93466e8dc4c75087dc1f8cf8ff0bc13d185432fff172",
+      "original": "assets/characters/h1/generated/attack-motion-v1/crouch-lp-retract.png",
+      "originalSha256": "047c2fa05d43d293efb60cde1678c18820baa1c2914691efe7b31ddfba8207e0"
+    },
+    {
+      "pose": "crouch-lp-settle",
+      "alphaX": [
+        113,
+        368
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/crouch-lp-settle.png",
+      "derivedSha256": "ec66abcb9fa18a432dcaa7570acb247bfeceffe6dfc494b1760c855ed2785d9c",
+      "original": "assets/characters/h1/generated/attack-motion-v1/crouch-lp-settle.png",
+      "originalSha256": "3e90242573557364a7aece979f2a4c13bd15b5d1abbb69af3a5f8b4e5ea094f8"
+    },
+    {
+      "pose": "crouch-hp-extend",
+      "alphaX": [
+        91,
+        433
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-extend.png",
+      "derivedSha256": "d088fadf2fb2af274e6dda766774cd66c570638243fb08c55b1e8b291c55219e",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-extend.png",
+      "originalSha256": "148be855ee5e9a1e7ab0aabbd3ea19a62d79edfe56486909b54d5939645ba103"
+    },
+    {
+      "pose": "crouch-hp-retract",
+      "alphaX": [
+        113,
+        438
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-retract.png",
+      "derivedSha256": "ce67ef2d465cd7f73f02ded023261d19c05acaad569d2f17bdcc9cc93877d9e8",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-retract.png",
+      "originalSha256": "fe00329e740cedd6ea4dc599d33626cf86fc3568a007cf746e4462cc1ff4be27"
+    },
+    {
+      "pose": "crouch-hp-settle",
+      "alphaX": [
+        113,
+        370
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-settle.png",
+      "derivedSha256": "12d0451ed5e3af2150587b6b6a7d94fe85c26b5e8035c1abee5cb2b1fd599606",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-settle-v2.png",
+      "originalSha256": "cf965d61e6a56f55acabd71da22a6d39341e0e4429f60df07fb1decffcd80a1e"
+    },
+    {
+      "pose": "crouch-lk-extend",
+      "alphaX": [
+        77,
+        413
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/crouch-lk-extend.png",
+      "derivedSha256": "7f6e012061da9439f79c65e7337a54b8ac79909934c55da5af483e3c4c98eaa8",
+      "original": "assets/characters/h1/generated/attack-motion-v1/crouch-lk-extend.png",
+      "originalSha256": "c8ad13b551e8dd9839de3791da3bc11c30cd1d79f70f25dd7e5afa8595d10646"
+    },
+    {
+      "pose": "crouch-lk-retract",
+      "alphaX": [
+        156,
+        421
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/crouch-lk-retract.png",
+      "derivedSha256": "33a49a9f661a347ce5e3eedb856f35741741bb25a0b984e55d78a81668370c7f",
+      "original": "assets/characters/h1/generated/attack-motion-v1/crouch-lk-retract.png",
+      "originalSha256": "d6f3fc35044a46e0c39407729c8e5347d57acbe86b7bbf0206fb7c0e7be80ad9"
+    },
+    {
+      "pose": "crouch-lk-settle",
+      "alphaX": [
+        77,
+        355
+      ],
+      "derived": "assets/characters/h1/derived/attack-motion-v1/crouch-lk-settle.png",
+      "derivedSha256": "03ff1321484ecdce8d69accd72779a48f490852ec069ef1b884d54c214c129f2",
+      "original": "assets/characters/h1/generated/attack-motion-v1/crouch-lk-settle.png",
+      "originalSha256": "e8262a67ce69e23262fbb44087dbf84214693ae48f8e5ca04c83231aa0108956"
+    },
+    {
+      "pose": "crouch-hk-extend",
+      "alphaX": [
+        183,
+        360
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hk-extend.png",
+      "derivedSha256": "153a6b51d0ebe9b74d36279a480a2a0f17ebfeb630a149fa17271ee5e9c01d1c",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-extend-v2.png",
+      "originalSha256": "63dc8519aa5187c5a99541e03c9b91ba3da16f65397a92c6c349d0ea042b25d7"
+    },
+    {
+      "pose": "crouch-hk-retract",
+      "alphaX": [
+        74,
+        391
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hk-retract.png",
+      "derivedSha256": "67355d77aa094752822be3db4d763e6bc13f805731f9e8c5bc1e2b9ea7b3b84f",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-retract-v2.png",
+      "originalSha256": "33e021cb3de26783f8ec306a3729f11e0f0abd0c4477588e77c9e3967cc509ab"
+    },
+    {
+      "pose": "crouch-hk-settle",
+      "alphaX": [
+        74,
+        361
+      ],
+      "derived": "assets/characters/h1/derived/opposite-limbs-v1/crouch-hk-settle.png",
+      "derivedSha256": "613b7de80b37623d3313ec5c24bfa64890595027f9de329ec18e3a46b3595bea",
+      "original": "assets/characters/h1/generated/opposite-limbs-v1/crouch-hk-settle-v2.png",
+      "originalSha256": "bbe5eba46e6968d86a8246bbe2343950abc2452c1d1c7a157688199b0cc364c2"
+    },
+    {
+      "pose": "grab-ready",
+      "alphaX": [
+        105,
+        413
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grab-ready.png",
+      "derivedSha256": "2982979b0459acbe89b538695f0b9f0c041b5c5c0662d312a6e34c078587891f",
+      "original": "assets/characters/h1/generated/grab-v1/grab-ready.png",
+      "originalSha256": "c9f26e2f17d882ee63ea4682f74ffac8ee412ec89eef5b619dd08eff90cc5b25"
+    },
+    {
+      "pose": "grab-reach",
+      "alphaX": [
+        94,
+        454
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grab-reach.png",
+      "derivedSha256": "29f174dca7e5ac3ed09dcaec5853635f7c60dbb369f0e944c9cb57c3cc39131d",
+      "original": "assets/characters/h1/generated/grab-v1/grab-reach.png",
+      "originalSha256": "03f4245a6447a77928c0cb07fcebb1c4f89bb7a9f7a21c07202562486dc6d594"
+    },
+    {
+      "pose": "grab-retract",
+      "alphaX": [
+        106,
+        413
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grab-retract.png",
+      "derivedSha256": "4c267d38aa7b331dc08bd5e4c418c6d8cd3d86d62f2aae5c19aff18cb7ce24f9",
+      "original": "assets/characters/h1/generated/grab-v1/grab-retract.png",
+      "originalSha256": "af9849303a54d61228e634c26b01e73749964f89487787d27b6340481febdf80"
+    },
+    {
+      "pose": "grab-settle",
+      "alphaX": [
+        105,
+        413
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grab-settle.png",
+      "derivedSha256": "53e56d07af643f26928fa298790b164b9c3ccf7fd9959cc72cf85ceb6531e265",
+      "original": "assets/characters/h1/generated/grab-v1/grab-settle.png",
+      "originalSha256": "66e1fb3cfdf0054d7c761790e413ef8f6c93c93cea4f883c219ab92495921766"
+    },
+    {
+      "pose": "grab-stand-hold",
+      "alphaX": [
+        103,
+        464
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grab-stand-hold.png",
+      "derivedSha256": "5829c1ec693757da24a8e342444da172c7a3539c2b22ec1ef23f963700311721",
+      "original": "assets/characters/h1/generated/grab-v1/grab-stand-hold.png",
+      "originalSha256": "883ff91bbe9b4a42238f07b70243ca231a8ab7742710d13e1f5876ae9a3c463e"
+    },
+    {
+      "pose": "grab-crouch-hold",
+      "alphaX": [
+        77,
+        463
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grab-crouch-hold.png",
+      "derivedSha256": "ca81bb5065f2e7acc9b1133b529dc3df30a7de43ed76d20e71c7ba86421d3874",
+      "original": "assets/characters/h1/generated/grab-v1/grab-crouch-hold.png",
+      "originalSha256": "52cbba0f5045d9edc7d1279c7178aa40a16139ea7b0e7ad8a07ee607666bab93"
+    },
+    {
+      "pose": "grabbed-stand-hold",
+      "alphaX": [
+        104,
+        416
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grabbed-stand-hold.png",
+      "derivedSha256": "a96aa0f61ccc2f6679d49349792caf2fac0f0fcc4e419cae7aff127fbac86193",
+      "original": "assets/characters/h1/generated/grab-v1/grabbed-stand-hold.png",
+      "originalSha256": "f02e34bbd2d1d88ae38c3f8627edb02afa2fc4e0d08a810dfcc823224cf436f1"
+    },
+    {
+      "pose": "grabbed-stand-recover",
+      "alphaX": [
+        77,
+        421
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grabbed-stand-recover.png",
+      "derivedSha256": "c7524eeec4c4d35dbee63292a722cd542cf1d188e934ff0a46bfe967bfbe13a7",
+      "original": "assets/characters/h1/generated/grab-v1/grabbed-stand-recover.png",
+      "originalSha256": "407a8132c2d94e169e9cb9f40dc219d431444b47a0dfc92683ea085e6f5adc1a"
+    },
+    {
+      "pose": "grabbed-crouch-hold",
+      "alphaX": [
+        77,
+        370
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grabbed-crouch-hold.png",
+      "derivedSha256": "a49ccdc452d427ee82048daac00b1ae34a4cf531788468c47cd4a217ce35bdb3",
+      "original": "assets/characters/h1/generated/grab-v1/grabbed-crouch-hold.png",
+      "originalSha256": "66b9ee1137dc6e0bfa60f65d563d687762815f403c396c7f2d5a9cf872c83ce5"
+    },
+    {
+      "pose": "grabbed-crouch-recover",
+      "alphaX": [
+        74,
+        370
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grabbed-crouch-recover.png",
+      "derivedSha256": "b2563231b5798b02fd0d966adb186529cb121b7cd39f1901295dd9ecda967da8",
+      "original": "assets/characters/h1/generated/grab-v1/grabbed-crouch-recover.png",
+      "originalSha256": "e7d98fdbd62b663c352b35975e1f415e0932e179b801cbed8ba9db6f1259fbd9"
+    },
+    {
+      "pose": "grab-release",
+      "alphaX": [
+        105,
+        416
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grab-release.png",
+      "derivedSha256": "7d1e68f005bd7e534067ce9112bdde246e6f801628b39814804160aa37be7623",
+      "original": "assets/characters/h1/generated/grab-v1/grab-release.png",
+      "originalSha256": "61ab6f1645418225bccdeb9d5f442d8f6083893419d7c33ddfd55a65c3605e0c"
+    },
+    {
+      "pose": "grabbed-stand-escape",
+      "alphaX": [
+        104,
+        459
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grabbed-stand-escape.png",
+      "derivedSha256": "80f90e95269e78b80a6209347121d0b92f46e7b0281149ad3c5cf96763b02d84",
+      "original": "assets/characters/h1/generated/grab-v1/grabbed-stand-escape.png",
+      "originalSha256": "448faf4ec87eff00aab3b7bfcf637294d13c004b1802776b49c3235965307190"
+    },
+    {
+      "pose": "grabbed-crouch-escape",
+      "alphaX": [
+        113,
+        443
+      ],
+      "derived": "assets/characters/h1/derived/grab-v1/grabbed-crouch-escape.png",
+      "derivedSha256": "93b8c962586ba45989dd6333f57432b27a12502caf21170e7538f81ca7d101b2",
+      "original": "assets/characters/h1/generated/grab-v1/grabbed-crouch-escape.png",
+      "originalSha256": "8074e3bf3d6cd51b017949f738c852e08600f796733f60f0f722196f8460c41f"
+    },
+    {
+      "pose": "throw-turn",
+      "alphaX": [
+        63,
+        422
+      ],
+      "derived": "assets/characters/h1/derived/throw-v1/throw-turn.png",
+      "derivedSha256": "76e45f6cf0cc8752ef153bdcd864267f2ad8ce5381ab205a66ca4af495641886",
+      "original": "assets/characters/h1/generated/throw-v1/throw-turn.png",
+      "originalSha256": "4e7bcb50474b212f5e20da96f11c51bbb1199bb0a8665172336da9c28ee2a322"
+    },
+    {
+      "pose": "throw-lift",
+      "alphaX": [
+        66,
+        442
+      ],
+      "derived": "assets/characters/h1/derived/throw-v1/throw-lift.png",
+      "derivedSha256": "0460e52f4a36bf7436825edf5a306856f53706569196d5753193beec0de30d6b",
+      "original": "assets/characters/h1/generated/throw-v1/throw-lift.png",
+      "originalSha256": "32c15cd6cf6c2f13d8a18540a12edc7d7077867ed9e6e421e7043250f6fccda0"
+    },
+    {
+      "pose": "throw-slam",
+      "alphaX": [
+        77,
+        451
+      ],
+      "derived": "assets/characters/h1/derived/throw-v1/throw-slam.png",
+      "derivedSha256": "aebe9cb1da56ecdb31196dfa85bd498a1f8ea8071897fca427e12316666b13cd",
+      "original": "assets/characters/h1/generated/throw-v1/throw-slam.png",
+      "originalSha256": "cb8942901af11e33c9939434637b59acd038d2f8dbc46dd7f983fcae0d8fb657"
+    },
+    {
+      "pose": "thrown-air",
+      "alphaX": [
+        74,
+        404
+      ],
+      "derived": "assets/characters/h1/derived/throw-v1/thrown-air.png",
+      "derivedSha256": "c45b82e57cebb1a80a9d052184b37528bd018f24fbd360575a7ed7eb9dbbe09f",
+      "original": "assets/characters/h1/generated/throw-v1/thrown-air.png",
+      "originalSha256": "df1300a41affc2f644c955eb118cb7f383134f52101d05ff7212e3d96d8f9b36"
+    },
+    {
+      "pose": "thrown-down",
+      "alphaX": [
+        46,
+        467
+      ],
+      "derived": "assets/characters/h1/derived/throw-v1/thrown-down.png",
+      "derivedSha256": "739362ca6e07cd2c337e1dc34c3447962b5ba84ecc2d66e41920e7af7e701ac6",
+      "original": "assets/characters/h1/generated/throw-v1/thrown-down.png",
+      "originalSha256": "55815d4323dd79f2badf3f47f7712171e78a67b5d7f7ad55cb006bf6076ba793"
+    },
+    {
+      "pose": "thrown-rise",
+      "alphaX": [
+        77,
+        424
+      ],
+      "derived": "assets/characters/h1/derived/throw-v1/thrown-rise.png",
+      "derivedSha256": "e6aefde6fff3d880d570ec22b7aa02cac07a66c0fa584163ba450cd481e20c6e",
+      "original": "assets/characters/h1/generated/throw-v1/thrown-rise.png",
+      "originalSha256": "27a774db84877b2c4a5db21d3c1da651a89d0dcd0d043b4ff09ab754a119e64e"
+    }
+  ]
+}

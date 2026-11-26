@@ -1,0 +1,35 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "selectedChanged": false,
+  "original": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/flip-v1/flip-lift.png",
+  "originalSha256": "33ad125b45e3f387606d91d21c51aed29c3966ecdbaa77dae9fb8ca3e67259bf",
+  "originalBackup": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/flip-v1/flip-lift-rejected-noise.png",
+  "attempts": [
+    {
+      "id": "flip-lift-v2",
+      "prompt": "Use case: background-extraction. Edit this exact transparent fighting-game sprite only to CLEAN ITS ALPHA BACKGROUND. Keep the character artwork, pose, all joint angles, same face, red/white cropped jacket, wrapped hands, white top, black pants with red stripe, red shoes, shading and linework unchanged. Preserve EXACT canvas1254x1254, anatomical scale, root, character position and original head/feet pixel placement. Absolutely NO recentering, enlarging, cropping, rotation or pose variation. Remove every faint isolated semi-transparent speck, dust particle, accidental shadow, glow, color noise, ghost outline and stray pixel in the transparent area outside the continuous character silhouette. Make all empty space truly RGBA alpha0, including tiny disconnected noise invisible on black. Keep natural edge antialiasing only immediately touching the character contour. There must be precisely one continuous clean character cutout with transparent margins on every side. No floor, background, text, cast shadow or additional limb. This is an alpha cleanup edit, not a redraw or new pose.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/flip-v1/flip-lift.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-67f17dad-0fa5-4c8f-a8a8-81641e09adcf.png",
+      "savedPath": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/flip-v1/flip-lift-v2-rejected-scale.png",
+      "sourceSha256": "2faa7aacd6d7bce7c8abcec4ab47e46f836ae261db4b0ebb92a4619a6919492f",
+      "status": "rejected",
+      "reason": "Body moved/enlarged: alpha>=8 bounds [434,188,868,1089], original [447,159,844,992]."
+    },
+    {
+      "id": "flip-lift-v3",
+      "prompt": "Use case: precise-object-edit / background-extraction. This is a STRICT TECHNICAL ALPHA CLEANUP, no creative redraw. Use the attached ORIGINAL sprite as the unchanged edit target. Preserve its 1254x1254 canvas. The character alpha>=8 bounding rectangle MUST stay left447,right844,top159,bottom992 in this same canvas. Keep the head top at159 and the lowest shoe bottom at992; DO NOT move them down to188/1089 or enlarge the character. Preserve every pose angle, anatomical body dimension, face/outfit/linework and center position. One woman with knees bent midjump, red jacket/white top/black pants/red shoes, looking right. Change ONLY the empty background outside her silhouette: erase faint isolated semi-transparent noise specks, stray pixels, glow and shadows to exact alpha0. The background must be uniformly fully transparent with no disconnected colored or translucent pixels. Keep gentle anti-alias pixels directly adjacent to the unchanged character outline. Full-body character stays precisely at original coordinates and original scale; do not center it in the canvas, do not crop or fill the frame. No added objects, texture, text, outlines or effects. Return only the one cleaned transparent PNG image.",
+      "referenced_image_paths": [
+        "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/flip-v1/flip-lift.png"
+      ],
+      "transparent_background": true,
+      "toolOutputPath": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcf1-2f40-7061-9952-3562d65c6d09\\exec-3f2962f9-6cf9-4f66-b2ad-c5fb3d496851.png",
+      "savedPath": "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/generated/flip-v1/flip-lift-v3-rejected-noise.png",
+      "sourceSha256": "7d82c1d0ee260b89a53ac3d01446e1601a4f4d6b7ea71082cce29db7bb9290e6",
+      "status": "rejected",
+      "reason": "Body geometry preserved approximately (alpha>=8 [446,159,844,993]) but alpha>0 disconnected noise remains with bounds [113,57,1209,1211]."
+    }
+  ]
+}

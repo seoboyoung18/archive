@@ -1,0 +1,145 @@
+{
+  "root": [
+    256,
+    448
+  ],
+  "canvas": [
+    512,
+    512
+  ],
+  "referenceSha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+  "frames": [
+    {
+      "sourceBounds": {
+        "top": 74,
+        "bottom": 1193,
+        "right": 1083,
+        "left": 189
+      },
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "source": "generated/v1/idle.png",
+      "output": "derived/v1/idle.png",
+      "sourceSha256": "7915499a1578002f858faf54fdf3baffe450b812447fa2bd9367d7c8dbecad9c",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputSha256": "b3b038036d688306eb49f45a6960ded9132974b0c51c189da29b35cb5a14c647",
+      "id": "idle",
+      "outputBounds": {
+        "top": 64,
+        "bottom": 447,
+        "right": 412,
+        "left": 106
+      },
+      "sourceRoot": [
+        627.0,
+        1194
+      ]
+    },
+    {
+      "sourceBounds": {
+        "top": 74,
+        "bottom": 1193,
+        "right": 1098,
+        "left": 180
+      },
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "source": "generated/v1/startup.png",
+      "output": "derived/v1/startup.png",
+      "sourceSha256": "53edc4b24b01d55f788f262be59d112c7bc3a5fd9b6f90f869b1775788ece8f7",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputSha256": "efde1876b8ec16cc5875d475654d1af8e0ba8f9091fd5a18f5c7761313c61753",
+      "id": "startup",
+      "outputBounds": {
+        "top": 64,
+        "bottom": 447,
+        "right": 417,
+        "left": 102
+      },
+      "sourceRoot": [
+        627.0,
+        1194
+      ]
+    },
+    {
+      "sourceBounds": {
+        "top": 76,
+        "bottom": 1193,
+        "right": 1138,
+        "left": 181
+      },
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "source": "generated/v1/active.png",
+      "output": "derived/v1/active.png",
+      "sourceSha256": "f8e555c6133fa5b3f77aeb46a924131de15e5fc228e9e38dbbdc194f00208868",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputSha256": "e22fe14050659c5d218963d005aa41282b922c289986050ae9cd2694d7e15c8a",
+      "id": "active",
+      "outputBounds": {
+        "top": 64,
+        "bottom": 447,
+        "right": 431,
+        "left": 103
+      },
+      "sourceRoot": [
+        627.0,
+        1194
+      ]
+    },
+    {
+      "sourceBounds": {
+        "top": 77,
+        "bottom": 1196,
+        "right": 1095,
+        "left": 180
+      },
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        37.60000000000002
+      ],
+      "source": "generated/v1/recovery.png",
+      "output": "derived/v1/recovery.png",
+      "sourceSha256": "1e5525a345d8f5903152a715b2db262ebae268a91e40350232c5d284fe4b4f67",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "outputSha256": "07886a7d03b3a63f579601dc38cd480bf755e9c1f5db4596c7ee0b89dc753d75",
+      "id": "recovery",
+      "outputBounds": {
+        "top": 64,
+        "bottom": 447,
+        "right": 416,
+        "left": 102
+      },
+      "sourceRoot": [
+        627.0,
+        1197
+      ]
+    }
+  ],
+  "method": "Shared scale from idle alpha height (384px); source canvas midpoint X; per-frame sole bottom Y. No repainting.",
+  "alphaThreshold": 8,
+  "status": "draft",
+  "displayScale": 0.625
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>H1 잡기 접촉 검수</title>
+<style>
+body{margin:20px;background:#141e2b;color:#e3ecf8;font:16px/1.6 system-ui}h1{margin:0}p{color:#acbbcf}a{color:#79e3cb}select,label{font:inherit;margin-right:16px}select{background:#283c52;color:white;padding:6px}.grid{display:grid;grid-template-columns:repeat(3,380px);gap:14px}.cell{border:1px solid #42566d}.caption{padding:8px}.stage{position:relative;height:290px;overflow:hidden;background:linear-gradient(#1e2938 0 269px,#71849a 269px 271px,#283c52 271px)}img{position:absolute;width:320px;height:320px;top:-10px;transform-origin:50% 87.5%}.root{position:absolute;width:1px;height:15px;top:263px;background:#79e3cb}.line{position:absolute;height:1px;top:277px;background:#79e3cb}.gallery{display:grid;grid-template-columns:repeat(5,1fr);max-width:1288px}.gallery img{position:static;width:100%;height:auto}.gallery figure{margin:5px;border:1px solid #42566d}.gallery figcaption{font:12px monospace;padding:5px}
+</style>
+<h1>H1 잡기 · 같은 배율의 접촉</h1>
+<p>출력512px × 표시0.625. 루트 간격72 / 84 / 96, 상대만 좌우 반전. 그림 위치 보정 없음. 초록 선은 발 루트입니다. <a href="../../../combat.html">실제 전투</a></p>
+<label>단계 <select id="phase"><option value="hold">붙잡음 H+0~12</option><option value="brace">밀기 준비 H+13~17</option><option value="push">충격 H+18 · 상대 +48</option><option value="recover">복귀 H+24 · 상대 +48</option><option value="escape">풀기 T · 양쪽 ±16</option></select></label>
+<label>방향 <select id="mirror"><option value="1">잡는 쪽 왼쪽</option><option value="-1">잡는 쪽 오른쪽</option></select></label>
+<label>위치 <select id="corner"><option value="center">중앙</option><option value="left">왼쪽 경계</option><option value="right">오른쪽 경계</option></select></label>
+<div class="grid" id="pairs"></div><h2>새 포즈 19장</h2><div class="gallery" id="gallery"></div>
+<script type="module">
+import { H1_GRAB_POSES } from '../../../src/characters/h1-poses.ts';
+const base='../../../assets/characters/h1/derived/grab-v1/';
+const $=id=>document.getElementById(id);
+function draw(){
+ $('pairs').replaceChildren();
+ const phase=$('phase').value,dir=Number($('mirror').value),corner=$('corner').value;
+ for(const posture of ['stand','crouch'])for(const d of [72,84,96]){
+  // The 380px inspection window uses the real stage's 80px edge inset.
+  let a=corner==='center'?190-dir*d/2:corner==='left'?(dir===1?80:80+d):(dir===1?300-d:300),b=a+dir*d;
+  if(phase==='push'||phase==='recover')b=Math.max(80,Math.min(300,b+dir*48));
+  if(phase==='escape'){a=Math.max(80,Math.min(300,a-dir*16));b=Math.max(80,Math.min(300,b+dir*16));}
+  const attacker=phase==='recover'?'grab-retract':phase==='escape'?'grab-release':`grab-${posture}-${phase}`;
+  const victim=`grabbed-${posture}-${phase==='brace'?'hold':phase==='push'?'impact':phase}`;
+  const cell=document.createElement('section');cell.className='cell';
+  const caption=document.createElement('div');caption.className='caption';caption.textContent=`${posture==='stand'?'선':'앉은'} 상대 · 시작 거리 ${d}`;
+  const stage=document.createElement('div');stage.className='stage';
+  for(const [pose,x,face,depth]of[[attacker,a,dir,phase==='hold'||phase==='brace'?3:0],[victim,b,-dir,1]]){
+   const im=new Image();im.src=base+pose+'.png';im.alt=pose;im.style.left=(x-160)+'px';im.style.transform=`scaleX(${face})`;im.style.zIndex=depth;stage.append(im);
+   const root=document.createElement('i');root.className='root';root.style.left=x+'px';root.style.zIndex=5;stage.append(root);
+  }
+  cell.append(caption,stage);$('pairs').append(cell);
+ }
+}
+for(const id of ['phase','mirror','corner'])$(id).addEventListener('change',draw);
+for(const pose of H1_GRAB_POSES){const f=document.createElement('figure'),im=new Image(),c=document.createElement('figcaption');im.src=base+pose+'.png';im.alt=pose;c.textContent=pose;f.append(im,c);$('gallery').append(f)}
+draw();
+</script></html>

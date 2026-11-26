@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>H1 CPU 잡기·풀기 자동 입력 검수</title>
+<style>
+  body{margin:0;background:#111923;color:#e9eff6;font:15px system-ui}
+  main{max-width:1050px;margin:auto;padding:18px}h1{font-size:25px;margin:0 0 6px}
+  p{margin:7px 0 12px;line-height:1.6;color:#b0c1d4}a{color:#7be0ca}
+  button,select,input{font:inherit}button,select{background:#293b50;color:#edf4fd;border:1px solid #51677f;border-radius:5px;padding:7px}
+  button:disabled{opacity:.45}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #7be0ca;outline-offset:2px}
+  label{display:inline-flex;gap:7px;align-items:center}.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:10px 0}
+  .viewport{aspect-ratio:1280/720;position:relative;overflow:hidden;background:#192634;border:1px solid #405268}
+  .world{position:absolute;width:1280px;height:720px;transform-origin:0 0}
+  .floor{position:absolute;left:0;top:600px;width:100%;height:120px;border-top:2px solid #8497ac;background:#233446}
+  .camera-layer{position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:640px 600px;z-index:0}.sprite{position:absolute;width:320px;height:320px}.name,.root{position:absolute;z-index:10}
+  .name{font:17px monospace;transform:translate(-50%,-100%);text-shadow:0 2px 2px #111}
+  .root{width:16px;height:2px;background:#78dccb;transform:translateX(-50%)}
+  .hud{position:absolute;z-index:10;left:70px;right:70px;top:42px;display:flex;align-items:center;justify-content:space-between;font:22px monospace}
+  .health{width:390px}.health:last-child{text-align:right}.bar{height:12px;margin-top:9px;background:#3f5062;border:1px solid #8c9cac}
+  .fill{height:100%;background:#7be0ca;transform-origin:left}.health:last-child .fill{background:#f6b76d;transform-origin:right}
+  .clock{text-align:center;white-space:pre-line}.round-result{position:absolute;z-index:10;top:145px;width:100%;text-align:center;font-size:30px;font-weight:700;color:#ffd480}
+  #frame{flex:1;min-width:200px}#position{font-variant-numeric:tabular-nums;min-width:160px}
+  output,pre{display:block;font:14px monospace;padding:10px;background:#203044;line-height:1.65;white-space:pre-wrap;margin:10px 0}
+  small{display:block;color:#a9b9cc;line-height:1.6}details{margin-top:14px}summary{cursor:pointer;color:#b0c1d4}
+  #milestones button{font-size:13px}#policy{min-height:48px}
+</style>
+<main>
+  <h1>CPU 잡기·풀기 · 첫 라운드 다시 보기</h1>
+  <p>표준 시작 위치와 체력에서 공통 경기 함수에 자동 입력을 전달한 검수입니다. 실제 키 조작·청취 또는 난이도 체감 검수가 아닙니다. <a href="/match.html">일반 경기에서 실제 키로 조작하기 →</a></p>
+  <div class="controls"><label>PLAYER 자동 입력
+    <select id="scenario">
+      <option value="crouch-guard">아래+뒤 유지 · CPU 접근 잡기</option>
+      <option value="approach-grab-repeat">접근 후 잡기 반복 · CPU 교대 풀기</option>
+      <option value="escape-on-hold">아래+뒤 유지 + 잡히면 새 U+I 풀기</option>
+    </select>
+  </label></div>
+  <p id="policy"></p>
+  <div class="viewport"><div class="world" id="world">
+    <div class="floor"></div>
+    <div class="hud">
+      <div class="health"><span id="player-hp"></span><div class="bar"><div class="fill" id="player-bar"></div></div></div>
+      <div class="clock" id="clock"></div>
+      <div class="health"><span id="cpu-hp"></span><div class="bar"><div class="fill" id="cpu-bar"></div></div></div>
+    </div>
+    <div class="round-result" id="result"></div>
+  </div></div>
+  <div class="controls">
+    <button id="play">재생</button><button id="prev">이전 1F</button><button id="next">다음 1F</button>
+    <input id="frame" type="range" min="0" max="0" value="0" step="1" aria-label="검수 프레임">
+    <span id="position"></span>
+  </div>
+  <div class="controls" id="milestones" aria-label="실제 잡기 사건으로 이동"></div>
+  <output id="state"></output>
+  <small>60F = 1초. 재생은 저장된 첫 라운드 상태를 표시합니다. 초록 선은 논리 발 기준점입니다. 그림·이름표·발 기준점은 제품과 같은 A 공통 카메라를 사용하며 HUD는 고정입니다. 위치·체력·CPU 판단 상태를 주입하지 않으며 결과 뒤에는 기존 KO 연출 18F만 보존합니다.</small>
+  <details><summary>자동 입력과 현재 상태의 검수 정보</summary><pre id="debug"></pre>
+    <p><a href="./h1-ai-grab-after.mjs">네 정책 재현 스크립트</a> · <a href="./h1-ai-grab-after.json">AI-G 적용 후 기록</a> · <a href="./h1-ai-baseline.json">변경 전 기준 기록</a></p>
+  </details>
+</main>
+<script type="module">
+import { createMatch, startMatch, resultReady } from '../../../src/combat/match.ts';
+import { createH1Ai } from '../../../src/combat/h1-ai.ts';
+import { stepH1AiMatch } from '../../../src/combat/h1-ai-match.ts';
+import { COMBAT_NEUTRAL as N } from '../../../src/combat/combat.ts';
+import { H1_POSES, combatPose } from '../../../src/characters/h1-poses.ts';
+import { combatVisuals } from '../../../src/characters/h1-visual.ts';
+import { combatCamera } from '../../../src/characters/h1-camera.ts';
+
+const policyNotes = {
+  'crouch-guard': 'PLAYER는 상대 반대 방향과 아래를 계속 유지합니다. CPU가 스스로 접근해 붙잡고 메치는 첫 라운드입니다.',
+  'approach-grab-repeat': 'PLAYER는 거리 96 밖에서 접근하고, 지상 자유 상태에서 새 U+I를 누른 뒤 다음 틱에 놓습니다. CPU가 관찰한 첫 잡힘은 허용하고 짝수 잡힘에서 풀기를 시도합니다.',
+  'escape-on-hold': 'PLAYER는 아래+뒤를 유지하다 성공 잡힘이 보이면 바로 다음 틱에 새 U+I를 한 번 누르고 놓습니다. 자동 입력의 H1 반응이며 사람의 반응 속도를 재현하지 않습니다.'
+};
+const chord = () => ({ ...N, attacks: ['lp', 'hp'], handEvents: [
+  { slot: 'lp', down: true }, { slot: 'hp', down: true },
+  { slot: 'hp', down: false }, { slot: 'lp', down: false }
+] });
+
+function playerController(policy) {
+  let releaseHands = false, escapedSerial = null;
+  return state => {
+    const [p, cpu] = state.match.combat.fighters;
+    const toward = cpu.x > p.x ? 1 : -1;
+    if (policy === 'escape-on-hold' && p.grab?.kind === 'success' && p.grab.role === 'target'
+      && p.grab.serial !== escapedSerial) {
+      escapedSerial = p.grab.serial;
+      return chord();
+    }
+    if (policy !== 'approach-grab-repeat') return { ...N, axis: -toward, crouch: true, handEvents: [] };
+    const axis = Math.abs(cpu.x - p.x) > 96 ? toward : 0;
+    if (releaseHands) {
+      releaseHands = false;
+      return { ...N, axis, handEvents: [{ slot: 'hp', down: false }, { slot: 'lp', down: false }] };
+    }
+    if (p.action === 'free' && p.grounded && Math.abs(cpu.x - p.x) <= 96) {
+      releaseHands = true;
+      return { ...N, attacks: ['lp', 'hp'], handEvents: [{ slot: 'lp', down: true }, { slot: 'hp', down: true }] };
+    }
+    return { ...N, axis, handEvents: [] };
+  };
+}
+
+function runScenario(policy) {
+  let state = { match: startMatch(createMatch()), ai: createH1Ai() };
+  const control = playerController(policy), frames = [{ ...state, input: N }], events = [];
+  while (state.match.phase === 'playing') {
+    const input = control(state);
+    state = stepH1AiMatch(state.match, state.ai, input);
+    frames.push({ ...state, input });
+    for (const event of state.match.combat.grabEvents) events.push({ index: frames.length - 1, ...event });
+  }
+  const resultIndex = frames.length - 1;
+  while (!resultReady(state.match)) {
+    state = stepH1AiMatch(state.match, state.ai, N);
+    frames.push({ ...state, input: N });
+  }
+  return { frames, events, resultIndex };
+}
+
+const $ = id => document.getElementById(id), world = $('world');
+const layer = document.createElement('div'); layer.className = 'camera-layer'; world.append(layer);
+const names = ['PLAYER', 'CPU'], cache = new Map();
+const images = names.map(name => { const image = new Image(); image.className = 'sprite'; image.alt = name; layer.append(image); return image; });
+const labels = names.map(() => { const el = document.createElement('span'); el.className = 'name'; layer.append(el); return el; });
+const roots = names.map(() => { const el = document.createElement('i'); el.className = 'root'; layer.append(el); return el; });
+let recording, playing = false, last = 0, acc = 0;
+
+function stop() { playing = false; $('play').textContent = '재생'; }
+function seek(index) {
+  stop(); $('frame').value = String(Math.max(0, Math.min(recording.frames.length - 1, index))); draw();
+}
+function eventLabel(event) {
+  return event.kind === 'escape' ? `${names[event.target]} 풀기`
+    : `${names[event.attacker]} ${event.kind === 'hold' ? '붙잡음' : '바닥 충돌'}`;
+}
+function rebuild() {
+  stop();
+  const policy = $('scenario').value;
+  if (!cache.has(policy)) cache.set(policy, runScenario(policy));
+  recording = cache.get(policy); $('policy').textContent = policyNotes[policy];
+  $('frame').max = String(recording.frames.length - 1); $('frame').value = '0';
+  $('milestones').replaceChildren();
+  const firstOf = kind => recording.events.find(e => e.kind === kind);
+  const points = [firstOf('hold'), firstOf('impact'), firstOf('escape')]
+    .filter(Boolean).sort((a, b) => a.index - b.index);
+  for (const point of points) {
+    const button = document.createElement('button');
+    button.textContent = `${eventLabel(point)} · F${point.index}`;
+    button.addEventListener('click', () => seek(point.index)); $('milestones').append(button);
+  }
+  draw();
+}
+function draw() {
+  const index = Number($('frame').value), { match: m, ai, input } = recording.frames[index], s = m.combat;
+  const visuals = combatVisuals(s, m.resultAge), camera = combatCamera(s);
+  layer.style.transform = `translateX(${camera.offsetX}px) scale(${camera.zoom})`;
+  for (let i = 0; i < 2; i++) {
+    const f = s.fighters[i], def = s.definitions[i], pose = combatPose(f, def, m.resultAge), v = visuals[i];
+    images[i].src = '../../../assets/characters/h1/derived/' + H1_POSES[pose];
+    Object.assign(images[i].style, { left: (v.x - 160) + 'px', top: (v.y - 320 * v.originY) + 'px',
+      transformOrigin: `50% ${v.originY * 100}%`, transform: `rotate(${v.angle}deg) scaleX(${f.facing})`, zIndex: v.depth });
+    labels[i].textContent = names[i];
+    Object.assign(labels[i].style, { left: v.x + 'px', top: (v.y - v.labelHeight) + 'px' });
+    Object.assign(roots[i].style, { left: f.x + 'px', top: f.y + 'px' });
+    const prefix = i ? 'cpu' : 'player';
+    $(prefix + '-hp').textContent = `${names[i]} ${f.hp} HP`;
+    $(prefix + '-bar').style.transform = `scaleX(${f.hp / def.maxHp})`;
+  }
+  $('clock').textContent = `ROUND 1\n${Math.ceil(m.remainingFrames / 60)}`;
+  $('result').textContent = m.result ? (m.result.winner === null ? '시간 종료 · 동률' : `${names[m.result.winner]} 라운드 승리`) : '';
+  $('position').textContent = `${index} / ${recording.frames.length - 1} F`;
+  const events = m.resultAge === 0 ? s.grabEvents : [];
+  $('state').textContent = `전투 F${s.frame} · ${(s.frame / 60).toFixed(2)}초 · 거리 ${Math.abs(s.fighters[1].x - s.fighters[0].x).toFixed(1)} · 공통 줌 ${(camera.zoom * 100).toFixed(3)}%\n`
+    + (events.length ? events.map(e => `${eventLabel(e)}${e.damage ? ` · 피해 ${e.damage}` : ''}`).join(' / ') : '이 프레임의 새 잡기 사건 없음')
+    + (m.resultAge ? ` · KO 결과 연출 ${m.resultAge}/18F` : '');
+  $('debug').textContent = s.fighters.map((f, i) => `${names[i]}: ${f.action} · ${f.grab ? `${f.grab.kind}/${f.grab.role} ${f.grab.age}F` : '잡기 없음'} · ${combatPose(f, s.definitions[i], m.resultAge)}`).join('\n')
+    + `\nCPU 잡기 대기 ${ai.grabCooldown}F · 관찰한 성공 잡힘 ${ai.captureCount}회 · 다음 판단 ${ai.untilDecision}F`
+    + `\nPLAYER 전달 입력: ${JSON.stringify(input)}`
+    + `\n실제 사건 합계: 붙잡음 ${recording.events.filter(e => e.kind === 'hold').length}, 충격 ${recording.events.filter(e => e.kind === 'impact').length}, 풀기 ${recording.events.filter(e => e.kind === 'escape').length}`;
+  $('prev').disabled = index === 0; $('next').disabled = index === recording.frames.length - 1;
+}
+$('scenario').addEventListener('change', rebuild);
+$('frame').addEventListener('input', () => seek(Number($('frame').value)));
+$('prev').addEventListener('click', () => seek(Number($('frame').value) - 1));
+$('next').addEventListener('click', () => seek(Number($('frame').value) + 1));
+$('play').addEventListener('click', () => {
+  if (playing) { stop(); return; }
+  if (Number($('frame').value) === recording.frames.length - 1) $('frame').value = '0';
+  playing = true; acc = 0; last = performance.now(); $('play').textContent = '정지'; draw();
+});
+window.addEventListener('blur', stop);
+document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+new ResizeObserver(entries => { world.style.transform = `scale(${entries[0].contentRect.width / 1280})`; }).observe(world.parentElement);
+function animate(now) {
+  if (playing) {
+    acc += Math.min(100, now - last);
+    while (acc >= 1000 / 60) {
+      acc -= 1000 / 60; $('frame').value = String(Math.min(recording.frames.length - 1, Number($('frame').value) + 1));
+      if (Number($('frame').value) === recording.frames.length - 1) { stop(); break; }
+    }
+    draw();
+  }
+  last = now; requestAnimationFrame(animate);
+}
+rebuild(); requestAnimationFrame(animate);
+</script>
+</html>

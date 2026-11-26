@@ -1,0 +1,281 @@
+﻿{
+    "canvas":  [
+                   512,
+                   512
+               ],
+    "displayScale":  0.625,
+    "referenceSha256":  "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+    "method":  "Fixed full-canvas scale 512/1254 from derived-512 reference proportions; source canvas midpoint X; sole/body bottom Y, or canvas 0.875 virtual ground for flip-v1. No per-pose scaling or repainting.",
+    "frames":  [
+                   {
+                       "source":  "generated/reaction-smooth-v1/crouch-hit-settle.png",
+                       "outputBounds":  {
+                                            "left":  155,
+                                            "right":  369,
+                                            "bottom":  447,
+                                            "top":  206
+                                        },
+                       "id":  "crouch-hit-settle",
+                       "sourceBounds":  {
+                                            "left":  379,
+                                            "right":  905,
+                                            "bottom":  1098,
+                                            "top":  507
+                                        },
+                       "outputSha256":  "276216503fa63ebca145b9e1fb71ce522b8f0c67b69bf993fc52a2a95d8f6816",
+                       "output":  "derived/reaction-smooth-v1/crouch-hit-settle.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1099
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.71451355661884008
+                                  ],
+                       "sourceSha256":  "28355c4aff47704b5c48fa8d748c3c4a9607e580f656b02d48eaed95448592e0",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/reaction-smooth-v1/grab-release-mid.png",
+                       "outputBounds":  {
+                                            "left":  105,
+                                            "right":  415,
+                                            "bottom":  447,
+                                            "top":  64
+                                        },
+                       "id":  "grab-release-mid",
+                       "sourceBounds":  {
+                                            "left":  257,
+                                            "right":  1018,
+                                            "bottom":  1097,
+                                            "top":  158
+                                        },
+                       "outputSha256":  "3a2384ee4f90b1c6adac5a6c5ce82d5d18b78ed7c7332ae7363b73b8c38fa901",
+                       "output":  "derived/reaction-smooth-v1/grab-release-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1098
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.30622009569378861
+                                  ],
+                       "sourceSha256":  "e1f8b4812bf761ab52e677abe75172339de439a1004c7b25609ef4dd9dfea39b",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/reaction-smooth-v1/ko-mid-01.png",
+                       "outputBounds":  {
+                                            "left":  87,
+                                            "right":  466,
+                                            "bottom":  447,
+                                            "top":  111
+                                        },
+                       "id":  "ko-mid-01",
+                       "sourceBounds":  {
+                                            "left":  213,
+                                            "right":  1142,
+                                            "bottom":  1097,
+                                            "top":  274
+                                        },
+                       "outputSha256":  "af943f5bb105a0c955f80c6fc71f67377ba9e3b889646a8a589c6e0e3a343bb3",
+                       "output":  "derived/reaction-smooth-v1/ko-mid-01.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1098
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.30622009569378861
+                                  ],
+                       "sourceSha256":  "0cedee17696b208f88e7d75c5d46b75dc72475660de00c0ea859141b7eb78738",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "body-bottom"
+                   },
+                   {
+                       "source":  "generated/reaction-smooth-v1/ko-mid-12.png",
+                       "outputBounds":  {
+                                            "left":  43,
+                                            "right":  485,
+                                            "bottom":  447,
+                                            "top":  258
+                                        },
+                       "id":  "ko-mid-12",
+                       "sourceBounds":  {
+                                            "left":  105,
+                                            "right":  1188,
+                                            "bottom":  1105,
+                                            "top":  642
+                                        },
+                       "outputSha256":  "72846049183bba65d5bf0985b0503aa52b6975babeca5139aa7f5a680b6afc4e",
+                       "output":  "derived/reaction-smooth-v1/ko-mid-12.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1106
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -3.5725677830940867
+                                  ],
+                       "sourceSha256":  "857ffe8f5da035dcdf8718c681a824b8d1423f7742232990ccf1fa4fe48da34d",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "body-bottom"
+                   },
+                   {
+                       "source":  "generated/reaction-smooth-v1/stand-hit-settle.png",
+                       "outputBounds":  {
+                                            "left":  110,
+                                            "right":  416,
+                                            "bottom":  447,
+                                            "top":  66
+                                        },
+                       "id":  "stand-hit-settle",
+                       "sourceBounds":  {
+                                            "left":  271,
+                                            "right":  1019,
+                                            "bottom":  1098,
+                                            "top":  164
+                                        },
+                       "outputSha256":  "b2c8fd01e56f3418a8e17dcffa1f7474413a3a09bd9b4fec45ffea53e49321d9",
+                       "output":  "derived/reaction-smooth-v1/stand-hit-settle.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1099
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.71451355661884008
+                                  ],
+                       "sourceSha256":  "49c87ea164f3adb654bf80e66dc7b11e7edb384068db25a5cf741ec9bbf7f5ed",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/reaction-smooth-v1/throw-drop-mid.png",
+                       "outputBounds":  {
+                                            "left":  83,
+                                            "right":  450,
+                                            "bottom":  447,
+                                            "top":  127
+                                        },
+                       "id":  "throw-drop-mid",
+                       "sourceBounds":  {
+                                            "left":  203,
+                                            "right":  1103,
+                                            "bottom":  1097,
+                                            "top":  312
+                                        },
+                       "outputSha256":  "e0dee47c5e11985b69329c521031416dc43650bcd77c0c0fb47b29f7f8f5fa9b",
+                       "output":  "derived/reaction-smooth-v1/throw-drop-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1098
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -0.30622009569378861
+                                  ],
+                       "sourceSha256":  "12f3372252ca66413a6f026750af7853f5bc7f879d0edcabe23caf1db96cc046",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/reaction-smooth-v1/thrown-rise-mid.png",
+                       "outputBounds":  {
+                                            "left":  48,
+                                            "right":  478,
+                                            "bottom":  447,
+                                            "top":  220
+                                        },
+                       "id":  "thrown-rise-mid",
+                       "sourceBounds":  {
+                                            "left":  119,
+                                            "right":  1172,
+                                            "bottom":  1102,
+                                            "top":  544
+                                        },
+                       "outputSha256":  "5a37be3aa528fe5d60fe5dba72169c5555ca501f2a3187e534521ff5c574e304",
+                       "output":  "derived/reaction-smooth-v1/thrown-rise-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1103
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -2.3476874003189891
+                                  ],
+                       "sourceSha256":  "7d0b852c7604bc69af9823b9cdcca9f1ad0fc7f600ea2a2df93a95c5fe5adb6c",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   },
+                   {
+                       "source":  "generated/reaction-smooth-v1/throw-turn-mid.png",
+                       "outputBounds":  {
+                                            "left":  111,
+                                            "right":  440,
+                                            "bottom":  447,
+                                            "top":  65
+                                        },
+                       "id":  "throw-turn-mid",
+                       "sourceBounds":  {
+                                            "left":  273,
+                                            "right":  1077,
+                                            "bottom":  1110,
+                                            "top":  173
+                                        },
+                       "outputSha256":  "d3277fd48f98ec4a1519f2972d81fdb04cd85e2073a700f4c90b31a8b43f1541",
+                       "output":  "derived/reaction-smooth-v1/throw-turn-mid.png",
+                       "scale":  0.40829346092503987,
+                       "sourceRoot":  [
+                                          627,
+                                          1111
+                                      ],
+                       "offset":  [
+                                      0,
+                                      -5.6140350877192873
+                                  ],
+                       "sourceSha256":  "a05451f321d4fb65707af6e9a261fb13f742007ba641bada02313810a56e5932",
+                       "sourceSize":  [
+                                          1254,
+                                          1254
+                                      ],
+                       "rootMode":  "sole-bottom"
+                   }
+               ],
+    "status":  "draft",
+    "root":  [
+                 256,
+                 448
+             ],
+    "alphaThreshold":  8
+}

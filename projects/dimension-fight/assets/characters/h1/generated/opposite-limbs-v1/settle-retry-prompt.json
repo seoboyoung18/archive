@@ -1,0 +1,8 @@
+{
+  "id": "crouch-hp-settle-v2",
+  "refs": [
+    "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/opposite-limbs-v1/crouch-hp-recovery.png",
+    "C:/Users/SSAFY/Desktop/dimension-fight/assets/characters/h1/generated/v2/crouch.png"
+  ],
+  "prompt": "Edit first reference H1 crouched fighting pose into the FINAL relaxed recovery frame matching second reference neutral crouch. Both fists RETRACTED IN GUARD. Near right fist at her own lower chest directly in front of shirt, elbow bent tightly, absolutely NO extended punching arm. Far left fist beside cheek. Lower near striped rear heel to rest on ground, open rear knee slightly outward and finish uncoiling hips and shoulders to neutral. Preserve same LOW squat silhouette, head size, black bob, face, exact red jacket white stripes, white sports bra, black pants red stripe, bandages, red shoes. Keep both arms close to body like first reference; tiny change to settle heel and waist only. Same camera, same source canvas1254x1254, same body scale, transparent background. Exactly2arms2legs, fullbody, no text/no effects."
+}

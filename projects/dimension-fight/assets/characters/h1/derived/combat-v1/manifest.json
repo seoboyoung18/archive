@@ -1,0 +1,842 @@
+{
+  "alphaThreshold": 8,
+  "status": "draft",
+  "method": "Shared scale from idle alpha height (384px); source canvas midpoint X; sole bottom Y except jumping uses idle virtual ground. No repainting.",
+  "referenceSha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+  "canvas": [
+    512,
+    512
+  ],
+  "frames": [
+    {
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 413,
+        "left": 104,
+        "top": 64
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1193,
+        "right": 1085,
+        "left": 185,
+        "top": 76
+      },
+      "sourceSha256": "9ba075f070e453b554cdd99fa45326b2bdaa633fb2430402258b6aefa2c7aa2d",
+      "source": "generated/combat-v1/stand-hp-startup.png",
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "outputSha256": "b665f273beadad75ef10ef55ac93d00efd52c9e52fb38e01d9666d7e098879ab",
+      "id": "stand-hp-startup",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-hp-startup.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 461,
+        "left": 92,
+        "top": 66
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1193,
+        "right": 1225,
+        "left": 150,
+        "top": 81
+      },
+      "sourceSha256": "b1ddb60e730cff3fe5a3ee731125fb45d7886cf59c7be20123835517d76e4106",
+      "source": "generated/combat-v1/stand-hp-active.png",
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "outputSha256": "a6a12242a7597d795efbcf3e8e61172974608d48ddc353400b691545ecb38d16",
+      "id": "stand-hp-active",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-hp-active.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 413,
+        "left": 105,
+        "top": 64
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1193,
+        "right": 1085,
+        "left": 188,
+        "top": 74
+      },
+      "sourceSha256": "1fbcd02aa141f0b15a2de85621f11959ea6bf8415fcd433d5a442ace09dc2108",
+      "source": "generated/combat-v1/stand-hp-recovery.png",
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "outputSha256": "a38ac5398d36c1cdb115a58a37ea14e208fb6a1d612f613eca3220e6a48313f1",
+      "id": "stand-hp-recovery",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-hp-recovery.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1192
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 360,
+        "left": 160,
+        "top": 60
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1191,
+        "right": 931,
+        "left": 347,
+        "top": 60
+      },
+      "sourceSha256": "b3ba353c3a30c482aaef8c424e240749595bf072f28bc675385587e965207082",
+      "source": "generated/combat-v1/stand-lk-startup.png",
+      "offset": [
+        41.02857142857144,
+        39.31428571428569
+      ],
+      "outputSha256": "913b4292882efeb86e33195651941f666d4cc3b4caf44087f3e40d253cb89444",
+      "id": "stand-lk-startup",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-lk-startup.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1212
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 459,
+        "left": 95,
+        "top": 48
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1211,
+        "right": 1220,
+        "left": 158,
+        "top": 48
+      },
+      "sourceSha256": "01190035ae69df2481290546b0c7af126eba0b5006e3fb906a103595ff3d0077",
+      "source": "generated/combat-v1/stand-lk-active.png",
+      "offset": [
+        41.02857142857144,
+        32.457142857142856
+      ],
+      "outputSha256": "0f72aa3d339f26cc30b0153c2954e614081cc2c66b56bdd190fd69ab98d7ee15",
+      "id": "stand-lk-active",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-lk-active.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1215
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 373,
+        "left": 155,
+        "top": 50
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1214,
+        "right": 970,
+        "left": 333,
+        "top": 54
+      },
+      "sourceSha256": "c248dbe2d59335fb2bd766871b2bd35d4ad35171831a20e2255f738d9d30fbf3",
+      "source": "generated/combat-v1/stand-lk-recovery.png",
+      "offset": [
+        41.02857142857144,
+        31.428571428571445
+      ],
+      "outputSha256": "5c75384b4ed2ec30fe0f2d4e2f371d4fb507e7399f1ecf6b0d77f2047d90457a",
+      "id": "stand-lk-recovery",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-lk-recovery.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1199
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 403,
+        "left": 127,
+        "top": 62
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1198,
+        "right": 1056,
+        "left": 251,
+        "top": 73
+      },
+      "sourceSha256": "c07951e4d2935c6e942c99b3487e7351ed0e7088ec94db7ee9d7d1aee3703c9b",
+      "source": "generated/combat-v1/stand-hk-startup.png",
+      "offset": [
+        41.02857142857144,
+        36.91428571428571
+      ],
+      "outputSha256": "df782ff10acae56d58475cea461d5cc7c0a0603b66161836327c4457857d3eda",
+      "id": "stand-hk-startup",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-hk-startup.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1208
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 450,
+        "left": 106,
+        "top": 54
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1207,
+        "right": 1193,
+        "left": 191,
+        "top": 59
+      },
+      "sourceSha256": "739c53d903f4b9ee85fe278ecef0d338217f328c343695f9d0ccfbcc3244f2fc",
+      "source": "generated/combat-v1/stand-hk-active.png",
+      "offset": [
+        41.02857142857144,
+        33.82857142857142
+      ],
+      "outputSha256": "2952ac50cc773a2fa7ae5ec3cd541e2ee654bf529af716a1d9b5a96928a910f5",
+      "id": "stand-hk-active",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-hk-active.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1220
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 375,
+        "left": 137,
+        "top": 42
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1219,
+        "right": 976,
+        "left": 280,
+        "top": 35
+      },
+      "sourceSha256": "469900e61f64c92c65859b8e6a892ba230d7413c382b9cd1b2b99e30de609fce",
+      "source": "generated/combat-v1/stand-hk-recovery.png",
+      "offset": [
+        41.02857142857144,
+        29.714285714285722
+      ],
+      "outputSha256": "c22b9117e7d814d2ecce559b31c50463b79248d1a3f0e8d48b27dd68cc0e5d37",
+      "id": "stand-hk-recovery",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-hk-recovery.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 368,
+        "left": 155,
+        "top": 209
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1187,
+        "right": 954,
+        "left": 335,
+        "top": 491
+      },
+      "sourceSha256": "80caac21dc6ddd0e656bdd475a611a9fdeae60f4aa97a5d8714829cb089dd154",
+      "source": "generated/combat-v1/crouch-lp-startup.png",
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "outputSha256": "f3a78193d3fa2ded82141c39f1b5a9cf7759757968ab654ed4736de3fc4c2a6f",
+      "id": "crouch-lp-startup",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-lp-startup.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 454,
+        "left": 129,
+        "top": 192
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1193,
+        "right": 1207,
+        "left": 258,
+        "top": 449
+      },
+      "sourceSha256": "d50893ce43472222871b4d5852ff8e95db87a54cacb9bf1a4ee585a78fa12f9e",
+      "source": "generated/combat-v1/crouch-lp-active.png",
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "outputSha256": "467580765783cbd954c473b891e23767ea1a005249c8e6772f8250bddc2a3d6f",
+      "id": "crouch-lp-active",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-lp-active.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 367,
+        "left": 156,
+        "top": 209
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1187,
+        "right": 953,
+        "left": 336,
+        "top": 491
+      },
+      "sourceSha256": "0eb9c9bdeaf51f594f4f83ee9f0642585144e3d31766647c298f66995d983a61",
+      "source": "generated/combat-v1/crouch-lp-recovery-v2.png",
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "outputSha256": "dc430dac650cff457615a6f729cbc8baca8c0b4f28cef21715b3cd5c9501aa56",
+      "id": "crouch-lp-recovery",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-lp-recovery.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1189
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 367,
+        "left": 155,
+        "top": 208
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1188,
+        "right": 955,
+        "left": 335,
+        "top": 490
+      },
+      "sourceSha256": "4a3c183852f895e786f4b342afd5e160dfe6dfd16c9ac8eddf6a52d6eb18c75c",
+      "source": "generated/combat-v1/crouch-hp-startup-v2.png",
+      "offset": [
+        41.02857142857144,
+        40.342857142857156
+      ],
+      "outputSha256": "25fe390c0c570f85edd3e354f002e05e5d522abbf88cfc539c434e3940ee16a0",
+      "id": "crouch-hp-startup",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-hp-startup.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 456,
+        "left": 158,
+        "top": 216
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1187,
+        "right": 1212,
+        "left": 342,
+        "top": 511
+      },
+      "sourceSha256": "ba630708b6d12010ae4836b9ef9b80095c869492f4d97f47adfd1c588c788792",
+      "source": "generated/combat-v1/crouch-hp-active.png",
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "outputSha256": "86b46731af38bfdae44157ebf4d75b5faa632a8b2b276c9fcbde104656bfe9f1",
+      "id": "crouch-hp-active",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-hp-active.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 368,
+        "left": 156,
+        "top": 209
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1187,
+        "right": 956,
+        "left": 335,
+        "top": 490
+      },
+      "sourceSha256": "b3a2cd5aa88fe6661d852cfc5df4a84be20d277b29d85bbe2981146ef8dca2f3",
+      "source": "generated/combat-v1/crouch-hp-recovery.png",
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "outputSha256": "c39b0ed551c38e66a04cf403bb4c8095eb12000acca82965bf252f7581cc83a4",
+      "id": "crouch-hp-recovery",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-hp-recovery.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1189
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 409,
+        "left": 119,
+        "top": 210
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1188,
+        "right": 1073,
+        "left": 229,
+        "top": 494
+      },
+      "sourceSha256": "df1df04e9b3331064a2c2455c41f6d779a614762331a302398ed0632dc8adf8e",
+      "source": "generated/combat-v1/crouch-hk-startup-v2.png",
+      "offset": [
+        41.02857142857144,
+        40.342857142857156
+      ],
+      "outputSha256": "d3c5ca796ac92a613d0381dac5c4a4968393cb48683dc7ba309830475becc542",
+      "id": "crouch-hk-startup",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-hk-startup.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1180
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 464,
+        "left": 123,
+        "top": 221
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1179,
+        "right": 1235,
+        "left": 240,
+        "top": 519
+      },
+      "sourceSha256": "39f0aee8d074fffe0d0fc73ca4226f614a1c48230df960d6d9b5b54aa3e21eaf",
+      "source": "generated/combat-v1/crouch-hk-active.png",
+      "offset": [
+        41.02857142857144,
+        43.428571428571445
+      ],
+      "outputSha256": "85ea89bf585bed69c31271a30da64c4da5b0dca5d010fb125bce75749ac2966e",
+      "id": "crouch-hk-active",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-hk-active.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 373,
+        "left": 167,
+        "top": 214
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1187,
+        "right": 969,
+        "left": 368,
+        "top": 506
+      },
+      "sourceSha256": "49c47e2927112685bf9318b02503345eb4fdbfc9a165bc90b2067e431562a344",
+      "source": "generated/combat-v1/crouch-hk-recovery.png",
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "outputSha256": "a1edbc9752cbf12c758ae30da8a8bd34a6fa1cd0b0a9f96c62026f2a459715f4",
+      "id": "crouch-hk-recovery",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-hk-recovery.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1193
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 414,
+        "left": 105,
+        "top": 66
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1192,
+        "right": 1090,
+        "left": 189,
+        "top": 80
+      },
+      "sourceSha256": "a13302e61fbe76af9a30907fe35709ecb1044ccbcfda94e6fac84adf167e44cb",
+      "source": "generated/combat-v1/stand-guard.png",
+      "offset": [
+        41.02857142857144,
+        38.97142857142859
+      ],
+      "outputSha256": "72f2ffc64cee685228bb3559f48ced93d9978a7c6f68c01e82eab67149b24fd8",
+      "id": "stand-guard",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-guard.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 368,
+        "left": 155,
+        "top": 209
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1187,
+        "right": 955,
+        "left": 334,
+        "top": 491
+      },
+      "sourceSha256": "b9bbed0f8970ffa616231e25767cde07f194348bfaa32a02202769370cbc14e3",
+      "source": "generated/combat-v1/crouch-guard.png",
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "outputSha256": "32c676f44ca8f865229e563d171967a79e65873dd83ab691030089538f891b1b",
+      "id": "crouch-guard",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-guard.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1193
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 415,
+        "left": 108,
+        "top": 65
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1192,
+        "right": 1092,
+        "left": 197,
+        "top": 77
+      },
+      "sourceSha256": "e1b5d72b9e32e13dd4ca4128fc8d909aa7682ed0aa8d361e38484a4cd5709430",
+      "source": "generated/combat-v1/stand-hit.png",
+      "offset": [
+        41.02857142857144,
+        38.97142857142859
+      ],
+      "outputSha256": "10f7a1b053013e4ca0616e7ad591672da96e504bb45aae4a92abe44709d2a611",
+      "id": "stand-hit",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/stand-hit.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 368,
+        "left": 155,
+        "top": 214
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1187,
+        "right": 956,
+        "left": 335,
+        "top": 507
+      },
+      "sourceSha256": "f21b398d370383b9e5ff63f27dff3e4394c999ecf081ff7dafa498be001640e7",
+      "source": "generated/combat-v1/crouch-hit.png",
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "outputSha256": "a2ec353bde8d8fb00a2d2e669f47a6a7161242137a90a65d8e0c5af45e642965",
+      "id": "crouch-hit",
+      "rootMode": "sole-bottom",
+      "output": "derived/combat-v1/crouch-hit.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1174
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 421,
+        "left": 115,
+        "top": 100
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1173,
+        "right": 1109,
+        "left": 216,
+        "top": 160
+      },
+      "sourceSha256": "0c0b639d3a56157bdf00fed5576c7f1a34077517e83818f6936a939e5a59c0c5",
+      "source": "generated/combat-v1/ko-0.png",
+      "offset": [
+        41.02857142857144,
+        45.485714285714266
+      ],
+      "outputSha256": "b0b95d2f8d13f1fec7ceca6f092e8a8d52d9468c8ca4d056ebff5d04cf2241a8",
+      "id": "ko-0",
+      "rootMode": "body-bottom",
+      "output": "derived/combat-v1/ko-0.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1022
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 465,
+        "left": 84,
+        "top": 190
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1021,
+        "right": 1238,
+        "left": 125,
+        "top": 271
+      },
+      "sourceSha256": "e7430d140ed00c657507273d55e799e14f8d444f98421b44d79d4ebc8df1c75f",
+      "source": "generated/combat-v1/ko-1.png",
+      "offset": [
+        41.02857142857144,
+        97.60000000000002
+      ],
+      "outputSha256": "230a2b17feba2b38ace374bbf51bedcad2173aa924e5f30f8d799b1447c7864d",
+      "id": "ko-1",
+      "rootMode": "body-bottom",
+      "output": "derived/combat-v1/ko-1.png"
+    },
+    {
+      "sourceRoot": [
+        627.0,
+        1171
+      ],
+      "outputBounds": {
+        "bottom": 447,
+        "right": 465,
+        "left": 49,
+        "top": 297
+      },
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "scale": 0.34285714285714286,
+      "sourceBounds": {
+        "bottom": 1170,
+        "right": 1236,
+        "left": 25,
+        "top": 731
+      },
+      "sourceSha256": "9257407063503285e66a15c380dba7d1a8523be15ee5417fff57b7dd60be29a0",
+      "source": "generated/combat-v1/ko-2.png",
+      "offset": [
+        41.02857142857144,
+        46.514285714285734
+      ],
+      "outputSha256": "540399ab0b57bc1ded818931e105377b865ea1029c6db3cc62fcfff3b80e935d",
+      "id": "ko-2",
+      "rootMode": "body-bottom",
+      "output": "derived/combat-v1/ko-2.png"
+    }
+  ],
+  "displayScale": 0.625,
+  "root": [
+    256,
+    448
+  ]
+}

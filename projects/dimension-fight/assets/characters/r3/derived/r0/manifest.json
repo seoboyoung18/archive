@@ -1,0 +1,56 @@
+{
+  "status": "review-only",
+  "character": "r3",
+  "source": "reference.png",
+  "output": "derived/r0/reference-stand.png",
+  "sourceSha256": "c0e0295e070e4b73b801f64d1e8eef5fe1ef55fa277198ce940f12b944785fe3",
+  "outputSha256": "2c785b67c217bc58d755b6b7d1645d7134369511ff5d917854e723ed822baeaa",
+  "sourceSize": [
+    1214,
+    1296
+  ],
+  "sourceBoundsAlpha1": {
+    "left": 0,
+    "top": 21,
+    "right": 1154,
+    "bottom": 1264
+  },
+  "sourceBoundsAlpha8": {
+    "left": 137,
+    "top": 34,
+    "right": 1108,
+    "bottom": 1257
+  },
+  "sourceRoot": [
+    607.0,
+    1265
+  ],
+  "scale": 0.3086816720257235,
+  "offset": [
+    68.63022508038583,
+    59.51768488745978
+  ],
+  "visibleFootCorrectionY": 2,
+  "canvas": [
+    512,
+    512
+  ],
+  "footRoot": [
+    256,
+    448
+  ],
+  "displayScale": 0.625,
+  "outputBoundsAlpha1": {
+    "left": 111,
+    "top": 70,
+    "right": 417,
+    "bottom": 449
+  },
+  "outputBoundsAlpha8": {
+    "left": 111,
+    "top": 70,
+    "right": 411,
+    "bottom": 447
+  },
+  "method": "Scale full alpha height to 384px; center source canvas X; after bicubic resize align visible alpha>=8 foot bottom to y448. No repaint or crop."
+}

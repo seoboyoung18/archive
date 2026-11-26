@@ -1,0 +1,125 @@
+[
+  {
+    "id": "stand-lp-start-mid",
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-b77f00f9-2952-44e0-b60c-6ff9066e98f8.png",
+    "prompt": "Use case: precise-object-edit. Asset: a single transparent 2D fighting-game in-between animation frame, not a sprite sheet. Image1 and Image2 are consecutive key poses of the SAME H1 fighter. Draw the exact halfway articulated pose from image1 to image2, keeping the same adult woman, black bob, face, red cropped track jacket with white stripe, white sports top, loose black trousers/red stripe, hand wraps, red sneakers and exact crisp cel-shaded rendering. Keep both feet on the same support locations except the explicitly moving foot; retain the same support pivot, anatomy, limb ownership and torso scale. Do not change which arm or leg attacks. Full body faces right in the same perspective. Preserve the canvas composition at normalized coordinates from the512 references: virtual ground y448/512, root x256/512, same head size. Request1024square, genuine RGBA transparency, no text, floor, shadow, motion blur, duplicate limbs or effects. This is an intermediate PREPARATION pose, not full extension or impact. The same forward jab fist is halfway outward; elbow remains clearly bent, opposite fist guards chest, feet stay fixed.",
+    "tool": "built-in image_gen",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/v2/startup.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/motion-v1/lp-extend.png"
+    ],
+    "output": "stand-lp-start-mid.png",
+    "sha256": "d5b3902a2592405b27345cea8a90afdc19f4accb72a62f291a86cc02f8dce9ff",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "stand-hp-start-mid",
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-699a9833-a5ce-4253-a909-69cdab26e91f.png",
+    "prompt": "Use case: precise-object-edit. Asset: a single transparent 2D fighting-game in-between animation frame, not a sprite sheet. Image1 and Image2 are consecutive key poses of the SAME H1 fighter. Draw the exact halfway articulated pose from image1 to image2, keeping the same adult woman, black bob, face, red cropped track jacket with white stripe, white sports top, loose black trousers/red stripe, hand wraps, red sneakers and exact crisp cel-shaded rendering. Keep both feet on the same support locations except the explicitly moving foot; retain the same support pivot, anatomy, limb ownership and torso scale. Do not change which arm or leg attacks. Full body faces right in the same perspective. Preserve the canvas composition at normalized coordinates from the512 references: virtual ground y448/512, root x256/512, same head size. Request1024square, genuine RGBA transparency, no text, floor, shadow, motion blur, duplicate limbs or effects. This is an intermediate PREPARATION pose, not full extension or impact. The rear hand nearer viewer on the left of image drives forward halfway with bent elbow; torso rotates halfway, opposite guarding hand stays near face, rear heel pivot halfway.",
+    "tool": "built-in image_gen",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/stand-hp-startup.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/stand-hp-extend.png"
+    ],
+    "output": "stand-hp-start-mid.png",
+    "sha256": "5c18183406b356155de47f4809f34e5c4c1585bdfd45855e23668166303c30ae",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "stand-lk-start-mid",
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-63aaaa96-ef1c-4305-8c61-a4a5e91977af.png",
+    "prompt": "Use case: precise-object-edit. Asset: a single transparent 2D fighting-game in-between animation frame, not a sprite sheet. Image1 and Image2 are consecutive key poses of the SAME H1 fighter. Draw the exact halfway articulated pose from image1 to image2, keeping the same adult woman, black bob, face, red cropped track jacket with white stripe, white sports top, loose black trousers/red stripe, hand wraps, red sneakers and exact crisp cel-shaded rendering. Keep both feet on the same support locations except the explicitly moving foot; retain the same support pivot, anatomy, limb ownership and torso scale. Do not change which arm or leg attacks. Full body faces right in the same perspective. Preserve the canvas composition at normalized coordinates from the512 references: virtual ground y448/512, root x256/512, same head size. Request1024square, genuine RGBA transparency, no text, floor, shadow, motion blur, duplicate limbs or effects. This is an intermediate PREPARATION pose, not full extension or impact. The plain dark front leg is halfway unfolding from raised knee to extension, shin at an intermediate diagonal; red-striped supporting leg remains planted at exactly the same place.",
+    "tool": "built-in image_gen",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/attack-motion-v1/stand-lk-startup.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/attack-motion-v1/stand-lk-extend.png"
+    ],
+    "output": "stand-lk-start-mid.png",
+    "sha256": "382dd6143d2870c1943a99bc63a575e4a8f52828b007e151a67a423caa7b69fc",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "stand-hk-start-mid",
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-f59511aa-b12c-4fc9-989d-c811fdb61c68.png",
+    "prompt": "Use case: precise-object-edit. Asset: a single transparent 2D fighting-game in-between animation frame, not a sprite sheet. Image1 and Image2 are consecutive key poses of the SAME H1 fighter. Draw the exact halfway articulated pose from image1 to image2, keeping the same adult woman, black bob, face, red cropped track jacket with white stripe, white sports top, loose black trousers/red stripe, hand wraps, red sneakers and exact crisp cel-shaded rendering. Keep both feet on the same support locations except the explicitly moving foot; retain the same support pivot, anatomy, limb ownership and torso scale. Do not change which arm or leg attacks. Full body faces right in the same perspective. Preserve the canvas composition at normalized coordinates from the512 references: virtual ground y448/512, root x256/512, same head size. Request1024square, genuine RGBA transparency, no text, floor, shadow, motion blur, duplicate limbs or effects. This is an intermediate PREPARATION pose, not full extension or impact. The near red-striped rear leg is halfway lifted from standing to the high bent-knee chamber. Plain supporting leg bears weight; knee only halfway high, natural hip rotation.",
+    "tool": "built-in image_gen",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/stand-hk-startup.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/stand-hk-lift.png"
+    ],
+    "output": "stand-hk-start-mid-rejected-leg.png",
+    "sha256": "b8504879f562085d64737d973f744d45d4a37246f8944e8836d3df7109c1423a",
+    "review": "rejected: incorrect attacking limb; preserved only"
+  },
+  {
+    "id": "crouch-lp-start-mid",
+    "prompt": "Use case: precise-object-edit. One NEW individual transparent 2D game sprite, no sheet. References are consecutive animation keys for same adult H1 woman. Draw an articulated IN-BETWEEN pose keeping exact face/black bob/red jacket white stripes/white sports crop top/black loose trousers/red side stripe/wraps/red shoes and same cel-shaded linework. CRITICAL keep the SAME SMALL CROUCHED BODY SIZE AND CANVAS PLACEMENT as references: head around y205/512, ground y448/512. Upper half of canvas remains transparent; never enlarge crouching body to fill it. Request1024 square RGBA transparent, the reference512 coordinates simply double. Full-body facing RIGHT; no shadow/floor/text/effects/blur or duplicated limbs. Same support foot and attacking limb as both references. A low jab halfway outward: extended-side fist x345 y295 in512coordinates, elbow still bent, other fist at cheek. Two feet remain planted, head at reference crouch height.",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/combat-v1/crouch-lp-startup.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/attack-motion-v1/crouch-lp-extend.png"
+    ],
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-36b16935-1b33-4c51-b2c9-209d200c4823.png",
+    "output": "crouch-lp-start-mid.png",
+    "sha256": "324bf334e239290557a7c07bdb54bae1a41f501b67ebfc3234c0b22a79b90140",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "crouch-hp-start-mid",
+    "prompt": "Use case: precise-object-edit. One NEW individual transparent 2D game sprite, no sheet. References are consecutive animation keys for same adult H1 woman. Draw an articulated IN-BETWEEN pose keeping exact face/black bob/red jacket white stripes/white sports crop top/black loose trousers/red side stripe/wraps/red shoes and same cel-shaded linework. CRITICAL keep the SAME SMALL CROUCHED BODY SIZE AND CANVAS PLACEMENT as references: head around y205/512, ground y448/512. Upper half of canvas remains transparent; never enlarge crouching body to fill it. Request1024 square RGBA transparent, the reference512 coordinates simply double. Full-body facing RIGHT; no shadow/floor/text/effects/blur or duplicated limbs. Same support foot and attacking limb as both references. Rear red-jacketed forearm crosses the torso halfway toward the punch, elbow bent near x300 y290, fist x340 y285. Rear heel pivots halfway and torso turns, the opposite fist guards face.",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-startup.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/crouch-hp-extend.png"
+    ],
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-33f1313d-96dd-4b83-ab70-747118b542fd.png",
+    "output": "crouch-hp-start-mid-rejected-arm.png",
+    "sha256": "693f056753a2f7848a18c3342134cbc5b7d64728243ed2b1c4694f617146c910",
+    "review": "rejected: incorrect attacking limb; preserved only"
+  },
+  {
+    "id": "crouch-lk-start-mid",
+    "prompt": "Use case: precise-object-edit. One NEW individual transparent 2D game sprite, no sheet. References are consecutive animation keys for same adult H1 woman. Draw an articulated IN-BETWEEN pose keeping exact face/black bob/red jacket white stripes/white sports crop top/black loose trousers/red side stripe/wraps/red shoes and same cel-shaded linework. CRITICAL keep the SAME SMALL CROUCHED BODY SIZE AND CANVAS PLACEMENT as references: head around y205/512, ground y448/512. Upper half of canvas remains transparent; never enlarge crouching body to fill it. Request1024 square RGBA transparent, the reference512 coordinates simply double. Full-body facing RIGHT; no shadow/floor/text/effects/blur or duplicated limbs. Same support foot and attacking limb as both references. Plain dark forward leg begins a low kick, half extended at diagonal to right, knee bent; same striped support thigh and shoe stay grounded at x170 y448. Kicking shoe around x355 y394, halfway between keys.",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/v2/crouch-startup.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/attack-motion-v1/crouch-lk-extend.png"
+    ],
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-93145e68-0c29-491b-8a55-6b22e9cb2bcd.png",
+    "output": "crouch-lk-start-mid.png",
+    "sha256": "89b0cdb7cf74a28cdbb6a242523ef86c84751c4332b396fe0b2a821dab5c2437",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "crouch-hk-start-mid",
+    "prompt": "Use case: precise-object-edit. One NEW individual transparent 2D game sprite, no sheet. References are consecutive animation keys for same adult H1 woman. Draw an articulated IN-BETWEEN pose keeping exact face/black bob/red jacket white stripes/white sports crop top/black loose trousers/red side stripe/wraps/red shoes and same cel-shaded linework. CRITICAL keep the SAME SMALL CROUCHED BODY SIZE AND CANVAS PLACEMENT as references: head around y205/512, ground y448/512. Upper half of canvas remains transparent; never enlarge crouching body to fill it. Request1024 square RGBA transparent, the reference512 coordinates simply double. Full-body facing RIGHT; no shadow/floor/text/effects/blur or duplicated limbs. Same support foot and attacking limb as both references. The red-striped sweeping leg retracts halfway toward the compact turning chamber, shin visibly red-striped and lifted; plain support leg stays grounded. Between both references; do not swap which leg has red stripe. Torso rotates halfway, gaze remainsright.",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/crouch-hk-startup.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/crouch-hk-extend.png"
+    ],
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-907c671d-9c62-439e-b4a5-9b1080b2623e.png",
+    "output": "crouch-hk-start-mid.png",
+    "sha256": "4b67193a7097829fb7b71193c5fc7c703f0c3398d5f9eabff5f41a5fa1ddf6a0",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "stand-hk-start-mid-v2",
+    "prompt": "Use case: precise-object-edit. One transparent intermediate fighting-game sprite. Image1 is standing preparation, Image2 is correct raised-leg key. Preserve same adult H1 body/face/style/costume/scale. The RED-STRIPED rear leg is the moving leg: lift its knee only halfway between these two keys, with a continuous visible RED STRIPE from hip around raised thigh to shin. The PLAIN BLACK leg is supporting and its RED SHOE stays planted near(286,448) in512reference coordinates. Important: do NOT draw red stripe down the planted leg; it belongs to the raised leg. Keep fists at same guarding locations. Full body right-facing, exact reference head/body size, root256,448. Request1024square transparentRGBA nofloor/shadow/labels/blur/extra limbs. Same head around64/512 and feet448/512. Only knee height and weight shift intermediate; no full kick.",
+    "references": [
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/stand-hk-startup.png",
+      "C:/Users/PC/Desktop/dimension-fight/assets/characters/h1/derived/opposite-limbs-v1/stand-hk-lift.png"
+    ],
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-88968e79-3af9-4495-8aeb-78569fd36873.png",
+    "output": "stand-hk-start-mid.png",
+    "sha256": "3261db23bc0c1947e97bd6303ba02a2564189fd173945e8edcf6f6513e9dd925",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  },
+  {
+    "id": "crouch-hp-start-mid-v2",
+    "prompt": "Use case: precise-object-edit. Edit target: the referenced transparent H1 crouching strong punch sprite. Produce ONE intermediate preparation sprite on a transparent RGBA square canvas. Change ONLY the extended close-to-camera punching arm: bend its elbow slightly so its wrapped fist retracts about 15% toward the torso. Preserve the same shoulder, the same visible near upper arm crossing in front of the red jacket/chest, and the other distant arm folded with its fist beside the cheek. Do NOT switch the punching arm, do NOT make a jab with the distant arm. Preserve exact full-body size, root center, head, face, short black bob, red cropped hoodie with white stripe, white top, black trousers red side stripe, red sneakers, same crouching legs/feet and facing RIGHT. Keep reference normalized canvas composition: head near y192/512, ground y448/512, character root x256/512. No text, floor, shadow, glow, smear, grid, or extra limbs. This is a subtle pre-extension frame of the SAME strong cross punch.",
+    "references": [
+      "opposite-limbs-v1/crouch-hp-extend.png"
+    ],
+    "path": "C:\\Users\\PC\\.codex\\generated_images\\01a0fcea-badc-7d01-ab56-cc95831a0338\\exec-b0060237-1b40-48f6-b5f9-d3b4aa4fb949.png",
+    "output": "crouch-hp-start-mid.png",
+    "sha256": "18fe70d26ec85d9a32e39eb23c16453f4f678a695e31aaffba0569e571acbe87",
+    "review": "selected: identity checked; phase placement in docs/specs/h1-smooth-flip.md"
+  }
+]

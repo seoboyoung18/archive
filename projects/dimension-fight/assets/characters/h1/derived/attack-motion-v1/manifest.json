@@ -1,0 +1,875 @@
+{
+  "frames": [
+    {
+      "id": "stand-hp-extend",
+      "outputBounds": {
+        "right": 422,
+        "top": 66,
+        "left": 92,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/stand-hp-extend.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "sourceSha256": "62b1393189667b863753940d07fe083c4249e652c06ca35e25a95b77cc5d423d",
+      "outputSha256": "f79123cdfc98192bbb7be1f28992433a435e30a9a87cf34ef98a2a933b35155b",
+      "sourceBounds": {
+        "right": 1112,
+        "top": 80,
+        "left": 149,
+        "bottom": 1193
+      },
+      "output": "derived/attack-motion-v1/stand-hp-extend.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-hp-retract",
+      "outputBounds": {
+        "right": 422,
+        "top": 65,
+        "left": 92,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/stand-hp-retract.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        38.28571428571428
+      ],
+      "sourceSha256": "31d1d4699bcf3954521d5df75d93748ba180222f970222e04bae34df967ac899",
+      "outputSha256": "26a803427a328c6b096524a5301f44a4b036865499d7ae0f460a698df8f071b3",
+      "sourceBounds": {
+        "right": 1113,
+        "top": 80,
+        "left": 150,
+        "bottom": 1194
+      },
+      "output": "derived/attack-motion-v1/stand-hp-retract.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1195
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-hp-settle",
+      "outputBounds": {
+        "right": 416,
+        "top": 63,
+        "left": 103,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/stand-hp-settle.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        37.25714285714287
+      ],
+      "sourceSha256": "1c4c2740d21a03f786ea497a1fd67bb863703472a013fc440a63bc0fa759798f",
+      "outputSha256": "100887b6545fd95f6b932f85d3719be6509edb32871290b8f3f003d1b9fb0da4",
+      "sourceBounds": {
+        "right": 1095,
+        "top": 77,
+        "left": 182,
+        "bottom": 1197
+      },
+      "output": "derived/attack-motion-v1/stand-hp-settle.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1198
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-lk-extend",
+      "outputBounds": {
+        "right": 391,
+        "top": 48,
+        "left": 94,
+        "bottom": 448
+      },
+      "source": "generated/attack-motion-v1/stand-lk-extend.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        32.1142857142857
+      ],
+      "sourceSha256": "6eea8506431b09bb6f13a4297509afa341625a674230083de1764070f377206e",
+      "outputSha256": "31a263bd0d0cc88735fdf26bb267466ae80f4ca4469b1043b09d9e71efc615cd",
+      "sourceBounds": {
+        "right": 1021,
+        "top": 48,
+        "left": 156,
+        "bottom": 1212
+      },
+      "output": "derived/attack-motion-v1/stand-lk-extend.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1213
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-lk-retract",
+      "outputBounds": {
+        "right": 401,
+        "top": 48,
+        "left": 95,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/stand-lk-retract.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        32.1142857142857
+      ],
+      "sourceSha256": "41918a2cd9615df085ad85373eb9bf107f3e77cf679bcf39cf2abfbe66e73b81",
+      "outputSha256": "94f4bf638dbd0c73ff45efd8151acfaa333404f12fe284aa775c1806bfb6676a",
+      "sourceBounds": {
+        "right": 1050,
+        "top": 48,
+        "left": 157,
+        "bottom": 1212
+      },
+      "output": "derived/attack-motion-v1/stand-lk-retract.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1213
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-lk-settle",
+      "outputBounds": {
+        "right": 412,
+        "top": 66,
+        "left": 103,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/stand-lk-settle-v2.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "sourceSha256": "5782c28eda087730368563e63f44d8fc49916ee96a4a8410f9f3f7a76b08a203",
+      "outputSha256": "d764ebaab42e3632a1846e77d024678f0186d6e0ab06bc2ed6492869ca9f3493",
+      "sourceBounds": {
+        "right": 1085,
+        "top": 74,
+        "left": 181,
+        "bottom": 1187
+      },
+      "output": "derived/attack-motion-v1/stand-lk-settle.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-hk-lift",
+      "outputBounds": {
+        "right": 325,
+        "top": 54,
+        "left": 107,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/stand-hk-lift.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        34.17142857142858
+      ],
+      "sourceSha256": "74f9d4005427e948c408b7b188f9321c8784c487d9b78f19cb5c49fd281e9769",
+      "outputSha256": "44ae1250ffa2d4e6d96a2e18bb8a3720d16abf5d423c3366cec84f5f49dc9e43",
+      "sourceBounds": {
+        "right": 831,
+        "top": 58,
+        "left": 192,
+        "bottom": 1206
+      },
+      "output": "derived/attack-motion-v1/stand-hk-lift.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1207
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-hk-apex",
+      "outputBounds": {
+        "right": 459,
+        "top": 54,
+        "left": 107,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/stand-hk-apex.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        33.485714285714266
+      ],
+      "sourceSha256": "b7598d9d0f490a43c11fa3f5c4f2dc71cba8c3fb7c13522798f0ab0ba0ca21a8",
+      "outputSha256": "92985a275f53997a4b4dfce0751e8fe969daaccc3debb870d6abbe230a7bd2ec",
+      "sourceBounds": {
+        "right": 1219,
+        "top": 60,
+        "left": 192,
+        "bottom": 1208
+      },
+      "output": "derived/attack-motion-v1/stand-hk-apex.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1209
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-hk-descend",
+      "outputBounds": {
+        "right": 460,
+        "top": 54,
+        "left": 107,
+        "bottom": 448
+      },
+      "source": "generated/attack-motion-v1/stand-hk-descend-v2.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        33.485714285714266
+      ],
+      "sourceSha256": "a71ddfa6fea7cae08a2f8fff1325c04b39c657c804ab0d09d700e8cc5b37cd3a",
+      "outputSha256": "3c837db5db6ea1792a7157f57caf141a3d0c91809344c2aaed4fb59a30f0897e",
+      "sourceBounds": {
+        "right": 1224,
+        "top": 61,
+        "left": 192,
+        "bottom": 1208
+      },
+      "output": "derived/attack-motion-v1/stand-hk-descend.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1209
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-hk-retract",
+      "outputBounds": {
+        "right": 331,
+        "top": 55,
+        "left": 110,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/stand-hk-retract.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        34.17142857142858
+      ],
+      "sourceSha256": "20d523bf508823e5b5d6cbac7849729ed6d5dc3367f8af69f575b5cd6bc21700",
+      "outputSha256": "42f5c46eba0168517f31b228d6eb96a229dac62056ce3fe7326a8202b742239c",
+      "sourceBounds": {
+        "right": 846,
+        "top": 61,
+        "left": 203,
+        "bottom": 1206
+      },
+      "output": "derived/attack-motion-v1/stand-hk-retract.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1207
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-hk-settle",
+      "outputBounds": {
+        "right": 422,
+        "top": 68,
+        "left": 110,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/stand-hk-settle-v2.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        42.05714285714288
+      ],
+      "sourceSha256": "788f9e5b270de887297ab9b2eb9aa28bb5381cc75d9faecf493c671e70d85cd0",
+      "outputSha256": "ffcad13efebf7851f01148e3efc2384a69b106f90dadfa20d2a8d0d850e525ad",
+      "sourceBounds": {
+        "right": 1112,
+        "top": 74,
+        "left": 202,
+        "bottom": 1183
+      },
+      "output": "derived/attack-motion-v1/stand-hk-settle.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1184
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-lp-extend",
+      "outputBounds": {
+        "right": 411,
+        "top": 202,
+        "left": 135,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-lp-extend.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        36.571428571428555
+      ],
+      "sourceSha256": "9d80cea92114525e531ec7bf0717a6b7ab2f3e2f739ce2f6e0cef713a9c0612c",
+      "outputSha256": "f3e43dbbfa78e380a9f0180dcebcacf7132c392dc0eb9490dae448ed9303f1e3",
+      "sourceBounds": {
+        "right": 1081,
+        "top": 483,
+        "left": 274,
+        "bottom": 1199
+      },
+      "output": "derived/attack-motion-v1/crouch-lp-extend.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1200
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-lp-retract",
+      "outputBounds": {
+        "right": 390,
+        "top": 192,
+        "left": 129,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-lp-retract.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        38.62857142857143
+      ],
+      "sourceSha256": "047c2fa05d43d293efb60cde1678c18820baa1c2914691efe7b31ddfba8207e0",
+      "outputSha256": "09fdce3203065236b70c93466e8dc4c75087dc1f8cf8ff0bc13d185432fff172",
+      "sourceBounds": {
+        "right": 1018,
+        "top": 449,
+        "left": 259,
+        "bottom": 1193
+      },
+      "output": "derived/attack-motion-v1/crouch-lp-retract.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1194
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-lp-settle",
+      "outputBounds": {
+        "right": 367,
+        "top": 209,
+        "left": 156,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-lp-settle.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        40.342857142857156
+      ],
+      "sourceSha256": "3e90242573557364a7aece979f2a4c13bd15b5d1abbb69af3a5f8b4e5ea094f8",
+      "outputSha256": "ec66abcb9fa18a432dcaa7570acb247bfeceffe6dfc494b1760c855ed2785d9c",
+      "sourceBounds": {
+        "right": 952,
+        "top": 492,
+        "left": 335,
+        "bottom": 1188
+      },
+      "output": "derived/attack-motion-v1/crouch-lp-settle.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1189
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-hp-extend",
+      "outputBounds": {
+        "right": 397,
+        "top": 216,
+        "left": 158,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-hp-extend.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        40.342857142857156
+      ],
+      "sourceSha256": "b85e038da359ac41ef04f81c148e4e472b19769f0162fa4865ed4c7f028b22c7",
+      "outputSha256": "f9221631222be1eb6d2b03bac82d7dac57956c396c7e576633035bbdea3f2af1",
+      "sourceBounds": {
+        "right": 1040,
+        "top": 513,
+        "left": 342,
+        "bottom": 1188
+      },
+      "output": "derived/attack-motion-v1/crouch-hp-extend.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1189
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-hp-retract",
+      "outputBounds": {
+        "right": 437,
+        "top": 215,
+        "left": 158,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-hp-retract-v2.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        40.342857142857156
+      ],
+      "sourceSha256": "a023bf10a806618f2e980b91ee9e5fcabd55e5d8e9a9980c9ade6e5e708e4172",
+      "outputSha256": "a2283ebad5a56aaa97340962d4b2909b728dc64271703cc18ba7054c615d924d",
+      "sourceBounds": {
+        "right": 1156,
+        "top": 511,
+        "left": 342,
+        "bottom": 1188
+      },
+      "output": "derived/attack-motion-v1/crouch-hp-retract.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1189
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-hp-settle",
+      "outputBounds": {
+        "right": 374,
+        "top": 215,
+        "left": 158,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-hp-settle.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        40.0
+      ],
+      "sourceSha256": "00845baafdbe042a8360271bab4e59c60f496b77aae1e62a8d89fd2268e871d0",
+      "outputSha256": "f990b2a409768c6894e2bd572fe3a416baba856080837c0b1c421a59f180b8ae",
+      "sourceBounds": {
+        "right": 973,
+        "top": 511,
+        "left": 342,
+        "bottom": 1189
+      },
+      "output": "derived/attack-motion-v1/crouch-hp-settle.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1190
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-lk-extend",
+      "outputBounds": {
+        "right": 412,
+        "top": 212,
+        "left": 150,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-lk-extend.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "sourceSha256": "c8ad13b551e8dd9839de3791da3bc11c30cd1d79f70f25dd7e5afa8595d10646",
+      "outputSha256": "7f6e012061da9439f79c65e7337a54b8ac79909934c55da5af483e3c4c98eaa8",
+      "sourceBounds": {
+        "right": 1082,
+        "top": 500,
+        "left": 320,
+        "bottom": 1187
+      },
+      "output": "derived/attack-motion-v1/crouch-lk-extend.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-lk-retract",
+      "outputBounds": {
+        "right": 420,
+        "top": 208,
+        "left": 156,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-lk-retract.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        40.0
+      ],
+      "sourceSha256": "d6f3fc35044a46e0c39407729c8e5347d57acbe86b7bbf0206fb7c0e7be80ad9",
+      "outputSha256": "33a49a9f661a347ce5e3eedb856f35741741bb25a0b984e55d78a81668370c7f",
+      "sourceBounds": {
+        "right": 1106,
+        "top": 491,
+        "left": 335,
+        "bottom": 1189
+      },
+      "output": "derived/attack-motion-v1/crouch-lk-retract.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1190
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-lk-settle",
+      "outputBounds": {
+        "right": 354,
+        "top": 209,
+        "left": 156,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-lk-settle.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        40.685714285714255
+      ],
+      "sourceSha256": "e8262a67ce69e23262fbb44087dbf84214693ae48f8e5ca04c83231aa0108956",
+      "outputSha256": "03ff1321484ecdce8d69accd72779a48f490852ec069ef1b884d54c214c129f2",
+      "sourceBounds": {
+        "right": 914,
+        "top": 491,
+        "left": 336,
+        "bottom": 1187
+      },
+      "output": "derived/attack-motion-v1/crouch-lk-settle.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1188
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-hk-extend",
+      "outputBounds": {
+        "right": 450,
+        "top": 222,
+        "left": 125,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-hk-extend.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        42.39999999999998
+      ],
+      "sourceSha256": "290c4e5de07a6824c8aaf4bef1db5978636a260b7faf7a61391a3944b86a3c03",
+      "outputSha256": "ec7219e09b22ba02406c16b24e4b686eb62e98c868298e7482b9fbed5e968271",
+      "sourceBounds": {
+        "right": 1194,
+        "top": 524,
+        "left": 247,
+        "bottom": 1182
+      },
+      "output": "derived/attack-motion-v1/crouch-hk-extend.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1183
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-hk-retract",
+      "outputBounds": {
+        "right": 389,
+        "top": 221,
+        "left": 123,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-hk-retract.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        43.08571428571429
+      ],
+      "sourceSha256": "bba8b857b0f9d876dc3b42c25f74d8a4715049edc06f2b1f646a6ce538f25c65",
+      "outputSha256": "e0c007afdfd09b8169730e9595712b4ad737e18c7d8db26d0b9e3d7713ec27a1",
+      "sourceBounds": {
+        "right": 1015,
+        "top": 519,
+        "left": 241,
+        "bottom": 1180
+      },
+      "output": "derived/attack-motion-v1/crouch-hk-retract.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1181
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "crouch-hk-settle",
+      "outputBounds": {
+        "right": 367,
+        "top": 211,
+        "left": 157,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/crouch-hk-settle.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        42.05714285714288
+      ],
+      "sourceSha256": "5426757e5dff800fc75ef4c484535efb7d92d373f5e9c2cc6b79dcea92228076",
+      "outputSha256": "2b326cc2b70e482ced15aa04ae61a2bd445bc773833344a1e8da886a95221430",
+      "sourceBounds": {
+        "right": 951,
+        "top": 493,
+        "left": 339,
+        "bottom": 1183
+      },
+      "output": "derived/attack-motion-v1/crouch-hk-settle.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1184
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-lk-startup",
+      "outputBounds": {
+        "right": 298,
+        "top": 49,
+        "left": 95,
+        "bottom": 448
+      },
+      "source": "generated/attack-motion-v1/stand-lk-startup.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        32.457142857142856
+      ],
+      "sourceSha256": "c9b99b67156aecd9d965b9b61422d7b4274e3fac88218f40ba3a1b4a4ba6305c",
+      "outputSha256": "8c222b22f575d1e3dd57354167cc969a6dce161fa15fe844fab8330c60b6c257",
+      "sourceBounds": {
+        "right": 752,
+        "top": 48,
+        "left": 158,
+        "bottom": 1211
+      },
+      "output": "derived/attack-motion-v1/stand-lk-startup.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1212
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-lk-recovery",
+      "outputBounds": {
+        "right": 318,
+        "top": 48,
+        "left": 95,
+        "bottom": 448
+      },
+      "source": "generated/attack-motion-v1/stand-lk-recovery.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        32.457142857142856
+      ],
+      "sourceSha256": "3709f918c90165606782b6f3b8d1aa8835d842b8cb0b36673e31cbe65c15ad08",
+      "outputSha256": "bc368021855b1f1e4c9b02e44a991e23ddea8ad61e020d9478df356871c32e67",
+      "sourceBounds": {
+        "right": 811,
+        "top": 48,
+        "left": 158,
+        "bottom": 1211
+      },
+      "output": "derived/attack-motion-v1/stand-lk-recovery.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1212
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "stand-hk-recovery",
+      "outputBounds": {
+        "right": 403,
+        "top": 39,
+        "left": 125,
+        "bottom": 447
+      },
+      "source": "generated/attack-motion-v1/stand-hk-recovery.png",
+      "scale": 0.34285714285714286,
+      "offset": [
+        41.02857142857144,
+        27.31428571428569
+      ],
+      "sourceSha256": "446c8395cbed5276fa58ab936129f99e850a63427df0c2cee82677f8b97e65d6",
+      "outputSha256": "6d21b5ffc0f7a9d97183b25e21d1ba31b7c72001ccda56612d65359fe24d22d5",
+      "sourceBounds": {
+        "right": 1057,
+        "top": 35,
+        "left": 245,
+        "bottom": 1226
+      },
+      "output": "derived/attack-motion-v1/stand-hk-recovery.png",
+      "rootMode": "sole-bottom",
+      "sourceRoot": [
+        627.0,
+        1227
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ]
+    }
+  ],
+  "status": "draft",
+  "referenceSha256": "3d76d4beeb1d670eefb67f6d63fe9a40df91cf96200971878529c673dfcbe7ed",
+  "root": [
+    256,
+    448
+  ],
+  "alphaThreshold": 8,
+  "method": "Shared scale from idle alpha height (384px); source canvas midpoint X; sole bottom Y except jumping uses idle virtual ground. No repainting.",
+  "canvas": [
+    512,
+    512
+  ],
+  "displayScale": 0.625
+}
