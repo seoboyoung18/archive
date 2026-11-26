@@ -1,0 +1,79 @@
+/* 딜모아 디자인 시스템 토큰 — 라벤더/보라 톤 (v2) */
+:root {
+  /* 브랜드 / 포인트 */
+  --brand: #7c5ce0;
+  --brand-2: #9b7bf0;
+  --brand-hover: #5b3ec8;
+  --brand-soft: rgba(124, 92, 224, 0.1);
+
+  /* 배경 / 카드 */
+  --bg: #f5f4fb;
+  --bg-2: #ececf4;
+  --card: #ffffff;
+  --card-border: rgba(24, 20, 50, 0.07);
+  --header-bg: rgba(255, 255, 255, 0.72);
+
+  /* 텍스트 */
+  --text-strong: #171528;
+  --text-1: #4a4763;
+  --text-2: #6d6a83;
+  --text-3: #9a97ad;
+  --price-strike: #a8a6b8;
+
+  /* 할인율 티어 색 (핵심 규칙, 유지) */
+  --tier-green: #15803d;
+  --tier-amber: #b45309;
+  --tier-purple: #7c3aed;
+  --tier-red: #dc2626;
+  --tier-blue: #0284c7;
+
+  /* 포인트 (티어 외 강조색) */
+  --accent-flame: #ff7043;
+
+  /* 스토어 뱃지 색 */
+  --store-steam: #66c0f4;
+  --store-epic: #c9cedb;
+  --store-gog: #c084fc;
+  --store-humble: #ff6b6b;
+  --store-fanatical: #fb923c;
+  --store-neutral: #b9becb;
+
+  /* 형태 */
+  --radius: 16px;
+  --radius-sm: 11px;
+  --radius-pill: 999px;
+  --shadow: 0 1px 2px rgba(24, 20, 50, 0.04), 0 8px 24px rgba(24, 20, 50, 0.06);
+  --shadow-hover: 0 4px 10px rgba(24, 20, 50, 0.07), 0 18px 40px rgba(90, 62, 200, 0.16);
+  --hero-grad: linear-gradient(135deg, #efeafc 0%, #f4f0fe 42%, #eaf0fe 100%);
+
+  /* 레이아웃 */
+  --maxw: 1200px;
+  --gap: 20px;
+}
+
+/* 다크 테마 */
+:root[data-theme='dark'] {
+  --bg: #0d0d14;
+  --bg-2: #181824;
+  --card: #15151f;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --header-bg: rgba(15, 15, 22, 0.72);
+  --brand-soft: rgba(124, 92, 224, 0.18);
+
+  --text-strong: #f2f1f8;
+  --text-1: #c6c4d6;
+  --text-2: #9995ac;
+  --text-3: #6f6c84;
+  --price-strike: #6f6c84;
+
+  /* 할인율 티어 색 — 어두운 카드 위에서 대비가 나오도록 밝은 톤으로 오버라이드 */
+  --tier-green: #4ade80;
+  --tier-amber: #fbbf24;
+  --tier-purple: #a78bfa;
+  --tier-red: #f87171;
+  --tier-blue: #38bdf8;
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.5), 0 18px 40px rgba(0, 0, 0, 0.62);
+  --hero-grad: linear-gradient(135deg, #17162a 0%, #141327 45%, #101426 100%);
+}

@@ -1,0 +1,48 @@
+package com.example.deal.scheduler;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import com.example.deal.service.DealService;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * @Scheduled 수집 잡. 외부 API 는 이 주기에만 호출한다(NFR-03).
+ * 장애 격리: 예외를 잡아 로깅만 하고 다음 주기를 보장한다(WBS 1.8).
+ */
+@Slf4j
+@Component
+@RequiredArgsConstructor
+public class DealCollectScheduler {
+
+    private final DealService dealService;
+
+    @Value("${cheapshark.collect.enabled:true}")
+    private boolean enabled;
+
+    @Scheduled(
+            initialDelayString = "${cheapshark.collect.initial-delay-ms:5000}",
+            fixedDelayString = "${cheapshark.collect.fixed-delay-ms:21600000}")
+    public void scheduledCollect() {
+        if (!enabled) {
+            log.info("[스케줄러] 수집 비활성화 — 건너뜀");
+            return;
+        }
+        try {
+            log.info("[스케줄러] 수집 시작");
+            DealService.CollectResult r = dealService.collectOnce();
+            log.info("[스케줄러] 수집 성공 — 스토어 {} · 저장 딜 {} · {}ms", r.stores(), r.totalDeals(), r.elapsedMs());
+            // 스팀 실제 원화 보강 (별도 단계, 실패해도 수집 결과엔 영향 없음)
+            int krw = dealService.enrichSteamKrw();
+            log.info("[스케줄러] 스팀 KRW 보강 {}건", krw);
+            // 스팀 메타(장르·한국어 소개) 보강 — 게임당 1회, 사이클마다 미보강분 소진
+            int meta = dealService.enrichSteamMeta();
+            log.info("[스케줄러] 스팀 메타 보강 {}건", meta);
+        } catch (Exception e) {
+            log.error("[스케줄러] 수집 실패 — 다음 주기에 재시도합니다: {}", e.getMessage(), e);
+        }
+    }
+}

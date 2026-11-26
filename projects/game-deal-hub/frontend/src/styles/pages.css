@@ -1,0 +1,1282 @@
+/* ================= Hero ================= */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--hero-grad);
+  border-bottom: 1px solid var(--card-border);
+}
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  z-index: 0;
+}
+.hero::before {
+  width: 360px;
+  height: 360px;
+  background: rgba(124, 92, 224, 0.4);
+  top: -90px;
+  right: 6%;
+}
+.hero::after {
+  width: 280px;
+  height: 280px;
+  background: rgba(155, 123, 240, 0.3);
+  bottom: -110px;
+  left: -40px;
+}
+/* ================= 사이트 전체 배경 ================= */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.site-bg__img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+/* 틴트는 항상 현재 테마의 배경색 — 어떤 사진·테마 조합에서도 글자 대비를 보장.
+   (개별 요소 text-shadow 보정 대신 여기 opacity 하나로 조절) */
+.site-bg__tint {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  opacity: 0.55;
+}
+
+/* 배경 위에서는 히어로를 투명 처리 (배경이 그대로 보이게) */
+.hero--overlay {
+  background: transparent;
+  border-bottom: none;
+}
+.hero--overlay::before,
+.hero--overlay::after {
+  display: none;
+}
+/* 배경 위 서브카피는 살짝 진하게 (가독성은 site-bg 틴트가 담당) */
+.hero--overlay .hero__sub {
+  color: var(--text-1);
+  font-weight: 600;
+}
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 28px;
+  padding: 52px 20px;
+}
+.hero__text {
+  min-width: 0;
+}
+.hero__visual {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.hero__char {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  height: 100%;
+  min-height: 500px;
+  transform: translateY(22px);
+}
+.hero__char-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 1s ease;
+  transform-origin: bottom center;
+  animation: heroSway 9s ease-in-out infinite;
+  filter: drop-shadow(0 20px 40px rgba(90, 62, 200, 0.28));
+}
+.hero__char-img.is-active {
+  opacity: 1;
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+/* 캐릭터 살랑살랑: 좌우 갸우뚱 + 부드러운 부유 (정적 이미지에 적용) */
+@keyframes heroSway {
+  0%   { transform: translateY(0)     rotate(-1.5deg); }
+  25%  { transform: translateY(-7px)  rotate(0.6deg); }
+  50%  { transform: translateY(-11px) rotate(1.5deg); }
+  75%  { transform: translateY(-7px)  rotate(-0.6deg); }
+  100% { transform: translateY(0)     rotate(-1.5deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__char-img,
+  .hero__char--empty span {
+    animation: none;
+  }
+}
+.hero__char--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  color: var(--text-3);
+  text-align: center;
+}
+.hero__char--empty span {
+  font-size: 64px;
+  animation: heroFloat 5s ease-in-out infinite;
+}
+.hero__char-hint {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.hero__char-hint code {
+  color: var(--brand);
+  font-size: 12px;
+}
+@media (max-width: 860px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+  .hero__visual {
+    display: none;
+  }
+}
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(124, 92, 224, 0.92);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 15px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(90, 62, 200, 0.35);
+}
+.hero__title {
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  color: var(--text-strong);
+}
+.hero__title span {
+  background: linear-gradient(90deg, var(--brand-hover), var(--brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+:root[data-theme='dark'] .hero__title span {
+  background: linear-gradient(90deg, #a78bfa, #c9b8fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero__sub {
+  margin: 16px 0 26px;
+  font-size: 16px;
+  color: var(--text-2);
+  line-height: 1.55;
+  max-width: 520px;
+}
+.hero__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 560px;
+  height: 56px;
+  padding: 0 8px 0 18px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow);
+}
+.hero__search-icon {
+  color: var(--text-3);
+}
+.hero__search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 16px;
+  color: var(--text-strong);
+}
+.hero__search button {
+  flex: none;
+  height: 42px;
+  padding: 0 24px;
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  transition: background 0.12s;
+}
+.hero__search button:hover {
+  background: var(--brand-hover);
+}
+.hero__stores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.hero__store {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-1);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--card-border);
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+}
+:root[data-theme='dark'] .hero__store {
+  background: rgba(255, 255, 255, 0.06);
+}
+@media (max-width: 600px) {
+  .hero__title {
+    font-size: 32px;
+  }
+  .hero__inner {
+    padding: 40px 20px 32px;
+  }
+}
+
+/* ================= Section title ================= */
+.section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-strong);
+}
+.home__head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+/* ================= S1 Home ================= */
+.home {
+  padding: 28px 20px 0;
+}
+.home__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.home__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.home__tools {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 14px;
+}
+.home__count {
+  color: var(--text-2);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.home__count strong {
+  color: var(--text-strong);
+  font-weight: 800;
+}
+
+.deal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+
+@media (max-width: 1024px) {
+  .deal-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .deal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .deal-grid {
+    grid-template-columns: 1fr;
+  }
+  .home__toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .home__controls {
+    justify-content: space-between;
+  }
+}
+
+/* ================= 홈 R2 · 스포트라이트 (오늘의 핫딜 + 최저가 랭킹) ================= */
+.spotlight {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: var(--gap);
+  align-items: stretch;
+  margin-bottom: 44px;
+}
+.spotlight--skel > div {
+  min-height: 380px;
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  animation: skelPulse 1.3s ease-in-out infinite;
+}
+@keyframes skelPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.95; }
+}
+
+/* 오늘의 핫딜 대형 카드 */
+.featured {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.14s, box-shadow 0.14s;
+}
+.featured:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+.featured:only-child {
+  grid-column: 1 / -1;
+}
+.featured__cover {
+  position: relative;
+  aspect-ratio: 16 / 8;
+  background: var(--bg-2);
+  overflow: hidden;
+}
+.featured__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.featured__cover-empty {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  opacity: 0.35;
+}
+.featured__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+.featured__badge .discount-badge {
+  font-size: 16px;
+  padding: 7px 14px 7px 20px;
+}
+.featured__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px 24px 22px;
+}
+.featured__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+}
+.featured__title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--text-strong);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.featured__foot {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.featured__prices {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.featured__normal {
+  font-size: 15px;
+  color: var(--price-strike);
+  text-decoration: line-through;
+}
+.featured__sale {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.featured__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 0.12s;
+}
+.featured:hover .featured__cta {
+  background: var(--brand-hover);
+}
+
+/* 최저가 랭킹 TOP 5 */
+.rank {
+  min-width: 0; /* 긴 게임 제목(nowrap)이 컬럼 폭을 밀어내지 않게 — 제목은 ellipsis 처리 */
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 14px 10px;
+}
+.rank__title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-strong);
+  padding: 0 8px;
+  margin-bottom: 10px;
+}
+.rank__title em {
+  font-style: normal;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+}
+.rank__trophy {
+  color: #eda63a;
+}
+.rank__list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.rank__list li {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+}
+.rank__row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  transition: background 0.12s;
+  min-width: 0;
+}
+.rank__row:hover {
+  background: var(--bg-2);
+}
+.rank__num {
+  flex: none;
+  width: 22px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--text-3);
+}
+.rank__num--1 {
+  color: #e7a13c;
+}
+.rank__num--2 {
+  color: #97a2b8;
+}
+.rank__num--3 {
+  color: #c88a5f;
+}
+.rank__thumb {
+  flex: none;
+  width: 74px;
+  height: 42px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-2);
+  display: grid;
+  place-items: center;
+}
+.rank__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.rank__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.rank__name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-strong);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rank__meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+}
+.rank__meta b {
+  font-weight: 800;
+}
+.rank__price {
+  color: var(--text-1);
+  font-weight: 700;
+}
+
+/* 추천 특가 */
+.picks {
+  margin-bottom: 44px;
+}
+.home__head--split {
+  justify-content: space-between;
+  align-items: center;
+}
+.more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brand);
+  transition: color 0.12s;
+}
+.more-link:hover {
+  color: var(--brand-hover);
+}
+
+/* 기능 소개 4칸 */
+.perks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 48px;
+}
+.perk {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  box-shadow: var(--shadow);
+}
+.perk__icon {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+.perk__title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--text-strong);
+}
+.perk__soon {
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--tier-amber);
+  background: rgba(180, 83, 9, 0.12);
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+}
+.perk__desc {
+  margin-top: 5px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+@media (max-width: 980px) {
+  .spotlight {
+    grid-template-columns: 1fr;
+  }
+  .perks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .perks {
+    grid-template-columns: 1fr;
+  }
+  .featured__title {
+    font-size: 20px;
+  }
+  .featured__sale {
+    font-size: 25px;
+  }
+}
+
+/* ================= 게임 목록(/games) · 2단 레이아웃 ================= */
+.listing {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--gap);
+  align-items: start;
+}
+/* 그리드 자식의 min-width:auto가 내부 콘텐츠 폭만큼 컬럼을 밀어내는 것 방지 (모바일 가로 스크롤) */
+.listing__main,
+.listing__side {
+  min-width: 0;
+}
+.listing__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  position: sticky;
+  top: 84px; /* 헤더 64px + 여백 */
+}
+.listing__tabs {
+  margin-bottom: 16px;
+}
+.chip--wish {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.chip--wish b {
+  font-size: 12px;
+  font-weight: 800;
+  background: var(--brand-soft);
+  color: var(--brand);
+  padding: 1px 7px;
+  border-radius: var(--radius-pill);
+}
+.chip--wish.chip--active b {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+.deal-grid--listing {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 860px) {
+  .deal-grid--listing {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .deal-grid--listing {
+    grid-template-columns: 1fr;
+  }
+}
+.rank__trend {
+  color: var(--brand);
+}
+.recent__icon {
+  color: var(--text-2);
+}
+
+/* 카드 위시 하트 (커버 좌상단) */
+.deal-card__wish {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: rgba(15, 13, 25, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background 0.12s, color 0.12s, transform 0.12s;
+}
+.deal-card__wish:hover {
+  background: rgba(15, 13, 25, 0.68);
+  transform: scale(1.08);
+}
+.deal-card__wish.is-on {
+  color: #e8446a;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+/* 카드 장르 태그 (스팀 메타 — 없으면 빈 줄 유지로 카드 리듬 맞춤) */
+.deal-card__tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  min-height: 21px;
+}
+.tag {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  background: var(--bg-2);
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+}
+.tag--ko {
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+
+/* 히어로 스토어 스트립: 아이콘 + 이름 */
+.hero__store {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.hero__store img {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: block;
+}
+
+/* ≤1024: 사이드바를 목록 '위' 가로 스크롤 스트립으로 — 목록·페이징 아래로 밀려 안 보이던 문제 해결 */
+@media (max-width: 1024px) {
+  .listing {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* 기본값 start면 자식이 내용 폭만큼 커져 가로 스크롤 유발 */
+  }
+  .listing__side {
+    order: -1;
+    position: static;
+    gap: 14px;
+  }
+  .rank {
+    padding: 12px 14px;
+  }
+  .rank__title {
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+  .rank__list {
+    flex-direction: row;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    padding-bottom: 4px;
+  }
+  .rank__list li {
+    flex: none;
+  }
+  .rank__row {
+    width: 240px;
+    padding: 6px;
+  }
+}
+
+/* ≤860: 필터 툴바는 '필터·정렬' 버튼으로 접어두고, 열면 카드 패널로 */
+.filter-toggle {
+  display: none;
+}
+@media (max-width: 860px) {
+  .filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 40px;
+    padding: 0 16px;
+    margin-bottom: 12px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--card-border);
+    background: var(--card);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-1);
+  }
+  .filter-toggle b {
+    font-size: 12px;
+    font-weight: 800;
+    background: var(--brand);
+    color: #fff;
+    padding: 1px 8px;
+    border-radius: var(--radius-pill);
+  }
+  .home__toolbar {
+    display: none;
+  }
+  .home__toolbar.is-open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 14px;
+    box-shadow: var(--shadow);
+  }
+}
+
+/* ================= S3 Game Detail ================= */
+.detail {
+  padding: 20px 20px 0;
+}
+.breadcrumb {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-2);
+  margin-bottom: 16px;
+}
+.breadcrumb a:hover {
+  color: var(--brand);
+}
+.breadcrumb span:last-child {
+  color: var(--text-strong);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.detail__hero {
+  aspect-ratio: 16 / 6;
+  background: var(--bg-2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.detail__hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.detail__head {
+  margin-bottom: 24px;
+}
+.detail__title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.detail__meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.meta-badge {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--bg-2);
+  color: var(--text-1);
+}
+.meta-badge--mc {
+  background: rgba(21, 128, 61, 0.12);
+  color: var(--tier-green);
+}
+.meta-badge--steam {
+  background: rgba(102, 192, 244, 0.18);
+  color: #1565c0;
+}
+.meta-badge--genre {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+.meta-badge--ko {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+/* 역대 최저가 뱃지 (ITAD 'Historical Low' 참고) */
+.atl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--brand);
+  background: var(--brand-soft);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+}
+.atl-badge--now {
+  color: #fff;
+  background: var(--brand);
+  box-shadow: 0 3px 10px rgba(90, 62, 200, 0.3);
+}
+.detail__desc {
+  margin-top: 14px;
+  max-width: 780px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-strong);
+}
+.detail__pricehead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.detail__pricehead h2 {
+  font-size: 18px;
+  font-weight: 800;
+}
+.detail__count {
+  font-size: 14px;
+  color: var(--text-3);
+  font-weight: 600;
+  margin-left: 8px;
+}
+/* 가격 추이 스파크라인 (상세) */
+.pricechart {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 14px 16px 10px;
+  margin-bottom: 12px;
+}
+.pricechart__head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.pricechart__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+.pricechart__range {
+  font-size: 12px;
+  color: var(--text-3);
+}
+.pricechart__plot {
+  position: relative;
+}
+.pricechart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.pricechart__line {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.pricechart__area {
+  fill: var(--brand);
+  opacity: 0.07;
+}
+.pricechart__grid {
+  stroke: var(--card-border);
+  stroke-width: 1;
+}
+.pricechart__cross {
+  stroke: var(--text-3);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+.pricechart__axis {
+  font-size: 11px;
+  fill: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.pricechart__axis--min {
+  fill: var(--text-1);
+  font-weight: 600;
+}
+.pricechart__dot {
+  fill: var(--brand);
+  stroke: var(--card);
+  stroke-width: 2;
+}
+:root[data-theme='dark'] .pricechart__line {
+  stroke: var(--brand-2);
+}
+:root[data-theme='dark'] .pricechart__area {
+  fill: var(--brand-2);
+  opacity: 0.1;
+}
+:root[data-theme='dark'] .pricechart__dot {
+  fill: var(--brand-2);
+}
+.pricechart__tip {
+  position: absolute;
+  top: 4px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  padding: 5px 9px;
+  font-size: 12px;
+  color: var(--text-1);
+  white-space: nowrap;
+}
+.pricechart__tip b {
+  color: var(--text-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.price-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  flex-wrap: wrap;
+}
+.price-row--best {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 1px var(--brand);
+}
+.price-row__store {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 180px;
+  flex: 1;
+}
+.price-row__best-tag {
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--brand);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+.price-row__prices {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.price-row__normal {
+  font-size: 14px;
+  color: var(--price-strike);
+  text-decoration: line-through;
+}
+.price-row__sale {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.price-row__go {
+  flex: none;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background 0.12s;
+}
+.price-row__go:hover {
+  background: var(--brand-hover);
+}
+@media (max-width: 560px) {
+  .price-row__store {
+    min-width: 0;
+    flex-basis: 100%;
+  }
+  .price-row__go {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .detail__title {
+    font-size: 26px;
+  }
+}
+
+/* ================= S2 Search ================= */
+.search {
+  padding: 24px 20px 0;
+}
+.search__head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.search__title {
+  font-size: 22px;
+  font-weight: 800;
+}
+.search__title strong {
+  background: linear-gradient(90deg, var(--brand-hover), var(--brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+:root[data-theme='dark'] .search__title strong {
+  background: linear-gradient(90deg, #a78bfa, #c9b8fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.search__count {
+  color: var(--text-2);
+  font-size: 14px;
+}
+.state__hint {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-3);
+}
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+@media (max-width: 900px) {
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.game-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.14s, box-shadow 0.14s;
+}
+.game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+.game-card__cover {
+  aspect-ratio: 16 / 9;
+  background: var(--bg-2);
+  overflow: hidden;
+}
+.game-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.game-card__cover-empty {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  opacity: 0.35;
+}
+.game-card__body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.game-card__title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  height: 2.7em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.game-card__low {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-strong);
+  letter-spacing: -0.01em;
+}
+.game-card__stores {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.game-card__more {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 600;
+}
