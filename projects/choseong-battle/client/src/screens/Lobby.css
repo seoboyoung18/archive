@@ -1,0 +1,347 @@
+/* ── 온보딩 — 테라코타 그라데이션 풀스크린 ────────────────────────────────────── */
+.onboard {
+  background: linear-gradient(180deg, #d9773f 0%, #c4622d 50%, #96461c 100%);
+  color: #fff;
+  padding-top: max(48px, env(safe-area-inset-top));
+}
+
+.onboard__badge {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.onboard__title {
+  /* 앱 이름이라 타이틀 서체(Jua)를 쓴다 */
+  font-family: var(--font-title);
+  font-size: 44px;
+  /* Jua는 한 굵기만 있어 900을 줘도 합성 볼드가 되어 획이 뭉갠다 */
+  font-weight: 400;
+  margin: 8px 0 0;
+  letter-spacing: -0.03em;
+}
+
+.onboard__sub {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.onboard__art {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+.onboard__halo {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 70%);
+  display: grid;
+  place-items: center;
+}
+
+.onboard__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.onboard__input {
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  padding: 0 18px;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-family: inherit;
+}
+
+.onboard__input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.onboard__input:focus {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+/* 테라코타 배경 위라 시작 버튼은 흰색이다 */
+.onboard__start {
+  background: #fff;
+  color: var(--primary-dark);
+}
+
+.onboard__start:active:not(:disabled) {
+  background: #f3e9dc;
+}
+
+.onboard__start:disabled {
+  background: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.onboard__note {
+  font-size: 12px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* ── 홈 ───────────────────────────────────────────────────────────────────── */
+.home__top {
+  gap: 12px;
+}
+
+.home__nick {
+  font-size: 17px;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home__settings {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.home__mini-link {
+  appearance: none;
+  border: none;
+  background: none;
+  align-self: center;
+  margin-top: -6px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.home__cat-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+
+/* 전적 4칸 */
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 4px 0;
+  min-width: 0;
+}
+
+.stat__num {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.stat__num.is-accent {
+  color: var(--primary);
+}
+
+.stat__lbl {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+/* ── 매칭 대기 ─────────────────────────────────────────────────────────────── */
+.match__spinner-wrap {
+  display: grid;
+  place-items: center;
+  padding: 12px 0;
+}
+
+.match__spinner {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 5px solid var(--primary-soft);
+  border-top-color: var(--primary);
+  animation: match-spin 1s linear infinite;
+}
+
+@keyframes match-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .match__spinner {
+    animation: none;
+  }
+}
+
+.match__slots {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.match__slot {
+  aspect-ratio: 1 / 1.2;
+  border-radius: 16px;
+  border: 2px dashed var(--border-strong);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--text-3);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.match__slot.is-filled {
+  border: 2px solid var(--primary);
+  background: var(--card);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ── 공개 방 목록 ─────────────────────────────────────────────────────────── */
+.rooms__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.rooms__refresh {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 4px 0;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.rooms__refresh:disabled {
+  color: var(--text-3);
+  cursor: default;
+}
+
+.rooms__empty {
+  margin: 10px 0 0;
+  padding: 16px 14px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-3);
+  font-size: 13px;
+  text-align: center;
+}
+
+.rooms {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.rooms__item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.rooms__row {
+  appearance: none;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.rooms__row:active {
+  background: var(--muted-bg);
+}
+
+.rooms__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rooms__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  /* 방 이름이 길어도 인원수를 밀어내지 않는다 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rooms__meta {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.rooms__count {
+  flex: none;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.rooms__max {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-3);
+}
+
+.rooms__pw {
+  padding: 0 14px 12px;
+}
+
+.rooms__pw .input {
+  height: 40px;
+  font-size: 14px;
+}
+
+/* 방 만들기·입장 실패 알림 — 잠깐 떴다 사라진다 */
+.rooms__fail {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}

@@ -1,0 +1,203 @@
+/**
+ * 캐릭터 파츠 카탈로그 — 해금 검사가 유일한 방어선이라 여기서 확실히 잡는다.
+ */
+
+import test from 'node:test';
+import assert from 'node:assert/strict';
+
+import {
+  AVATAR_PARTS,
+  AVATAR_SLOTS,
+  DEFAULT_APPEARANCE,
+  findPart,
+  isUnlocked,
+  newlyUnlocked,
+  normalizeAppearance,
+  unlockLabel,
+  unlockRemaining,
+  validateAppearance,
+} from '../../shared/avatar.js';
+
+const NOTHING = { roundWins: 0, games: 0, practiceStreak: 0 };
+const EVERYTHING = { roundWins: 999, games: 999, practiceStreak: 999 };
+
+test('기본 캐릭터는 해금 조건이 없는 파츠로만 이뤄진다', () => {
+  // 새 계정이 잠긴 옷을 입고 나오면 저장할 때마다 거절당한다
+  for (const { slot } of AVATAR_SLOTS) {
+    const part = findPart(slot, DEFAULT_APPEARANCE[slot]);
+    assert.ok(part, `${slot} 기본 파츠가 카탈로그에 없다`);
+    assert.ok(isUnlocked(part, NOTHING), `${slot} 기본 파츠가 잠겨 있다`);
+  }
+});
+
+test('칸마다 파츠가 있고 id는 겹치지 않는다', () => {
+  for (const { slot } of AVATAR_SLOTS) {
+    const list = AVATAR_PARTS[slot];
+    assert.ok(list?.length > 0, `${slot}에 파츠가 없다`);
+    assert.equal(new Set(list.map((p) => p.id)).size, list.length, `${slot} id가 겹친다`);
+  }
+});
+
+test('잠긴 파츠도 조건을 채우면 열린다', () => {
+  const locked = Object.values(AVATAR_PARTS).flat().filter((p) => p.unlock);
+  assert.ok(locked.length > 0, '해금 파츠가 하나도 없다');
+
+  for (const part of locked) {
+    assert.equal(isUnlocked(part, NOTHING), false, `${part.id}가 조건 없이 열려 있다`);
+    assert.equal(isUnlocked(part, EVERYTHING), true, `${part.id}가 조건을 채워도 안 열린다`);
+    assert.ok(unlockLabel(part).length > 0, `${part.id} 해금 문구가 비었다`);
+  }
+});
+
+test('남은 양은 진행도만큼 줄고 0에서 멈춘다', () => {
+  const fox = findPart('base', 'FOX'); // 라운드 20승
+  assert.equal(unlockRemaining(fox, NOTHING), 20);
+  assert.equal(unlockRemaining(fox, { roundWins: 7 }), 13);
+  assert.equal(unlockRemaining(fox, { roundWins: 20 }), 0);
+  assert.equal(unlockRemaining(fox, { roundWins: 50 }), 0);
+  assert.equal(unlockRemaining(findPart('base', 'RABBIT'), NOTHING), 0, '조건 없는 파츠는 0이어야 한다');
+});
+
+test('모르는 해금 조건은 잠긴 것으로 본다', () => {
+  // 조건 종류를 새로 만들고 판정을 빠뜨렸을 때 열리는 쪽으로 새면 안 된다
+  assert.equal(isUnlocked({ unlock: { type: 'SOMETHING_NEW', value: 1 } }, EVERYTHING), false);
+});
+
+test('남의 캐릭터는 없는 파츠만 기본값으로 떨어뜨린다', () => {
+  const out = normalizeAppearance({ base: 'CAT', hanbok: '없는색', head: 'GAT' });
+  assert.equal(out.base, 'CAT');
+  assert.equal(out.hanbok, DEFAULT_APPEARANCE.hanbok);
+  assert.equal(out.head, 'GAT', '남의 해금 파츠까지 지우면 안 된다');
+  assert.equal(out.face, DEFAULT_APPEARANCE.face, '안 보낸 칸은 기본값이어야 한다');
+});
+
+test('아무것도 없는 값도 기본 캐릭터로 떨어진다', () => {
+  for (const bad of [null, undefined, 'CAT', 42, []]) {
+    assert.deepEqual(normalizeAppearance(bad), { ...DEFAULT_APPEARANCE });
+  }
+});
+
+test('내 캐릭터 저장은 잠긴 파츠를 거절한다', () => {
+  const locked = validateAppearance({ base: 'TIGER' }, NOTHING);
+  assert.equal(locked.ok, false);
+  assert.equal(locked.reason, 'LOCKED');
+  assert.equal(locked.slot, 'base');
+
+  const opened = validateAppearance({ base: 'TIGER' }, { roundWins: 60 });
+  assert.equal(opened.ok, true);
+  assert.equal(opened.appearance.base, 'TIGER');
+});
+
+test('없는 파츠는 조용히 기본값으로 바꾸지 않고 거절한다', () => {
+  // 오타를 조용히 삼키면 유저는 저장됐다고 믿고 다른 캐릭터를 보게 된다
+  const result = validateAppearance({ head: 'CROWN' }, EVERYTHING);
+  assert.equal(result.ok, false);
+  assert.equal(result.reason, 'UNKNOWN');
+  assert.equal(result.slot, 'head');
+});
+
+test('안 보낸 칸은 기본값으로 채운다', () => {
+  const result = validateAppearance({ base: 'BEAR' }, NOTHING);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.appearance, { ...DEFAULT_APPEARANCE, base: 'BEAR' });
+});
+
+test('알 수 없는 칸은 무시한다 — 저장 대상은 정해진 다섯 칸뿐이다', () => {
+  const result = validateAppearance({ base: 'BEAR', wings: 'DRAGON' }, NOTHING);
+  assert.equal(result.ok, true);
+  assert.equal(result.appearance.wings, undefined);
+});
+
+test('이번에 넘어선 파츠만 새로 열린 것으로 센다', () => {
+  const before = { roundWins: 19, games: 4, practiceStreak: 0 };
+  const after = { roundWins: 21, games: 5, practiceStreak: 0 };
+
+  const opened = newlyUnlocked(before, after).map((p) => p.id);
+  assert.deepEqual(opened.sort(), ['FOX', 'JOKDURI'], '20승·5판을 이번에 넘었다');
+});
+
+test('이미 열려 있던 파츠는 다시 알리지 않는다', () => {
+  // 여기가 새면 판이 끝날 때마다 같은 해금 알림이 반복된다
+  const before = { roundWins: 25, games: 6, practiceStreak: 0 };
+  const after = { roundWins: 28, games: 7, practiceStreak: 0 };
+  assert.deepEqual(newlyUnlocked(before, after), []);
+});
+
+test('진행도가 그대로면 아무것도 열리지 않는다', () => {
+  // 기록 저장이 실패하면 before와 after가 같아진다 — 조용히 넘어가야 한다
+  const same = { roundWins: 19, games: 4, practiceStreak: 7 };
+  assert.deepEqual(newlyUnlocked(same, same), []);
+});
+
+test('연습 기록으로도 열린다', () => {
+  const opened = newlyUnlocked(
+    { roundWins: 0, games: 0, practiceStreak: 7 },
+    { roundWins: 0, games: 0, practiceStreak: 12 },
+  ).map((p) => p.id);
+  assert.deepEqual(opened.sort(), ['COOL', 'MAGPIE']);
+});
+
+test('새로 열린 파츠는 어느 칸인지 함께 알려준다', () => {
+  // 화면이 "지금 내 캐릭터에 이 파츠만 얹은 모습"을 그리려면 slot이 있어야 한다
+  const [part] = newlyUnlocked({ roundWins: 19 }, { roundWins: 20 });
+  assert.equal(part.slot, 'base');
+  assert.equal(part.id, 'FOX');
+  assert.equal(part.label, '여우');
+});
+
+/* ── 색 ──────────────────────────────────────────────────────────────────── */
+
+test('색은 해금을 따지지 않는다 — 아무것도 안 한 계정도 고를 수 있다', () => {
+  // 색까지 잠그면 새 계정이 쓸 수 있는 조합이 너무 적어진다
+  const got = validateAppearance({ hanbok: 'INDIGO', tint: { hanbok: 'PLUM' } }, NOTHING);
+  assert.equal(got.ok, true);
+  assert.equal(got.appearance.tint.hanbok, 'PLUM');
+});
+
+test('색을 칠할 수 없는 칸은 거절한다', () => {
+  // 동물과 표정은 색칸이 없다. 조용히 버리면 저장은 됐는데 색이 안 바뀐다
+  for (const slot of ['base', 'face', 'bg']) {
+    const got = validateAppearance({ tint: { [slot]: 'PLUM' } }, EVERYTHING);
+    assert.equal(got.ok, false, `${slot}에 색이 통과했다`);
+    assert.equal(got.slot, slot);
+    assert.equal(got.reason, 'UNKNOWN');
+  }
+});
+
+test('팔레트에 없는 색은 거절한다', () => {
+  const got = validateAppearance({ tint: { hanbok: '#ff00ff' } }, EVERYTHING);
+  assert.equal(got.ok, false);
+  assert.equal(got.reason, 'UNKNOWN');
+});
+
+test("'기본'은 색을 안 고른 것과 같다", () => {
+  const got = validateAppearance({ tint: { hanbok: 'NONE', head: undefined } }, EVERYTHING);
+  assert.equal(got.ok, true);
+  assert.deepEqual(got.appearance.tint, {});
+});
+
+test('색이 객체가 아니면 거절한다', () => {
+  for (const bad of ['PLUM', 3, null, []]) {
+    const got = validateAppearance({ tint: bad }, EVERYTHING);
+    // 배열은 객체라 통과하지만, 칸 이름이 숫자라 그 안에서 걸린다
+    assert.equal(got.ok, Array.isArray(bad) ? true : false, `${JSON.stringify(bad)}가 통과했다`);
+  }
+});
+
+test('남의 캐릭터를 그릴 때 모르는 색은 기본색으로 떨어뜨린다', () => {
+  // 서버가 검사하지만, 더 올라간 클라이언트가 보낸 색이 섞여 올 수 있다
+  const look = normalizeAppearance({ base: 'CAT', tint: { hanbok: '없는색', head: 'GOLD', base: 'PLUM' } });
+  assert.deepEqual(look.tint, { head: 'GOLD' });
+});
+
+test('기본 캐릭터는 색을 하나도 안 고른 상태다', () => {
+  assert.deepEqual(DEFAULT_APPEARANCE.tint, {});
+  assert.deepEqual(normalizeAppearance(null).tint, {});
+});
+
+test('기본 캐릭터의 색칸은 얼려 두되, 받아가는 쪽은 고칠 수 있어야 한다', () => {
+  // {...DEFAULT_APPEARANCE}로 복사하면 얼린 객체가 그대로 따라붙는다
+  const look = normalizeAppearance({ base: 'CAT' });
+  look.tint.hanbok = 'PLUM'; // 얼린 걸 물려받았다면 여기서 조용히 실패한다
+  assert.equal(look.tint.hanbok, 'PLUM');
+});

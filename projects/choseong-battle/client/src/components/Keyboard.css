@@ -1,0 +1,95 @@
+/* 2벌식 키보드 — 웜 다크 게임 화면 하단에 뜨는 밝은 키보드 */
+.kb {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0 -16px calc(-1 * max(16px, env(safe-area-inset-bottom)));
+  padding: 10px 8px max(12px, env(safe-area-inset-bottom));
+  background: #e8dcc8;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.kb__row {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.kb__key {
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+  border: none;
+  border-radius: 8px;
+  background: #fffcf7;
+  box-shadow: 0 1px 0 rgba(59, 47, 39, 0.22);
+  color: #3b2f27;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.08s ease, transform 0.05s ease;
+}
+
+/* 눌림 — 손으로 누르든 물리 키보드로 치든 노랗게 */
+.kb__key:active:not(:disabled),
+.kb__key.is-flash {
+  background: #ffd644;
+  color: #3b2f27;
+  transform: translateY(1px);
+  box-shadow: 0 0 0 rgba(59, 47, 39, 0.22);
+}
+
+.kb__key:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.kb__key--fn {
+  /* 3글자 라벨('쌍자음')이 두 줄로 접히지 않을 만큼은 넓어야 한다 */
+  flex: 1.8;
+  background: #d9c7ac;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #6e5b4c;
+}
+
+.kb__key--fn:active:not(:disabled),
+.kb__key--fn.is-flash {
+  background: #ffd644;
+  color: #3b2f27;
+}
+
+.kb__key--fn.is-on {
+  background: var(--primary);
+  box-shadow: 0 1px 0 rgba(59, 47, 39, 0.22);
+  color: #fff;
+}
+
+.kb__submit {
+  height: 50px;
+  margin: 2px 0 0;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.08s ease, transform 0.05s ease;
+}
+
+.kb__submit:active:not(:disabled),
+.kb__submit.is-flash {
+  background: #ffd644;
+  color: #3b2f27;
+  transform: translateY(1px);
+}
+
+.kb__submit:disabled {
+  background: #d9c7ac;
+  color: #93806f;
+  cursor: default;
+}

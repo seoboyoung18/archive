@@ -1,0 +1,326 @@
+/**
+ * 서버 이벤트를 화면이 쓰기 좋은 하나의 상태로 모은다.
+ *
+ * 화면 전환은 여기서 결정한다: 로비 → 대기방 → 게임 → 결과.
+ * 어떤 화면인지는 서버가 보낸 마지막 이벤트가 정한다 — 클라이언트가
+ * 임의로 화면을 바꾸면 서버 상태와 어긋난다.
+ */
+
+import { useCallback, useEffect, useRef, useState } from 'react';
+
+import { REJECT_MESSAGE, SERVER_URL, connect } from './socket/client.js';
+import { play } from './sound.js';
+
+const initialState = {
+  me: null, // 서버가 확정한 내 신원 { userId, nickname, appearance, stats }
+  phase: 'LOBBY', // LOBBY | ROOM | PLAYING | RESULT
+  room: null,
+  round: null, // { roundNo, totalRounds, hint, deadlineTs, suddenDeath }
+  scores: {},
+  pass: null, // { passed, total }
+  lastWin: null, // 지난 라운드 정답 바 (FR-G7)
+  notice: null, // { text, seq } — 흔들림 피드백용
+  result: null,
+  matching: false,
+  suddenDeath: false,
+  connected: false,
+  ranking: null, // 주간 랭킹 { week, top, me, minGames }
+  showRanking: false,
+  unlocked: [], // 이번 판으로 새로 열린 파츠 [{ slot, id, label }]
+  // 사전에 없다고 거절된 낱말 — 신고 버튼을 띄울 근거 { word, done }
+  report: null,
+  profile: null, // 마이페이지 { recentGames, rankHistory, practiceRecords, ... }
+  showMyPage: false,
+  showPractice: false,
+  practice: { question: null, streak: 0, result: null, records: null, notice: null },
+  // 공개 방 목록. 소켓이 아니라 REST로 받는다 — 방이 생기고 사라지는 걸
+  // 실시간으로 밀어 줄 만큼 중요한 정보가 아니라, 볼 때 한 번 받으면 된다.
+  // list가 null이면 아직 한 번도 못 받은 상태다 (빈 배열과 구분해야 한다).
+  rooms: { list: null, loading: false, error: false },
+};
+
+export function useGame() {
+  const [state, setState] = useState(initialState);
+  const socketRef = useRef(null);
+
+  const patch = useCallback((next) => setState((prev) => ({ ...prev, ...next })), []);
+
+  /** 서버에 접속한다. 닉네임을 정하면 호출된다. */
+  const signIn = useCallback((user) => {
+    if (socketRef.current) return;
+    const socket = connect(user);
+    socketRef.current = socket;
+
+    socket.on('connect', () => patch({ connected: true }));
+    socket.on('disconnect', () => patch({ connected: false }));
+
+    // 게임 안에서 쓰는 userId는 서버가 정한다 — handshake에 보낸 임시 id가 아니다
+    socket.on('session.ready', (me) => patch({ me }));
+    socket.on('ranking.weekly', (ranking) => patch({ ranking }));
+    socket.on('me.profile', (profile) => patch({ profile }));
+    socket.on('unlock.new', ({ parts }) => {
+      patch({ unlocked: parts ?? [] });
+      if (parts?.length) play('unlock');
+    });
+
+    socket.on('room.state', (room) => {
+      setState((prev) => ({
+        ...prev,
+        room,
+        // 게임 중이 아닐 때만 대기방으로 되돌린다 (게임 끝난 뒤 결과를 덮지 않도록)
+        phase: prev.phase === 'PLAYING' || prev.phase === 'RESULT' ? prev.phase : 'ROOM',
+        matching: false,
+      }));
+    });
+
+    socket.on('matching.matched', () => patch({ matching: false }));
+    socket.on('matching.timeout', () =>
+      patch({ matching: false, notice: { text: '상대를 찾지 못했어요', seq: Date.now() } }),
+    );
+
+    // 끊겼다 돌아왔다. 남은 시간은 deadlineTs로 재니 흐른 시간이 저절로 반영된다.
+    socket.on('game.resume', (snapshot) => {
+      setState((prev) => ({
+        ...prev,
+        phase: 'PLAYING',
+        round: {
+          roundNo: snapshot.roundNo,
+          totalRounds: snapshot.totalRounds,
+          hint: snapshot.hint,
+          deadlineTs: snapshot.deadlineTs,
+        },
+        scores: snapshot.scores ?? {},
+        suddenDeath: Boolean(snapshot.suddenDeath),
+        pass: null,
+        result: null,
+        notice: { text: '다시 연결됐어요', seq: Date.now() },
+      }));
+    });
+
+    socket.on('round.start', (round) => {
+      setState((prev) => ({
+        ...prev,
+        phase: 'PLAYING',
+        round,
+        pass: null,
+        report: null,
+        // 지난 판의 해금 알림이 다음 판까지 따라오면 안 된다
+        unlocked: [],
+        suddenDeath: Boolean(round.suddenDeath),
+        result: null,
+      }));
+    });
+
+    socket.on('round.replaced', (round) => {
+      setState((prev) => ({
+        ...prev,
+        round: { ...prev.round, ...round },
+        pass: null,
+        report: null,
+        notice: {
+          text: round.reason === 'ALL_PASSED' ? '모두 패스! 문제 교체' : '시간 초과! 문제 교체',
+          seq: Date.now(),
+        },
+      }));
+    });
+
+    socket.on('round.passState', (pass) => patch({ pass }));
+
+    socket.on('round.won', (win) => {
+      setState((prev) => {
+        play(String(win.winner?.userId) === String(prev.me?.userId) ? 'win' : 'lose');
+        return {
+          ...prev,
+          scores: win.scores,
+          lastWin: { word: win.word, nickname: win.winner.nickname, elapsedMs: win.elapsedMs },
+          pass: null,
+        };
+      });
+    });
+
+    socket.on('game.suddenDeath', () =>
+      patch({ suddenDeath: true, notice: { text: '동점! 서든데스', seq: Date.now() } }),
+    );
+
+    socket.on('game.ended', (result) => {
+      patch({ phase: 'RESULT', result, round: null });
+      // 방금 판이 전적·랭킹에 반영됐다. 홈으로 돌아갔을 때 옛 숫자가 보이면 안 된다.
+      socket.emit('me.refresh');
+    });
+
+    socket.on('submit.rejected', ({ reason, word }) => {
+      play('wrong');
+      const text = REJECT_MESSAGE[reason];
+      patch({
+        ...(text ? { notice: { text, seq: Date.now(), shake: true } } : {}),
+        // 패턴·글자수 불일치는 사전 잘못이 아니라 친 사람의 실수다
+        report: reason === 'NOT_IN_DICT' && word ? { word, done: false } : null,
+      });
+    });
+
+    socket.on('word.reported', ({ text }) =>
+      setState((prev) =>
+        prev.report?.word === text ? { ...prev, report: { ...prev.report, done: true } } : prev,
+      ),
+    );
+
+    socket.on('error.notice', ({ message }) => patch({ notice: { text: message, seq: Date.now() } }));
+
+    // ── 혼자 연습 ─────────────────────────────────────────────────────────
+    const patchPractice = (next) =>
+      setState((prev) => ({ ...prev, practice: { ...prev.practice, ...next } }));
+
+    socket.on('practice.records', ({ records }) => patchPractice({ records }));
+
+    socket.on('practice.question', (question) => {
+      patch({ report: null });
+      patchPractice({ question, streak: question.streak, result: null, notice: null });
+    });
+
+    socket.on('practice.correct', ({ word, streak }) => {
+      play('correct');
+      patchPractice({ streak, notice: { text: `${word} 정답!`, seq: Date.now() } });
+    });
+
+    socket.on('practice.rejected', ({ reason, word }) => {
+      play('wrong');
+      const text = REJECT_MESSAGE[reason];
+      if (text) patchPractice({ notice: { text, seq: Date.now(), shake: true } });
+      patch({ report: reason === 'NOT_IN_DICT' && word ? { word, done: false } : null });
+    });
+
+    socket.on('practice.ended', (result) => {
+      if (result.unlocked?.length) play('unlock');
+      patchPractice({ result, question: null });
+    });
+  }, [patch]);
+
+  // 정리할 때 ref도 비운다. StrictMode는 개발 모드에서 마운트를 두 번 돌리는데,
+  // 닫아만 두고 ref를 남기면 다시 마운트됐을 때 signIn이 "이미 있다"고 판단해
+  // 끊긴 소켓을 그대로 들고 있게 된다 — 새로고침 자동 접속이 여기서 막혔었다.
+  useEffect(
+    () => () => {
+      socketRef.current?.close();
+      socketRef.current = null;
+    },
+    [],
+  );
+
+  const emit = useCallback((event, payload = {}) => {
+    socketRef.current?.emit(event, payload);
+  }, []);
+
+  /**
+   * 공개 방 목록을 받아온다. 방이 없으면 빈 배열이고, 실패하면 error를 세운다 —
+   * 빈 목록("아직 방이 없어요")과 실패("불러오지 못했어요")는 다른 말이어야 한다.
+   */
+  const loadRooms = useCallback(async () => {
+    setState((prev) => ({ ...prev, rooms: { ...prev.rooms, loading: true, error: false } }));
+    try {
+      const res = await fetch(`${SERVER_URL}/api/v1/rooms`);
+      if (!res.ok) throw new Error(String(res.status));
+      const { rooms: list } = await res.json();
+      setState((prev) => ({ ...prev, rooms: { list, loading: false, error: false } }));
+    } catch {
+      setState((prev) => ({ ...prev, rooms: { ...prev.rooms, loading: false, error: true } }));
+    }
+  }, []);
+
+  const actions = {
+    createRoom: (settings) => emit('room.create', settings),
+    /** @param {string} code @param {string|null} [password] 잠긴 방이면 필요하다 */
+    joinRoom: (code, password = null) => emit('room.join', { code, password }),
+    loadRooms,
+    leaveRoom: () => {
+      emit('room.leave');
+      setState((prev) => ({ ...initialState, connected: prev.connected, me: prev.me }));
+    },
+    setReady: (isReady) => emit('room.ready', { isReady }),
+    startGame: () => emit('game.start', { solo: false }),
+    startSolo: () => emit('game.start', { solo: true }),
+    submit: (word) => emit('round.submit', { word }),
+    pass: (passed) => emit('round.pass', { passed }),
+    react: (emoji) => emit('reaction.send', { emoji }),
+    /** 사전에 없다고 거절된 낱말을 등록 요청한다 (FR-W1) */
+    reportWord: (word, context) => emit('word.report', { text: word, action: 'ADD', context }),
+    joinMatching: (category, size) => {
+      patch({ matching: true });
+      emit('matching.join', { category, size });
+    },
+    cancelMatching: () => {
+      patch({ matching: false });
+      emit('matching.cancel');
+    },
+    backToRoom: () =>
+      patch({ phase: 'ROOM', result: null, scores: {}, lastWin: null, unlocked: [] }),
+    openRanking: () => {
+      patch({ showRanking: true });
+      emit('ranking.weekly');
+    },
+    closeRanking: () => patch({ showRanking: false }),
+
+    openMyPage: () => {
+      // 열 때마다 새로 받는다 — 방금 끝낸 판이 빠진 전적은 틀린 전적이다
+      patch({ showMyPage: true });
+      emit('me.profile');
+    },
+    closeMyPage: () => patch({ showMyPage: false }),
+    /** 닉네임·아바타 변경. 서버가 확정한 값은 session.ready로 되돌아온다 */
+    updateProfile: ({ nickname, appearance }) => emit('me.update', { nickname, appearance }),
+
+    openPractice: () => {
+      patch({ showPractice: true });
+      emit('practice.records');
+    },
+    closePractice: () => {
+      emit('practice.quit');
+      setState((prev) => ({
+        ...prev,
+        showPractice: false,
+        practice: { ...prev.practice, question: null, result: null, streak: 0, notice: null },
+      }));
+    },
+    practiceStart: ({ tier, category }) => {
+      setState((prev) => ({
+        ...prev,
+        practice: { ...prev.practice, result: null, streak: 0, notice: null },
+      }));
+      emit('practice.start', { tier, category });
+    },
+    practiceSubmit: (word) => emit('practice.submit', { word }),
+    practicePass: () => emit('practice.pass'),
+    practiceQuit: () => emit('practice.quit'),
+    /** 결과 화면에서 단계 선택으로 돌아간다 */
+    practiceReset: () => {
+      emit('practice.records');
+      setState((prev) => ({
+        ...prev,
+        practice: { ...prev.practice, question: null, result: null, streak: 0, notice: null },
+      }));
+    },
+  };
+
+  return { state, signIn, actions, socket: socketRef };
+}
+
+/**
+ * 서버가 준 마감 시각까지 남은 초를 센다.
+ * @param {number | null} deadlineTs
+ * @returns {number} 남은 초 (0 이상)
+ */
+export function useCountdown(deadlineTs) {
+  const [left, setLeft] = useState(0);
+
+  useEffect(() => {
+    if (!deadlineTs) {
+      setLeft(0);
+      return undefined;
+    }
+    const tick = () => setLeft(Math.max(0, Math.ceil((deadlineTs - Date.now()) / 1000)));
+    tick();
+    const timer = setInterval(tick, 200);
+    return () => clearInterval(timer);
+  }, [deadlineTs]);
+
+  return left;
+}
